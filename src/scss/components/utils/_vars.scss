@@ -1,0 +1,7 @@
+$colors: (
+  'orange': #ff6b08,
+);
+
+@function getcolor($key) {
+  @return map-get($colors, $key);
+}

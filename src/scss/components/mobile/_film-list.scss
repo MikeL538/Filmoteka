@@ -1,0 +1,35 @@
+@import '../utils/vars';
+
+.films-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    list-style: none;
+
+    &-item {
+      border-radius: 5px;
+      height: 443px;
+      margin-bottom: 20px;
+      width: 280px;
+
+      > img {
+        border-radius: 5px;
+        height: 402px;
+        width: 280px;
+      }
+
+      > h2 {
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      > p {
+        color: getcolor('orange');
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
+}

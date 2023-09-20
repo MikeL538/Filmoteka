@@ -6,11 +6,88 @@
     <title>Filmoteka</title>
 
     <meta name="color-scheme" content="light dark" />
-
+    <link rel="stylesheet" href="../node_modules/modern-normalize/modern-normalize.css" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <header class="header"></header>
-    <script src="./index.js"></script>
+    <header class="header">
+      <div class="header-container">
+        <nav>
+          <ul class="header-nav__list">
+            <li class="header-nav__list-item header-nav__list-item--logo">
+              <a href="#">
+                <svg width="24" height="24">
+                  <use href="./images/icons.svg#logo"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="header-nav__list-item">
+              <a href="#">HOME</a>
+            </li>
+            <li class="header-nav__list-item">
+              <a href="#">My Library</a>
+            </li>
+          </ul>
+          <input class="header-nav__input" type="text" />
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="films-container">
+        <ul class="films-container__list">
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+          <li class="films-container__list-item">
+            <img src="https://picsum.photos/200/300" alt="" />
+            <h2>Tytuł</h2>
+            <p>Kategoria | <span>Rok</span></p>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>
