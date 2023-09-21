@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.show-element {
+  transform: translate(-50%, -50%) !important;
+  opacity: 1 !important;
+  z-index: 10 !important;
+  pointer-events: all !important;
+}

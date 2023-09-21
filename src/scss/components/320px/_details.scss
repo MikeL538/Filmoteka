@@ -1,0 +1,137 @@
+@import '../utils/vars';
+
+.details {
+  border-radius: 5px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  max-height: 940px;
+  height: 95vh;
+  height: 95svh;
+  justify-content: center;
+  left: 50%;
+  opacity: 0;
+  overflow-y: auto;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  transform: translate(-500%, -50%);
+  transition: 1s ease-in-out;
+  width: 280px;
+  z-index: -10;
+
+  &__container {
+    margin: 20px;
+    margin-top: 260px;
+    width: 215px;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    background-color: #1a181f;
+  }
+
+  &__close-button {
+    align-items: center;
+    background: none;
+    border-radius: 50%;
+    border: 1px solid;
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 30px;
+
+    // > svg {
+    //   @media (prefers-color-scheme: light) {
+    //     fill: #000;
+    //     stroke: #000;
+    //   }
+    //   @media (prefers-color-scheme: dark) {
+    //     fill: #fff;
+    //     stroke: #fff;
+    //   }
+    // }
+  }
+
+  &__img {
+    border-radius: 5px;
+    height: 357px;
+    margin: 40px 0 20px 0;
+    width: 240px;
+  }
+
+  &__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__information {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 215px;
+
+    &-list {
+      list-style: none;
+
+      > li {
+        display: flex;
+        flex-direction: column;
+
+        gap: 8px;
+      }
+    }
+
+    &-rating {
+      display: inline-flex;
+
+      justify-content: center;
+      width: 36px;
+      height: 16px;
+      background-color: getcolor('orange');
+      border-radius: 5px;
+    }
+  }
+
+  &__about-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 240px;
+
+    > h3 {
+      margin-bottom: 8px;
+    }
+
+    > p {
+      line-height: 20px;
+    }
+  }
+
+  &__buttons {
+    align-items: center;
+    display: flex;
+
+    > button {
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      height: 44px;
+      margin: 20px 10px;
+      padding: 0 10px;
+      text-transform: uppercase;
+      width: 110px;
+
+      &:first-of-type {
+        background-color: getcolor('orange');
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@
     "url": "git+https://github.com/MikeL538/Filmoteka.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <m.lipiak97@gmail.com>",
+  "author": "Michał Lipiak <m.lipiak97@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",

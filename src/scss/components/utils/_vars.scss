@@ -1,5 +1,8 @@
 $colors: (
   'orange': #ff6b08,
+  'footer': #f7f7f7,
+  'header': #fff,
+  'header-error': #ff001b,
 );
 
 @function getcolor($key) {

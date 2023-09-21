@@ -1,4 +1,8 @@
 @use './components/utils/vars';
-@use './components/mobile/header';
-@use './components/mobile/global';
-@use './components/mobile/film-list';
+@use './components/320px/header';
+@use './components/768px/header768';
+@use './components/320px/global';
+@use './components/320px/film-list';
+@use './components/320px/footer';
+@use './components/320px/details';
+@use './components/320px/library';

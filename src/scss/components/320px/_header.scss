@@ -1,0 +1,113 @@
+@import '../utils/vars';
+
+.header {
+  background-image: url('../images/header-background-mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: 100vw 230px;
+  height: 230px;
+  margin-bottom: 20px;
+  width: 100vw;
+
+  &__library {
+    background-image: url('../images/my-library-mobile.jpg');
+
+    &-buttons {
+      gap: 20px;
+      > button {
+        background: none;
+        border-radius: 5px;
+        border: 1px solid getcolor('header');
+        cursor: pointer;
+        height: 44px;
+        margin-top: 70px;
+        text-transform: uppercase;
+        width: 130px;
+
+        &:first-of-type {
+          margin-right: 15px;
+        }
+      }
+      &--active {
+        background: getcolor('orange') !important;
+      }
+    }
+  }
+
+  &__container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  &__nav {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-container {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 280px;
+
+      &:hover a svg use {
+        fill: getcolor('orange');
+        transition: 0.5s;
+      }
+    }
+
+    &-list {
+      align-items: center;
+      display: flex;
+      gap: 40px;
+      list-style: none;
+
+      &-item {
+        > a {
+          color: getcolor('header');
+          text-decoration: none;
+          text-transform: uppercase;
+          &:hover,
+          &:focus {
+            color: getcolor('orange');
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+
+    &-input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid;
+      color: getcolor('header');
+      margin-top: 60px;
+      outline: none;
+      padding: 4px 10px;
+      width: 280px;
+
+      &-submit {
+        border: 0;
+        position: relative;
+      }
+
+      &--loupe {
+        cursor: pointer;
+        left: -12px;
+        position: absolute;
+        top: -12px;
+      }
+    }
+  }
+
+  &__error {
+    // display: none;
+    color: getcolor('header-error');
+    margin: 16px auto;
+    text-align: center;
+    width: 220px;
+  }
+}
