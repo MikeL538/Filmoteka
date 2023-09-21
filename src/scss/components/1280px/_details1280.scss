@@ -1,0 +1,22 @@
+@media screen and (min-width: 1280px) {
+  .details {
+    max-height: 558px;
+    width: 806px;
+
+    &__wide-separator {
+      margin-left: 16px;
+    }
+
+    &__img {
+      height: 478px;
+      width: 375px;
+    }
+
+    &__information {
+      width: 260px;
+    }
+    &__about-container {
+      width: 391px;
+    }
+  }
+}

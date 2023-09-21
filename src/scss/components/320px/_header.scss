@@ -4,9 +4,10 @@
   background-image: url('../images/header-background-mobile.jpg');
   background-repeat: no-repeat;
   background-size: 100vw 230px;
+  font-size: 14px;
   height: 230px;
+  width: 100%;
   margin-bottom: 20px;
-  width: 100vw;
 
   &__library {
     background-image: url('../images/my-library-mobile.jpg');
@@ -46,6 +47,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    &-title {
+      display: none;
+    }
 
     &-container {
       align-items: center;

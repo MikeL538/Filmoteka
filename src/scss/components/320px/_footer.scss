@@ -6,7 +6,7 @@
   flex-direction: column;
   height: 100px;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
 
   @media (prefers-color-scheme: light) {
     background-color: getcolor('footer');

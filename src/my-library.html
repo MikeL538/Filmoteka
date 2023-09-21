@@ -13,72 +13,12 @@
     <title>Filmoteka</title>
   </head>
   <body>
-    <header class="header header__library">
-      <div class="header__container">
-        <nav class="header__nav">
-          <div class="header__nav-container">
-            <a href="./index.html">
-              <svg width="24" height="20">
-                <use href="./images/icons.svg#logo"></use>
-              </svg>
-            </a>
-            <ul class="header__nav-list">
-              <li class="header__nav-list-item">
-                <a href="./index.html">Home</a>
-              </li>
-              <li class="header__nav-list-item">
-                <a class="header__nav-list-item-a" href="./my-library.html">My Library</a>
-              </li>
-            </ul>
-          </div>
-          <div class="header__library-buttons">
-            <button class="header__library-buttons--active">watched</button>
-            <button>queue</button>
-          </div>
-        </nav>
-      </div>
-    </header>
+    <include src="./partials/header.html"></include>
 
-    <main class="main">
-      <div class="library">
-        <!-- If empty -->
-        <img src="./images/no-cinema.jpg" alt="" />
-        <h2>Image placeholder</h2>
-      </div>
-      <!-- Pages numbers at the bottom, under films -->
-      <div class="page-numbers">
-        <a class="page-numbers__link" href="#">
-          <svg class="page-numbers__link--arrow" width="16" height="16">
-            <use href="./images/icons.svg#arrow-left"></use>
-          </svg>
-        </a>
-        <ul class="page-numbers__list">
-          <li><a class="page-numbers__link" href="#">13</a></li>
-          <li><a class="page-numbers__link" href="#">14</a></li>
-          <li class="">
-            <a class="page-numbers__link page-numbers--chosen" href="#">15</a>
-          </li>
-          <li><a class="page-numbers__link" href="#">16</a></li>
-          <li><a class="page-numbers__link" href="#">17</a></li>
-        </ul>
-        <a lass="page-numbers__link" href="#">
-          <svg class="page-numbers__link--arrow" width="16" height="16">
-            <use href="./images/icons.svg#arrow-right"></use>
-          </svg>
-        </a>
-      </div>
+    <main>
+      <include src="./partials/library.html"></include>
     </main>
 
-    <footer class="footer">
-      <p>© 2020 | All Rights Reserved |</p>
-      <p>
-        Developed with
-        <!-- Heart icon -->
-        <svg width="14" height="14">
-          <use href="./images/icons.svg#heart"></use>
-        </svg>
-        by GoIT Students
-      </p>
-    </footer>
+    <include src="./partials/footer.html"></include>
   </body>
 </html>

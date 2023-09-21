@@ -1,0 +1,29 @@
+@media screen and (min-width: 768px) {
+  .details {
+    display: flex;
+    max-height: 552px;
+    width: 704px;
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      width: 704px;
+    }
+
+    &__img {
+      height: 373.5px;
+      margin: 0;
+      width: 264px;
+    }
+
+    &__information {
+      width: 264px;
+    }
+    &__about-container {
+      margin: 0;
+      width: 264px;
+    }
+  }
+}

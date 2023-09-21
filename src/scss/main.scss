@@ -1,8 +1,13 @@
 @use './components/utils/vars';
 @use './components/320px/header';
 @use './components/768px/header768';
+@use './components/1280px/header1280';
 @use './components/320px/global';
 @use './components/320px/film-list';
+@use './components/768px/film-list768';
+@use './components/1280px/film-list1280';
 @use './components/320px/footer';
 @use './components/320px/details';
+@use './components/768px/details768';
+@use './components/1280px/details1280';
 @use './components/320px/library';

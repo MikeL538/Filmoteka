@@ -1,7 +1,40 @@
+@import '../utils/vars';
+
 @media screen and (min-width: 768px) {
   .header {
-    height: 216px;
-    width: 768px;
     background-size: 100vw 216px;
+    height: 216px;
+    margin-bottom: 60px;
+    // background-image: url('../images/header-background-tablet.jpg');
+
+    .header__nav {
+      &-title {
+        color: getcolor('header');
+        display: inline;
+        font-size: 30px;
+        transition: 0.5s ease-in-out;
+
+        &:hover {
+          color: getcolor('orange');
+        }
+      }
+
+      &-container {
+        width: 704px;
+
+        > a {
+          text-decoration: none;
+        }
+      }
+    }
+    &__nav {
+      &-input {
+        width: 336px;
+      }
+    }
+
+    &__error {
+      width: 393px;
+    }
   }
 }

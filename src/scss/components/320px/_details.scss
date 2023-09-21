@@ -3,14 +3,11 @@
 .details {
   border-radius: 5px;
   border: 1px solid;
-  display: flex;
-  flex-direction: column;
   font-size: 12px;
-  max-height: 940px;
   height: 95vh;
   height: 95svh;
-  justify-content: center;
   left: 50%;
+  max-height: 940px;
   opacity: 0;
   overflow-y: auto;
   pointer-events: none;
@@ -23,7 +20,6 @@
 
   &__container {
     margin: 20px;
-    margin-top: 260px;
     width: 215px;
   }
 
@@ -84,14 +80,12 @@
       > li {
         display: flex;
         flex-direction: column;
-
         gap: 8px;
       }
     }
 
     &-rating {
       display: inline-flex;
-
       justify-content: center;
       width: 36px;
       height: 16px;
