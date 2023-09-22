@@ -1,5 +1,4 @@
 import './scss/main.scss';
-
 import { searchMovies, trendingMovies } from './js/handler';
 
 window.onload = trendingMovies();

@@ -29,7 +29,7 @@ export function loadMovies(movies) {
     .map(({ backdrop_path, original_title, release_date, genre_ids, vote_average }) => {
       const imagePath = backdrop_path
         ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(backdrop_path)}`
-        : '/unavaible.a3417127.jpg';
+        : 'no-video.3fec0c03.jpg';
       return `<li class="films__list-item">
         <img src="${imagePath}" alt="${original_title}" />
         <h2>${original_title}</h2>

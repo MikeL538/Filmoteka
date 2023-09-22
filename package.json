@@ -2,10 +2,10 @@
   "name": "filmoteka",
   "version": "1.1.0",
   "description": "",
-  "homepage": "https://MikeL538.github.io/Filmoteka",
+  "homepage": "https://mikel538.github.io/Filmoteka/",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url filmoteka"
+    "build": "parcel build src/*.html --public-url Filmoteka"
   },
   "repository": {
     "type": "git",
