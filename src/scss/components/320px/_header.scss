@@ -9,28 +9,28 @@
   width: 100%;
   margin-bottom: 20px;
 
-  &__library {
+  &--library {
     background-image: url('../images/my-library-mobile.jpg');
+  }
 
-    &-buttons {
-      gap: 20px;
-      > button {
-        background: none;
-        border-radius: 5px;
-        border: 1px solid getcolor('header');
-        cursor: pointer;
-        height: 44px;
-        margin-top: 70px;
-        text-transform: uppercase;
-        width: 130px;
+  &-buttons {
+    gap: 20px;
+    > button {
+      background: none;
+      border-radius: 5px;
+      border: 1px solid getcolor('header');
+      cursor: pointer;
+      height: 44px;
+      margin-top: 70px;
+      text-transform: uppercase;
+      width: 130px;
 
-        &:first-of-type {
-          margin-right: 15px;
-        }
+      &:first-of-type {
+        margin-right: 15px;
       }
-      &--active {
-        background: getcolor('orange') !important;
-      }
+    }
+    &--active {
+      background: getcolor('orange') !important;
     }
   }
 
@@ -115,4 +115,8 @@
     text-align: center;
     width: 220px;
   }
+}
+
+.underline {
+  border-bottom: 3px solid #ff001b;
 }

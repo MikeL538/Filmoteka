@@ -5,7 +5,11 @@
     background-size: 100vw 216px;
     height: 216px;
     margin-bottom: 60px;
-    // background-image: url('../images/header-background-tablet.jpg');
+    background-image: url('../images/header-background-tablet.jpg');
+
+    &--library {
+      background-image: url('../images/my-library-tablet.jpg');
+    }
 
     .header__nav {
       &-title {
