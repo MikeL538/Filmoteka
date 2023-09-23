@@ -13,7 +13,7 @@ const options = {
 
 let page = 1;
 
-async function fetchTrending() {
+export async function fetchTrending() {
   try {
     const trending = await axios.get(`trending/movie/day?page=${page}`, options);
     return trending.data;
@@ -22,7 +22,7 @@ async function fetchTrending() {
   }
 }
 
-async function fetchQuery(searchInput) {
+export async function fetchQuery(searchInput) {
   try {
     const search = await axios.get(
       `search/movie?query=${encodeURIComponent(searchInput)}&page=${page}`,
@@ -35,4 +35,4 @@ async function fetchQuery(searchInput) {
   }
 }
 
-export {fetchQuery, fetchTrending, page};
+export {page};
