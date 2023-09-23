@@ -1,5 +1,6 @@
-import { fetchQuery, fetchTrending } from './fetch';
+import { fetchQuery, fetchTrending, fetchDetailsMovie } from './fetch';
 import { loadMovies } from './loadMovies';
+import { detailsMovie } from './detailsMovie';
 
 export async function trendingMovies() {
   try {
@@ -36,4 +37,14 @@ export async function searchMovies(e) {
   } catch (err) {
     console.log(err);
   }
+
+
+export async function handler(id) {
+  try {
+    const details = await fetchDetailsMovie(id);
+    await detailsMovie(details);
+  } catch (err) {
+    console.log(err);
+  }
 }
+

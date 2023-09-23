@@ -4,6 +4,7 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 const options = {
   method: 'GET',
+  language: 'en-US',
   headers: {
     accept: 'application/json',
     Authorization:
@@ -35,4 +36,16 @@ export async function fetchQuery(searchInput) {
   }
 }
 
+
 export {page};
+
+export async function fetchDetailsMovie(id) {
+  try {
+    const details = await axios.get(`movie/${id}`, options);
+    return details.data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
