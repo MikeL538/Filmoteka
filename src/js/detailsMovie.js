@@ -24,7 +24,7 @@ export function detailsMovie(details) {
 
   const mathRound = Math.round(vote_average * 10) / 10;
   const x = [];
-  for (genre of genres) {
+  for (const genre of genres) {
     x.push(genre.name);
   }
 
