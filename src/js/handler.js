@@ -1,7 +1,7 @@
 import { fetchQuery, fetchTrending } from './fetch';
 import { loadMovies } from './loadMovies';
 
-export async function trendingMovies() {
+async function trendingMovies() {
   try {
     const response = await fetchTrending();
     const movies = response && response.results;
@@ -18,10 +18,10 @@ export async function trendingMovies() {
 const list = document.querySelector('.films__list');
 const searchInput = document.querySelector('.header__nav-input');
 
-export async function searchMovies(e) {
+async function searchMovies(e) {
   try {
     e.preventDefault();
-    list.innerHTML = '';
+    // list.innerHTML = '';
     const searchInputValue = searchInput.value;
     if (searchInputValue) {
       const movies = await fetchQuery(searchInputValue);
@@ -37,3 +37,5 @@ export async function searchMovies(e) {
     console.log(err);
   }
 }
+
+export { trendingMovies, searchMovies };

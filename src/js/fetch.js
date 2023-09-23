@@ -11,19 +11,21 @@ const options = {
   },
 };
 
-export async function fetchTrending() {
+let page = 1;
+
+async function fetchTrending() {
   try {
-    const trending = await axios.get('trending/movie/day', options);
+    const trending = await axios.get(`trending/movie/day?page=${page}`, options);
     return trending.data;
   } catch (err) {
     console.log(err);
   }
 }
 
-export async function fetchQuery(searchInput) {
+async function fetchQuery(searchInput) {
   try {
     const search = await axios.get(
-      `search/movie?query=${encodeURIComponent(searchInput)}`,
+      `search/movie?query=${encodeURIComponent(searchInput)}&page=${page}`,
       options,
     );
     return search.data;
@@ -32,3 +34,5 @@ export async function fetchQuery(searchInput) {
     return null;
   }
 }
+
+export {fetchQuery, fetchTrending, page};
