@@ -3,6 +3,7 @@ $colors: (
   'footer': #f7f7f7,
   'header': #fff,
   'header-error': #ff001b,
+  'black': #000000,
 );
 
 @function getcolor($key) {
