@@ -87,6 +87,7 @@
     &-rating {
       display: inline-flex;
       justify-content: center;
+      align-items: center;
       width: 36px;
       height: 16px;
       background-color: getcolor('orange');
@@ -123,9 +124,34 @@
       text-transform: uppercase;
       width: 110px;
 
-      &:first-of-type {
-        background-color: getcolor('orange');
-      }
+      // &:first-of-type {
+      //   background-color: getcolor('orange');
+      // }
+    }
+  }
+}
+.btn-add {
+  &-watched,
+  &-queue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    height: 42px;
+    border: 1px solid getcolor('black');
+    border-radius: 5px;
+    background-color: getcolor('header');
+    text-transform: uppercase;
+    color: getcolor('black');
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    &:hover,
+    &:focus {
+      background-color: getcolor('orange');
+      border-color: getcolor('orange');
+      transition: 0.5s;
     }
   }
 }
