@@ -28,6 +28,7 @@ function movieModal(imgs) {
 const list = document.querySelector('.films__list');
 
 export function loadMovies(movies) {
+  console.log('Loading movies:', movies);
   const movieList = movies
     .map(({ id, backdrop_path, title, release_date, genre_ids }) => {
       const imagePath = backdrop_path
