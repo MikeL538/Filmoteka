@@ -40,7 +40,7 @@ async function fetchSearchResults() {
 
 let infScroll = new InfiniteScroll(moviesContainer, {
   path: function () {
-    return `search/movie?query=&page=${currentPage}`;
+    return `trending/movie/day?page=${currentPage}`;
   },
   append: '.films__list-item',
 });
