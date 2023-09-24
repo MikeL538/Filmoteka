@@ -1,8 +1,35 @@
+@import '../utils/vars';
+
 .library {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  &-btn-list {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    height: 42px;
+    border: 1px solid getcolor('header');
+    border-radius: 5px;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    &:hover,
+    &:focus {
+      background-color: getcolor('orange');
+      border-color: getcolor('orange');
+      transition: 0.5s;
+    }
+  }
   > img {
     width: 280px;
     @media screen and (min-width: 768px) {
@@ -12,4 +39,9 @@
       width: 395px;
     }
   }
+}
+.button-active {
+  background-color: getcolor('orange');
+  color: getcolor('black');
+  border: 1px solid transparent;
 }
