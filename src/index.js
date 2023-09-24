@@ -1,5 +1,6 @@
 import './scss/main.scss';
 import { searchMovies, trendingMovies } from './js/handler';
+import './js/infiniteScroll';
 
 window.onload = trendingMovies();
 
