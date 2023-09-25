@@ -1,4 +1,4 @@
-import { fetchMovies, renderedMovieIds } from './fetcher';
+import { fetchMovies, renderedMovieIds, currentPage } from './fetcher';
 
 const searchForm = document.querySelector('.header__nav-form');
 const filmsList = document.querySelector('.films__list');
