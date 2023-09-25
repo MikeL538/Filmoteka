@@ -9,6 +9,16 @@
   width: 100%;
   margin-bottom: 20px;
 
+  // -----------------
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &--scroll {
+    height: 100px; /* Уменьшенная высота хедера */
+  }
+
   &--library {
     background-image: url('../images/my-library-mobile.jpg');
   }
@@ -130,3 +140,4 @@
 .underline {
   border-bottom: 3px solid #ff001b;
 }
+
