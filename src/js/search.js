@@ -1,4 +1,4 @@
-import { fetchMovies, renderedMovieIds, currentPage } from './fetcher';
+import { fetchMovies, renderedMovieIds, setCurrentPage } from './fetcher';
 
 const searchForm = document.querySelector('.header__nav-form');
 const filmsList = document.querySelector('.films__list');
@@ -9,11 +9,11 @@ function handleSearch(event) {
   const searchQuery = searchInput.value.trim();
 
   renderedMovieIds.clear();
-  currentPage = 1;
+  setCurrentPage(1);
 
   filmsList.innerHTML = '';
 
-  fetchMovies(currentPage, searchQuery);
+  fetchMovies(setCurrentPage, searchQuery);
 }
 
 searchForm.addEventListener('submit', handleSearch);
