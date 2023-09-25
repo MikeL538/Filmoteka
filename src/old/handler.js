@@ -1,6 +1,6 @@
 import { fetchQuery, fetchTrending, fetchDetailsMovie } from './fetch';
-import { loadMovies } from './loadMovies';
-import { detailsMovie } from './detailsMovie';
+import { loadMovies } from '../loadMovies';
+import { detailsMovie } from '../detailsMovie';
 
 export async function trendingMovies() {
   try {
