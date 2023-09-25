@@ -4,7 +4,7 @@
   background-image: url('../images/header-background-mobile.jpg');
   background-repeat: no-repeat;
   background-size: 100vw 230px;
-  font-size: 14px;
+  font-size: 12px;
   height: 230px;
   width: 100%;
   margin-bottom: 20px;
@@ -84,26 +84,35 @@
       }
     }
 
-    &-input {
-      background: transparent;
-      border: none;
+    &-form {
+      display: flex;
+      flex-direction: row;
+      margin-top: 45px;
       border-bottom: 1px solid;
       color: getcolor('header');
-      margin-top: 60px;
-      outline: none;
-      padding: 4px 10px;
       width: 280px;
+    }
+
+    &-input {
+      flex-grow: 2;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 0 0 4px;
+      font-size: 14px;
 
       &-submit {
-        border: 0;
         position: relative;
+        border: none;
+        background-color: transparent;
       }
 
       &--loupe {
         cursor: pointer;
-        left: -12px;
-        position: absolute;
-        top: -12px;
+      }
+
+      &::placeholder {
+        color: getcolor('header');
       }
     }
   }
@@ -111,9 +120,10 @@
   &__error {
     // display: none;
     color: getcolor('header-error');
-    margin: 16px auto;
-    text-align: center;
-    width: 220px;
+    margin: 16px auto 0;
+    text-align: start;
+    width: 280px;
+    font-size: 14px;
   }
 }
 

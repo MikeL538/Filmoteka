@@ -23,15 +23,16 @@
       }
 
       > h2 {
+        text-transform: uppercase;
         font-size: 12px;
-        line-height: 16px;
+        line-height: 1.33;
         margin-top: 10px;
       }
 
       > p {
         color: getcolor('orange');
         font-size: 12px;
-        line-height: 16px;
+        line-height: 1.17;
       }
     }
   }
