@@ -15,11 +15,11 @@
     justify-content: center;
     width: 148px;
     height: 42px;
+    color: getcolor('header');
     border: 1px solid getcolor('header');
     border-radius: 5px;
     background-color: transparent;
     text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.33;
@@ -28,6 +28,10 @@
       background-color: getcolor('orange');
       border-color: getcolor('orange');
       transition: 0.5s;
+      filter: drop-shadow(0 8 43 rgba(255, 107, 1, 0.6));
+    }
+    &-list {
+      margin-top: 60px;
     }
   }
   > img {
