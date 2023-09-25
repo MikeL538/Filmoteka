@@ -1,17 +1,13 @@
 import axios from 'axios';
 import './modalDetails';
 import { showDetails } from './modalDetails';
-import { handleSearch } from './search';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 axios.defaults.headers.common['Authorization'] =
   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo'; // Replace with your API key
 
 let currentPage = 1;
-// Potrzebna funkcja do importu inaczej Github nie łapie przy search
-function setCurrentPage(value) {
-  currentPage = value;
-}
+
 let isLoading = false;
 const renderedMovieIds = new Set();
 const filmsList = document.querySelector('.films__list');
@@ -153,6 +149,23 @@ function fetchMovies(page, searchQuery = '') {
     .catch(error => console.error('Error fetching movies:', error));
 }
 
+const searchForm = document.querySelector('.header__nav-form');
+
+function handleSearch(event) {
+  event.preventDefault();
+  const searchInput = document.querySelector('.header__nav-input');
+  const searchQuery = searchInput.value.trim();
+
+  renderedMovieIds.clear();
+  currentPage = 1;
+
+  filmsList.innerHTML = '';
+
+  fetchMovies(currentPage, searchQuery);
+}
+
+searchForm.addEventListener('submit', handleSearch);
+
 function handleScroll() {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
@@ -166,4 +179,3 @@ function handleScroll() {
 window.addEventListener('scroll', handleScroll);
 
 fetchMovies(currentPage);
-export { fetchMovies, renderedMovieIds, setCurrentPage };
