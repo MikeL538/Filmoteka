@@ -59,6 +59,15 @@
     flex-direction: column;
     justify-content: space-between;
 
+    &-icon {
+      stroke: #fff;
+
+      &:hover {
+        stroke: getcolor('orange');
+        transition: 0.5s;
+      }
+    }
+
     &-title {
       display: none;
     }
@@ -100,11 +109,6 @@
       display: flex;
       justify-content: space-between;
       width: 280px;
-
-      &:hover a svg use {
-        fill: getcolor('orange');
-        transition: 0.5s;
-      }
     }
 
     &-list {
@@ -142,8 +146,14 @@
       color: getcolor('header');
       border: none;
       outline: none;
-      padding: 0 0 4px;
+      padding: 4px 4px;
       font-size: 14px;
+      color: getcolor('orange');
+
+      &:focus + &-submit svg,
+      &:hover + &-submit svg {
+        stroke: getcolor('orange');
+      }
 
       &-submit {
         position: relative;
@@ -152,7 +162,9 @@
       }
 
       &--loupe {
+        transition: 0.5s;
         cursor: pointer;
+        stroke: getcolor('header');
       }
 
       &::placeholder {
@@ -174,4 +186,3 @@
 .underline {
   border-bottom: 3px solid #ff001b;
 }
-
