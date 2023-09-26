@@ -47,5 +47,21 @@
 .button-active {
   background-color: getcolor('orange');
   color: getcolor('black');
-  border: 1px solid transparent;
+  border: 1px solid getcolor('orange');
+}
+
+.watched-box {
+  background-color: red;
+  display: flex;
+  width: 280px;
+  height: 280px;
+}
+.queue-box {
+  background-color: blue;
+  display: flex;
+  width: 280px;
+  height: 280px;
+}
+.is-hiden {
+  display: none;
 }

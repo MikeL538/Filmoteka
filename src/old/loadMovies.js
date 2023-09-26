@@ -1,34 +1,12 @@
 // Movie-modal
-import { handler } from './handler';
-const detailsDiv = document.querySelector('.details');
-const filmImage = document.querySelectorAll('.films__list-item > img');
-const detailsDivClose = document.querySelector('.details__close-button');
-
-filmImage.forEach(img => {
-  img.addEventListener('click', () => {
-    detailsDiv.classList.add('show-element');
-  });
-});
-
-detailsDivClose.addEventListener('click', () => {
-  detailsDiv.classList.remove('show-element');
-});
-
-function movieModal(imgs) {
-  imgs.forEach(img => {
-    img.addEventListener('click', () => {
-      detailsDiv.classList.add('show-element');
-      const id = img.dataset.id;
-      handler(id);
-    });
-  });
-}
+import { handler } from './old/handler';
 
 // Loading
 const list = document.querySelector('.films__list');
 
 export function loadMovies(movies) {
   const movieList = movies
+
     .map(({ id, backdrop_path, title, release_date, genre_ids }) => {
       const imagePath = backdrop_path
         ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(backdrop_path)}`

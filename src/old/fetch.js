@@ -55,6 +55,7 @@ export async function fetchDetailsMovie(id) {
   }
 }
 
+<<<<<<< HEAD:src/js/fetch.js
 //  Funkcja do zmiany języka za pomocą przycisków  //
 
 function changeLanguageTo(language) {
@@ -70,3 +71,30 @@ const plLangButton = document.querySelector('#plLang');
 
 enLangButton.addEventListener('click', () => changeLanguageTo('en'));
 plLangButton.addEventListener('click', () => changeLanguageTo('pl'));
+=======
+// Modal Details
+import { handler } from './handler';
+const detailsDiv = document.querySelector('.details');
+const filmImage = document.querySelectorAll('.films__list-item > img');
+const detailsDivClose = document.querySelector('.details__close-button');
+
+filmImage.forEach(img => {
+  img.addEventListener('click', () => {
+    detailsDiv.classList.add('show-element');
+  });
+});
+
+detailsDivClose.addEventListener('click', () => {
+  detailsDiv.classList.remove('show-element');
+});
+
+function movieModal(imgs) {
+  imgs.forEach(img => {
+    img.addEventListener('click', () => {
+      detailsDiv.classList.add('show-element');
+      const id = img.dataset.id;
+      handler(id);
+    });
+  });
+}
+>>>>>>> main:src/old/fetch.js

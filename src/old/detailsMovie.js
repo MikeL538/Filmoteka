@@ -16,7 +16,7 @@ export function detailsMovie(details) {
   } = details;
   const imagePath = backdrop_path
     ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(backdrop_path)}`
-    : 'no-video.3fec0c03.jpg';
+    : '../images/no-video.jpg';
 
   img.setAttribute('src', imagePath);
   img.setAttribute('alt', title);
