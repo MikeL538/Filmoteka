@@ -4,7 +4,6 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 const options = {
   method: 'GET',
-  language: 'en-US',
   headers: {
     accept: 'application/json',
     Authorization:
@@ -12,9 +11,21 @@ const options = {
   },
 };
 
+//  Funkcja do zapisu i odczytru wyboru języka z localStorage  //
+function saveLanguageToLocalStorage(language) {
+  localStorage.setItem('selectedLanguage', language);
+}
+
+function loadLanguageFromLocalStorage() {
+  const selectedLanguage = localStorage.getItem('selectedLanguage');
+  return selectedLanguage || 'en-US';
+}
+
+let selectedLanguage = loadLanguageFromLocalStorage();
+
 export async function fetchTrending() {
   try {
-    const trending = await axios.get('trending/movie/day', options);
+    const trending = await axios.get(`trending/movie/day?language=${selectedLanguage}`, options);
     return trending.data;
   } catch (err) {
     console.log(err);
@@ -24,7 +35,7 @@ export async function fetchTrending() {
 export async function fetchQuery(searchInput) {
   try {
     const search = await axios.get(
-      `search/movie?query=${encodeURIComponent(searchInput)}`,
+      `search/movie?query=${encodeURIComponent(searchInput)}&language=${selectedLanguage}`,
       options,
     );
     return search.data;
@@ -36,7 +47,7 @@ export async function fetchQuery(searchInput) {
 
 export async function fetchDetailsMovie(id) {
   try {
-    const details = await axios.get(`movie/${id}`, options);
+    const details = await axios.get(`movie/${id}?language=${selectedLanguage}`, options);
     return details.data;
   } catch (err) {
     console.log(err);
@@ -44,6 +55,23 @@ export async function fetchDetailsMovie(id) {
   }
 }
 
+<<<<<<< HEAD:src/js/fetch.js
+//  Funkcja do zmiany języka za pomocą przycisków  //
+
+function changeLanguageTo(language) {
+  selectedLanguage = language;
+
+  saveLanguageToLocalStorage(language);
+
+  location.reload(); // Odświerzanie strony po zmianie języka
+}
+
+const enLangButton = document.querySelector('#enLang');
+const plLangButton = document.querySelector('#plLang');
+
+enLangButton.addEventListener('click', () => changeLanguageTo('en'));
+plLangButton.addEventListener('click', () => changeLanguageTo('pl'));
+=======
 // Modal Details
 import { handler } from './handler';
 const detailsDiv = document.querySelector('.details');
@@ -69,3 +97,4 @@ function movieModal(imgs) {
     });
   });
 }
+>>>>>>> main:src/old/fetch.js
