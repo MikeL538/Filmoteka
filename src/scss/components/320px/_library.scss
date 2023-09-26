@@ -23,6 +23,7 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 1.33;
+    cursor: pointer;
     &:hover,
     &:focus {
       background-color: getcolor('orange');
@@ -54,13 +55,13 @@
   background-color: red;
   display: flex;
   width: 280px;
-  height: 280px;
+  height: 300px;
 }
 .queue-box {
-  background-color: blue;
+  background-color: green(orange);
   display: flex;
   width: 280px;
-  height: 280px;
+  height: 300px;
 }
 .is-hiden {
   display: none;
