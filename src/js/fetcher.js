@@ -101,11 +101,28 @@ function getGenreNameById(genreId) {
   return genre ? genre.name : 'Unknown Genre';
 }
 
+// Initially set language to English
+export let currentLanguage = localStorage.getItem('language') || 'en-US';
+
+// Changing language and saving it in localStorage
+function changeLanguage(newLanguage) {
+  currentLanguage = newLanguage;
+  localStorage.setItem('language', newLanguage);
+
+  window.location.reload();
+}
+
+const enLangButton = document.querySelector('#enLang');
+const plLangButton = document.querySelector('#plLang');
+
+plLangButton.addEventListener('click', () => changeLanguage('pl-PL'));
+enLangButton.addEventListener('click', () => changeLanguage('en-US'));
+
 function fetchMovies(page, searchQuery = '') {
   const trendingMoviesUrl = searchQuery ? 'search/movie' : 'trending/movie/day';
   const params = {
     api_key: apiKey,
-    language: 'en-US',
+    language: currentLanguage,
     page: page,
     query: searchQuery, // Added for search
   };

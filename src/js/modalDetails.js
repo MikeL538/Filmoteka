@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { currentLanguage } from './fetcher';
 
 const detailsDiv = document.querySelector('.details');
 const detailsClose = document.querySelector('.details__close-button');
@@ -36,7 +37,7 @@ function fetchMovieDetails(movieId) {
     .get(movieDetailsUrl, {
       params: {
         api_key: apiKey,
-        language: 'en-US',
+        language: currentLanguage,
       },
     })
     .then(response => {
