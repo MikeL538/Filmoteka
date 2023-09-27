@@ -194,9 +194,9 @@ function handleSearch(event) {
   renderedMovieIds.clear();
   currentPage = 1;
 
- filmsList.innerHTML = '';
+  filmsList.innerHTML = '';
 
- fetchMovies(currentPage, searchQuery);
+  fetchMovies(currentPage, searchQuery);
 }
 
 searchForm.addEventListener('submit', handleSearch);
