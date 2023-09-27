@@ -181,19 +181,22 @@ function fetchMovies(page, searchQuery = '') {
     .catch(error => console.error('Error fetching movies:', error));
 }
 
+fetchMovies(currentPage);
+
 const searchForm = document.querySelector('.header__nav-form');
+const searchInput = document.querySelector('.header__nav-input');
+let searchQuery = '';
 
 function handleSearch(event) {
   event.preventDefault();
-  const searchInput = document.querySelector('.header__nav-input');
-  const searchQuery = searchInput.value.trim();
+  searchQuery = searchInput.value.trim();
 
   renderedMovieIds.clear();
   currentPage = 1;
 
-  filmsList.innerHTML = '';
+ filmsList.innerHTML = '';
 
-  fetchMovies(currentPage, searchQuery);
+ fetchMovies(currentPage, searchQuery);
 }
 
 searchForm.addEventListener('submit', handleSearch);
@@ -204,10 +207,8 @@ function handleScroll() {
   if (scrollTop + clientHeight >= scrollHeight - 700 && !isLoading) {
     isLoading = true;
     currentPage++;
-    fetchMovies(currentPage);
+    fetchMovies(currentPage, searchQuery);
   }
 }
 
 window.addEventListener('scroll', handleScroll);
-
-fetchMovies(currentPage);
