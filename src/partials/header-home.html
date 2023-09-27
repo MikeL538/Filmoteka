@@ -1,8 +1,8 @@
 <div class="header__container">
   <div class="header__nav-language">
-    <p class="header__nav-language-item">Language:</p>
-    <button id="enLang" class="header__nav-language-btn">EN</button>
-    <button id="plLang" class="header__nav-language-btn">PL</button>
+    <p class="header__nav-language-item" data-translate="language">Language:</p>
+    <button id="enLang" class="header__nav-language-btn header__nav-language-btn-en">EN</button>
+    <button id="plLang" class="header__nav-language-btn header__nav-language-btn-pl">PL</button>
   </div>
   <nav class="header__nav">
     <div class="header__nav-container">
@@ -15,22 +15,29 @@
 
       <ul class="header__nav-list">
         <li class="header__nav-list-item">
-          <a class="underline" href="./index.html">Home</a>
+          <a class="underline" href="./index.html" data-translate="home">Home</a>
         </li>
         <li class="header__nav-list-item">
-          <a href="./my-library.html">My Library</a>
+          <a href="./my-library.html" data-translate="library">My Library</a>
         </li>
       </ul>
     </div>
     <!-- Search input -->
     <form class="header__nav-form">
-      <input class="header__nav-input" type="text" placeholder="Movie search" />
+      <input
+        class="header__nav-input"
+        type="text"
+        placeholder="Movie search"
+        data-translate="placeholder"
+      />
       <button class="header__nav-input-submit" type="submit">
         <svg class="header__nav-input--loupe" width="12" height="12">
           <use href="./images/icons.svg#loupe"></use>
         </svg>
       </button>
     </form>
-    <p class="header__error">Search result not successful. Enter the correct movie name.</p>
+    <p class="header__error" data-translate="error">
+      Search result not successful. Enter the correct movie name.
+    </p>
   </nav>
 </div>
