@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { showDetails } from './modalDetails';
+import { currentLanguage } from './language';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 axios.defaults.headers.common['Authorization'] =

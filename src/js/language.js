@@ -1,6 +1,6 @@
 // Translation for Fetch
 // Initially set language to English
-let currentLanguage = localStorage.getItem('language') || 'en-US';
+export let currentLanguage = localStorage.getItem('language') || 'en-US';
 
 // Changing language and saving it in localStorage
 function changeLanguage(newLanguage) {
