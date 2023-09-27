@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { currentLanguage } from './fetcher';
+import { currentLanguage } from './language';
 
 const detailsDiv = document.querySelector('.details');
 const detailsClose = document.querySelector('.details__close-button');
