@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { currentLanguage } from './language';
+import basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
 
 // const watchedBtn = document.querySelector('.btn-watched');
 // const queueBtn = document.querySelector('.btn-queue');
@@ -10,6 +12,7 @@ const addWatched = document.querySelector('.btn-add-watched');
 // const imgNoCinema = document.querySelector('#noCinema');
 
 const detailsDiv = document.querySelector('.details');
+const details = document.querySelector('.basiclightbox');
 const detailsClose = document.querySelector('.details__close-button');
 const filmsList = document.querySelector('.films__list');
 const apiKey =
@@ -27,6 +30,38 @@ export function showDetails(e) {
   if (!movieId) {
     console.error('No movie ID found for the clicked item.');
     return;
+  }
+
+  // Open / close Modal with Escape key and closed button:
+
+  function closeDetailsByClickOutside() {
+    const modal = document.querySelector('.basiclightbox');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const modal = document.querySelector('.basiclightbox');
+    if (modal && e.target === modal) {
+      closeDetailsByClickOutside();
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeDetails();
+    }
+  });
+
+  detailsDiv.addEventListener('click', e => {
+    if (e.target === detailsDiv) {
+      closeDetails();
+    }
+  });
+
+  function closeDetails() {
+    detailsDiv.classList.remove('show-element');
   }
 
   //////////////Library////////////////////
@@ -51,7 +86,7 @@ export function showDetails(e) {
     // const watchedList = JSON.parse(localStorage.getItem('watched'));
     addingToLocalStorage();
   });
-  //Kolejny pomysl stworzyc obj z zawartoscia key= watched : [...value  ] 
+  //Kolejny pomysl stworzyc obj z zawartoscia key= watched : [...value  ]
   // json stringify pozniej parse do nowego obj i pracowac z metoda push na obj
   //  ale funkcje addingtolacalstrage zmodyfikowac do pushowania w obj i zmiane na json
   // setItem watched
