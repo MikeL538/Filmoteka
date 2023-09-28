@@ -6,8 +6,8 @@
   background-size: 100vw 230px;
   font-size: 12px;
   height: 230px;
-  width: 100%;
   margin-bottom: 20px;
+  width: 100%;
 
   // -----------------scrolled------------
   position: sticky;
@@ -60,6 +60,7 @@
 
     &-icon {
       stroke: #fff;
+      margin-right: 15px;
 
       &:hover {
         stroke: getcolor('orange');
@@ -121,6 +122,7 @@
           color: getcolor('header');
           text-decoration: none;
           text-transform: uppercase;
+          line-height: 1.5;
           &:hover,
           &:focus {
             color: getcolor('orange');
@@ -179,6 +181,7 @@
     text-align: start;
     width: 280px;
     font-size: 14px;
+    padding: 0 12px;
   }
 }
 
@@ -188,18 +191,29 @@
 
 // ----------------scrolled-----------------
 .header.scrolled {
-  height: 100px;
+  height: 80px;
+  transform: translateY(-30px);
+}
+
+.scrolled-container {
+  height: 60px;
+  padding: 0;
+}
+
+.scrolled-nav-container {
+  transform: translateY(25px);
+  height: 80px;
 }
 
 .header.scrolled .header__nav-form,
 .header.scrolled .header__error {
-  opacity: 0; 
-  transition: opacity 0.5s ease; 
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .header:hover .header__nav-form,
 .header:hover .header__error {
-  opacity: 1; 
+  opacity: 1;
   display: flex;
   transition: opacity 0.5s ease;
 }
