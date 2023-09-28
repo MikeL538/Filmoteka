@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { currentLanguage } from './language';
-import basicLightbox from 'basiclightbox';
-import 'basiclightbox/dist/basicLightbox.min.css';
 
 // const watchedBtn = document.querySelector('.btn-watched');
 // const queueBtn = document.querySelector('.btn-queue');
@@ -12,7 +10,6 @@ const addWatched = document.querySelector('.btn-add-watched');
 // const imgNoCinema = document.querySelector('#noCinema');
 
 const detailsDiv = document.querySelector('.details');
-const details = document.querySelector('.basiclightbox');
 const detailsClose = document.querySelector('.details__close-button');
 const filmsList = document.querySelector('.films__list');
 const apiKey =
@@ -33,18 +30,17 @@ export function showDetails(e) {
   }
 
   // Open / close Modal with Escape key and closed button:
-
   function closeDetailsByClickOutside() {
-    const modal = document.querySelector('.basiclightbox');
+    const modal = document.querySelector('.details');
     if (modal) {
       modal.style.display = 'none';
     }
   }
 
   document.addEventListener('click', e => {
-    const modal = document.querySelector('.basiclightbox');
+    const modal = document.querySelector('.details');
     if (modal && e.target === modal) {
-      closeDetailsByClickOutside();
+      closeDetails();
     }
   });
 
@@ -54,8 +50,10 @@ export function showDetails(e) {
     }
   });
 
-  detailsDiv.addEventListener('click', e => {
-    if (e.target === detailsDiv) {
+  // Zamknięcie za pomocą kliknięcia poza modal
+  document.addEventListener('click', e => {
+    const modal = document.querySelector('.details');
+    if (modal && !modal.contains(e.target)) {
       closeDetails();
     }
   });
