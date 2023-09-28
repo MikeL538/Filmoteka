@@ -9,11 +9,10 @@
   width: 100%;
   margin-bottom: 20px;
 
-  // -----------------
+  // -----------------scrolled------------
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+  transition: height 0.5s ease, margin-bottom 0.5s ease;
 
   &--scroll {
     height: 100px; /* Уменьшенная высота хедера */
@@ -185,4 +184,22 @@
 
 .underline {
   border-bottom: 3px solid #ff001b;
+}
+
+// ----------------scrolled-----------------
+.header.scrolled {
+  height: 100px;
+}
+
+.header.scrolled .header__nav-form,
+.header.scrolled .header__error {
+  opacity: 0; 
+  transition: opacity 0.5s ease; 
+}
+
+.header:hover .header__nav-form,
+.header:hover .header__error {
+  opacity: 1; 
+  display: flex;
+  transition: opacity 0.5s ease;
 }

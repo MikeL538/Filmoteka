@@ -3,3 +3,4 @@ import './js/language';
 import './js/fetcher';
 import './js/modalDetails';
 // import './js/library';
+import './js/scrolled';
