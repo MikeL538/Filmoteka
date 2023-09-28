@@ -199,28 +199,12 @@ function handleSearch(event) {
 
 searchForm.addEventListener('submit', handleSearch);
 
-const buttonTop = document.querySelector('.button-top');
-
 function handleScroll() {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  if(scrollTop > 800){
-    buttonTop.removeAttribute('hidden');
-  }else{
-    buttonTop.setAttribute('hidden', 'hidden');
-  }
   if (scrollTop + clientHeight >= scrollHeight - 700 && !isLoading) {
     isLoading = true;
     currentPage++;
     fetchMovies(currentPage, searchQuery);
   }
-}
-
-function scrollTop(){
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
-  });
 }
 
 buttonTop.addEventListener('click', scrollTop);
