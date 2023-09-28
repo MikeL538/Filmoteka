@@ -206,7 +206,4 @@ function handleScroll() {
     fetchMovies(currentPage, searchQuery);
   }
 }
-
-buttonTop.addEventListener('click', scrollTop);
-
 window.addEventListener('scroll', handleScroll);
