@@ -7,6 +7,10 @@
     margin-bottom: 60px;
     background-image: url('../images/header-background-tablet.jpg');
 
+    .header:hover {
+      height: 216px;
+    }
+
     &--library {
       background-image: url('../images/my-library-tablet.jpg');
     }
@@ -42,4 +46,12 @@
       text-align: center;
     }
   }
+}
+
+.header:hover {
+  height: 216px;
+}
+
+.header:hover .header__error{
+  padding-left: 12px;
 }
