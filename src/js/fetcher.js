@@ -200,6 +200,7 @@ function handleSearch(event) {
 searchForm.addEventListener('submit', handleSearch);
 
 function handleScroll() {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   if (scrollTop + clientHeight >= scrollHeight - 700 && !isLoading) {
     isLoading = true;
     currentPage++;
