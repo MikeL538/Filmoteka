@@ -1,0 +1,18 @@
+.button-top {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  border: none;
+  outline: none;
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  opacity: 0.35;
+}
+
+.button-top:hover,
+.button-top:focus {
+    opacity: 1;
+}

@@ -153,15 +153,13 @@ function fetchMovies(page, searchQuery = '') {
             return `<li class="films__list-item" data-id="${id}">
           <img src="${imagePath}" alt="${title}" />
           <h2>${title}</h2>
-          <p>${genreNames.slice(0, 2).join(', ')} | <span>${release_date}</span></p>
-          <p>Ocena: ${roundedVoteAverage}</p>
+          <p>${genreNames.slice(0, 2).join(', ')}, other  |  <span>${release_date.substring(0, 4)}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
         </li>`;
           } else {
             return `<li class="films__list-item" data-id="${id}">
           <img src="${imagePath}" alt="${title}" />
           <h2>${title}</h2>
-          <p>${genreNames.slice(0, 2).join(', ')} | <span>${release_date}</span></p>
-          <p>Rating: ${roundedVoteAverage}</p>
+          <p>${genreNames.slice(0, 2).join(', ')}  |  <span>${release_date.substring(0, 4)}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
         </li>`;
           }
         })
@@ -201,14 +199,30 @@ function handleSearch(event) {
 
 searchForm.addEventListener('submit', handleSearch);
 
+const buttonTop = document.querySelector('.button-top');
+
 function handleScroll() {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-
+  if(scrollTop > 800){
+    buttonTop.removeAttribute('hidden');
+  }else{
+    buttonTop.setAttribute('hidden', 'hidden');
+  }
   if (scrollTop + clientHeight >= scrollHeight - 700 && !isLoading) {
     isLoading = true;
     currentPage++;
     fetchMovies(currentPage, searchQuery);
   }
 }
+
+function scrollTop(){
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+}
+
+buttonTop.addEventListener('click', scrollTop);
 
 window.addEventListener('scroll', handleScroll);

@@ -34,6 +34,18 @@
         font-size: 12px;
         line-height: 1.17;
       }
+
+      &--rating {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 14px;
+        background-color: getcolor('orange');
+        border-radius: 5px;
+        color: #fff;
+        font-size: 12px;
+      }
     }
   }
 }
