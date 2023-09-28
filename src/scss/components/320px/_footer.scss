@@ -3,8 +3,8 @@
 .footer {
   align-items: center;
   display: flex;
-  flex-direction: row;
-  height: 30px;
+  flex-direction: column;
+  height: 60px;
   justify-content: center;
   width: 100%;
   color: #545454;
@@ -25,7 +25,7 @@
   }
 
   > p:first-child {
-    margin-right: 4px;
+    margin-bottom: 10px;
   }
 }
 
