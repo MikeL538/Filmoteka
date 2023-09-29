@@ -29,13 +29,22 @@ export function showDetails(e) {
     return;
   }
 
-  // Open / close Modal with Escape key:
+
+  // Open / close Modal with Escape key and closed button:
   function closeDetailsByClickOutside() {
     const modal = document.querySelector('.details');
     if (modal) {
       modal.style.display = 'none';
     }
   }
+
+
+  document.addEventListener('click', e => {
+    const modal = document.querySelector('.details');
+    if (modal && e.target === modal) {
+      closeDetails();
+    }
+  });
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
@@ -44,14 +53,12 @@ export function showDetails(e) {
   });
 
   // Zamknięcie za pomocą kliknięcia poza modal
-
-  document.addEventListener(
-    'click',
-    e =>
-      !detailsDiv.contains(e.target) &&
-      e.target !== detailsClose &&
-      detailsDiv.classList.remove('show-element'),
-  );
+  document.addEventListener('click', e => {
+    const modal = document.querySelector('.details');
+    if (modal && !modal.contains(e.target)) {
+      closeDetails();
+    }
+  });
 
   function closeDetails() {
     detailsDiv.classList.remove('show-element');
