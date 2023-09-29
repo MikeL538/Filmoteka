@@ -2,6 +2,11 @@
   .details {
     max-height: 558px;
     max-width: 806px;
+    justify-content: flex-start;
+
+    &__container {
+      margin-left: 20px;
+    }
 
     &__img {
       min-height: 478px;
@@ -11,6 +16,7 @@
     &__information {
       max-width: 260px;
     }
+
     &__about-container {
       max-width: 391px;
     }

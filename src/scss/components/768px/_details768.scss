@@ -26,14 +26,8 @@
     }
 
     &__information {
-      width: 264px;
+      max-width: 264px;
       margin-left: 0;
-
-      &-list {
-        > li {
-          white-space: wrap;
-        }
-      }
     }
     &__about-container {
       margin: 0;
