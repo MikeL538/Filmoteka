@@ -4,7 +4,7 @@ import { currentLanguage } from './language';
 // const watchedBtn = document.querySelector('.btn-watched');
 // const queueBtn = document.querySelector('.btn-queue');
 const addWatched = document.querySelector('.btn-add-watched');
-// const addQueue = document.querySelector('.btn-add-queue');
+const addQueue = document.querySelector('.btn-add-queue');
 // const boxWatched = document.querySelector('.watched-box');
 // const boxQueue = document.querySelector('.queue-box');
 // const imgNoCinema = document.querySelector('#noCinema');
@@ -55,42 +55,68 @@ export function showDetails(e) {
   }
 
   //////////////Library////////////////////
-  const objId = { key: movieId };
-  console.log(objId);
-  const movieIdStringify = JSON.stringify(objId);
-  console.log(movieIdStringify);
-  const getIdFromJson = JSON.parse(movieIdStringify);
-  console.log(getIdFromJson);
-  const addIdToLibrary = objId['key'];
-  console.log(addIdToLibrary);
-  function addingToLocalStorage() {
-    if (localStorage.getItem('watched') === null) {
-      localStorage.setItem('watched', '[${addIdToLibrary}]'); // tu trzeba jakos dodac Id jako value
+
+  function addingWatchedToLocalStorage(movieId) {
+    let watchedList = localStorage.getItem('watched');
+
+    if (watchedList) {
+      try {
+        watchedList = JSON.parse(watchedList);
+      } catch (error) {
+        // If parsing fails, treat it as an empty array
+        watchedList = [];
+      }
+    } else {
+      watchedList = [];
     }
-    if (localStorage.getItem('queue') === null) {
-      localStorage.setItem('queue', '[${addIdToLibrary}]'); // tu trzeba jakos dodac Id jako value
+
+    if (!watchedList.includes(movieId)) {
+      watchedList.push(movieId);
     }
-    return JSON.stringify();
+
+    localStorage.setItem('watched', JSON.stringify(watchedList));
+    console.log(watchedList);
   }
+
+  function addingQueueToLocalStorage(movieId) {
+    let queueList = localStorage.getItem('queue');
+
+    if (queueList) {
+      try {
+        queueList = JSON.parse(queueList);
+      } catch (error) {
+        // If parsing fails, treat it as an empty array
+        queueList = [];
+      }
+    } else {
+      queueList = [];
+    }
+
+    if (!queueList.includes(movieId)) {
+      queueList.push(movieId);
+    }
+
+    localStorage.setItem('queue', JSON.stringify(queueList));
+    console.log(queueList);
+  }
+
   addWatched.addEventListener('click', () => {
-    // const watchedList = JSON.parse(localStorage.getItem('watched'));
-    addingToLocalStorage();
+    addingWatchedToLocalStorage(movieId);
   });
-  //Kolejny pomysl stworzyc obj z zawartoscia key= watched : [...value  ]
-  // json stringify pozniej parse do nowego obj i pracowac z metoda push na obj
-  //  ale funkcje addingtolacalstrage zmodyfikowac do pushowania w obj i zmiane na json
-  // setItem watched
+  addQueue.addEventListener('click', () => {
+    addingQueueToLocalStorage(movieId);
+  });
   ///////////////////////////////////////////////////
   fetchMovieDetails(movieId);
 }
-
-filmsList.addEventListener('click', showDetails);
+// localStorage.clear();
+// filmsList.addEventListener('click', showDetails);
 
 detailsClose.addEventListener('click', () => {
   detailsDiv.classList.remove('show-element');
 });
 
-function fetchMovieDetails(movieId) {
+export function fetchMovieDetails(movieId) {
   const movieDetailsUrl = `movie/${movieId}`;
 
   axios
@@ -108,7 +134,7 @@ function fetchMovieDetails(movieId) {
     .catch(error => console.error('Error fetching movie details:', error));
 }
 
-function populateModal(movieDetails) {
+export function populateModal(movieDetails) {
   const modalTitle = document.querySelector('.details__title');
   const modalImg = document.querySelector('.details__img');
   const modalInformation = document.querySelector('.details__information-right');
