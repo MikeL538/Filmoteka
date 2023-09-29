@@ -86,10 +86,6 @@ export function showDetails(e) {
     console.log(watchedList);
   }
 
-  addWatched.addEventListener('click', () => {
-    // const watchedList = JSON.parse(localStorage.getItem('watched'));
-    addingWatchedToLocalStorage(movieId);
-  });
   function addingQueueToLocalStorage(movieId) {
     let queueList = localStorage.getItem('queue');
 
@@ -113,7 +109,7 @@ export function showDetails(e) {
   }
 
   addWatched.addEventListener('click', () => {
-    addingQueueToLocalStorage(movieId);
+    addingWatchedToLocalStorage(movieId);
   });
   addQueue.addEventListener('click', () => {
     addingQueueToLocalStorage(movieId);
@@ -121,7 +117,7 @@ export function showDetails(e) {
   ///////////////////////////////////////////////////
   fetchMovieDetails(movieId);
 }
-
+// localStorage.clear();
 // filmsList.addEventListener('click', showDetails);
 
 detailsClose.addEventListener('click', () => {
