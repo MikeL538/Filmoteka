@@ -1,4 +1,4 @@
-import './fetcher';
+import { fetchMovies } from './fetcher';
 import { fetchMovieDetails, populateModal } from './modalDetails';
 const watchedBtn = document.querySelector('.btn-watched');
 const queueBtn = document.querySelector('.btn-queue');
@@ -17,32 +17,19 @@ watchedBtn.addEventListener('click', () => {
   boxWatched.classList.remove('is-hiden');
   boxQueue.classList.add('is-hiden');
   imgNoCinema.classList.add('is-hiden');
-  const idFromLS = localStorage.getItem('objIdWatched');
+  const idFromLS = localStorage.getItem('watched');
   const watchedList = JSON.parse(idFromLS);
-  console.log(watchedList);
-  //   fetchMovieDetails(watchedList);
-  populateModal(watchedList);
+  //   console.log(watchedList);
+  //   fetchMovies(watchedList);
+  fetchMovieDetails(watchedList);
+  //   populateModal(movieDetails);
 });
 
-// // queueBtn.addEventListener('click', () => {
-// //   boxQueue.classList.remove('is-hiden');
-// //   boxWatched.classList.add('is-hiden');
-// //   imgNoCinema.classList.add('is-hiden');
-// // });
-
-// export function addingToLocalStorage(movieID) {
-//   if (localStorage.getItem('watched') === null) {
-//     localStorage.setItem('watched', '[]');
-//   }
-//   if (localStorage.getItem('queue') === null) {
-//     localStorage.setItem('queue', '[]');
-//   }
-//   return JSON.stringify(movieID);
-// }
-// const moviesWatched = JSON.parse(localStorage.getItem('watched'));
-// const movieQueue = JSON.parse(localStorage.getItem('queue'));
-
-// addWatched.addEventListener('click', () => {
-//   const watchedList = JSON.parse(localStorage.getItem('watched'));
-//   addingToLocalStorage();
-// });
+queueBtn.addEventListener('click', () => {
+  boxQueue.classList.remove('is-hiden');
+  boxWatched.classList.add('is-hiden');
+  imgNoCinema.classList.add('is-hiden');
+  const queueFromLS = localStorage.getItem('queue');
+  const queueList = JSON.parse(queueFromLS);
+  fetchMovieDetails(queueList);
+});

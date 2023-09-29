@@ -203,7 +203,7 @@ function handleSearch(event) {
   fetchMovies(currentPage, searchQuery);
 }
 
-searchForm.addEventListener('submit', handleSearch);
+// searchForm.addEventListener('submit', handleSearch);
 
 function handleScroll() {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
@@ -214,3 +214,68 @@ function handleScroll() {
   }
 }
 window.addEventListener('scroll', handleScroll);
+
+//////////////Library////////////
+// let libraryPage = 1;
+// const filmsWatched = document.querySelector('.films-watched__list');
+// export function fetchMoviesWatched(movieId) {
+//   // const trendingMoviesUrl = searchQuery ? 'search/movie' : 'trending/movie/day';
+//   const params = {
+//     api_key: apiKey,
+//     language: currentLanguage,
+//     // page: page,
+//     movieId: movieId,
+//   };
+
+//   axios
+//     .get({ params })
+//     .then(response => {
+//       const moviesWatched = response.data.results;
+
+//       const movieListWatched = moviesWatched
+//         .filter(movie => !renderedMovieIds.has(movie.id))
+//         .map(({ id, backdrop_path, title, release_date, genre_ids, vote_average }) => {
+//           const imagePath = backdrop_path
+//             ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(backdrop_path)}`
+//             : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png';
+//           const roundedVoteAverage = Math.round(vote_average * 10) / 10;
+
+//           renderedMovieIds.add(id);
+//           const genreNames = genre_ids.map(genreId => getGenreNameById(genreId));
+
+//           if (currentLanguage === 'pl-PL') {
+//             return `<li class="films-watched__list-item" data-id="${id}">
+//           <img src="${imagePath}" alt="${title}" />
+//           <h2>${title}</h2>
+//           <p>${genreNames.slice(0, 2).join(', ')}, other  |  <span>${release_date.substring(
+//               0,
+//               4,
+//             )}  </span><span class="films-watched__list-item--rating">${roundedVoteAverage}</span></p>
+//         </li>`;
+//           } else {
+//             return `<li class="films-watched__list-item" data-id="${id}">
+//           <img src="${imagePath}" alt="${title}" />
+//           <h2>${title}</h2>
+//           <p>${genreNames.slice(0, 2).join(', ')}  |  <span>${release_date.substring(
+//               0,
+//               4,
+//             )}  </span><span class="films-watched__list-item--rating">${roundedVoteAverage}</span></p>
+//         </li>`;
+//           }
+//         })
+//         .join('');
+
+//       filmsWatched.innerHTML += movieListWatched;
+
+//       isLoading = false;
+
+//       const watchedItems = document.querySelectorAll('.films-watched__list-item');
+//       watchedItems.forEach(item => {
+//         item.addEventListener('click', showDetails);
+//       });
+
+//       filmsWatched.addEventListener('click', showDetails);
+//     })
+//     .catch(error => console.error('Error fetching movies:', error));
+// }
+// fetchMoviesWatched(libraryPage);
