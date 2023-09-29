@@ -1,26 +1,33 @@
 @import '../utils/vars';
 
 .details {
+  align-items: center;
   border-radius: 5px;
   border: 1px solid;
+  display: flex;
   font-size: 12px;
-  height: 95vh;
   height: 95svh;
+  height: 95vh;
   left: 50%;
-  max-height: 940px;
+  max-height: 660px;
+  max-width: 500px;
   opacity: 0;
   overflow-y: auto;
   pointer-events: none;
   position: fixed;
+  align-items: center;
+  justify-content: center;
   top: 50%;
-  transform: translate(-500%, -50%);
-  transition: 1s ease-in-out;
-  width: 280px;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.5s ease-in-out;
+  width: 100%;
   z-index: -10;
 
   &__container {
-    margin: 20px;
-    width: 215px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -60px;
+    // align-items: center;
   }
 
   @media (prefers-color-scheme: light) {
@@ -58,21 +65,20 @@
 
   &__img {
     border-radius: 5px;
-    height: 357px;
-    margin: 40px 0 20px 0;
-    width: 240px;
+    max-height: 357px;
+    margin: 0 auto 20px auto;
+    width: 95%;
   }
 
   &__title {
     font-size: 20px;
-    margin-bottom: 20px;
+    margin: 0 0 20px 5%;
   }
 
   &__information {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    width: 215px;
+    margin: 10px 0 20px 5%;
+    align-items: center;
 
     &-list {
       list-style: none;
@@ -80,7 +86,10 @@
       > li {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 0 20px 0 0;
+        white-space: nowrap;
       }
     }
 
@@ -98,7 +107,7 @@
   &__about-container {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 0 0 0 5%;
     width: 240px;
 
     > h3 {
@@ -113,16 +122,21 @@
   &__buttons {
     align-items: center;
     display: flex;
+    margin: 0 0 0 5%;
 
     > button {
       border-radius: 5px;
       border: none;
       cursor: pointer;
       height: 44px;
-      margin: 20px 10px;
+      margin: 20px 0;
       padding: 0 10px;
       text-transform: uppercase;
       width: 110px;
+
+      &:first-of-type {
+        margin-right: 10px;
+      }
 
       // &:first-of-type {
       //   background-color: getcolor('orange');
@@ -130,6 +144,7 @@
     }
   }
 }
+
 .btn-add {
   &-watched,
   &-queue {

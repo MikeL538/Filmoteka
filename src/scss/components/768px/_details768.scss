@@ -1,29 +1,40 @@
 @media screen and (min-width: 768px) {
   .details {
     display: flex;
-    max-height: 552px;
-    width: 704px;
+    max-height: 502px;
+    max-width: 704px;
 
     &__container {
-      display: flex;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
       flex-wrap: wrap;
-      margin-top: 40px;
       width: 704px;
     }
 
     &__img {
-      height: 373.5px;
-      margin: 0;
-      width: 264px;
+      margin: 0 20px 0 0;
+      min-height: 400px;
+      width: 100%;
+      max-width: 370px;
+    }
+
+    &__title {
+      max-width: 300px;
+      margin: 0 0 20px 0;
+      white-space: wrap;
     }
 
     &__information {
-      width: 264px;
+      max-width: 264px;
+      margin-left: 0;
     }
     &__about-container {
       margin: 0;
       width: 264px;
+    }
+    &__buttons {
+      margin: 0;
     }
   }
 }

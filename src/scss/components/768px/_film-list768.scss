@@ -6,12 +6,13 @@
       gap: 32px;
       flex-wrap: wrap;
       width: 704px;
+
       &-item {
-        width: 336px;
-        height: 494px;
+        max-width: 336px;
+
         > img {
-          width: 336px;
-          height: 455px;
+          max-width: 336px;
+          height: 373px;
         }
       }
     }

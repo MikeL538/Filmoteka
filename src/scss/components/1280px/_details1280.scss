@@ -1,22 +1,24 @@
 @media screen and (min-width: 1280px) {
   .details {
     max-height: 558px;
-    width: 806px;
+    max-width: 806px;
+    justify-content: flex-start;
 
-    &__wide-separator {
-      margin-left: 16px;
+    &__container {
+      margin-left: 20px;
     }
 
     &__img {
-      height: 478px;
-      width: 375px;
+      min-height: 478px;
+      max-width: 375px;
     }
 
     &__information {
-      width: 260px;
+      max-width: 260px;
     }
+
     &__about-container {
-      width: 391px;
+      max-width: 391px;
     }
   }
 }

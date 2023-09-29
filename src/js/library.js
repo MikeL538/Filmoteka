@@ -12,6 +12,10 @@ const imgNoCinema = document.querySelector('#noCinema');
 // console.log(queueBtn);
 // console.log(addWatched);
 // console.log(addQueue);
+// axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+// axios.defaults.headers.common['Authorization'] =
+//   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo';
+
 
 watchedBtn.addEventListener('click', () => {
   boxWatched.classList.remove('is-hiden');
