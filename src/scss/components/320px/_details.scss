@@ -51,16 +51,16 @@
     top: 10px;
     width: 30px;
 
-    // > svg {
-    //   @media (prefers-color-scheme: light) {
-    //     fill: #000;
-    //     stroke: #000;
-    //   }
-    //   @media (prefers-color-scheme: dark) {
-    //     fill: #fff;
-    //     stroke: #fff;
-    //   }
-    // }
+    > svg {
+      @media (prefers-color-scheme: light) {
+        fill: #000;
+        stroke: #000;
+      }
+      @media (prefers-color-scheme: dark) {
+        fill: #fff;
+        stroke: #fff;
+      }
+    }
   }
 
   &__img {
