@@ -29,6 +29,7 @@ export function showDetails(e) {
     return;
   }
 
+
   // Open / close Modal with Escape key and closed button:
   function closeDetailsByClickOutside() {
     const modal = document.querySelector('.details');
@@ -36,6 +37,7 @@ export function showDetails(e) {
       modal.style.display = 'none';
     }
   }
+
 
   document.addEventListener('click', e => {
     const modal = document.querySelector('.details');
