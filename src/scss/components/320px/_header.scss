@@ -1,21 +1,22 @@
 @import '../utils/vars';
 
 .header {
+  align-items: center;
   background-image: url('../images/header-background-mobile.jpg');
   background-repeat: no-repeat;
   background-size: 100vw 230px;
+  display: flex;
   font-size: 12px;
   height: 230px;
+  justify-content: center;
   margin-bottom: 20px;
-  width: 100%;
-
-  // -----------------scrolled------------
   position: sticky;
   top: 0;
-  transition: height 0.5s ease, margin-bottom 0.5s ease;
+  transition: 0.5s ease-in-out;
+  width: 100%;
 
-  &--scroll {
-    height: 100px; /* Уменьшенная высота хедера */
+  &:hover {
+    height: 216px;
   }
 
   &--library {
@@ -57,14 +58,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    // test
+    transition: 0.5s ease-in-out;
 
     &-icon {
       stroke: #fff;
       margin-right: 15px;
+      transition: 0.5s ease-in-out;
 
       &:hover {
-        stroke: getcolor('orange');
-        transition: 0.5s;
+        stroke: black;
       }
     }
 
@@ -139,6 +142,7 @@
       border-bottom: 1px solid;
       color: getcolor('header');
       width: 280px;
+      position: relative;
     }
 
     &-input {
@@ -175,7 +179,7 @@
   }
 
   &__error {
-    // display: none;
+    display: none;
     color: getcolor('header-error');
     margin: 16px auto 0;
     text-align: start;
@@ -191,29 +195,26 @@
 
 // ----------------scrolled-----------------
 .header.scrolled {
-  height: 80px;
-  transform: translateY(-30px);
+  height: 40px;
+
+  transition: 0.6s ease-in-out;
 }
 
 .scrolled-container {
-  height: 60px;
+  height: 0;
   padding: 0;
+  transition: 0.6s ease-in-out;
 }
 
-.scrolled-nav-container {
-  transform: translateY(25px);
-  height: 80px;
+.hovered {
+  height: 216px;
+  transition: 0.6s ease-in-out;
 }
 
-.header.scrolled .header__nav-form,
-.header.scrolled .header__error {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.form-transform {
+  transform: translateY(-10000px);
 }
 
-.header:hover .header__nav-form,
-.header:hover .header__error {
-  opacity: 1;
-  display: flex;
-  transition: opacity 0.5s ease;
+.nav-height {
+  height: 35px;
 }
