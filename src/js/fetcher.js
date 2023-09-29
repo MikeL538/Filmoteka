@@ -153,13 +153,19 @@ function fetchMovies(page, searchQuery = '') {
             return `<li class="films__list-item" data-id="${id}">
           <img src="${imagePath}" alt="${title}" />
           <h2>${title}</h2>
-          <p>${genreNames.slice(0, 2).join(', ')}, other  |  <span>${release_date.substring(0, 4)}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
+          <p>${genreNames.slice(0, 2).join(', ')}, other  |  <span>${release_date.substring(
+              0,
+              4,
+            )}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
         </li>`;
           } else {
             return `<li class="films__list-item" data-id="${id}">
           <img src="${imagePath}" alt="${title}" />
           <h2>${title}</h2>
-          <p>${genreNames.slice(0, 2).join(', ')}  |  <span>${release_date.substring(0, 4)}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
+          <p>${genreNames.slice(0, 2).join(', ')}  |  <span>${release_date.substring(
+              0,
+              4,
+            )}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
         </li>`;
           }
         })

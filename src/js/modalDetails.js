@@ -4,7 +4,7 @@ import { currentLanguage } from './language';
 // const watchedBtn = document.querySelector('.btn-watched');
 // const queueBtn = document.querySelector('.btn-queue');
 const addWatched = document.querySelector('.btn-add-watched');
-// const addQueue = document.querySelector('.btn-add-queue');
+const addQueue = document.querySelector('.btn-add-queue');
 // const boxWatched = document.querySelector('.watched-box');
 // const boxQueue = document.querySelector('.queue-box');
 // const imgNoCinema = document.querySelector('#noCinema');
@@ -63,42 +63,35 @@ export function showDetails(e) {
   }
 
   //////////////Library////////////////////
-  const objId = { key: movieId };
-  console.log(objId);
-  const movieIdStringify = JSON.stringify(objId);
-  console.log(movieIdStringify);
-  const getIdFromJson = JSON.parse(movieIdStringify);
-  console.log(getIdFromJson);
-  const addIdToLibrary = objId['key'];
-  console.log(addIdToLibrary);
-  function addingToLocalStorage() {
-    if (localStorage.getItem('watched') === null) {
-      localStorage.setItem('watched', '[${addIdToLibrary}]'); // tu trzeba jakos dodac Id jako value
-    }
-    if (localStorage.getItem('queue') === null) {
-      localStorage.setItem('queue', '[${addIdToLibrary}]'); // tu trzeba jakos dodac Id jako value
-    }
-    return JSON.stringify();
-  }
+
+  // function addingToLocalStorage() {
+
+  // }
+
   addWatched.addEventListener('click', () => {
-    // const watchedList = JSON.parse(localStorage.getItem('watched'));
-    addingToLocalStorage();
+    const objIdWatched = { watched: [] };
+    // console.log(objIdWatched);
+    const newMovieId = objIdWatched.watched.includes(movieId);
+    if (newMovieId === false) {
+      objIdWatched.watched.push(movieId);
+    }
+
+    // console.log(objIdWatched);
+    localStorage.setItem('objIdWatched', JSON.stringify(objIdWatched.watched));
+    // addingToLocalStorage();
   });
-  //Kolejny pomysl stworzyc obj z zawartoscia key= watched : [...value  ]
-  // json stringify pozniej parse do nowego obj i pracowac z metoda push na obj
-  //  ale funkcje addingtolacalstrage zmodyfikowac do pushowania w obj i zmiane na json
-  // setItem watched
+
   ///////////////////////////////////////////////////
   fetchMovieDetails(movieId);
 }
 
-filmsList.addEventListener('click', showDetails);
+// filmsList.addEventListener('click', showDetails);
 
 detailsClose.addEventListener('click', () => {
   detailsDiv.classList.remove('show-element');
 });
 
-function fetchMovieDetails(movieId) {
+export function fetchMovieDetails(movieId) {
   const movieDetailsUrl = `movie/${movieId}`;
 
   axios
@@ -116,7 +109,7 @@ function fetchMovieDetails(movieId) {
     .catch(error => console.error('Error fetching movie details:', error));
 }
 
-function populateModal(movieDetails) {
+export function populateModal(movieDetails) {
   const modalTitle = document.querySelector('.details__title');
   const modalImg = document.querySelector('.details__img');
   const modalInformation = document.querySelector('.details__information-right');

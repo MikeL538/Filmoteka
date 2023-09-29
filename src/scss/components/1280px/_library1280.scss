@@ -1,0 +1,21 @@
+@media screen and (min-width: 1280px) {
+  .films-watched {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    &__list {
+      gap: 16px;
+      width: 1217px;
+      justify-content: flex-start;
+
+      &-item {
+        width: 395px;
+        height: 634px;
+        > img {
+          width: 395px;
+          height: 574px;
+        }
+      }
+    }
+  }
+}
