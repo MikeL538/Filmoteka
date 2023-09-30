@@ -5,16 +5,16 @@ import { apiKey } from './fetcher';
 const deleteWatched = document.querySelector('.btn-delete-watched');
 const deleteQueue = document.querySelector('.btn-delete-queue');
 
-const detailsDivLibrary = document.querySelector('.details-library');
 const detailsCloseLibrary = document.querySelector('.details-library__close-button');
 
-export function showDetails(e) {
+export function showLibraryDetails(e) {
   const clickedMovie = e.target.closest('.library-films__list-item');
   if (!clickedMovie) {
     console.error('Invalid movie item clicked.');
     return;
   }
-  detailsDivLibrary.classList.add('show-element');
+
+  const detailsDivLibrary = document.querySelector('.details-library');
 
   const movieId = clickedMovie.dataset.id;
   if (!movieId) {
@@ -34,8 +34,13 @@ export function showDetails(e) {
       closeDetails();
     }
   });
+  if (detailsCloseLibrary) {
+    detailsCloseLibrary.addEventListener('click', () => {
+      closeDetails();
+    });
+  }
 
-  // Zamknięcie za pomocą kliknięcia poza modal
+  // Zamknięcie za pomocą kliknięcia poza modalem
   document.addEventListener('click', e => {
     const modal = document.querySelector('.details-library');
     if (modal && !modal.contains(e.target)) {

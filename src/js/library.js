@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { currentLanguage } from './language';
 import { apiKey } from './fetcher';
+import { showLibraryDetails } from './modalDetailsLibrary';
 
 // Button watched = watched list
 if (document.querySelector('.library-films__list')) {
@@ -42,6 +43,8 @@ if (document.querySelector('.library-films__list')) {
           `;
 
           libraryFilmsList.appendChild(movieListItem);
+
+          movieListItem.addEventListener('click', showLibraryDetails);
         })
         .catch(error => console.error('Error fetching movie details:', error));
     }
@@ -97,6 +100,8 @@ if (document.querySelector('.library-films__list')) {
           `;
 
           libraryFilmsList.appendChild(movieListItem);
+
+          movieListItem.addEventListener('click', showLibraryDetails);
         })
         .catch(error => console.error('Error fetching movie details:', error));
     }
