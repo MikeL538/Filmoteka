@@ -1,5 +1,5 @@
 const footer = document.querySelector('.footer');
-const threshold = 3900; // Задайте позицию, при которой футер начнет появляться
+const threshold = 3900; // Height after which footer shows
 
 function checkFooterVisibility() {
   if (window.scrollY > threshold) {
@@ -12,5 +12,5 @@ function checkFooterVisibility() {
 window.addEventListener('scroll', checkFooterVisibility);
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkFooterVisibility();
-  });
+  checkFooterVisibility();
+});

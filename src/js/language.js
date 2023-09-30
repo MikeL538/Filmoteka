@@ -11,6 +11,7 @@ function changeLanguage(newLanguage) {
 
 const enLangButton = document.querySelector('#enLang');
 const plLangButton = document.querySelector('#plLang');
+let elementsToTranslate;
 
 plLangButton.addEventListener('click', e => changeLanguage('pl-PL'));
 enLangButton.addEventListener('click', e => changeLanguage('en-US'));
@@ -53,8 +54,7 @@ const translations = {
   },
 };
 
-let elementsToTranslate;
-
+// [data-translate] elements to translate
 function translateElements() {
   elementsToTranslate = document.querySelectorAll('[data-translate]');
 

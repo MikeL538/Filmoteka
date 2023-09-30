@@ -8,6 +8,8 @@ axios.defaults.headers.common['Authorization'] =
 
 let currentPage = 1;
 let isLoading = false;
+
+// Genres ID to genre name + translation
 const genresData = {
   genres: [
     {
@@ -108,10 +110,12 @@ const genresData = {
   ],
 };
 const renderedMovieIds = new Set();
-export const apiKey =
-  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo';
 const filmsList = document.querySelector('.films__list');
 
+export const apiKey =
+  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo';
+
+// Encoding genreId to become clear genre name e.g. 28 => "Action"
 function getGenreNameById(genreId) {
   const genre = genresData.genres.find(genre => genre.id === genreId);
   if (currentLanguage === 'pl-PL') {
@@ -121,8 +125,8 @@ function getGenreNameById(genreId) {
   }
 }
 
+// Downloading DATA and generate films list
 if (document.querySelector('.films__list')) {
-  // Decrypting the genre of the movie by ID
   function fetchMovies(page, searchQuery = '') {
     const trendingMoviesUrl = searchQuery ? 'search/movie' : 'trending/movie/day';
     const params = {
