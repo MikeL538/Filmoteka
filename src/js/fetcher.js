@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { showDetails } from './modalDetails';
 import { currentLanguage } from './language';
+import Notiflix from 'notiflix';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 axios.defaults.headers.common['Authorization'] =
@@ -8,6 +9,7 @@ axios.defaults.headers.common['Authorization'] =
 
 let currentPage = 1;
 let isLoading = false;
+let noMoreMoviesLogged = false;
 
 // Genres ID to genre name + translation
 const genresData = {
@@ -210,11 +212,23 @@ if (document.querySelector('.films__list')) {
 
   function handleScroll() {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+    if (noMoreMoviesLogged) {
+      return;
+    }
+
     if (scrollTop + clientHeight >= scrollHeight - 700 && !isLoading) {
       isLoading = true;
       currentPage++;
 
+      const previousMovieCount = renderedMovieIds.size;
+
       fetchMovies(currentPage, searchQuery);
+
+      if (renderedMovieIds.size === previousMovieCount) {
+        noMoreMoviesLogged = true;
+        Notiflix.Notify.info('No more movies to load :(');
+      }
     }
   }
 

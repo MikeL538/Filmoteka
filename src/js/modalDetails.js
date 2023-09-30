@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { currentLanguage } from './language';
 import { apiKey } from './fetcher';
+import Notiflix from 'notiflix';
 
 const addWatched = document.querySelector('.btn-add-watched');
 const addQueue = document.querySelector('.btn-add-queue');
@@ -41,6 +42,12 @@ document.addEventListener('keydown', e => {
   }
 });
 
+if (detailsClose) {
+  detailsClose.addEventListener('click', () => {
+    closeDetails();
+  });
+}
+
 // Closing by clicking outside the modal
 document.addEventListener('click', e => {
   const modal = document.querySelector('.details');
@@ -70,9 +77,9 @@ function addingWatchedToLocalStorageWatched(movieId) {
   if (!watchedList.includes(movieId)) {
     watchedList.push(movieId);
     localStorage.setItem('watched', JSON.stringify(watchedList));
-    console.log('Added to watched: ' + movieId);
+    Notiflix.Notify.success('Film added to watched!');
   } else {
-    console.log('Movie is already in watched list.');
+    Notiflix.Notify.failure('Movie is already in watched list.');
   }
 }
 
@@ -94,9 +101,9 @@ function addingQueueToLocalStorageQueue(movieId) {
   if (!queueList.includes(movieId)) {
     queueList.push(movieId);
     localStorage.setItem('queue', JSON.stringify(queueList));
-    console.log('Added to queue: ' + movieId);
+    Notiflix.Notify.success('Movie added to queue!');
   } else {
-    console.log('Movie is already in queue list.');
+    Notiflix.Notify.failure('Movie is already in queue list.');
   }
 }
 
