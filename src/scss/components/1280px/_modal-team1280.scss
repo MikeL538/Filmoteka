@@ -1,0 +1,21 @@
+@media screen and (min-width: 1280px) {
+  .team__box {
+    width: 790px;
+    gap: 45px;
+    margin-bottom: 35px;
+  }
+  .team__member {
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+    }
+  }
+
+  .team__name {
+    font-size: 22px;
+  }
+
+  .team__role {
+    font-size: 18px;
+  }
+}

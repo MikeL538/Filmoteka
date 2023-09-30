@@ -1,5 +1,3 @@
-const currentHTMLFile = document.location.pathname;
-
 import './js/footer';
 import './js/language';
 import './js/scrolled';
