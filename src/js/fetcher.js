@@ -7,10 +7,7 @@ axios.defaults.headers.common['Authorization'] =
   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo';
 
 let currentPage = 1;
-
 let isLoading = false;
-const renderedMovieIds = new Set();
-const filmsList = document.querySelector('.films__list');
 const genresData = {
   genres: [
     {
@@ -110,11 +107,11 @@ const genresData = {
     },
   ],
 };
-
+const renderedMovieIds = new Set();
 const apiKey =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo';
+const filmsList = document.querySelector('.films__list');
 
-// Decrypting the genre of the movie by ID
 function getGenreNameById(genreId) {
   const genre = genresData.genres.find(genre => genre.id === genreId);
   if (currentLanguage === 'pl-PL') {
@@ -124,157 +121,98 @@ function getGenreNameById(genreId) {
   }
 }
 
-function fetchMovies(page, searchQuery = '') {
-  const trendingMoviesUrl = searchQuery ? 'search/movie' : 'trending/movie/day';
-  const params = {
-    api_key: apiKey,
-    language: currentLanguage,
-    page: page,
-    query: searchQuery, // Added for search
-  };
+if (document.querySelector('.films__list')) {
+  // Decrypting the genre of the movie by ID
+  function fetchMovies(page, searchQuery = '') {
+    const trendingMoviesUrl = searchQuery ? 'search/movie' : 'trending/movie/day';
+    const params = {
+      api_key: apiKey,
+      language: currentLanguage,
+      page: page,
+      query: searchQuery, // Added for search
+    };
 
-  axios
-    .get(trendingMoviesUrl, { params })
-    .then(response => {
-      const movies = response.data.results;
+    axios
+      .get(trendingMoviesUrl, { params })
+      .then(response => {
+        const movies = response.data.results;
 
-      const movieList = movies
-        .filter(movie => !renderedMovieIds.has(movie.id))
-        .map(({ id, backdrop_path, title, release_date, genre_ids, vote_average }) => {
-          const imagePath = backdrop_path
-            ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(backdrop_path)}`
-            : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png';
-          const roundedVoteAverage = Math.round(vote_average * 10) / 10;
+        const movieList = movies
+          .filter(movie => !renderedMovieIds.has(movie.id))
+          .map(({ id, backdrop_path, title, release_date, genre_ids, vote_average }) => {
+            const imagePath = backdrop_path
+              ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(backdrop_path)}`
+              : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png';
+            const roundedVoteAverage = Math.round(vote_average * 10) / 10;
 
-          renderedMovieIds.add(id);
-          const genreNames = genre_ids.map(genreId => getGenreNameById(genreId));
+            renderedMovieIds.add(id);
+            const genreNames = genre_ids.map(genreId => getGenreNameById(genreId));
 
-          if (currentLanguage === 'pl-PL') {
-            return `<li class="films__list-item" data-id="${id}">
+            if (currentLanguage === 'pl-PL') {
+              return `<li class="films__list-item" data-id="${id}">
           <img src="${imagePath}" alt="${title}" />
           <h2>${title}</h2>
           <p>${genreNames.slice(0, 2).join(', ')}, other  |  <span>${release_date.substring(
-              0,
-              4,
-            )}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
+                0,
+                4,
+              )}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
         </li>`;
-          } else {
-            return `<li class="films__list-item" data-id="${id}">
+            } else {
+              return `<li class="films__list-item" data-id="${id}">
           <img src="${imagePath}" alt="${title}" />
           <h2>${title}</h2>
           <p>${genreNames.slice(0, 2).join(', ')}  |  <span>${release_date.substring(
-              0,
-              4,
-            )}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
+                0,
+                4,
+              )}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
         </li>`;
-          }
-        })
-        .join('');
+            }
+          })
+          .join('');
 
-      filmsList.innerHTML += movieList;
+        filmsList.innerHTML += movieList;
 
-      isLoading = false;
+        isLoading = false;
 
-      const movieItems = document.querySelectorAll('.films__list-item');
-      movieItems.forEach(item => {
-        item.addEventListener('click', showDetails);
-      });
+        const movieItems = document.querySelectorAll('.films__list-item');
+        movieItems.forEach(item => {
+          item.addEventListener('click', showDetails);
+        });
 
-      filmsList.addEventListener('click', showDetails);
-    })
-    .catch(error => console.error('Error fetching movies:', error));
-}
+        filmsList.addEventListener('click', showDetails);
+      })
+      .catch(error => console.error('Error fetching movies:', error));
+  }
 
-fetchMovies(currentPage);
+  fetchMovies(currentPage);
 
-const searchForm = document.querySelector('.header__nav-form');
-const searchInput = document.querySelector('.header__nav-input');
-let searchQuery = '';
+  const searchForm = document.querySelector('.header__nav-form');
+  const searchInput = document.querySelector('.header__nav-input');
+  let searchQuery = '';
 
-function handleSearch(event) {
-  event.preventDefault();
-  searchQuery = searchInput.value.trim();
+  function handleSearch(event) {
+    event.preventDefault();
+    searchQuery = searchInput.value.trim();
 
-  renderedMovieIds.clear();
-  currentPage = 1;
+    renderedMovieIds.clear();
+    currentPage = 1;
 
-  filmsList.innerHTML = '';
+    filmsList.innerHTML = '';
 
-  fetchMovies(currentPage, searchQuery);
-}
-
-searchForm.addEventListener('submit', handleSearch);
-
-function handleScroll() {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  if (scrollTop + clientHeight >= scrollHeight - 700 && !isLoading) {
-    isLoading = true;
-    currentPage++;
     fetchMovies(currentPage, searchQuery);
   }
+
+  searchForm.addEventListener('submit', handleSearch);
+
+  function handleScroll() {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 700 && !isLoading) {
+      isLoading = true;
+      currentPage++;
+
+      fetchMovies(currentPage, searchQuery);
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
 }
-window.addEventListener('scroll', handleScroll);
-
-//////////////Library////////////
-
-let libraryPage = 1;
-const filmsWatched = document.querySelector('.films-watched__list');
-export function fetchMoviesWatched(movieId) {
-  // const trendingMoviesUrl = searchQuery ? 'search/movie' : 'trending/movie/day';
-  const params = {
-    api_key: apiKey,
-    language: currentLanguage,
-    // page: page,
-    movieId: movieId,
-  };
-
-  axios.get(movieId).then(response => {
-    const moviesWatched = response.data.results;
-
-    const movieListWatched = moviesWatched
-      .filter(movie => !renderedMovieIds.has(movie.id))
-      .map(({ id, backdrop_path, title, release_date, genre_ids, vote_average }) => {
-        const imagePath = backdrop_path
-          ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(backdrop_path)}`
-          : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png';
-        const roundedVoteAverage = Math.round(vote_average * 10) / 10;
-
-        renderedMovieIds.add(id);
-        const genreNames = genre_ids.map(genreId => getGenreNameById(genreId));
-
-        if (currentLanguage === 'pl-PL') {
-          return `<li class="films-watched__list-item" data-id="${id}">
-          <img src="${imagePath}" alt="${title}" />
-          <h2>${title}</h2>
-          <p>${genreNames.slice(0, 2).join(', ')}, other  |  <span>${release_date.substring(
-            0,
-            4,
-          )}  </span><span class="films-watched__list-item--rating">${roundedVoteAverage}</span></p>
-        </li>`;
-        } else {
-          return `<li class="films-watched__list-item" data-id="${id}">
-          <img src="${imagePath}" alt="${title}" />
-          <h2>${title}</h2>
-          <p>${genreNames.slice(0, 2).join(', ')}  |  <span>${release_date.substring(
-            0,
-            4,
-          )}  </span><span class="films-watched__list-item--rating">${roundedVoteAverage}</span></p>
-        </li>`;
-        }
-      })
-      .join('');
-
-    filmsWatched.innerHTML += movieListWatched;
-
-    isLoading = false;
-
-    const watchedItems = document.querySelectorAll('.films-watched__list-item');
-    watchedItems.forEach(item => {
-      item.addEventListener('click', showDetails);
-    });
-
-    filmsWatched.addEventListener('click', showDetails);
-  });
-  // .catch(error => console.error('Error fetching movies:', error));
-}
-fetchMoviesWatched(libraryPage);
