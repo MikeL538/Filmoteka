@@ -24,7 +24,7 @@ const translations = {
     language: 'Language',
     placeholder: 'Movie search',
     error: 'Search result not successful. Enter the correct movie name.',
-    libraryBtnWatched: 'watcher',
+    libraryBtnWatched: 'watched',
     libraryBtnQueue: 'queue',
     // Modal Details
     vote: 'Rating / Votes',

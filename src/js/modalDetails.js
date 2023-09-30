@@ -1,19 +1,12 @@
 import axios from 'axios';
 import { currentLanguage } from './language';
+import { apiKey } from './fetcher';
 
-// const watchedBtn = document.querySelector('.btn-watched');
-// const queueBtn = document.querySelector('.btn-queue');
 const addWatched = document.querySelector('.btn-add-watched');
 const addQueue = document.querySelector('.btn-add-queue');
-// const boxWatched = document.querySelector('.watched-box');
-// const boxQueue = document.querySelector('.queue-box');
-// const imgNoCinema = document.querySelector('#noCinema');
 
 const detailsDiv = document.querySelector('.details');
 const detailsClose = document.querySelector('.details__close-button');
-const filmsList = document.querySelector('.films__list');
-const apiKey =
-  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo';
 
 export function showDetails(e) {
   const clickedMovie = e.target.closest('.films__list-item');
@@ -55,8 +48,7 @@ export function showDetails(e) {
   }
 
   //////////////Library////////////////////
-
-  function addingWatchedToLocalStorage(movieId) {
+  function addingWatchedToLocalStorageWatched(movieId) {
     let watchedList = localStorage.getItem('watched');
 
     if (watchedList) {
@@ -72,20 +64,25 @@ export function showDetails(e) {
 
     if (!watchedList.includes(movieId)) {
       watchedList.push(movieId);
+      localStorage.setItem('watched', JSON.stringify(watchedList));
+      console.log('Added to watched: ' + movieId);
+    } else {
+      console.log('Movie is already in watched list.');
     }
-
-    localStorage.setItem('watched', JSON.stringify(watchedList));
-    console.log(watchedList);
   }
 
-  function addingQueueToLocalStorage(movieId) {
+  addWatched.addEventListener('click', () => {
+    addingWatchedToLocalStorageWatched(movieId);
+  });
+
+  function addingQueueToLocalStorageQueue(movieId) {
     let queueList = localStorage.getItem('queue');
 
     if (queueList) {
       try {
         queueList = JSON.parse(queueList);
       } catch (error) {
-        // If parsing fails, treat it as an empty array
+        console.error('Error parsing queue list:', error);
         queueList = [];
       }
     } else {
@@ -94,27 +91,21 @@ export function showDetails(e) {
 
     if (!queueList.includes(movieId)) {
       queueList.push(movieId);
+      localStorage.setItem('queue', JSON.stringify(queueList));
+      console.log('Added to queue: ' + movieId);
+    } else {
+      console.log('Movie is already in queue list.');
     }
-
-    localStorage.setItem('queue', JSON.stringify(queueList));
-    console.log(queueList);
   }
 
-  addWatched.addEventListener('click', () => {
-    addingWatchedToLocalStorage(movieId);
-  });
   addQueue.addEventListener('click', () => {
-    addingQueueToLocalStorage(movieId);
+    addingQueueToLocalStorageQueue(movieId);
   });
-  ///////////////////////////////////////////////////
+
+  // Koniec dodawania do library //
+
   fetchMovieDetails(movieId);
 }
-// localStorage.clear();
-// filmsList.addEventListener('click', showDetails);
-
-detailsClose.addEventListener('click', () => {
-  detailsDiv.classList.remove('show-element');
-});
 
 export function fetchMovieDetails(movieId) {
   const movieDetailsUrl = `movie/${movieId}`;
@@ -165,51 +156,3 @@ export function populateModal(movieDetails) {
   const detailsDiv = document.querySelector('.details');
   detailsDiv.classList.add('show-element');
 }
-/////////////////Library///////////////////
-// import axios from 'axios';
-
-// axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-// axios.defaults.headers.common['Authorization'] =
-//   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo';
-
-// const watchedBtn = document.querySelector('.btn-watched');
-// const queueBtn = document.querySelector('.btn-queue');
-// const addWatched = document.querySelector('.btn-add-watched');
-// const addQueue = document.querySelector('.btn-add-queue');
-// const boxWatched = document.querySelector('.watched-box');
-// const boxQueue = document.querySelector('.queue-box');
-// const imgNoCinema = document.querySelector('#noCinema');
-
-// console.log(watchedBtn);
-// console.log(queueBtn);
-// console.log(addWatched);
-// console.log(addQueue);
-
-// watchedBtn.addEventListener('click', () => {
-//   boxWatched.classList.remove('is-hiden');
-//   boxQueue.classList.add('is-hiden');
-//   imgNoCinema.classList.add('is-hiden');
-// });
-
-// queueBtn.addEventListener('click', () => {
-//   boxQueue.classList.remove('is-hiden');
-//   boxWatched.classList.add('is-hiden');
-//   imgNoCinema.classList.add('is-hiden');
-// });
-
-// export function addingToLocalStorage(movieID) {
-//   if (localStorage.getItem('watched') === null) {
-//     localStorage.setItem('watched', '[]');
-//   }
-//   if (localStorage.getItem('queue') === null) {
-//     localStorage.setItem('queue', '[]');
-//   }
-//   return JSON.stringify(movieID);
-// }
-// const moviesWatched = JSON.parse(localStorage.getItem('watched'));
-// const movieQueue = JSON.parse(localStorage.getItem('queue'));
-
-// addWatched.addEventListener('click', () => {
-//   const watchedList = JSON.parse(localStorage.getItem('watched'));
-//   addingToLocalStorage();
-// });
