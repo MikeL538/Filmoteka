@@ -17,14 +17,12 @@
 
     .header__nav {
       &-title {
-        color: getcolor('header');
         display: inline;
         font-size: 30px;
-        transition: 0.5s ease-in-out;
+      }
 
-        &:hover {
-          color: getcolor('orange');
-        }
+      &-icon {
+        margin-right: 5px;
       }
 
       &-container {
@@ -32,6 +30,14 @@
 
         > a {
           text-decoration: none;
+          stroke: #fff;
+          color: #fff;
+          transition: 0.5s ease-in-out;
+
+          &:hover {
+            stroke: getcolor('orange');
+            color: getcolor('orange');
+          }
         }
       }
     }
