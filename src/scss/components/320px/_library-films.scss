@@ -1,0 +1,57 @@
+@import '../utils/vars';
+
+.library-films {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+
+  &__list {
+    list-style: none;
+    margin: 20px;
+
+    &-item {
+      border-radius: 5px;
+      margin-bottom: 20px;
+      width: 100%;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+        z-index: 10;
+      }
+
+      > img {
+        display: flex;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      > h2 {
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 1.33;
+        margin-top: 10px;
+      }
+
+      > p {
+        color: getcolor('orange');
+        font-size: 12px;
+        line-height: 1.17;
+      }
+
+      &--rating {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 14px;
+        background-color: getcolor('orange');
+        border-radius: 5px;
+        color: #fff;
+        font-size: 12px;
+      }
+    }
+  }
+}

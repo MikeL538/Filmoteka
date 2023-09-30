@@ -1,39 +1,114 @@
-import { fetchMovies } from './fetcher';
-import { fetchMovieDetails, populateModal } from './modalDetails';
-const watchedBtn = document.querySelector('.btn-watched');
-const queueBtn = document.querySelector('.btn-queue');
-const addWatched = document.querySelector('.btn-add-watched');
-const addQueue = document.querySelector('.btn-add-queue');
-const boxWatched = document.querySelector('.watched-box');
-const boxQueue = document.querySelector('.queue-box');
-const imgNoCinema = document.querySelector('#noCinema');
+import axios from 'axios';
+import { currentLanguage } from './language';
+import { apiKey } from './fetcher';
 
-// console.log(watchedBtn);
-// console.log(queueBtn);
-// console.log(addWatched);
-// console.log(addQueue);
-// axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-// axios.defaults.headers.common['Authorization'] =
-//   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZjk0YzNhNWI0MDAwMDg5YWZhMWQ1YTFhZTk4YWIxZCIsInN1YiI6IjY1MGM4MmQzYjViYzIxMDEyY2M5ZmIwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gbA2ivTkeIlFgOsCG0AQU95bbBmYrPkGm6ojq4z3dKo';
+// Button watched = watched list
+if (document.querySelector('.library-films__list')) {
+  const btnWatched = document.querySelector('.btn-watched');
 
+  btnWatched.addEventListener('click', () => {
+    const libraryFilmsList = document.querySelector('.library-films__list');
+    libraryFilmsList.innerHTML = '';
 
-watchedBtn.addEventListener('click', () => {
-  boxWatched.classList.remove('is-hiden');
-  boxQueue.classList.add('is-hiden');
-  imgNoCinema.classList.add('is-hiden');
-  const idFromLS = localStorage.getItem('watched');
-  const watchedList = JSON.parse(idFromLS);
-  //   console.log(watchedList);
-  //   fetchMovies(watchedList);
-  fetchMovieDetails(watchedList);
-  //   populateModal(movieDetails);
-});
+    const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
+    const queueList = JSON.parse(localStorage.getItem('queue')) || [];
 
-queueBtn.addEventListener('click', () => {
-  boxQueue.classList.remove('is-hiden');
-  boxWatched.classList.add('is-hiden');
-  imgNoCinema.classList.add('is-hiden');
-  const queueFromLS = localStorage.getItem('queue');
-  const queueList = JSON.parse(queueFromLS);
-  fetchMovieDetails(queueList);
-});
+    function fetchMovieDetails(movieId) {
+      const movieDetailsUrl = `movie/${movieId}`;
+
+      axios
+        .get(movieDetailsUrl, {
+          params: {
+            api_key: apiKey,
+            language: currentLanguage,
+          },
+        })
+        .then(response => {
+          const movieDetails = response.data;
+          const genreNames = movieDetails.genres.map(genre => genre.name).join(', ');
+
+          const movieListItem = document.createElement('li');
+          movieListItem.classList.add('library-films__list-item');
+          movieListItem.dataset.id = movieDetails.id;
+          movieListItem.innerHTML = `
+            <img src="${getMovieImagePath(movieDetails.backdrop_path)}" alt="${
+            movieDetails.title
+          }" />
+            <h2>${movieDetails.title}</h2>
+            <p>${genreNames} | <span>${movieDetails.release_date.substring(
+            0,
+            4,
+          )}</span> <span class="films__list-item--rating">${movieDetails.vote_average}</span></p>
+          `;
+
+          libraryFilmsList.appendChild(movieListItem);
+        })
+        .catch(error => console.error('Error fetching movie details:', error));
+    }
+
+    function getMovieImagePath(path) {
+      return path
+        ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(path)}`
+        : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png';
+    }
+
+    watchedList.forEach(movieId => {
+      fetchMovieDetails(movieId);
+    });
+  });
+}
+
+// Button queued = queued list
+if (document.querySelector('.library-films__list')) {
+  const btnQueued = document.querySelector('.btn-queue');
+
+  btnQueued.addEventListener('click', () => {
+    const libraryFilmsList = document.querySelector('.library-films__list');
+    libraryFilmsList.innerHTML = '';
+
+    const queueList = JSON.parse(localStorage.getItem('queue')) || [];
+
+    function fetchMovieDetails(movieId) {
+      const movieDetailsUrl = `movie/${movieId}`;
+
+      axios
+        .get(movieDetailsUrl, {
+          params: {
+            api_key: apiKey,
+            language: currentLanguage,
+          },
+        })
+        .then(response => {
+          const movieDetails = response.data;
+          const genreNames = movieDetails.genres.map(genre => genre.name).join(', ');
+
+          const movieListItem = document.createElement('li');
+          movieListItem.classList.add('library-films__list-item');
+          movieListItem.dataset.id = movieDetails.id;
+          movieListItem.innerHTML = `
+            <img src="${getMovieImagePath(movieDetails.backdrop_path)}" alt="${
+            movieDetails.title
+          }" />
+            <h2>${movieDetails.title}</h2>
+            <p>${genreNames} | <span>${movieDetails.release_date.substring(
+            0,
+            4,
+          )}</span> <span class="films__list-item--rating">${movieDetails.vote_average}</span></p>
+          `;
+
+          libraryFilmsList.appendChild(movieListItem);
+        })
+        .catch(error => console.error('Error fetching movie details:', error));
+    }
+
+    function getMovieImagePath(path) {
+      return path
+        ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(path)}`
+        : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png';
+    }
+
+    queueList.forEach(movieId => {
+      fetchMovieDetails(movieId);
+    });
+  });
+}

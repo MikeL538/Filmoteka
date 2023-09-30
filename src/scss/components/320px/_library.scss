@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  //test
+  min-height: 100vh;
+  //
   &-btn-list {
     display: flex;
     justify-content: center;
@@ -114,44 +118,6 @@
         border-radius: 5px;
         color: #fff;
         font-size: 12px;
-      }
-    }
-  }
-}
-
-.page-numbers {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  align-items: center;
-  margin: 40px 0;
-
-  &__list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    list-style: none;
-  }
-
-  &__link {
-    text-decoration: none;
-    align-items: center;
-    display: flex;
-    @media (prefers-color-scheme: light) {
-      color: #000;
-    }
-    @media (prefers-color-scheme: dark) {
-      color: #fff;
-    }
-
-    &--arrow {
-      margin: 0 20px;
-      @media (prefers-color-scheme: light) {
-        stroke: #000;
-      }
-      @media (prefers-color-scheme: dark) {
-        stroke: #fff;
       }
     }
   }

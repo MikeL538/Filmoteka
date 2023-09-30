@@ -197,14 +197,11 @@
 // ----------------scrolled-----------------
 .header.scrolled {
   height: 40px;
-
   transition: 0.6s ease-in-out;
 }
 
 .scrolled-container {
-  height: 0;
   padding: 0;
-  transition: 0.6s ease-in-out;
 }
 
 .hovered {
@@ -217,5 +214,6 @@
 }
 
 .nav-height {
-  height: 35px;
+  height: 40px;
+  padding: 0;
 }

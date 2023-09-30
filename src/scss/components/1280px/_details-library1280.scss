@@ -1,0 +1,30 @@
+@media screen and (min-width: 1280px) {
+  .details-library {
+    max-height: 558px;
+    max-width: 806px;
+    justify-content: flex-start;
+
+    &__container {
+      width: 805px;
+      height: 558px;
+      margin-left: 20px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+    }
+
+    &__img {
+      min-height: 550px;
+      max-width: 440px;
+      margin-left: -75px;
+      margin-top: 0px;
+    }
+
+    &__information {
+      max-width: 260px;
+    }
+
+    &__about-container {
+      max-width: 391px;
+    }
+  }
+}

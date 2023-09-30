@@ -1,9 +1,4 @@
 <div class="header__container">
-  <div class="header__nav-language">
-    <p class="header__nav-language-item" data-translate="language">Language:</p>
-    <button id="enLang" class="header__nav-language-btn">EN</button>
-    <button id="plLang" class="header__nav-language-btn">PL</button>
-  </div>
   <nav class="header__nav">
     <div class="header__nav-container">
       <a href="./index.html">
@@ -19,6 +14,12 @@
         <li class="header__nav-list-item">
           <a class="underline" href="./my-library.html" data-translate="library">My Library</a>
         </li>
+        <li class="header__nav-list-item">
+          <div class="header__nav-language">
+            <button id="enLang" class="header__nav-language-btn">EN</button>
+            <button id="plLang" class="header__nav-language-btn">PL</button>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="library-btn-list">
@@ -29,15 +30,5 @@
         Queue
       </button>
     </div>
-    <!-- Search input -->
-    <!-- <form>
-      <input class="header__nav-input" type="text" placeholder="Search Movie" />
-      <button class="header__nav-input-submit" type="submit">
-        <svg class="header__nav-input--loupe" width="12" height="12">
-          <use href="./images/icons.svg#loupe"></use>
-        </svg>
-      </button>
-    </form> -->
-    <!-- <p class="header__error">Search result not successful. Enter the correct movie name.</p> -->
   </nav>
 </div>

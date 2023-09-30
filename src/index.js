@@ -1,9 +1,10 @@
-import './scss/main.scss';
+import './js/footer';
 import './js/language';
+import './js/scrolled';
+import './scss/main.scss';
+
 import './js/fetcher';
 import './js/modalDetails';
+
+import './js/modalDetailsLibrary';
 import './js/library';
-import './js/scrolled';
-import './js/footer';
-import './js/modalTeam';
-import './js/team';
