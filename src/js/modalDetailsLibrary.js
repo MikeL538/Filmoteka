@@ -5,11 +5,7 @@ import { apiKey } from './fetcher';
 const deleteWatched = document.querySelector('.btn-delete-watched');
 const deleteQueue = document.querySelector('.btn-delete-queue');
 
-const detailsDiv = document.querySelector('.details');
-const detailsDivLibrary = document.querySelector('.details-library');
 const detailsCloseLibrary = document.querySelector('.details-library__close-button');
-let clickedMovie = '';
-let movieId = '';
 
 export function showLibraryDetails(e) {
   const clickedMovie = e.target.closest('.library-films__list-item');
@@ -18,7 +14,7 @@ export function showLibraryDetails(e) {
     return;
   }
 
-  const detailsDivLibrary = document.querySelector('.details-library'); // Przeniesione tutaj
+  const detailsDivLibrary = document.querySelector('.details-library');
 
   const movieId = clickedMovie.dataset.id;
   if (!movieId) {
