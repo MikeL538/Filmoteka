@@ -5,3 +5,5 @@ import './js/modalDetails';
 import './js/library';
 import './js/scrolled';
 import './js/footer';
+import './js/modalTeam';
+import './js/team';

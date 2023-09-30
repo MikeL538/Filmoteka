@@ -12,5 +12,5 @@ function checkFooterVisibility() {
 window.addEventListener('scroll', checkFooterVisibility);
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkFooterVisibility();
-  });
+  checkFooterVisibility();
+});
