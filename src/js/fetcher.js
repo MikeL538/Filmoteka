@@ -127,7 +127,7 @@ function getGenreNameById(genreId) {
   }
 }
 
-// Downloading DATA and generate films list
+// Downloading DATA and generate films list + scroll
 if (document.querySelector('.films__list')) {
   function fetchMovies(page, searchQuery = '') {
     const trendingMoviesUrl = searchQuery ? 'search/movie' : 'trending/movie/day';
@@ -197,6 +197,7 @@ if (document.querySelector('.films__list')) {
   let searchQuery = '';
 
   function handleSearch(event) {
+    noMoreMoviesLogged = false;
     event.preventDefault();
     searchQuery = searchInput.value.trim();
 
@@ -206,6 +207,13 @@ if (document.querySelector('.films__list')) {
     filmsList.innerHTML = '';
 
     fetchMovies(currentPage, searchQuery);
+
+    movieItems;
+
+    if (movieItems.length <= 19) {
+      noMoreMoviesLogged = true;
+      Notiflix.Notify.info('No more movies to load :(');
+    }
   }
 
   searchForm.addEventListener('submit', handleSearch);
@@ -221,11 +229,9 @@ if (document.querySelector('.films__list')) {
       isLoading = true;
       currentPage++;
 
-      const previousMovieCount = renderedMovieIds.size;
-
       fetchMovies(currentPage, searchQuery);
 
-      if (renderedMovieIds.size === previousMovieCount) {
+      if (renderedMovieIds.size < 20) {
         noMoreMoviesLogged = true;
         Notiflix.Notify.info('No more movies to load :(');
       }
