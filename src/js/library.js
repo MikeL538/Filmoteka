@@ -2,6 +2,7 @@ import axios from 'axios';
 import { currentLanguage } from './language';
 import { apiKey } from './fetcher';
 
+// Button watched = watched list
 if (document.querySelector('.library-films__list')) {
   const btnWatched = document.querySelector('.btn-watched');
 
@@ -57,6 +58,7 @@ if (document.querySelector('.library-films__list')) {
   });
 }
 
+// Button queued = queued list
 if (document.querySelector('.library-films__list')) {
   const btnQueued = document.querySelector('.btn-queue');
 
