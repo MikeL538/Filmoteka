@@ -4,7 +4,7 @@ const teamBackdrop = document.querySelector('.backdrop-modal');
 const teamModal = document.querySelector('.team__modal');
 
 openModal.addEventListener('click', openModalTeam);
-// closeModal.addEventListener('click', closeModalTeam);
+closeModal.addEventListener('click', closeModalTeam);
 
 function openModalTeam(event) {
   teamBackdrop.classList.add('team__backdrop--show');
