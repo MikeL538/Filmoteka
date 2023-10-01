@@ -207,19 +207,14 @@ if (document.querySelector('.films__list')) {
 
     filmsList.innerHTML = '';
 
-    movieItems;
+    let currentMoviesLength = movieItems.length;
+
+    if (currentMoviesLength === 0) {
+      noMoreMoviesLogged = true;
+      Notiflix.Notify.failure('Search result not successful. Enter the correct movie name.');
+    }
 
     fetchMovies(currentPage, searchQuery);
-
-    setTimeout(() => {
-      if (movieItems.length < 20 && movieItems.length > 0) {
-        noMoreMoviesLogged = true;
-        Notiflix.Notify.info('No more movies to load :(');
-      } else if (movieItems.length === 0) {
-        noMoreMoviesLogged = true;
-        Notiflix.Notify.failure('Search result not successful. Enter the correct movie name.');
-      }
-    }, 250);
   }
 
   searchForm.addEventListener('submit', handleSearch);
@@ -237,7 +232,7 @@ if (document.querySelector('.films__list')) {
 
       fetchMovies(currentPage, searchQuery);
 
-      if (renderedMovieIds.size < 20) {
+      if (!isLoading || renderedMovieIds.size < 20) {
         noMoreMoviesLogged = true;
         Notiflix.Notify.info('No more movies to load :(');
       }

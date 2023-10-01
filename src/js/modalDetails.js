@@ -14,7 +14,6 @@ let movieId = '';
 export function showDetails(e) {
   clickedMovie = e.target.closest('.films__list-item');
   if (!clickedMovie) {
-    console.error('Invalid movie item clicked.');
     return;
   }
   detailsDiv.classList.add('show-element');
