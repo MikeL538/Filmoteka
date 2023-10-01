@@ -10,7 +10,7 @@
   height: 125px;
   justify-content: center;
   margin-bottom: 0;
-  position: sticky;
+  position: fixed;
   top: 0;
   transition: 0.5s ease-in-out;
   width: 100%;
@@ -26,6 +26,7 @@
 
   &-buttons {
     gap: 20px;
+
     > button {
       background: none;
       border-radius: 5px;
@@ -52,6 +53,9 @@
     justify-content: center;
     margin: 0 auto;
     padding: 20px 20px 40px;
+    position: absolute;
+    top: 2px;
+    transition: 0.5s ease-in-out;
   }
 
   &__nav {
@@ -103,6 +107,7 @@
       width: 280px;
 
       > a {
+        margin-right: 8px;
         stroke: #fff;
         transition: 0.5s ease-in-out;
         &:hover,
@@ -130,7 +135,6 @@
           &:focus {
             stroke: getcolor('orange');
             color: getcolor('orange');
-
           }
         }
       }
@@ -202,14 +206,24 @@
 
 .scrolled-container {
   padding: 0;
+  position: -5px;
 }
 
-.hovered {
-  height: 216px;
-  transition: 0.6s ease-in-out;
-}
+// .hovered {
+//   height: 216px;
+//   transition: 0.6s ease-in-out;
+// }
 
 .form-transform {
+  transform: translateY(-10000px);
+}
+
+.library-btn-list {
+  margin-top: 15px !important;
+  position: relative;
+}
+
+.buttons-transform {
   transform: translateY(-10000px);
 }
 

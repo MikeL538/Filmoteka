@@ -2,13 +2,13 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    background-size: 100vw 216px;
-    height: 216px;
+    background-size: 100vw 168px;
+    height: 168px;
     margin-bottom: 10px;
     background-image: url('../images/header-background-tablet.jpg');
 
     .header:hover {
-      height: 216px;
+      height: 168px;
     }
 
     &--library {

@@ -32,8 +32,12 @@ const translations = {
     popularity: 'Popularity',
     orgTitle: 'Original Title',
     genre: 'Genre',
+    about: 'About',
     btnWatched: 'add to watched',
     btnQueue: 'add to queue',
+    // Library
+    btnDltWatched: 'delete from watched',
+    btnDltQueued: 'delete from queue',
   },
   'pl-PL': {
     // Header
@@ -49,8 +53,12 @@ const translations = {
     popularity: 'Popularność',
     orgTitle: 'Oryginalny tytuł',
     genre: 'Kategoria',
+    about: 'Opis',
     btnWatched: 'dodaj do obejrzanych',
     btnQueue: 'dodaj do kolejki',
+    // Library
+    btnDltWatched: 'usuń z oglądanych',
+    btnDltQueued: 'usuń z kolejki',
   },
 };
 

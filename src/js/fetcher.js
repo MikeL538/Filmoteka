@@ -10,6 +10,7 @@ axios.defaults.headers.common['Authorization'] =
 let currentPage = 1;
 let isLoading = false;
 let noMoreMoviesLogged = false;
+let movieItems = [];
 
 // Genres ID to genre name + translation
 const genresData = {
@@ -158,7 +159,7 @@ if (document.querySelector('.films__list')) {
               return `<li class="films__list-item" data-id="${id}">
           <img src="${imagePath}" alt="${title}" />
           <h2>${title}</h2>
-          <p>${genreNames.slice(0, 2).join(', ')}, other  |  <span>${release_date.substring(
+          <p>${genreNames.slice(0, 2).join(', ')}  | <span>${release_date.substring(
                 0,
                 4,
               )}  </span><span class="films__list-item--rating">${roundedVoteAverage}</span></p>
@@ -180,7 +181,7 @@ if (document.querySelector('.films__list')) {
 
         isLoading = false;
 
-        const movieItems = document.querySelectorAll('.films__list-item');
+        movieItems = document.querySelectorAll('.films__list-item');
         movieItems.forEach(item => {
           item.addEventListener('click', showDetails);
         });
@@ -206,14 +207,19 @@ if (document.querySelector('.films__list')) {
 
     filmsList.innerHTML = '';
 
-    fetchMovies(currentPage, searchQuery);
-
     movieItems;
 
-    if (movieItems.length <= 19) {
-      noMoreMoviesLogged = true;
-      Notiflix.Notify.info('No more movies to load :(');
-    }
+    fetchMovies(currentPage, searchQuery);
+
+    setTimeout(() => {
+      if (movieItems.length < 20 && movieItems.length > 0) {
+        noMoreMoviesLogged = true;
+        Notiflix.Notify.info('No more movies to load :(');
+      } else if (movieItems.length === 0) {
+        noMoreMoviesLogged = true;
+        Notiflix.Notify.failure('Search result not successful. Enter the correct movie name.');
+      }
+    }, 250);
   }
 
   searchForm.addEventListener('submit', handleSearch);

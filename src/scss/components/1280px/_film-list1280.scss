@@ -2,7 +2,7 @@
   .films {
     max-width: 1280px;
     width: 100%;
-    margin: 20px auto;
+    margin: 206px auto 20px auto;
     &__list {
       gap: 16px;
       width: 1217px;
@@ -13,7 +13,7 @@
 
         > img {
           max-width: 395px;
-          height: 480px;
+          // height: 480px;
         }
       }
     }
