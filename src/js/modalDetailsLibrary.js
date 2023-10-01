@@ -2,11 +2,6 @@ import axios from 'axios';
 import { currentLanguage } from './language';
 import { apiKey } from './fetcher';
 
-const deleteWatched = document.querySelector('.btn-delete-watched');
-const deleteQueue = document.querySelector('.btn-delete-queue');
-
-const detailsCloseLibrary = document.querySelector('.details-library__close-button');
-
 export function showLibraryDetails(e) {
   const clickedMovie = e.target.closest('.library-films__list-item');
   if (!clickedMovie) {
@@ -21,6 +16,66 @@ export function showLibraryDetails(e) {
     console.error('No movie ID found for the clicked item.');
     return;
   }
+
+  // Устанавливаем data-id для модального окна
+  const modalElement = document.querySelector('.details-library');
+  modalElement.dataset.id = movieId;
+
+  // Объявляем detailsCloseLibrary здесь
+  const detailsCloseLibrary = document.querySelector('.details-library__close-button');
+
+
+  console.log('Movie ID set to:', movieId);
+
+  // Funkcja aktualizacji listy filmów po ich usunięciu
+  function refreshMovieList() {
+    const libraryFilmsList = document.querySelector('.library-films__list');
+    libraryFilmsList.innerHTML = '';
+    const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
+    watchedList.forEach(movieId => {
+      fetchMovieDetails(movieId);
+    });
+  
+    closeDetails();
+  }
+
+  // Obsługa zdarzenia dla przycisku usuwania z "watched"
+  const btnDeleteWatched = document.querySelector('.btn-delete-watched');
+  btnDeleteWatched.addEventListener('click', () => {
+    const movieId = modalElement.dataset.id;
+
+    if (!movieId) {
+      console.error('No movie ID found in the modal.');
+      return;
+    }
+
+    const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
+    const updatedWatchedList = watchedList.filter(id => id !== movieId);
+    localStorage.setItem('watched', JSON.stringify(updatedWatchedList));
+
+    refreshMovieList();
+
+    closeDetails();
+  });
+
+  // Obsługa zdarzenia dla przycisku usuwania z "queue"
+  const btnDeleteQueue = document.querySelector('.btn-delete-queue');
+  btnDeleteQueue.addEventListener('click', () => {
+    const movieId = modalElement.dataset.id;
+
+    if (!movieId) {
+      console.error('No movie ID found in the modal.');
+      return;
+    }
+
+    const queueList = JSON.parse(localStorage.getItem('queue')) || [];
+    const updatedQueueList = queueList.filter(id => id !== movieId);
+    localStorage.setItem('queue', JSON.stringify(updatedQueueList));
+
+    refreshMovieList(); 
+
+    closeDetails();
+  });
 
   document.addEventListener('click', e => {
     const modal = document.querySelector('.details-library');
