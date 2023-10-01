@@ -3,14 +3,14 @@ import devAvatar from '../images/avatar.jpg';
 export const teamList = [
   {
     name: 'Michał Lipiak',
-    role: 'Team Lead / Scrum Master',
+    role: 'Team Leader',
     github: 'https://github.com/MikeL538',
     photo: devAvatar,
   },
 
   {
     name: 'Michał Wójcik',
-    role: 'Developer',
+    role: 'Developer / Scrum Master',
     github: 'https://github.com/michalwojcik4',
     photo: devAvatar,
   },
