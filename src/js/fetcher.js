@@ -11,6 +11,7 @@ let currentPage = 1;
 let isLoading = false;
 let noMoreMoviesLogged = false;
 let movieItems = [];
+let scrolled = false;
 
 // Genres ID to genre name + translation
 const genresData = {
@@ -144,6 +145,13 @@ if (document.querySelector('.films__list')) {
       .then(response => {
         const movies = response.data.results;
 
+        setTimeout(() => {
+          if (movies.length === 0 && !scrolled) {
+            noMoreMoviesLogged = true;
+            Notiflix.Notify.failure('Search result not successful. Enter the correct movie name.');
+          }
+        }, 100);
+
         const movieList = movies
           .filter(movie => !renderedMovieIds.has(movie.id))
           .map(({ id, backdrop_path, title, release_date, genre_ids, vote_average }) => {
@@ -199,6 +207,7 @@ if (document.querySelector('.films__list')) {
 
   function handleSearch(event) {
     noMoreMoviesLogged = false;
+    scrolled = false;
     event.preventDefault();
     searchQuery = searchInput.value.trim();
 
@@ -207,12 +216,10 @@ if (document.querySelector('.films__list')) {
 
     filmsList.innerHTML = '';
 
-    let currentMoviesLength = movieItems.length;
-
-    if (currentMoviesLength === 0) {
-      noMoreMoviesLogged = true;
-      Notiflix.Notify.failure('Search result not successful. Enter the correct movie name.');
-    }
+    // if (currentMoviesLength === 0) {
+    //   noMoreMoviesLogged = true;
+    //   Notiflix.Notify.failure('Search result not successful. Enter the correct movie name.');
+    // }
 
     fetchMovies(currentPage, searchQuery);
   }
@@ -221,7 +228,7 @@ if (document.querySelector('.films__list')) {
 
   function handleScroll() {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-
+    scrolled = true;
     if (noMoreMoviesLogged) {
       return;
     }

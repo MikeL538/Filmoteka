@@ -35,11 +35,13 @@ document.addEventListener('click', e => {
   }
 });
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeDetails();
-  }
-});
+if (document.querySelector('.details')) {
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeDetails();
+    }
+  });
+}
 
 if (detailsClose) {
   detailsClose.addEventListener('click', () => {
@@ -48,6 +50,10 @@ if (detailsClose) {
 }
 
 // Closing by clicking outside the modal
+function closeDetails() {
+  detailsDiv.classList.remove('show-element');
+}
+
 document.addEventListener('click', e => {
   const modal = document.querySelector('.details');
   if (modal && !modal.contains(e.target)) {
@@ -55,8 +61,10 @@ document.addEventListener('click', e => {
   }
 });
 
-function closeDetails() {
-  detailsDiv.classList.remove('show-element');
+if (document.querySelector('.details')) {
+  function closeDetails() {
+    detailsDiv.classList.remove('show-element');
+  }
 }
 
 // Local storage add to watched
