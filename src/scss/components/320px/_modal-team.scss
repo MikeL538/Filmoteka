@@ -69,7 +69,6 @@
   background-color: #f7f7f7;
   transform: translateX(-50%);
   overflow-y: scroll;
-
   max-width: 840px;
   height: 100%;
   max-height: 558px;
@@ -147,7 +146,6 @@
 .team__name {
   font-size: 18px;
   font-weight: 600;
-
   transition-duration: 0.5s;
   @media (prefers-color-scheme: light) {
     color: #000;

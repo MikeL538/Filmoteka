@@ -16,6 +16,7 @@ function openModalTeam(event) {
 function closeModalTeam(event) {
   teamBackdrop.classList.remove('team__backdrop--show');
   document.removeEventListener('keydown', onEscapeClose);
+  document.body.style.overflowY = 'scroll';
 }
 
 function onEscapeClose(event) {
