@@ -28,7 +28,7 @@ window.addEventListener('scroll', () => {
         headerForm.classList.remove('form-transform');
       }, 200);
     }
-    if (libraryButtons && !header.matches(':hover')) {
+    if (libraryButtons) {
       setTimeout(() => {
         libraryButtons.classList.remove('buttons-transform');
       }, 200);
@@ -47,7 +47,7 @@ header.addEventListener('mouseenter', () => {
         headerForm.classList.remove('form-transform');
       }, 200);
     }
-    if (libraryButtons && !header.matches(':hover')) {
+    if (libraryButtons) {
       setTimeout(() => {
         libraryButtons.classList.remove('buttons-transform');
       }, 200);
@@ -66,7 +66,7 @@ header.addEventListener('mouseleave', () => {
         headerForm.classList.add('form-transform');
       }, 200);
     }
-    if (libraryButtons && !header.matches(':hover')) {
+    if (libraryButtons) {
       setTimeout(() => {
         libraryButtons.classList.add('buttons-transform');
       }, 200);
