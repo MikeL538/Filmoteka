@@ -11,6 +11,8 @@
   left: 50%;
   max-height: 660px;
   max-width: 500px;
+  min-width: 280px;
+  width: 80vw;
   opacity: 0;
   overflow-y: auto;
   pointer-events: none;
@@ -20,7 +22,7 @@
   top: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 0.5s ease-in-out;
-  width: 100%;
+
   z-index: -10;
 
   &__container {
@@ -92,7 +94,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
-        margin: 0 20px 0 0;
+        margin: 0 12px 0 0px;
         white-space: nowrap;
       }
     }
@@ -105,6 +107,10 @@
       height: 16px;
       background-color: getcolor('orange');
       border-radius: 5px;
+    }
+
+    &-original-title {
+      width: 155px;
     }
   }
 

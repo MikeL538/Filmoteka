@@ -1,15 +1,42 @@
 import axios from 'axios';
 import { currentLanguage } from './language';
 import { apiKey } from './fetcher';
+import Notiflix from 'notiflix';
+
+const watchedBtn = document.querySelector('.btn-watched');
+const queuedBtn = document.querySelector('.btn-queued');
+const detailsDivLibrary = document.querySelector('.details-library');
+const detailsCloseLibrary = document.querySelector('.details-library__close-button');
+const btnDeleteWatched = document.querySelector('.btn-delete-watched');
+const btnDeleteQueue = document.querySelector('.btn-delete-queue');
+const libraryFilmsList = document.querySelector('.library-films__list');
+
+window.onload = function () {
+  if (document.querySelector('.btn-watched')) {
+    watchedBtn.click();
+  }
+};
+
+// Dodawanie aktywnego przycisku (background)
+if (document.querySelector('.btn-watched')) {
+  queuedBtn.addEventListener('click', () => {
+    watchedBtn.classList.remove('button-active');
+    queuedBtn.classList.add('button-active');
+  });
+}
+
+if (document.querySelector('.btn-watched')) {
+  watchedBtn.addEventListener('click', () => {
+    watchedBtn.classList.add('button-active');
+    queuedBtn.classList.remove('button-active');
+  });
+}
 
 export function showLibraryDetails(e) {
   const clickedMovie = e.target.closest('.library-films__list-item');
   if (!clickedMovie) {
-    console.error('Invalid movie item clicked.');
     return;
   }
-
-  const detailsDivLibrary = document.querySelector('.details-library');
 
   const movieId = clickedMovie.dataset.id;
   if (!movieId) {
@@ -17,65 +44,76 @@ export function showLibraryDetails(e) {
     return;
   }
 
-  // Устанавливаем data-id для модального окна
+  // Set ID for modal
   const modalElement = document.querySelector('.details-library');
   modalElement.dataset.id = movieId;
 
-  // Объявляем detailsCloseLibrary здесь
-  const detailsCloseLibrary = document.querySelector('.details-library__close-button');
-
-
-  console.log('Movie ID set to:', movieId);
-
   // Funkcja aktualizacji listy filmów po ich usunięciu
   function refreshMovieList() {
-    const libraryFilmsList = document.querySelector('.library-films__list');
     libraryFilmsList.innerHTML = '';
     const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
+
     watchedList.forEach(movieId => {
       fetchMovieDetails(movieId);
     });
-  
-    closeDetails();
+
+    if (queuedBtn.classList.contains('button-active')) {
+      queuedBtn.click();
+      console.log('queue clicked');
+    }
+    if (watchedBtn.classList.contains('button-active')) {
+      watchedBtn.click();
+      console.log('watch clicked');
+    }
   }
 
   // Obsługa zdarzenia dla przycisku usuwania z "watched"
-  const btnDeleteWatched = document.querySelector('.btn-delete-watched');
-  btnDeleteWatched.addEventListener('click', () => {
-    const movieId = modalElement.dataset.id;
 
-    if (!movieId) {
-      console.error('No movie ID found in the modal.');
-      return;
-    }
+  if (watchedBtn.classList.contains('button-active')) {
+    btnDeleteWatched.addEventListener('click', () => {
+      detailsCloseLibrary.click();
+      const movieId = modalElement.dataset.id;
 
-    const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
-    const updatedWatchedList = watchedList.filter(id => id !== movieId);
-    localStorage.setItem('watched', JSON.stringify(updatedWatchedList));
+      if (!movieId) {
+        Notiflix.Notify.failure('No movie found in the watched list.');
+        return;
+      }
 
-    refreshMovieList();
+      const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
+      const updatedWatchedList = watchedList.filter(id => id !== movieId);
+      localStorage.setItem('watched', JSON.stringify(updatedWatchedList));
 
-    closeDetails();
-  });
-
+      setTimeout(() => {
+        closeDetails();
+      }, 500);
+      setTimeout(() => {
+        refreshMovieList();
+      }, 200);
+    });
+  }
   // Obsługa zdarzenia dla przycisku usuwania z "queue"
-  const btnDeleteQueue = document.querySelector('.btn-delete-queue');
-  btnDeleteQueue.addEventListener('click', () => {
-    const movieId = modalElement.dataset.id;
 
-    if (!movieId) {
-      console.error('No movie ID found in the modal.');
-      return;
-    }
+  if (queuedBtn.classList.contains('button-active')) {
+    btnDeleteQueue.addEventListener('click', () => {
+      const movieId = modalElement.dataset.id;
 
-    const queueList = JSON.parse(localStorage.getItem('queue')) || [];
-    const updatedQueueList = queueList.filter(id => id !== movieId);
-    localStorage.setItem('queue', JSON.stringify(updatedQueueList));
+      if (!movieId) {
+        Notiflix.Notify.failure('No movie found in the queued list.');
+        return;
+      }
 
-    refreshMovieList(); 
+      const queueList = JSON.parse(localStorage.getItem('queue')) || [];
+      const updatedQueueList = queueList.filter(id => id !== movieId);
+      localStorage.setItem('queue', JSON.stringify(updatedQueueList));
 
-    closeDetails();
-  });
+      setTimeout(() => {
+        closeDetails();
+      }, 500);
+      setTimeout(() => {
+        refreshMovieList();
+      }, 200);
+    });
+  }
 
   document.addEventListener('click', e => {
     const modal = document.querySelector('.details-library');
@@ -89,6 +127,7 @@ export function showLibraryDetails(e) {
       closeDetails();
     }
   });
+
   if (detailsCloseLibrary) {
     detailsCloseLibrary.addEventListener('click', () => {
       closeDetails();
@@ -97,17 +136,15 @@ export function showLibraryDetails(e) {
 
   // Zamknięcie za pomocą kliknięcia poza modalem
   document.addEventListener('click', e => {
-    const modal = document.querySelector('.details-library');
-    if (modal && !modal.contains(e.target)) {
-      closeDetails();
-    }
+    if (e.target.closest('.details-library')) return; // Do nothing if clicking inside the modal
+    closeDetails();
   });
 
-  function closeDetails() {
-    detailsDivLibrary.classList.remove('show-element');
-  }
-
   fetchMovieDetails(movieId);
+}
+
+function closeDetails() {
+  detailsDivLibrary.classList.remove('show-element');
 }
 
 function fetchMovieDetails(movieId) {
@@ -148,7 +185,9 @@ function populateModal(movieDetails) {
       <span><span class="details-library__information-rating">${mathRound}</span> / 
       ${movieDetails.vote_count}</span>
       <span>${movieDetails.popularity}</span>
-      <span>${movieDetails.original_title}</span>
+      <span class="details-library__information-original-title">${
+        movieDetails.original_title
+      }</span>
       <span>${movieDetails.genres.map(genre => genre.name).join(', ')}</span>
       </li>
     </ul>

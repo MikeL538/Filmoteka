@@ -158,12 +158,12 @@ export function populateModal(movieDetails) {
   const mathRound = Math.round(movieDetails.vote_average * 10) / 10;
 
   modalInformation.innerHTML = `
-    <ul class="details__information-list">
+    <ul class=" details__information-list">
       <li>
       <span><span class="details__information-rating">${mathRound}</span> / 
       ${movieDetails.vote_count}</span>
       <span>${movieDetails.popularity}</span>
-      <span>${movieDetails.original_title}</span>
+      <span class="details__information-original-title">${movieDetails.original_title}</span>
       <span>${movieDetails.genres.map(genre => genre.name).join(', ')}</span>
       </li>
     </ul>

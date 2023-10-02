@@ -12,7 +12,6 @@ if (document.querySelector('.library-films__list')) {
     libraryFilmsList.innerHTML = '';
 
     const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
-    const queueList = JSON.parse(localStorage.getItem('queue')) || [];
 
     function fetchMovieDetails(movieId) {
       const movieDetailsUrl = `movie/${movieId}`;
@@ -63,7 +62,7 @@ if (document.querySelector('.library-films__list')) {
 
 // Button queued = queued list
 if (document.querySelector('.library-films__list')) {
-  const btnQueued = document.querySelector('.btn-queue');
+  const btnQueued = document.querySelector('.btn-queued');
 
   btnQueued.addEventListener('click', () => {
     const libraryFilmsList = document.querySelector('.library-films__list');

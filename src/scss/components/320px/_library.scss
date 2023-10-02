@@ -49,86 +49,13 @@
     }
   }
 }
+
 .button-active {
   background-color: getcolor('orange');
-  color: getcolor('black');
+  color: #fff;
   border: 1px solid getcolor('orange');
 }
 
-.watched-box {
-  display: flex;
-  width: 100%;
-  // height: 300px;
-  background-color: red;
-}
-.queue-box {
-  background-color: green(orange);
-  display: flex;
-  width: 280px;
-  height: 300px;
-}
 .is-hiden {
   display: none;
-}
-///////////watched list
-
-.films-watched {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  background-color: red;
-
-  &__list {
-    list-style: none;
-
-    &-item {
-      border-radius: 5px;
-      height: 443px;
-      margin-bottom: 20px;
-      width: 280px;
-
-      > img {
-        display: flex;
-        border-radius: 5px;
-        cursor: pointer;
-        height: 402px;
-        width: 280px;
-      }
-
-      > h2 {
-        text-transform: uppercase;
-        font-size: 12px;
-        line-height: 1.33;
-        margin-top: 10px;
-      }
-
-      > p {
-        color: getcolor('orange');
-        font-size: 12px;
-        line-height: 1.17;
-      }
-
-      &--rating {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 30px;
-        height: 14px;
-        background-color: getcolor('orange');
-        border-radius: 5px;
-        color: #fff;
-        font-size: 12px;
-      }
-    }
-  }
-
-  // Actual Page
-  &--chosen {
-    background-color: getcolor('orange') !important;
-    border-radius: 5px;
-    display: flex;
-    height: 40px;
-    justify-content: center;
-    width: 40px;
-  }
 }
