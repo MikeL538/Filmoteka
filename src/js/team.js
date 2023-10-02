@@ -1,4 +1,7 @@
 import devAvatar from '../images/avatar.jpg';
+import devMichalW from '../images/MichalW.jpg';
+import devViaczeszlav from '../images/Viaczeslav.jpg';
+import devMariuszG from '../images/MariuszG.jpg';
 
 export const teamList = [
   {
@@ -12,7 +15,7 @@ export const teamList = [
     name: 'Michał Wójcik',
     role: 'Developer / Scrum Master',
     github: 'https://github.com/michalwojcik4',
-    photo: devAvatar,
+    photo: devMichalW,
   },
 
   {
@@ -26,7 +29,7 @@ export const teamList = [
     name: 'Viaczeslav',
     role: 'Developer',
     github: 'https://github.com/Viache-Slav',
-    photo: devAvatar,
+    photo: devViaczeszlav,
   },
   {
     name: 'Tomek Cekała',
@@ -44,6 +47,6 @@ export const teamList = [
     name: 'Mariusz Guzowski',
     role: 'Developer',
     github: 'https://github.com/Gugiet',
-    photo: devAvatar,
+    photo: devMariuszG,
   },
 ];
