@@ -25,7 +25,7 @@ if (document.querySelector('.library-films__list')) {
         })
         .then(response => {
           const movieDetails = response.data;
-          const genreNames = movieDetails.genres.map(genre => genre.name).join(', ');
+          const genreNames = movieDetails.genres.map(genre => genre.name).slice(0, 2).join(', ');
 
           const movieListItem = document.createElement('li');
           movieListItem.classList.add('library-films__list-item');
@@ -38,7 +38,7 @@ if (document.querySelector('.library-films__list')) {
             <p>${genreNames} | <span>${movieDetails.release_date.substring(
             0,
             4,
-          )}</span> <span class="films__list-item--rating">${movieDetails.vote_average}</span></p>
+          )}</span> <span class="films__list-item--rating">${Math.round(movieDetails.vote_average * 10) / 10}</span></p>
           `;
 
           libraryFilmsList.appendChild(movieListItem);
