@@ -32,6 +32,15 @@
   height: max-content;
   padding-left: 20px;
     // align-items: center;
+
+    @media (prefers-color-scheme: light){
+      background-color: #fff;
+      color: #000;
+    }
+    @media (prefers-color-scheme: dark){
+      background-color: #0e0e0e;
+      color: #fff;
+    }
   }
 
   &__close-button {
@@ -57,8 +66,8 @@
         fill: #fff;
         stroke: #fff;
       }
-    }
   }
+}
 
   &__img {
     border-radius: 5px;
@@ -159,6 +168,7 @@
     width: 148px;
     height: 42px;
     border-radius: 5px;
+    background-color: getcolor('orange');
     text-transform: uppercase;
     color: #fff;
     font-family: 'Roboto', sans-serif;

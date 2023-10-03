@@ -32,6 +32,15 @@
   height: max-content;
   padding-left: 20px;
     // align-items: center;
+
+    @media (prefers-color-scheme: light){
+      background-color: #fff;
+      color: #000;
+    }
+    @media (prefers-color-scheme: dark){
+      background-color: #0e0e0e;
+      color: #fff;
+    }
   }
 
   &__close-button {
@@ -78,7 +87,7 @@
 
   &__information {
     display: flex;
-    margin: 10px 0 20px 5%;
+    margin: 10px 10px 20px 10px;
     align-items: center;
 
     &-list {
@@ -133,10 +142,11 @@
       border-radius: 5px;
       border: none;
       cursor: pointer;
-      margin: 10px 5px;
-      padding: 10px 5px;
+      height: 44px;
+      margin: 20px 0;
+      padding: 0 10px;
       text-transform: uppercase;
-      width: 150px;
+      width: 110px;
 
       &:first-of-type {
         margin-right: 10px;
@@ -158,13 +168,13 @@
     width: 148px;
     height: 42px;
     border-radius: 5px;
+    background-color: getcolor('orange');
     text-transform: uppercase;
     color: #fff;
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.33;
-    background-color: getcolor('orange');
     opacity: 0.4;
     &:hover,
     &:focus {
