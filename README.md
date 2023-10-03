@@ -4,7 +4,7 @@ https://mikel538.github.io/Filmoteka/
 
 ## Opis
 
-Jest to strona stworzona przez zespół {autorzy}, biorących udział w kursie Full Stack Developer
+Jest to strona stworzona przez zespół studentów, biorących udział w kursie Full Stack Developer
 organizowanym przez GoIT.
 
 Strona przedstawia wyszukiwarkę filmów, która prezentuje ranking filmów oraz popularne ostatnio
