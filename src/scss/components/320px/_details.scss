@@ -163,19 +163,18 @@
     justify-content: center;
     width: 148px;
     height: 42px;
-    border: 1px solid getcolor('black');
     border-radius: 5px;
-    background-color: getcolor('header');
     text-transform: uppercase;
-    color: getcolor('black');
+    color: #fff;
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.33;
+    background-color: getcolor('orange');
+    opacity: 0.4;
     &:hover,
     &:focus {
-      background-color: getcolor('orange');
-      border-color: getcolor('orange');
+      opacity: 1;
       transition: 0.5s;
     }
   }
