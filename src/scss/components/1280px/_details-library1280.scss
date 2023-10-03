@@ -1,8 +1,5 @@
 @media screen and (min-width: 1280px) {
   .details-library {
-    max-height: 558px;
-    max-width: 806px;
-    justify-content: flex-start;
 
     &__container {
       width: 805px;
@@ -15,7 +12,6 @@
     &__img {
       min-height: 500px;
       max-width: 400px;
-      margin-left: -75px;
       margin-top: 0px;
     }
 
