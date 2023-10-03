@@ -17,6 +17,7 @@ export function showDetails(e) {
     return;
   }
   detailsDiv.classList.add('show-element');
+  document.body.style.overflow = 'hidden';
 
   movieId = clickedMovie.dataset.id;
   if (!movieId) {
@@ -32,6 +33,7 @@ document.addEventListener('click', e => {
   const modal = document.querySelector('.details');
   if (modal && e.target === modal) {
     closeDetails();
+    document.body.style.overflowY = 'scroll';
   }
 });
 
@@ -39,6 +41,7 @@ if (document.querySelector('.details')) {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       closeDetails();
+      document.body.style.overflowY = 'scroll';
     }
   });
 }
@@ -46,6 +49,7 @@ if (document.querySelector('.details')) {
 if (detailsClose) {
   detailsClose.addEventListener('click', () => {
     closeDetails();
+    document.body.style.overflowY = 'scroll';
   });
 }
 
