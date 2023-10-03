@@ -1,6 +1,9 @@
 import devAvatar from '../images/avatar.jpg';
+import devMichalL from '../images/MichalL.jpg';
 import devMichalW from '../images/MichalW.jpg';
-import devViaczeszlav from '../images/Viaczeslav.jpg';
+import devMichalW from '../images/MichalW.jpg';
+import devBartoszB from '../images/BartoszB.jpg';
+import devTomekC from '../images/TomekC.jpg';
 import devMariuszG from '../images/MariuszG.jpg';
 
 export const teamList = [
@@ -8,7 +11,7 @@ export const teamList = [
     name: 'Michał Lipiak',
     role: 'Team Leader',
     github: 'https://github.com/MikeL538',
-    photo: devAvatar,
+    photo: devMichalL,
   },
 
   {
@@ -22,7 +25,7 @@ export const teamList = [
     name: 'Bartosz Barański',
     role: 'Developer',
     github: 'https://github.com/Bartosz-Baranski',
-    photo: devAvatar,
+    photo: devBartoszB,
   },
 
   {
@@ -35,7 +38,7 @@ export const teamList = [
     name: 'Tomek Cekała',
     role: 'Developer',
     github: 'https://github.com/tomcek2',
-    photo: devAvatar,
+    photo: devTomekC,
   },
   {
     name: 'Michał Szczepański',
