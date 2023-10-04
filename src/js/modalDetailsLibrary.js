@@ -22,6 +22,8 @@ if (document.querySelector('.btn-watched')) {
   queuedBtn.addEventListener('click', () => {
     watchedBtn.classList.remove('button-active');
     queuedBtn.classList.add('button-active');
+    btnDeleteWatched.style.display = 'none';
+    btnDeleteQueue.style.display = 'flex';
   });
 }
 
@@ -29,6 +31,8 @@ if (document.querySelector('.btn-watched')) {
   watchedBtn.addEventListener('click', () => {
     watchedBtn.classList.add('button-active');
     queuedBtn.classList.remove('button-active');
+    btnDeleteWatched.style.display = 'flex';
+    btnDeleteQueue.style.display = 'none';
   });
 }
 
@@ -65,15 +69,18 @@ export function showLibraryDetails(e) {
       watchedBtn.click();
       console.log('watch clicked');
     }
+    setTimeout(() => {
+      detailsDivLibrary.style.display = 'flex';
+      closeDetails();
+    }, 500);
   }
 
   // Obsługa zdarzenia dla przycisku usuwania z "watched"
 
   if (watchedBtn.classList.contains('button-active')) {
     btnDeleteWatched.addEventListener('click', () => {
-      detailsCloseLibrary.click();
       const movieId = modalElement.dataset.id;
-
+      detailsDivLibrary.style.display = 'none';
       if (!movieId) {
         Notiflix.Notify.failure('No movie found in the watched list.');
         return;
@@ -83,12 +90,9 @@ export function showLibraryDetails(e) {
       const updatedWatchedList = watchedList.filter(id => id !== movieId);
       localStorage.setItem('watched', JSON.stringify(updatedWatchedList));
 
-      setTimeout(() => {
-        closeDetails();
-      }, 500);
-      setTimeout(() => {
-        refreshMovieList();
-      }, 200);
+      refreshMovieList();
+
+      closeDetails();
     });
   }
   // Obsługa zdarzenia dla przycisku usuwania z "queue"
@@ -96,7 +100,7 @@ export function showLibraryDetails(e) {
   if (queuedBtn.classList.contains('button-active')) {
     btnDeleteQueue.addEventListener('click', () => {
       const movieId = modalElement.dataset.id;
-
+      detailsDivLibrary.style.display = 'none';
       if (!movieId) {
         Notiflix.Notify.failure('No movie found in the queued list.');
         return;
@@ -106,12 +110,8 @@ export function showLibraryDetails(e) {
       const updatedQueueList = queueList.filter(id => id !== movieId);
       localStorage.setItem('queue', JSON.stringify(updatedQueueList));
 
-      setTimeout(() => {
-        closeDetails();
-      }, 500);
-      setTimeout(() => {
-        refreshMovieList();
-      }, 200);
+      refreshMovieList();
+      closeDetails();
     });
   }
 
