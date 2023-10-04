@@ -175,6 +175,5 @@ export function populateModal(movieDetails) {
 
   modalAbout.textContent = movieDetails.overview;
 
-  const detailsDiv = document.querySelector('.details');
   detailsDiv.classList.add('show-element');
 }
