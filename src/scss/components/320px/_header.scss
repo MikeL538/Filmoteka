@@ -64,6 +64,12 @@
     flex-direction: column;
     justify-content: space-between;
 
+    &-icon {
+      margin-right: 5px;
+      align-items: center;
+      justify-content: center;
+    }
+
     &-title {
       display: none;
     }
