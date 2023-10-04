@@ -245,7 +245,7 @@ if (document.querySelector('.films__list')) {
 
       fetchMovies(currentPage, searchQuery);
 
-      if (!isLoading || renderedMovieIds.size < 20) {
+      if (renderedMovieIds.size < 20) {
         noMoreMoviesLogged = true;
         Notiflix.Notify.info('No more movies to load :(');
       }

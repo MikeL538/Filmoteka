@@ -206,7 +206,8 @@
 
 .scrolled-container {
   padding: 0;
-  position: -5px;
+  // position: -5px;
+  transform: translateY(-6px);
 }
 
 .hovered {
@@ -218,6 +219,11 @@
   transform: translateY(-10000px);
 }
 
+.nav-height {
+  height: 40px;
+  padding: 0;
+}
+
 .library-btn-list {
   margin-top: 15px !important;
   position: relative;
@@ -225,9 +231,4 @@
 
 .buttons-transform {
   transform: translateY(-10000px);
-}
-
-.nav-height {
-  height: 40px;
-  padding: 0;
 }

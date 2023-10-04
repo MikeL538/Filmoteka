@@ -7,4 +7,3 @@ import './js/modalDetails';
 import './js/modalDetailsLibrary';
 import './js/library';
 import './js/modalTeam';
-import './js/team';

@@ -63,11 +63,9 @@ export function showLibraryDetails(e) {
 
     if (queuedBtn.classList.contains('button-active')) {
       queuedBtn.click();
-      console.log('queue clicked');
     }
     if (watchedBtn.classList.contains('button-active')) {
       watchedBtn.click();
-      console.log('watch clicked');
     }
     setTimeout(() => {
       detailsDivLibrary.style.display = 'flex';
