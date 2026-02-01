@@ -1,209 +1,115 @@
-@import '../utils/vars';
+@use '../utils/vars' as vars;
 
 .header {
-  align-items: center;
+  @include vars.flex-center;
   background-image: url('../images/header-background-mobile.jpg');
   background-repeat: no-repeat;
-  background-size: 100vw 125px;
-  display: flex;
-  font-size: 12px;
+  background-size: 100vw 100%;
+  font-size: vars.$font-sm;
   height: 125px;
-  justify-content: center;
-  margin-bottom: 0;
   position: fixed;
   top: 0;
-  transition: 0.5s ease-in-out;
+  transition: vars.$transition;
   width: 100%;
   z-index: 100;
 
-  &:hover {
-    height: 216px;
-  }
-
-  &--library {
-    background-image: url('../images/my-library-mobile.jpg');
-  }
-
-  &-buttons {
-    gap: 20px;
-
-    > button {
-      background: none;
-      border-radius: 5px;
-      border: 1px solid getcolor('header');
-      cursor: pointer;
-      height: 44px;
-      margin-top: 70px;
-      text-transform: uppercase;
-      width: 130px;
-
-      &:first-of-type {
-        margin-right: 15px;
-      }
-    }
-    &--active {
-      background: getcolor('orange') !important;
-    }
-  }
-
   &__container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 20px 20px 40px;
-    position: absolute;
-    top: 8px;
+    @include vars.flex-between;
+    height: 100%;
     transition: 0.5s ease-in-out;
+    width: 100%;
   }
 
   &__nav {
-    align-items: center;
-    display: flex;
+    @include vars.flex-between;
     flex-direction: column;
-    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+
+    &-container {
+      width: 100%;
+      height: 100%;
+      @include vars.flex-between;
+    }
 
     &-icon {
       margin-right: 5px;
-      align-items: center;
-      justify-content: center;
+      stroke: vars.$color-default;
+
+      &:hover {
+        stroke: vars.$color-hover;
+      }
     }
 
     &-title {
       display: none;
     }
 
-    &-language {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      width: 100%;
-      padding-bottom: 10px;
-      gap: 10px;
-
-      &-item {
-        color: getcolor('header');
-        font-size: 8px;
-      }
-
-      &-btn {
-        width: 18px;
-        height: 18px;
-        color: getcolor('header');
-        border: 1px solid getcolor('header');
-        border-radius: 5px;
-        background-color: transparent;
-        text-transform: uppercase;
-        font-size: 10px;
-        &:hover,
-        &:focus {
-          background-color: getcolor('orange');
-          border-color: getcolor('orange');
-          transition: 0.5s;
-          filter: drop-shadow(0 8 43 rgba(255, 107, 1, 0.6));
-        }
-      }
-    }
-
-    &-container {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      width: 280px;
-
-      > a {
-        margin-right: 8px;
-        stroke: #fff;
-        transition: 0.5s ease-in-out;
-        &:hover,
-        &:focus {
-          stroke: getcolor('orange');
-        }
-      }
-    }
-
     &-list {
-      align-items: center;
-      display: flex;
+      @include vars.flex-between;
       gap: 40px;
-      list-style: none;
+    }
 
-      &-item {
-        > a {
-          stroke: #fff;
-          color: getcolor('header');
-          text-decoration: none;
-          text-transform: uppercase;
-          line-height: 1.5;
-          transition: 0.5s ease-in-out;
-          &:hover,
-          &:focus {
-            stroke: getcolor('orange');
-            color: getcolor('orange');
-          }
-        }
+    &-language-btn {
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 2px;
+      text-transform: uppercase;
+      transition: vars.$transition;
+
+      &:hover,
+      &:focus {
+        background: vars.$color-goit;
+        filter: drop-shadow(0 8 43 rgba(255, 107, 1, 0.6));
       }
     }
 
     &-form {
-      display: flex;
-      flex-direction: row;
+      @include vars.flex-center;
+      gap: 3px;
       margin-top: 25px;
       border-bottom: 1px solid;
-      color: getcolor('header');
       width: 280px;
-      position: relative;
     }
 
+    // ZMIENIC NA FORM-INPUT
     &-input {
-      flex-grow: 2;
-      background: transparent;
-      color: getcolor('header');
       border: none;
       outline: none;
+      background: transparent;
       padding: 4px 4px;
-      font-size: 14px;
-      color: getcolor('orange');
+      width: 100%;
+
+      &::placeholder {
+        color: vars.$color-default;
+      }
 
       &:focus + &-submit svg,
       &:hover + &-submit svg {
         stroke: getcolor('orange');
       }
 
-      &-submit {
-        position: relative;
-        border: none;
-        background-color: transparent;
-      }
-
       &--loupe {
-        transition: 0.5s;
         cursor: pointer;
-        stroke: getcolor('header');
-      }
-
-      &::placeholder {
-        color: getcolor('header');
+        stroke: vars.$color-goit;
+        transition: vars.$transition;
       }
     }
   }
 
   &__error {
     display: none;
-    color: getcolor('header-error');
-    margin: 16px auto 0;
-    text-align: start;
-    width: 280px;
-    font-size: 14px;
-    padding: 0 12px;
+    color: vars.$color-header-error;
+    white-space: nowrap;
+    font-size: vars.$font-xs;
+    text-align: center;
   }
 }
 
 .underline {
-  border-bottom: 3px solid #ff001b;
+  border-bottom: 2px solid vars.$color-header-error;
 }
-
+//  TODO
 // ----------------scrolled-----------------
 .header.scrolled {
   height: 40px;

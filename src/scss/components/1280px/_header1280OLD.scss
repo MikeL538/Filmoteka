@@ -1,0 +1,28 @@
+@media screen and (min-width: 1280px) {
+  .header {
+    background-image: url('../images/header-background-desktop.jpg');
+
+    &--library {
+      background-image: url('../images/my-library-desktop.jpg');
+    }
+
+    .header__nav {
+      &-container {
+        width: 1216px;
+
+        > a {
+          text-decoration: none;
+        }
+      }
+    }
+    &__nav {
+      &-form {
+        width: 394px;
+      }
+    }
+
+    &__error {
+      width: 393px;
+    }
+  }
+}

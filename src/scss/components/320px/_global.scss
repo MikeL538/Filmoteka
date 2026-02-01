@@ -1,11 +1,19 @@
+@use '../utils/vars' as vars;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+html {
+  font-size: 100%;
   font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .show-element {
@@ -17,4 +25,28 @@ body {
 
 button {
   cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: vars.$color-default;
+  transition: vars.$transition;
+
+  &:hover {
+    color: vars.$color-hover;
+  }
+}
+
+svg {
+  transition: vars.$transition;
+}
+
+button {
+  border: none;
+  background: none;
 }

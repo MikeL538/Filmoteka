@@ -7,6 +7,49 @@ $colors: (
   'team-background': #fff,
 );
 
+$color-default: #f5f5f5;
+$color-hover: #ff6b08;
+$color-goit: #ff6b08;
+$color-header-error: #ff001b;
+
+$font-xs: 0.75rem; // 12px
+$font-sm: 0.875rem; // 14px
+$font-md: 1rem; // 16px
+$font-lg: 1.25rem; // 20px
+$font-xl: 1.5rem; // 24px
+
 @function getcolor($key) {
   @return map-get($colors, $key);
+}
+
+// TRANSITIONS
+$transition: 0.3s ease-in-out;
+
+// MIXINS
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin interactive {
+  transition: $transition-base;
+
+  &:hover,
+  &:focus {
+    color: getcolor('orange');
+    stroke: getcolor('orange');
+  }
+}
+
+@mixin hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
