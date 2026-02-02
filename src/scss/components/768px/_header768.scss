@@ -24,10 +24,14 @@
 
       &-link {
         display: flex;
-        align-items: baseline;
+        align-items: center;
 
         &:hover > svg {
           stroke: vars.$color-hover;
+        }
+
+        > svg {
+          margin-top: 5px;
         }
       }
 
@@ -50,9 +54,6 @@
 }
 
 // ====== scrolled ======
-.scrolled-container {
-  // margin-bottom: 10px;
-}
 
 .hovered {
   height: 108px !important;

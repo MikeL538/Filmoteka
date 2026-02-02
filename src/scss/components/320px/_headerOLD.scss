@@ -15,10 +15,7 @@
   transition: 0.5s ease-in-out;
   width: 100%;
   z-index: 100;
-  // TODO
-  &:hover {
-    height: 150px;
-  }
+
   // TODO
   &--library {
     background-image: url('../images/my-library-mobile.jpg');

@@ -33,7 +33,6 @@
     }
 
     &-icon {
-      margin-right: 5px;
       stroke: vars.$color-default;
       width: 20px;
       height: 20px;
@@ -111,6 +110,33 @@
     font-size: vars.$font-xs;
     text-align: center;
   }
+
+  // ========== LIBRARY =========
+  &--library {
+    background-image: url('../images/my-library-mobile.jpg');
+
+    &__btn--container {
+      // TODO
+      > button {
+        background: none;
+        border-radius: 5px;
+        border: 1px solid getcolor('header');
+        cursor: pointer;
+        height: 44px;
+        margin-top: 20px;
+        text-transform: uppercase;
+        width: 130px;
+
+        &:first-of-type {
+          margin-right: 15px;
+        }
+      }
+      // TODO
+      &--active {
+        background: getcolor('orange') !important;
+      }
+    }
+  }
 }
 
 .underline {
@@ -148,11 +174,11 @@
   transition: vars.$transition-scroll;
 }
 
-.library-btn-list {
-  margin-top: 15px !important;
-  position: relative;
-}
-
 .buttons-transform {
-  transform: translateY(-10000px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -10;
+  transform: translateY(-100%);
+  transition: 0.01s ease-in-out;
+  margin: 0;
 }
