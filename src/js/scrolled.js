@@ -3,7 +3,8 @@ const headerForm = document.querySelector('.header__nav-form');
 const headerNav = document.querySelector('.header__nav');
 const headerContainer = document.querySelector('.header__container');
 const libraryButtons = document.querySelector('.library-btn-list');
-const isScrolling = () => window.scrollY > 150;
+const isScrolling = () => window.scrollY > 60;
+// const isScrollingForm = () => window.scrollY >= 50;
 
 window.addEventListener('scroll', () => {
   if (isScrolling()) {
@@ -12,9 +13,7 @@ window.addEventListener('scroll', () => {
       headerNav.classList.add('nav-height');
       headerContainer.classList.add('scrolled-container');
     }
-    if (headerForm && !header.matches(':hover')) {
-      headerForm.classList.add('form-transform');
-    }
+
     if (libraryButtons && !header.matches(':hover')) {
       libraryButtons.classList.add('buttons-transform');
     }
@@ -32,6 +31,11 @@ window.addEventListener('scroll', () => {
       setTimeout(() => {
         libraryButtons.classList.remove('buttons-transform');
       }, 200);
+    }
+  }
+  if (header.classList.contains('scrolled')) {
+    if (headerForm && !header.matches(':hover')) {
+      headerForm.classList.add('form-transform');
     }
   }
 });

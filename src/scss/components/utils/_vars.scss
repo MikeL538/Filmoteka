@@ -8,9 +8,11 @@ $colors: (
 );
 
 $color-default: #f5f5f5;
+$color-default-light-theme: #050505;
 $color-hover: #ff6b08;
 $color-goit: #ff6b08;
 $color-header-error: #ff001b;
+$color-footer: #f7f7f7;
 
 $font-xs: 0.75rem; // 12px
 $font-sm: 0.875rem; // 14px
@@ -24,6 +26,7 @@ $font-xl: 1.5rem; // 24px
 
 // TRANSITIONS
 $transition: 0.3s ease-in-out;
+$transition-scroll: 0.5s ease-in-out;
 
 // MIXINS
 @mixin flex-center {
