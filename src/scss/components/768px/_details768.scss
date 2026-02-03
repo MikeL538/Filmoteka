@@ -1,38 +1,41 @@
 @media screen and (min-width: 768px) {
   .details {
-    
-
     &__container {
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      flex-wrap: wrap;
-      width: 704px;
+      height: auto;
+      min-width: 704px;
     }
-
+    // asd
     &__img {
       margin: 0 20px 0 0;
       min-height: 470px;
       width: 100%;
       max-width: 370px;
     }
-
+    // asd
     &__title {
       max-width: 300px;
       margin: 0 0 20px 0;
       white-space: wrap;
     }
-
+    // asd
     &__information {
       max-width: 264px;
       margin-left: 0;
     }
+    // asd
     &__about-container {
       margin: 0;
       width: 264px;
     }
+    // asd
     &__buttons {
       margin: 0;
+    }
+
+    // ============
+    &__information-list--item:last-of-type {
+      padding: 0;
+      margin-left: 10px;
     }
   }
 }
