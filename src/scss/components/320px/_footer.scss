@@ -2,47 +2,42 @@
 
 .footer {
   @include vars.flex-center;
-  flex-direction: column;
-
-  height: 30px;
-  width: 100%;
-  position: fixed;
+  background-color: vars.$color-footer;
   bottom: 0;
-  left: 0;
-  z-index: 100;
-
+  color: vars.$color-default;
+  flex-direction: column;
   font-size: vars.$font-xs;
-
+  height: 35px;
+  left: 0;
   opacity: 0;
+  position: fixed;
   transform: translateY(20px);
   transition: vars.$transition;
+  width: 100%;
+  z-index: 100;
+  text-align: center;
+  padding-top: 2px;
 
-  @media (prefers-color-scheme: light) {
-    background-color: vars.$color-footer;
-    color: vars.$color-default-light-theme;
+  &__svg {
+    width: 10px;
+    height: 10px;
   }
 
-  @media (prefers-color-scheme: dark) {
-    background-color: #1a181f; // brak w vars – zostawione
-    color: vars.$color-default;
+  &__link {
+    color: vars.$color-goit;
+
+    cursor: pointer;
+    transition: vars.$transition;
+
+    &:hover,
+    &:focus {
+      color: vars.$color-hover;
+      text-decoration: underline;
+    }
   }
 }
 
 .footer:not(.hidden) {
   opacity: 1;
   transform: translateY(0);
-}
-
-.footer__link {
-  padding-top: 10px;
-  color: vars.$color-goit;
-
-  cursor: pointer;
-  transition: vars.$transition;
-
-  &:hover,
-  &:focus {
-    color: vars.$color-hover;
-    text-decoration: underline;
-  }
 }

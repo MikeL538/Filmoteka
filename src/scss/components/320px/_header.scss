@@ -57,8 +57,10 @@
     }
 
     &-language-btn {
-      border: 1px solid;
+      @include vars.flex-center;
       border-radius: 5px;
+      border: 1px solid;
+      color: vars.$color-default;
       padding: 2px;
       text-transform: uppercase;
       transition: vars.$transition;
@@ -85,6 +87,7 @@
       background: transparent;
       padding: 4px 4px;
       width: 100%;
+      color: vars.$color-default;
 
       &::placeholder {
         color: vars.$color-default;
@@ -92,12 +95,17 @@
 
       &:focus + &-submit svg,
       &:hover + &-submit svg {
-        stroke: getcolor('orange');
+        stroke: vars.$color-goit;
+        color: vars.$color-default;
+      }
+
+      &:focus::placeholder {
+        color: vars.$color-goit;
       }
 
       &--loupe {
         cursor: pointer;
-        stroke: vars.$color-goit;
+        stroke: vars.$color-default;
         transition: vars.$transition;
       }
     }

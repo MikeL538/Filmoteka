@@ -8,12 +8,16 @@
 
 html {
   font-size: 100%;
-  font-family: 'Roboto', sans-serif;
 }
 
 body {
   font-size: 0.875rem;
   line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+  @media (prefers-color-scheme: dark) {
+    background-color: vars.$color-details-bg;
+    color: vars.$color-default;
+  }
 }
 
 .show-element {

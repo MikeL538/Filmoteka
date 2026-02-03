@@ -7,12 +7,20 @@ $colors: (
   'team-background': #fff,
 );
 
-$color-default: #f5f5f5;
-$color-default-light-theme: #050505;
+// Colors
 $color-hover: #ff6b08;
 $color-goit: #ff6b08;
 $color-header-error: #ff001b;
-$color-footer: #f7f7f7;
+$color-footer: #1a181f;
+$color-modal-opacity: #00000079;
+
+// Default dark
+$color-default: #f5f5f5;
+$color-details-bg: #050505;
+
+// Prefers light
+$color-default-light: #050505;
+$color-details-bg-light: #f5f5f5;
 
 $font-xs: 0.75rem; // 12px
 $font-sm: 0.875rem; // 14px

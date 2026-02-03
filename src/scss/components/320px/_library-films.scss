@@ -1,4 +1,4 @@
-@import '../utils/vars';
+@use '../utils/vars' as vars;
 
 .library-films {
   align-items: center;
@@ -36,7 +36,7 @@
       }
 
       > p {
-        color: getcolor('orange');
+        color: vars.$color-goit;
         font-size: 12px;
         line-height: 1.17;
       }
@@ -47,7 +47,7 @@
         align-items: center;
         width: 30px;
         height: 14px;
-        background-color: getcolor('orange');
+        background-color: vars.$color-goit;
         border-radius: 5px;
         color: #fff;
         font-size: 12px;
