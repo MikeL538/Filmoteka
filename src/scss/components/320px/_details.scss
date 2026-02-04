@@ -49,7 +49,16 @@
     position: absolute;
     right: 15px;
     top: 10px;
+    transition: vars.$transition;
     width: 30px;
+
+    &:hover {
+      border-color: vars.$color-goit;
+
+      > svg {
+        fill: vars.$color-goit;
+      }
+    }
 
     > svg {
       @media (prefers-color-scheme: light) {
@@ -64,9 +73,8 @@
   }
 
   &__img {
-    border-radius: 5px;
     height: auto;
-    margin: 40px auto 10px auto;
+    margin: 40px auto 0 auto;
     max-height: 357px;
     max-width: 95%;
     width: 100%;

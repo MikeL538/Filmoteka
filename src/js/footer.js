@@ -1,5 +1,5 @@
 const footer = document.querySelector('.footer');
-const threshold = 800; // Height after which footer shows
+const threshold = 70; // Height after which footer shows
 
 function checkFooterVisibility() {
   if (window.scrollY > threshold) {
