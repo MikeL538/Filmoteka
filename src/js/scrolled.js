@@ -17,7 +17,6 @@ window.addEventListener('scroll', () => {
     }
   } else {
     header.classList.remove('scrolled');
-
     headerContainer.classList.remove('scrolled-container');
     if (headerForm) headerNav.classList.remove('nav-height');
     if (libraryButtons) headerNav.classList.remove('nav-height-library');
