@@ -1,10 +1,9 @@
 @use './components/utils/vars';
+@use './components/utils/global';
 
 @use './components/320px/header';
 @use './components/768px/header768';
 @use './components/1280px/header1280';
-
-@use './components/320px/global';
 
 @use './components/320px/library-films';
 @use './components/768px/library-films768';
@@ -20,11 +19,8 @@
 
 @use './components/320px/details';
 @use './components/768px/details768';
-@use './components/1280px/details1280';
 
 @use './components/320px/details-library';
-// @use './components/768px/details-library768';
-// @use './components/1280px/details-library1280';
 
 @use './components/320px/library';
 @use './components/1280px/library1280';

@@ -2,11 +2,11 @@
   .films {
     &__list {
       display: flex;
-      justify-content: center;
-      gap: 32px;
       flex-wrap: wrap;
-      width: 704px;
+      gap: 32px;
+      justify-content: center;
       margin-top: 70px;
+      width: 704px;
 
       &-item {
         max-width: 336px;

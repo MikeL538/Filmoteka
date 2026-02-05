@@ -1,5 +1,7 @@
 @use '../utils/vars' as vars;
 
+// ================= BACKDROP =================
+
 .backdrop-modal {
   background-color: vars.$color-modal-opacity;
   height: 100%;
@@ -14,203 +16,164 @@
   z-index: -10;
 }
 
-.team__modal {
-  border-radius: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  height: 85vh;
-  justify-content: center;
-  left: 50%;
-  max-height: 558px;
-  max-width: 840px;
-  overflow: scroll;
-  padding: 7px;
-  position: absolute;
-  top: 10%;
-  transform: translateX(-50%);
-
-  @media (prefers-color-scheme: light) {
-    background-color: vars.$color-details-bg-light;
-    color: vars.$color-default-light;
-  }
-  @media (prefers-color-scheme: dark) {
-    background-color: vars.$color-details-bg;
-    color: vars.$color-default;
-  }
-
-  &__container {
-    margin-top: 40px;
-  }
-}
-
-.team__modal--close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 35px;
-  height: 35px;
-  text-decoration: none;
-  border: none;
-  fill: rgb(64, 60, 60);
-  background: none;
-  padding: 4px;
-  transition-property: fill border-color;
-  transition-duration: 250ms;
-
-  &:hover,
-  &:focus {
-    fill: #ff6b08;
-    transform: rotate(360deg);
-  }
-
-  > svg {
-    @media (prefers-color-scheme: light) {
-      fill: #000;
-      stroke: #000;
-    }
-    @media (prefers-color-scheme: dark) {
-      fill: #fff;
-      stroke: #fff;
-    }
-    &:hover,
-    &:focus {
-      fill: #ff6b08;
-      transform: rotate(360deg);
-    }
-  }
-}
-
-.team__title {
-  flex-wrap: wrap;
-  padding-top: 13px;
-  color: black;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 23px;
-  line-height: 35px;
-  margin-bottom: 20px;
-  text-align: center;
-  text-shadow:
-    1px 1px 1px #ccc,
-    1px -1px 1px #ccc,
-    -1px 1px 1px #ccc,
-    -1px -1px 1px #ccc;
-  transition: all 1s;
-  @media (prefers-color-scheme: light) {
-    color: #000;
-  }
-  @media (prefers-color-scheme: dark) {
-    color: #fff;
-  }
-
-  &:hover,
-  &:focus {
-    color: #ff6b08;
-  }
-}
-
-.team__box {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 278px;
-  gap: 40px;
-}
-
-.team__member {
-  display: flex;
-  justify-content: baseline;
-  align-items: center;
-  flex-direction: column;
-  width: 230px;
-  transition: transform 450ms cubic-bezier(0.4, 0, 0.2, 1);
-  text-align: center;
-
-  > a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &:hover,
-  &:focus {
-    transform: scale(1.05);
-  }
-}
-
-.team__photo {
-  height: auto;
-  width: 100px;
-  border: 2px;
-  margin: auto;
-  border-radius: 50px;
-  box-shadow: 0px 0px 3px 5px #ccc;
-
-  &:hover {
-    box-shadow: 0px 0px 3px 5px vars.$color-goit;
-  }
-}
-
-.team__name {
-  font-size: 18px;
-  font-weight: 600;
-  transition-duration: 0.5s;
-  @media (prefers-color-scheme: light) {
-    color: #000;
-  }
-  @media (prefers-color-scheme: dark) {
-    color: #fff;
-  }
-}
-
-.team__role {
-  font-size: 15px;
-  font-weight: 500;
-  color: gray;
-}
-
-.team__card {
-  align-items: center;
-  background: transparent;
-  border-radius: 10%;
-  border: none;
-  color: transparent;
-  cursor: pointer;
-  display: flex;
-  height: auto;
-  justify-content: center;
-  margin-bottom: 10px;
-  outline: none;
-  position: relative;
-  width: 100px;
-  z-index: 0;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-}
-.team__github {
-  @media (prefers-color-scheme: light) {
-    fill: #000;
-    stroke: #000;
-  }
-  @media (prefers-color-scheme: dark) {
-    fill: #fff;
-    stroke: #fff;
-  }
-
-  &:hover,
-  &:focus {
-    fill: vars.$color-goit;
-    transition-duration: vars.$transition;
-  }
-}
-
-// =======
-
 .team__backdrop--show {
   opacity: 1;
   pointer-events: all;
-  z-index: 100;
   transform: translate(-50%, -50%) scale(1);
+  z-index: 100;
+}
+
+// ================= MODAL =================
+
+// ================= TEAM GRID =================
+
+.team {
+  &__modal {
+    border-radius: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 85vh;
+    justify-content: center;
+    left: 50%;
+    max-height: 558px;
+    max-width: 840px;
+    overflow: scroll;
+    padding: 7px;
+    position: absolute;
+    top: 10%;
+    transform: translateX(-50%);
+
+    @media (prefers-color-scheme: light) {
+      background-color: vars.$color-details-bg-light;
+      color: vars.$color-default-light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: vars.$color-details-bg;
+      color: vars.$color-default;
+    }
+
+    &__container {
+      margin-top: 40px;
+    }
+
+    &--close {
+      background: none;
+      border: none;
+      fill: rgb(64, 60, 60);
+      height: 35px;
+      padding: 4px;
+      position: absolute;
+      right: 20px;
+      text-decoration: none;
+      top: 20px;
+      transition-duration: 250ms;
+      transition-property: fill border-color;
+      width: 35px;
+
+      &:hover,
+      &:focus {
+        fill: vars.$color-goit;
+        transform: rotate(360deg);
+      }
+
+      > svg {
+        @media (prefers-color-scheme: light) {
+          fill: vars.$color-default-light;
+          stroke: vars.$color-details-bg-light;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          fill: vars.$color-default;
+          stroke: vars.$color-details-bg;
+        }
+
+        &:hover,
+        &:focus {
+          fill: vars.$color-goit;
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+
+  &__title {
+    line-height: 35px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: vars.$transition;
+
+    &:hover,
+    &:focus {
+      color: vars.$color-goit;
+    }
+  }
+
+  &__box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    width: 278px;
+  }
+
+  &__member {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    text-align: center;
+    transition: vars.$transition;
+    width: 230px;
+  }
+
+  &__link {
+    @include vars.flex-center;
+    flex-direction: column;
+
+    &:hover,
+    &:focus {
+      transform: vars.$transform-button;
+      .team__photo {
+        box-shadow: 0px 0px 3px 5px vars.$color-goit;
+      }
+
+      .team__github {
+        fill: vars.$color-goit;
+      }
+    }
+  }
+
+  &__photo {
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px 5px #ccc;
+    transition: vars.$transition;
+    width: 100px;
+  }
+
+  &__name {
+    font-size: vars.$font-lg;
+    font-weight: 600;
+    transition-duration: vars.$transition;
+  }
+
+  &__role {
+    color: gray;
+    font-size: vars.$font-md;
+    font-weight: 500;
+  }
+
+  // ================= CARD =================
+
+  &__github {
+    @media (prefers-color-scheme: light) {
+      fill: vars.$color-default-light;
+      stroke: vars.$color-details-bg-light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      fill: vars.$color-default;
+      stroke: vars.$color-details-bg;
+    }
+  }
 }

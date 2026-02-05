@@ -1,12 +1,3 @@
-$colors: (
-  'orange': #ff6b08,
-  'footer': #f7f7f7,
-  'header': #fff,
-  'header-error': #ff001b,
-  'black': #000000,
-  'team-background': #fff,
-);
-
 // Colors
 $color-hover: #ff6b08;
 $color-goit: #ff6b08;
@@ -27,10 +18,7 @@ $font-sm: 0.875rem; // 14px
 $font-md: 1rem; // 16px
 $font-lg: 1.25rem; // 20px
 $font-xl: 1.5rem; // 24px
-
-@function getcolor($key) {
-  @return map-get($colors, $key);
-}
+$font-xxl: 1.75rem; // 28px
 
 // TRANSITIONS
 $transition: 0.3s ease-in-out;
@@ -53,18 +41,18 @@ $transform-button: scale(1.1);
   justify-content: space-between;
 }
 
-@mixin interactive {
-  transition: $transition-base;
+// @mixin interactive {
+//   transition: $transition-base;
 
-  &:hover,
-  &:focus {
-    color: getcolor('orange');
-    stroke: getcolor('orange');
-  }
-}
+//   &:hover,
+//   &:focus {
+//     color: getcolor('orange');
+//     stroke: getcolor('orange');
+//   }
+// }
 
-@mixin hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
+// @mixin hidden {
+//   opacity: 0;
+//   visibility: hidden;
+//   pointer-events: none;
+// }

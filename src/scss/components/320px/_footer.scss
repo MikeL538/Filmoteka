@@ -5,33 +5,32 @@
   background-color: vars.$color-footer;
   bottom: 0;
   color: vars.$color-default;
-  flex-direction: column;
   font-size: vars.$font-xs;
-  height: 40px;
-  left: 0;
   opacity: 0;
+  padding: 2px 0;
   position: fixed;
-  transform: translateY(20px);
-  transition: vars.$transition;
+  text-align: center;
+  transform: translateY(100%);
+  transition: vars.$transition-scroll;
   width: 100%;
   z-index: 100;
-  text-align: center;
-  padding-top: 2px;
+  line-height: 1;
 
   &__svg {
-    width: 10px;
     height: 10px;
+    width: 10px;
   }
 
   &__link {
     color: vars.$color-goit;
+    text-decoration: underline;
 
     cursor: pointer;
     transition: vars.$transition;
 
     &:hover,
     &:focus {
-      color: vars.$color-hover;
+      color: vars.$color-default-light;
       text-decoration: underline;
     }
   }

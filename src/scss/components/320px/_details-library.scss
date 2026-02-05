@@ -3,26 +3,22 @@
 .btn-delete {
   &-watched,
   &-queue {
-    align-items: center;
+    @include vars.flex-center;
     background-color: vars.$color-goit;
     border-radius: 5px;
-    display: flex;
-    font-family: 'Roboto', sans-serif;
     font-size: vars.$font-sm;
-    font-weight: 500;
+    font-weight: 600;
     height: 42px;
-    justify-content: center;
-    line-height: 1.33;
     margin-top: 15px;
     opacity: 0.8;
     text-transform: uppercase;
-    transition: 0.5s;
+    transition: vars.$transition;
     width: 148px;
 
     &:hover,
     &:focus {
       opacity: 1;
-      transform: scale(1.2);
+      transform: vars.$transform-button;
     }
   }
 }

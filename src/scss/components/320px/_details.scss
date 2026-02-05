@@ -1,14 +1,14 @@
 @use '../utils/vars' as vars;
 
 .details {
+  // overflow-y: scroll;
   background-color: vars.$color-modal-opacity;
   height: 100%;
   left: 50%;
-  overflow-y: scroll;
   position: fixed;
-
   top: 50%;
   transform: translate(-50%, -50%) scale(0);
+  transition: vars.$transition;
   width: 100%;
   z-index: -10;
 
@@ -19,12 +19,12 @@
     height: 85vh;
     left: 50%;
     min-width: 300px;
-    width: 90vw;
     overflow: scroll;
     padding: 7px;
     position: absolute;
     top: 10%;
     transform: translateX(-50%);
+    width: 90vw;
 
     @media (prefers-color-scheme: light) {
       background-color: vars.$color-details-bg-light;
@@ -38,19 +38,14 @@
   }
 
   &__close-button {
-    align-items: center;
-    background: none;
+    @include vars.flex-center;
     border-radius: 50%;
     border: 1px solid;
-    cursor: pointer;
-    display: flex;
     height: 30px;
-    justify-content: center;
     position: absolute;
     right: 15px;
-    top: 10px;
     transition: vars.$transition;
-    width: 30px;
+    width: 32px;
 
     &:hover {
       border-color: vars.$color-goit;
@@ -73,6 +68,8 @@
   }
 
   &__img {
+    border-radius: 12%;
+    border: 0.3rem solid rgba(0, 0, 0, 0.2);
     height: auto;
     margin: 40px auto 0 auto;
     max-height: 357px;
@@ -86,8 +83,9 @@
 
   &__information {
     @include vars.flex-center;
-    width: 100%;
     flex-direction: column;
+    width: 100%;
+    // border-left: 1px solid red;
 
     &-list {
       @include vars.flex-between;
@@ -98,12 +96,12 @@
 
       &--item {
         @include vars.flex-between;
-        width: 100%;
         align-items: baseline;
         margin: 0 12px 0 0px;
-        text-align: justify;
-        overflow: scroll;
         max-width: 280px;
+        overflow: scroll;
+        text-align: justify;
+        width: 100%;
 
         &:last-of-type {
           max-width: 290px;
@@ -138,7 +136,6 @@
   &__buttons {
     align-items: center;
     display: flex;
-    // margin: 0 0 0 5%;
 
     > button {
       border-radius: 5px;
@@ -160,26 +157,21 @@
 .btn-add {
   &-watched,
   &-queue {
-    align-items: center;
+    @include vars.flex-center;
     background-color: vars.$color-goit;
     border-radius: 5px;
     color: vars.$color-default;
-    display: flex;
-
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: vars.$font-sm;
+    font-weight: 600;
     height: 42px;
-    justify-content: center;
-    line-height: 1.33;
     opacity: 0.8;
-    text-transform: uppercase;
     transition: vars.$transition;
     width: 148px;
 
     &:hover,
     &:focus {
       opacity: 1;
-      transform: scale(1.2);
+      transform: vars.$transform-button;
     }
   }
 }

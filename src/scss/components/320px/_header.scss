@@ -10,7 +10,6 @@
   position: fixed;
   top: 0;
   transition: vars.$transition;
-
   width: 100%;
   z-index: 100;
 
@@ -18,7 +17,6 @@
     @include vars.flex-between;
     transition: vars.$transition-scroll;
     white-space: nowrap;
-
     width: 100%;
   }
 
@@ -26,19 +24,19 @@
     @include vars.flex-between;
     flex-direction: column;
     padding: 0 20px;
-    width: 100%;
     transition: vars.$transition-scroll;
+    width: 100%;
 
     &-container {
-      width: 100%;
-      height: 100%;
       @include vars.flex-between;
+      height: 100%;
+      width: 100%;
     }
 
     &-icon {
+      height: 20px;
       stroke: vars.$color-default;
       width: 20px;
-      height: 20px;
 
       &:hover {
         stroke: vars.$color-hover;
@@ -80,21 +78,21 @@
 
     &-form {
       @include vars.flex-center;
+      border-bottom: 1px solid vars.$color-goit;
       gap: 3px;
       margin-top: 25px;
-      border-bottom: 1px solid vars.$color-goit;
       transition: vars.$transition-scroll-form;
       width: 280px;
     }
 
     // ZMIENIC NA FORM-INPUT
     &-input {
-      border: none;
-      outline: none;
       background: transparent;
+      border: none;
+      color: vars.$color-default;
+      outline: none;
       padding: 4px 4px;
       width: 100%;
-      color: vars.$color-default;
 
       &::placeholder {
         color: vars.$color-default;
@@ -102,8 +100,8 @@
 
       &:focus + &-submit svg,
       &:hover + &-submit svg {
-        stroke: vars.$color-goit;
         color: vars.$color-default;
+        stroke: vars.$color-goit;
       }
 
       &:focus::placeholder {
@@ -119,11 +117,11 @@
   }
 
   &__error {
-    display: none;
     color: vars.$color-header-error;
-    white-space: nowrap;
+    display: none;
     font-size: vars.$font-xs;
     text-align: center;
+    white-space: nowrap;
   }
 
   // ========== LIBRARY =========
@@ -136,13 +134,10 @@
 
     &__nav {
       height: 100%;
-      // display: flex;
-      // justify-content: space-between;
     }
 
     &__btn--container {
       transition: vars.$transition-scroll-form;
-      // width: 240px;
 
       // TODO
       > button {
@@ -154,8 +149,8 @@
         height: 44px;
         margin-bottom: 10px;
         text-transform: uppercase;
-        width: 130px;
         transition: vars.$transition;
+        width: 130px;
 
         &:hover {
           transform: vars.$transform-button;
@@ -189,12 +184,12 @@
 }
 
 .form-transform {
+  margin: 0;
   opacity: 0;
   pointer-events: none;
-  z-index: -10;
   transform: translateY(-300%);
   transition: 0.01s ease-in-out;
-  margin: 0;
+  z-index: -10;
 }
 
 .nav-height,
@@ -205,12 +200,12 @@
 }
 
 .buttons-transform {
+  margin: 0;
   opacity: 0;
   pointer-events: none;
-  z-index: -10;
   transform: translateY(-300%);
   transition: 0.01s ease-in-out;
-  margin: 0;
+  z-index: -10;
 }
 
 .button-library--active {

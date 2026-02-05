@@ -2,8 +2,8 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    height: 108px;
     background-image: url('../images/header-background-tablet.jpg');
+    height: 108px;
 
     &__nav {
       font-size: vars.$font-md;
@@ -22,13 +22,12 @@
       }
 
       &-icon {
-        width: 32px;
-        height: 32px;
+        width: 26px;
+        height: 26px;
       }
 
       &-link {
-        display: flex;
-        align-items: center;
+        @include vars.flex-center;
 
         &:hover > svg {
           stroke: vars.$color-hover;
