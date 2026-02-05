@@ -33,6 +33,8 @@ function displayMovieList(movieList) {
 const btnWatched = document.querySelector('.btn-watched');
 if (btnWatched) {
   btnWatched.addEventListener('click', () => {
+    btnWatched.classList.add('button-library--active');
+    btnQueued.classList.remove('button-library--active');
     const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
     displayMovieList(watchedList);
   });
@@ -42,6 +44,8 @@ if (btnWatched) {
 const btnQueued = document.querySelector('.btn-queued');
 if (btnQueued) {
   btnQueued.addEventListener('click', () => {
+    btnQueued.classList.add('button-library--active');
+    btnWatched.classList.remove('button-library--active');
     const queueList = JSON.parse(localStorage.getItem('queue')) || [];
     displayMovieList(queueList);
   });
@@ -49,7 +53,7 @@ if (btnQueued) {
 
 // Button watched = watched list
 if (document.querySelector('.library-films__list')) {
-  const btnWatched = document.querySelector('.btn-watched');
+  // const btnWatched = document.querySelector('.btn-watched');
 
   btnWatched.addEventListener('click', () => {
     const libraryFilmsList = document.querySelector('.library-films__list');
@@ -79,15 +83,15 @@ if (document.querySelector('.library-films__list')) {
           movieListItem.dataset.id = movieDetails.id;
           movieListItem.innerHTML = `
             <img src="${getMovieImagePath(movieDetails.backdrop_path)}" alt="${
-            movieDetails.title
-          }" />
+              movieDetails.title
+            }" />
             <h2>${movieDetails.title}</h2>
             <p>${genreNames} | <span>${movieDetails.release_date.substring(
-            0,
-            4,
-          )}</span> <span class="films__list-item--rating">${
-            Math.round(movieDetails.vote_average * 10) / 10
-          }</span></p>
+              0,
+              4,
+            )}</span> <span class="films__list-item--rating">${
+              Math.round(movieDetails.vote_average * 10) / 10
+            }</span></p>
           `;
 
           // sprawdzam czy film już istnieje na liście
@@ -116,7 +120,7 @@ if (document.querySelector('.library-films__list')) {
 
 // Button queued = queued list
 if (document.querySelector('.library-films__list')) {
-  const btnQueued = document.querySelector('.btn-queued');
+  // const btnQueued = document.querySelector('.btn-queued');
 
   btnQueued.addEventListener('click', () => {
     const libraryFilmsList = document.querySelector('.library-films__list');
@@ -146,15 +150,15 @@ if (document.querySelector('.library-films__list')) {
           movieListItem.dataset.id = movieDetails.id;
           movieListItem.innerHTML = `
             <img src="${getMovieImagePath(movieDetails.backdrop_path)}" alt="${
-            movieDetails.title
-          }" />
+              movieDetails.title
+            }" />
             <h2>${movieDetails.title}</h2>
             <p>${genreNames} | <span>${movieDetails.release_date.substring(
-            0,
-            4,
-          )}</span> <span class="films__list-item--rating">${
-            Math.round(movieDetails.vote_average * 10) / 10
-          }</span></p>
+              0,
+              4,
+            )}</span> <span class="films__list-item--rating">${
+              Math.round(movieDetails.vote_average * 10) / 10
+            }</span></p>
           `;
 
           // sprawdzam czy film już istnieje na liście

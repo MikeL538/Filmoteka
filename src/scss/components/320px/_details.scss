@@ -106,7 +106,7 @@
         max-width: 280px;
 
         &:last-of-type {
-          max-width: 100%;
+          max-width: 290px;
           padding: 0 20px;
         }
       }
@@ -138,7 +138,7 @@
   &__buttons {
     align-items: center;
     display: flex;
-    margin: 0 0 0 5%;
+    // margin: 0 0 0 5%;
 
     > button {
       border-radius: 5px;

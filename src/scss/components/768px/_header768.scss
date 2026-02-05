@@ -6,7 +6,7 @@
     background-image: url('../images/header-background-tablet.jpg');
 
     &__nav {
-      font-size: vars.$font-lg;
+      font-size: vars.$font-md;
 
       &-title {
         display: block;
@@ -15,6 +15,10 @@
       &-list {
         width: 100%;
         @include vars.flex-between;
+
+        &-item {
+          height: auto;
+        }
       }
 
       &-icon {
@@ -29,14 +33,11 @@
         &:hover > svg {
           stroke: vars.$color-hover;
         }
-
-        > svg {
-          margin-top: 5px;
-        }
       }
 
       &-form {
         margin-bottom: 10px;
+        margin-top: 0;
       }
 
       &-input {
@@ -50,11 +51,23 @@
     &-form {
       margin: 0;
     }
+
+    &--library {
+      background-image: url('../images/my-library-tablet.jpg');
+    }
   }
-}
 
-// ====== scrolled ======
+  // ====== scrolled ======
 
-.hovered {
-  height: 108px !important;
+  .hovered {
+    height: 108px !important;
+  }
+
+  .nav-height {
+    padding-top: 40px;
+  }
+
+  .nav-height-library {
+    padding-top: 7px;
+  }
 }

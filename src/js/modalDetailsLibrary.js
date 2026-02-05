@@ -2,6 +2,7 @@ import axios from 'axios';
 import { currentLanguage } from './language';
 import { apiKey } from './fetcher';
 import Notiflix from 'notiflix';
+import { populateModal } from './populateModal';
 
 const watchedBtn = document.querySelector('.btn-watched');
 const queuedBtn = document.querySelector('.btn-queued');
@@ -161,38 +162,4 @@ function fetchMovieDetails(movieId) {
       populateModal(movieDetails);
     })
     .catch(error => console.error('Error fetching movie details:', error));
-}
-
-function populateModal(movieDetails) {
-  const modalTitle = document.querySelector('.details-library__title');
-  const modalImg = document.querySelector('.details-library__img');
-  const modalInformation = document.querySelector('.details-library__information-right');
-  const modalAbout = document.querySelector('.details-library__about-container p');
-
-  modalTitle.textContent = movieDetails.title;
-  const modalImgFound = movieDetails.backdrop_path
-    ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(movieDetails.backdrop_path)}`
-    : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png';
-  modalImg.src = modalImgFound;
-
-  const mathRound = Math.round(movieDetails.vote_average * 10) / 10;
-
-  modalInformation.innerHTML = `
-    <ul class="details-library__information-list">
-      <li>
-      <span><span class="details-library__information-rating">${mathRound}</span> / 
-      ${movieDetails.vote_count}</span>
-      <span>${movieDetails.popularity}</span>
-      <span class="details-library__information-original-title">${
-        movieDetails.original_title
-      }</span>
-      <span>${movieDetails.genres.map(genre => genre.name).join(', ')}</span>
-      </li>
-    </ul>
-  `;
-
-  modalAbout.textContent = movieDetails.overview;
-
-  const detailsDiv = document.querySelector('.details-library');
-  detailsDiv.classList.add('show-element');
 }

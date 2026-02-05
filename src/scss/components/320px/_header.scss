@@ -10,12 +10,15 @@
   position: fixed;
   top: 0;
   transition: vars.$transition;
+
   width: 100%;
   z-index: 100;
 
   &__container {
     @include vars.flex-between;
-    transition: 0.5s ease-in-out;
+    transition: vars.$transition-scroll;
+    white-space: nowrap;
+
     width: 100%;
   }
 
@@ -50,9 +53,13 @@
       @include vars.flex-between;
       width: 100%;
 
+      &-item {
+        height: 21px;
+      }
+
       > ul {
         @include vars.flex-center;
-        gap: 40px;
+        gap: 20px;
       }
     }
 
@@ -65,8 +72,7 @@
       text-transform: uppercase;
       transition: vars.$transition;
 
-      &:hover,
-      &:focus {
+      &:hover {
         background: vars.$color-goit;
         filter: drop-shadow(0 8 43 rgba(255, 107, 1, 0.6));
       }
@@ -75,8 +81,9 @@
     &-form {
       @include vars.flex-center;
       gap: 3px;
-      margin-top: 10px;
+      margin-top: 25px;
       border-bottom: 1px solid vars.$color-goit;
+      transition: vars.$transition-scroll-form;
       width: 280px;
     }
 
@@ -123,25 +130,40 @@
   &--library {
     background-image: url('../images/my-library-mobile.jpg');
 
+    &__container {
+      height: 100%;
+    }
+
+    &__nav {
+      height: 100%;
+      // display: flex;
+      // justify-content: space-between;
+    }
+
     &__btn--container {
+      transition: vars.$transition-scroll-form;
+      // width: 240px;
+
       // TODO
       > button {
-        background: none;
+        background: vars.$color-modal-opacity;
         border-radius: 5px;
-        border: 1px solid getcolor('header');
+        border: 3px solid vars.$color-goit;
         cursor: pointer;
+        font-weight: 700;
         height: 44px;
-        margin-top: 20px;
+        margin-bottom: 10px;
         text-transform: uppercase;
         width: 130px;
+        transition: vars.$transition;
+
+        &:hover {
+          transform: vars.$transform-button;
+        }
 
         &:first-of-type {
           margin-right: 15px;
         }
-      }
-      // TODO
-      &--active {
-        background: getcolor('orange') !important;
       }
     }
   }
@@ -170,15 +192,15 @@
   opacity: 0;
   pointer-events: none;
   z-index: -10;
-  transform: translateY(-100%);
+  transform: translateY(-300%);
   transition: 0.01s ease-in-out;
   margin: 0;
 }
 
-.nav-height {
-  padding-top: 40px;
+.nav-height,
+.nav-height-library {
+  padding-top: 25px;
   position: relative;
-  //  height: 40px ERROR
   transition: vars.$transition-scroll;
 }
 
@@ -186,7 +208,11 @@
   opacity: 0;
   pointer-events: none;
   z-index: -10;
-  transform: translateY(-100%);
+  transform: translateY(-300%);
   transition: 0.01s ease-in-out;
   margin: 0;
+}
+
+.button-library--active {
+  background: vars.$color-goit !important;
 }
