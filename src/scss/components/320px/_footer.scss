@@ -13,7 +13,7 @@
   transform: translateY(100%);
   transition: vars.$transition-scroll;
   width: 100%;
-  z-index: 100;
+  z-index: 10;
   line-height: 1;
 
   &__svg {

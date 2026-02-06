@@ -20,13 +20,6 @@ body {
   }
 }
 
-.show-element {
-  transform: translate(-50%, -50%) scale(1) !important;
-  opacity: 1 !important;
-  z-index: 100 !important;
-  pointer-events: all !important;
-}
-
 button {
   cursor: pointer;
 }
@@ -53,4 +46,40 @@ svg {
 button {
   border: none;
   background: none;
+}
+
+.backdrop-modal {
+  background-color: vars.$color-modal-opacity;
+  height: 100%;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  transition:
+    opacity vars.$transition-scroll,
+    transform vars.$transition-scroll,
+    z-index vars.$transition-scroll;
+
+  width: 100%;
+  z-index: 99;
+
+  &:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%), scale(0.2);
+  transition:
+    opacity vars.$transition-scroll,
+    transform vars.$transition-scroll,
+    z-index vars.$transition-scroll;
+
+  z-index: -100;
 }

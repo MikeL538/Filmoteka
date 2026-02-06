@@ -1,17 +1,6 @@
 @use '../utils/vars' as vars;
 
 .details {
-  // overflow-y: scroll;
-  background-color: vars.$color-modal-opacity;
-  height: 100%;
-  left: 50%;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: vars.$transition;
-  width: 100%;
-  z-index: -10;
-
   &__container {
     border-radius: 10px;
     display: flex;
@@ -23,8 +12,21 @@
     padding: 7px;
     position: absolute;
     top: 10%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(0.9); // lekko zmniejszony przy ukryciu
     width: 90vw;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity vars.$transition-scroll,
+      transform vars.$transition-scroll,
+      z-index vars.$transition-scroll;
+
+    &:not(.hidden) {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) scale(1);
+    }
 
     @media (prefers-color-scheme: light) {
       background-color: vars.$color-details-bg-light;

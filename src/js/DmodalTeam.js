@@ -18,24 +18,3 @@ function closeModalTeam(event) {
   document.removeEventListener('keydown', onEscapeClose);
   document.body.style.overflowY = 'scroll';
 }
-
-function onEscapeClose(event) {
-  if (event.code === 'Escape') {
-    teamModal.classList.remove('openModalAnimationTeam');
-    teamModal.classList.add('closeModalAnimationTeam');
-    setTimeout(() => {
-      closeModalTeam();
-    }, 400);
-    closeModalTeam();
-  }
-}
-
-function onBackdropClose(event) {
-  if (event.target === teamBackdrop) {
-    teamModal.classList.remove('openModalAnimationTeam');
-    teamModal.classList.add('closeModalAnimationTeam');
-    setTimeout(() => {
-      closeModalTeam();
-    }, 400);
-  }
-}
