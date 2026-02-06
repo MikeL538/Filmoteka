@@ -76,6 +76,9 @@ export function language() {
     currentLanguage = language;
     localStorage.setItem('language', language);
     translateElements();
+    // location.reload();
+
+    document.dispatchEvent(new Event('languageChanged'));
   };
 
   function langCheck() {

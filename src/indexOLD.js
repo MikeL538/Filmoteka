@@ -1,9 +1,0 @@
-// import './js/footer';
-// import './js/fetcher';
-// import './js/language';
-// import './js/scrolled';
-// import './scss/main.scss';
-// import './js/modalDetails';
-// import './js/modalDetailsLibrary';
-// import './js/library';
-// import './js/modalTeam';

@@ -53,8 +53,15 @@ export function scrollHeader() {
     header.classList.add('hovered');
     headerContainer.classList.remove('scrolled-container');
 
-    if (headerForm) headerForm.classList.remove('form-transform');
-    if (headerLibraryButtons) headerLibraryButtons.classList.remove('buttons-transform');
+    if (headerForm) {
+      headerNav.classList.remove('nav-height');
+      headerForm.classList.remove('form-transform');
+    }
+
+    if (headerLibraryButtons) {
+      headerNav.classList.remove('nav-height-library');
+      headerLibraryButtons.classList.remove('buttons-transform');
+    }
   });
 
   header.addEventListener('mouseleave', () => {

@@ -15,23 +15,22 @@
     />
     <link rel="icon" type="image.jpg" href="./images/favicon.png" />
 
-    <!-- <script src="./indexOLD.js" type="module" defer></script> -->
-    <script src="./index.ts" type="module" defer></script>
+    <script src="./main.ts" type="module" defer></script>
   </head>
   <body>
     <header class="header header--library">
-      <include src="./partials/header-library.html"></include>
+      <include src="./partials/library/header-library.html"></include>
     </header>
 
     <main>
-      <include src="./partials/library.html"></include>
+      <include src="./partials/library/library-films.html"></include>
     </main>
 
     <footer class="footer library-page hidden">
       <include src="./partials/footer.html"></include>
     </footer>
 
-    <include src="./partials/movie-modal-library.html"></include>
+    <include src="./partials/library/movie-modal-library.html"></include>
 
     <include src="./partials/modal-team.html"></include>
   </body>

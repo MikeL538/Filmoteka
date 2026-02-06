@@ -6,24 +6,17 @@ interface InfiniteScrollOptions {
   noMoreMovies?: boolean;
 }
 
-export function attachInfiniteScroll(options: InfiniteScrollOptions) {
-  let {
-    fetchCallback,
-    currentPage,
-    searchQuery = '',
-    isLoading = false,
-    noMoreMovies = false,
-  } = options;
+export function attachInfiniteScroll(fetchCallback: () => Promise<void>): void {
+  let isLoading = false;
 
-  window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', async () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-
-    if (noMoreMovies) return;
 
     if (scrollTop + clientHeight >= scrollHeight - 700 && !isLoading) {
       isLoading = true;
-      currentPage++;
-      fetchCallback(currentPage, searchQuery);
+
+      await fetchCallback();
+
       isLoading = false;
     }
   });

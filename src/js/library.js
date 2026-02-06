@@ -3,19 +3,8 @@ import { currentLanguage } from './language';
 import { apiKey } from './fetcher';
 import { showLibraryDetails } from './modalDetailsLibrary';
 
-//elementu filmu
-function createMovieListItem(movieDetails) {
-  const movieListItem = document.createElement('li');
-  // obsluga zdarzenia kliknięcia do elementu filmu
-  movieListItem.addEventListener('click', () => {
-    showLibraryDetails(movieDetails);
-  });
-
-  return movieListItem;
-}
-
 // wyświetlanie listy filmów
-function displayMovieList(movieList) {
+function displayMovieList() {
   const libraryFilmsList = document.querySelector('.library-films__list');
   libraryFilmsList.innerHTML = '';
 
@@ -35,8 +24,8 @@ if (btnWatched) {
   btnWatched.addEventListener('click', () => {
     btnWatched.classList.add('button-library--active');
     btnQueued.classList.remove('button-library--active');
-    const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
-    displayMovieList(watchedList);
+
+    displayMovieList();
   });
 }
 

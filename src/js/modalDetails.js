@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { currentLanguage } from './language';
-import { apiKey } from './fetcher';
+import { apiKey } from './Dfetcher';
 import Notiflix from 'notiflix';
-import { populateModal } from './populateModal';
+import { populateModal } from './DpopulateModal';
 
 const addWatched = document.querySelector('.btn-add-watched');
 const addQueue = document.querySelector('.btn-add-queue');

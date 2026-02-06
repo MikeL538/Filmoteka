@@ -1,6 +1,4 @@
-import { getGenreName } from '../../types and data/genres.js';
-import type { Movie, MovieDetails } from '../../types and data/types.js';
-import { currentLanguage } from '../language.js';
+import type { MovieDetails } from '../../types and data/types.js';
 
 export function populateModal(movieDetails: MovieDetails) {
   const details = document.querySelector<HTMLElement>('.details')!;
@@ -20,10 +18,11 @@ export function populateModal(movieDetails: MovieDetails) {
   modalImg.src = modalImgFound;
   modalImg.alt = movieDetails.title;
 
-  const mathRound = Math.round(movieDetails.vote_average * 10) / 10;
+  const votesRound = Math.round(movieDetails.vote_average * 10) / 10;
+  const popularityRound = Math.round(movieDetails.popularity);
 
-  votes.textContent = `${mathRound} / ${movieDetails.vote_count}`;
-  popularity.textContent = `${movieDetails.popularity}`;
+  votes.textContent = `${votesRound} / ${movieDetails.vote_count}`;
+  popularity.textContent = `${popularityRound}`;
   orgTitle.textContent = `${movieDetails.original_title}`;
 
   genre.textContent = movieDetails.genres.map(g => g.name).join(', ');
