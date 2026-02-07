@@ -167,13 +167,15 @@
     font-weight: 600;
     height: 42px;
     opacity: 0.8;
-    transition: vars.$transition;
+    transition:
+      vars.$transition transform,
+      opacity vars.$transition;
     width: 148px;
 
     &:hover,
     &:focus {
       opacity: 1;
-      transform: vars.$transform-button;
+      transform: scale(1.1);
     }
   }
 }

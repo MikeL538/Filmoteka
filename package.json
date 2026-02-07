@@ -5,7 +5,6 @@
   "description": "",
   "homepage": "https://mikel538.github.io/Filmoteka/",
   "scripts": {
-    "start": "parcel build src/*.html --public-url /Filmoteka/",
     "dev": "parcel src/*.html --public-url /Filmoteka/",
     "build": "parcel build src/*.html --public-url /Filmoteka/"
   },

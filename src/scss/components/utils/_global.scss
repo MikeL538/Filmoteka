@@ -87,3 +87,8 @@ button {
 
   z-index: -100;
 }
+
+.onList {
+  background-color: vars.$color-error !important;
+  font-size: 0.75rem !important;
+}
