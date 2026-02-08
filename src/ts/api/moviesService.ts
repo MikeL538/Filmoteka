@@ -1,5 +1,5 @@
 import { tmdbClient } from './tmdbApi.js';
-import type { MovieResponse } from '../../types and data/types.js';
+import type { MovieResponse, MovieDetails } from '../../types and data/types.js';
 
 // FETCH TRENDING
 export async function fetchTrending(page: number, language: string) {
@@ -17,4 +17,12 @@ export async function searchMovies(query: string, page: number, language: string
   });
 
   return data.results;
+}
+
+export async function fetchMovieById(id: string, language: string): Promise<MovieDetails> {
+  const { data } = await tmdbClient.get<MovieDetails>(`movie/${id}`, {
+    params: { language },
+  });
+
+  return data;
 }

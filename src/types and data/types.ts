@@ -6,10 +6,10 @@ export interface Movie {
   release_date: string;
   genre_ids: number[];
   vote_average: number;
-  vote_count?: number;
-  popularity?: number;
-  original_title?: string;
-  overview?: string;
+  // vote_count?: number;
+  // popularity?: number;
+  // original_title?: string;
+  // overview?: string;
 }
 
 export interface MovieDetails {

@@ -1,15 +1,50 @@
 export function modalClose() {
+  // ======= MODALS ========
+  type Modals = {
+    backdrops: NodeListOf<HTMLElement> | null;
+    team: HTMLElement | null;
+    details: HTMLElement | null;
+  };
+
+  const modals: Modals = {
+    backdrops: document.querySelectorAll<HTMLElement>('.backdrop-modal'),
+    team: document.querySelector<HTMLElement>('.modal-team-box'),
+    details: document.querySelector<HTMLElement>('.details'),
+  };
+
+  // ======= GLOBAL BACKDROP-MODAL ========
+  modals.backdrops?.forEach(backdrop => {
+    backdrop.addEventListener('click', e => {
+      if (e.target === backdrop) {
+        modals.team?.classList.add('hidden');
+        modals.details?.classList.add('hidden');
+      }
+      document.body.style.overflow = 'scroll';
+    });
+  });
+
+  // ======= ESCAPE KEY ========
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelector<HTMLElement>('.details')?.classList.add('hidden');
+      document.querySelector<HTMLElement>('.modal-team-box')?.classList.add('hidden');
+      document.body.style.overflow = 'scroll';
+    }
+  });
+
   // ======= HIDE TEAM ==========
   const teamClose = document.querySelector<HTMLElement>('.team__modal--close');
+
   teamClose?.addEventListener('click', () => {
-    document.querySelector<HTMLElement>('.modal-team-box')?.classList.add('hidden');
+    modals.team?.classList.add('hidden');
     document.body.style.overflow = 'scroll';
   });
 
   // ======= HIDE DETAILS ========
   const detailsClose = document.querySelector<HTMLElement>('.details__close-button');
+
   detailsClose?.addEventListener('click', () => {
-    document.querySelector<HTMLElement>('.details')?.classList.add('hidden');
+    modals.details?.classList.add('hidden');
     document.body.style.overflow = 'scroll';
   });
 }

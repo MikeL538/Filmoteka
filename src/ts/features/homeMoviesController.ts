@@ -3,6 +3,7 @@ import { renderMovies } from '../ui/moviesRenderer.js';
 import { attachInfiniteScroll } from '../ui/scrollHandler.js';
 import { attachSearch } from '../ui/searchHandler.js';
 import { currentLanguage } from '../language.js';
+import { notifications } from '../ui/notifications.js';
 
 const filmsList = document.querySelector<HTMLUListElement>('.films__list')!;
 const form = document.querySelector<HTMLFormElement>('.header__nav-form')!;
@@ -28,6 +29,7 @@ export function initMoviesPage() {
 
   attachInfiniteScroll(async () => {
     currentPage++;
+    if (currentPage.valueOf.length > 20) notifications.noMoreMovies();
     await load();
   });
 

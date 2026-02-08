@@ -3,7 +3,6 @@
 .library-films {
   @include vars.flex-center;
   margin-top: 140px;
-  height: 200vh;
 
   &__list {
     margin: 20px;

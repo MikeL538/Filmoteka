@@ -12,7 +12,7 @@
     padding: 7px;
     position: absolute;
     top: 10%;
-    transform: translateX(-50%) scale(0.9); // lekko zmniejszony przy ukryciu
+    transform: translateX(-50%) scale(0.8);
     width: 90vw;
     z-index: 100;
     opacity: 0;
@@ -25,7 +25,7 @@
     &:not(.hidden) {
       opacity: 1;
       pointer-events: auto;
-      transform: translateX(-50%) scale(1);
+      transform: translate(-50%, -10%) scale(1);
     }
 
     @media (prefers-color-scheme: light) {
@@ -138,21 +138,6 @@
   &__buttons {
     align-items: center;
     display: flex;
-
-    > button {
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      height: 44px;
-      margin: 20px 0;
-      padding: 0 10px;
-      text-transform: uppercase;
-      width: 110px;
-
-      &:first-of-type {
-        margin-right: 10px;
-      }
-    }
   }
 }
 
@@ -165,17 +150,22 @@
     color: vars.$color-default;
     font-size: vars.$font-sm;
     font-weight: 600;
-    height: 42px;
+    height: 38px;
     opacity: 0.8;
+    width: 110px;
+    margin: 20px 0;
     transition:
       vars.$transition transform,
       opacity vars.$transition;
-    width: 148px;
 
     &:hover,
     &:focus {
       opacity: 1;
       transform: scale(1.1);
+    }
+
+    &:first-of-type {
+      margin-right: 10px;
     }
   }
 }
