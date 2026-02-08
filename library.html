@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang=en><link rel=stylesheet href=/Filmoteka/library.faf6959c.css><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=color-scheme content="light dark"><title>Filmoteka</title><link rel=stylesheet href=/Filmoteka/Filmoteka.323bd073.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"><link rel=icon type=image.jpg href=/Filmoteka/favicon.13c518a6.png><script src=/Filmoteka/library.9d2dfd05.js type=module defer></script><body>
+<!DOCTYPE html><html lang=en><script type=module src=/Filmoteka/Filmoteka.846e76f8.js></script><link rel=stylesheet href=/Filmoteka/library.445aa0eb.css><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=color-scheme content="light dark"><title>Filmoteka</title><link rel=stylesheet href=/Filmoteka/Filmoteka.323bd073.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"><link rel=icon type=image.jpg href=/Filmoteka/favicon.13c518a6.png><script src=/Filmoteka/library.a28b94af.js type=module defer></script><body>
     <header class="header header--library">
       <div class="header--library__container header__container">
   <nav class="header--library__nav header__nav">
@@ -52,7 +52,7 @@
 
     </main>
 
-    <footer class="footer hidden library-page">
+    <footer class="footer hidden">
       <p>
   © 2020 | All Rights Reserved Developed with
   
@@ -63,7 +63,7 @@
 
     </footer>
 
-    <div class="details details-library hidden">
+    <div class="backdrop-modal details hidden">
   <div class=details__container>
     <img class=details__img src=https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png alt>
 
@@ -91,15 +91,14 @@
           </div>
         </li>
       </ul>
-      <div class=details-library__buttons>
-        <button class=btn-delete-watched type=button data-translate=btnDltWatched>
-          delete from watched
+      <div class=details__buttons>
+        <button class=btn-add-watched type=button data-translate=btnWatched>
+          add to watched
         </button>
-        <button class=btn-delete-queue type=button data-translate=btnDltQueued>
-          delete from queue
-        </button>
+        <button class=btn-add-queue type=button data-translate=btnQueue>add to queue</button>
       </div>
     </div>
+
     <button class=details__close-button type=button>
       <svg width=16 height=16><use href=/Filmoteka/icons.c5b0f01c.svg#close /></svg>
     </button>
