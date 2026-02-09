@@ -1,7 +1,7 @@
 import type { Movie } from '../../types and data/types.js';
 import { getGenreName } from '../../types and data/genres.js';
 import { fetchMovieById } from '../api/moviesService.js';
-import { getQueueList } from './movieListService.js';
+import { getQueueList, getWatchedList } from './movieListService.js';
 
 export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): string {
   return movies
@@ -24,6 +24,24 @@ export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): stri
 
 export async function fetchQueuedMovies(language: string): Promise<Movie[]> {
   const ids = getQueueList();
+
+  if (ids.length === 0) return [];
+
+  const movies = await Promise.all(ids.map(id => fetchMovieById(id, language)));
+
+  return movies.map(movie => ({
+    id: movie.id,
+    title: movie.title,
+    backdrop_path: movie.backdrop_path,
+    release_date: movie.release_date,
+    vote_average: movie.vote_average,
+    genre_ids: movie.genres.map(g => g.id),
+    imagePath: '',
+  }));
+}
+
+export async function fetchWatchedMovies(language: string): Promise<Movie[]> {
+  const ids = getWatchedList();
 
   if (ids.length === 0) return [];
 

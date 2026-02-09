@@ -1,6 +1,5 @@
 import type { MovieDetails } from '../../types and data/types.js';
-import { getWatchedList, getQueueList } from '../ui/movieListService.js';
-import { currentLanguage } from '../language.js';
+import { updateQueueButtonsState, updateWatchedButtonsState } from './movieListService.js';
 
 /**
  * Populate the modal with the movie details
@@ -18,47 +17,19 @@ export function populateModal(movieDetails: MovieDetails) {
   const genre = details.querySelector<HTMLElement>('.genre')!;
 
   // ===== BUTTONS =====
-  const btnAddWatchedList = document.querySelectorAll<HTMLElement>('.btn-add-watched');
-  const btnAddQueueList = document.querySelectorAll<HTMLElement>('.btn-add-queue');
+  const btnAddWatchedList = document.querySelectorAll<HTMLButtonElement>('.btn-add-watched');
+  const btnAddQueueList = document.querySelectorAll<HTMLButtonElement>('.btn-add-queue');
 
-  // Add the movie id to all buttons
-  btnAddWatchedList.forEach(btn => (btn.dataset.id = movieDetails.id.toString()));
-  btnAddQueueList.forEach(btn => (btn.dataset.id = movieDetails.id.toString()));
-
-  // Updates button text and classes based on watched/queue list status
-  function updateButtonClasses() {
-    const isWatched = getWatchedList().includes(movieDetails.id.toString());
-    const isQueued = getQueueList().includes(movieDetails.id.toString());
-
-    btnAddWatchedList.forEach((btn, e) => {
-      if (isWatched) {
-        btn.classList.add('onList');
-        btn.textContent = currentLanguage === 'en-US' ? 'Remove from watched' : 'Usuń z oglądanych';
-      } else {
-        btn.classList.remove('onList');
-        btn.textContent = currentLanguage === 'en-US' ? 'Add to watched' : 'Dodaj do oglądanych';
-      }
-    });
-
-    btnAddQueueList.forEach(btn => {
-      console.log('2');
-      if (isQueued) {
-        btn.classList.add('onList');
-        btn.textContent = currentLanguage === 'en-US' ? 'Remove from queue' : 'Usuń z kolejki';
-      } else {
-        btn.classList.remove('onList');
-        btn.textContent = currentLanguage === 'en-US' ? 'Add to queue' : 'Dodaj do kolejki';
-      }
-    });
-  }
-
-  // Initial update
-  updateButtonClasses();
-
-  // Attach event listeners
-  btnAddWatchedList.forEach(btn => btn.addEventListener('click', updateButtonClasses));
-  btnAddQueueList.forEach(btn => btn.addEventListener('click', updateButtonClasses));
-
+  btnAddWatchedList.forEach(btn => {
+    btn.dataset.id = movieDetails.id.toString();
+    const id = btn.dataset.id;
+    updateWatchedButtonsState(btn, id);
+  });
+  btnAddQueueList.forEach(btn => {
+    btn.dataset.id = movieDetails.id.toString();
+    const id = btn.dataset.id;
+    updateQueueButtonsState(btn, id);
+  });
   // ===== MODAL CONTENT =====
   modalTitle.textContent = movieDetails.title;
 

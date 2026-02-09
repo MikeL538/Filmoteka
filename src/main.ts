@@ -4,9 +4,12 @@ import { scrollFooter } from './ts/scrollFooter.js';
 import { modalShow } from './ts/modalShow.js';
 import { modalClose } from './ts/modalClose.js';
 import { language } from './ts/language.js';
+import { movieListService } from './ts/ui/movieListService.js';
+import { currentLanguage } from './ts/language.js';
 
 scrollHeader();
 scrollFooter();
 modalShow();
 modalClose();
 language();
+movieListService(currentLanguage);

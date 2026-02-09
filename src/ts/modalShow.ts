@@ -2,7 +2,6 @@ import { populateModal } from './ui/populateDetailsModal.js';
 import { tmdbClient } from './api/tmdbApi.js';
 import type { MovieDetails } from '../types and data/types.js';
 import { currentLanguage } from './language.js';
-import { movieListService } from './ui/movieListService.js';
 
 export function modalShow() {
   // ======= SHOW TEAM ==========
@@ -40,8 +39,8 @@ export function modalShow() {
     try {
       const movie = await fetchMovieDetails(movieId);
       populateModal(movie);
+
       modalDetails.classList.remove('hidden');
-      movieListService();
     } catch (error) {
       console.error('Failed to fetch movie details:', error);
     }
