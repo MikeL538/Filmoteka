@@ -4,32 +4,61 @@ import { attachInfiniteScroll } from '../ui/scrollHandler.js';
 import { attachSearch } from '../ui/searchHandler.js';
 import { currentLanguage } from '../language.js';
 import { notifications } from '../ui/notifications.js';
-
-const filmsList = document.querySelector<HTMLUListElement>('.films__list')!;
-const form = document.querySelector<HTMLFormElement>('.header__nav-form')!;
+// import type { MovieResponse } from '../../types and data/types.js';
 
 export function initMoviesPage() {
-  let currentPage = 1;
-  let query = '';
+  const filmsList = document.querySelector<HTMLUListElement>('.films__list')!;
+  const form = document.querySelector<HTMLFormElement>('.header__nav-form')!;
+
+  let currentPage: number = 1;
+  let totalPages: number = 1;
+  let query: string = '';
+  let noMoreVideos: boolean = false;
 
   async function load() {
-    const movies = query
-      ? await searchMovies(query, currentPage, currentLanguage)
-      : await fetchTrending(currentPage, currentLanguage);
+    if (!filmsList.children.length) {
+      notifications.showLoader();
+    }
 
-    filmsList.innerHTML += renderMovies(movies, currentLanguage);
+    try {
+      const response = query
+        ? await searchMovies(query, currentPage, currentLanguage)
+        : await fetchTrending(currentPage, currentLanguage);
+
+      totalPages = response.total_pages ?? 1;
+
+      filmsList.innerHTML += renderMovies(response.results, currentLanguage);
+    } catch (error) {
+      notifications.error();
+    } finally {
+      notifications.hideLoader();
+    }
   }
 
   attachSearch(form, newQuery => {
     query = newQuery;
     currentPage = 1;
     filmsList.innerHTML = '';
+    noMoreVideos = false;
     load();
   });
 
+  // attachInfiniteScroll(async () => {
+  //   currentPage++;
+
+  //   await load();
+  // });
+
   attachInfiniteScroll(async () => {
+    if (noMoreVideos) return;
+
+    if (currentPage >= totalPages) {
+      noMoreVideos = true;
+      notifications.noMoreMovies();
+      return;
+    }
+
     currentPage++;
-    if (currentPage.valueOf.length > 20) notifications.noMoreMovies();
     await load();
   });
 
@@ -38,6 +67,7 @@ export function initMoviesPage() {
   document.addEventListener('languageChanged', () => {
     currentPage = 1;
     filmsList.innerHTML = '';
+    noMoreVideos = false;
     load();
   });
 }

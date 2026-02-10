@@ -6,10 +6,6 @@ export interface Movie {
   release_date: string;
   genre_ids: number[];
   vote_average: number;
-  // vote_count?: number;
-  // popularity?: number;
-  // original_title?: string;
-  // overview?: string;
 }
 
 export interface MovieDetails {
@@ -28,4 +24,5 @@ export interface MovieDetails {
 export interface MovieResponse {
   page: number;
   results: Movie[];
+  total_pages: number;
 }

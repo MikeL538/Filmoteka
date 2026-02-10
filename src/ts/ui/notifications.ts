@@ -1,4 +1,4 @@
-import { Notify } from 'notiflix';
+import { Notify, Loading } from 'notiflix';
 import { currentLanguage } from '../language.js';
 
 Notify.init({
@@ -22,8 +22,9 @@ const languageStrings = {
     removedFromWatched: 'Removed from watched',
     removedFromQueue: 'Removed from queue',
     notFound: 'Movie not found',
-    noMoreMovies: 'No more movies',
+    noMoreMovies: 'No more movies to load',
     error: 'Something went wrong',
+    loading: 'Loading',
   },
   'pl-PL': {
     addedToWatched: 'Dodano do obejrzanych',
@@ -33,8 +34,9 @@ const languageStrings = {
     removedFromWatched: 'Usunięto z listy obejrzanych',
     removedFromQueue: 'Usunięto z listy oczekujących',
     notFound: 'Film nie został znaleziony',
-    noMoreMovies: 'Brak więcej filmów',
+    noMoreMovies: 'Brak filmów do załadowania',
     error: 'Wystąpił błąd',
+    loading: 'Wczytywanie',
   },
 };
 
@@ -48,4 +50,7 @@ export const notifications = {
   notFound: () => Notify.failure(languageStrings[currentLanguage].notFound),
   noMoreMovies: () => Notify.failure(languageStrings[currentLanguage].noMoreMovies),
   error: () => Notify.failure(languageStrings[currentLanguage].error),
+  showLoader: () => Loading.dots(languageStrings[currentLanguage].loading),
+  showModalLoader: () => Loading.hourglass(languageStrings[currentLanguage].loading),
+  hideLoader: () => Loading.remove(),
 };

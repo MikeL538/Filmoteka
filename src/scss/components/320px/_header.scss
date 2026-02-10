@@ -11,7 +11,7 @@
   top: 0;
   transition: vars.$transition;
   width: 100%;
-  z-index: 10;
+  z-index: 99;
 
   &__container {
     @include vars.flex-between;
@@ -85,7 +85,6 @@
       width: 280px;
     }
 
-    // ZMIENIC NA FORM-INPUT
     &-input {
       background: transparent;
       border: none;
@@ -138,6 +137,7 @@
 
     &__btn--container {
       transition: vars.$transition-scroll-form;
+      margin-bottom: 10px;
 
       // TODO
       > button {
@@ -145,10 +145,8 @@
         border-radius: 5px;
         border: 3px solid vars.$color-goit;
         color: vars.$color-default;
-        cursor: pointer;
         font-weight: 700;
         height: 44px;
-        margin-bottom: 10px;
         text-transform: uppercase;
         transition: vars.$transition;
         width: 130px;
@@ -165,10 +163,11 @@
   }
 }
 
+// ======= OTHER ========
 .underline {
   border-bottom: 2px solid vars.$color-goit;
 }
-//  TODO
+
 // ----------------scrolled-----------------
 .header.scrolled {
   height: 40px;

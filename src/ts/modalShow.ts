@@ -1,7 +1,8 @@
 import { populateModal } from './ui/populateDetailsModal.js';
 import { tmdbClient } from './api/tmdbApi.js';
-import type { MovieDetails } from '../types and data/types.js';
+import type { Movie, MovieDetails } from '../types and data/types.js';
 import { currentLanguage } from './language.js';
+import { notifications } from './ui/notifications.js';
 
 export function modalShow() {
   // ======= SHOW TEAM ==========
@@ -23,10 +24,19 @@ export function modalShow() {
       params: { language: currentLanguage },
     });
 
+    if (currentLanguage === 'pl-PL' && !data.overview) {
+      const { data: englishData } = await tmdbClient.get<MovieDetails>(`movie/${movieId}`, {
+        params: { language: 'en-US' },
+      });
+
+      data.overview = `<i>Brak polskiego opisu</i><br>${englishData.overview}`;
+    }
+
     return data;
   }
 
   filmsList.addEventListener('click', async e => {
+    notifications.showModalLoader();
     document.body.style.overflow = 'hidden';
     const target = e.target as HTMLElement;
     const listItem = target.closest<HTMLLIElement>('.films__list-item');
@@ -43,6 +53,8 @@ export function modalShow() {
       modalDetails.classList.remove('hidden');
     } catch (error) {
       console.error('Failed to fetch movie details:', error);
+    } finally {
+      notifications.hideLoader();
     }
   });
 }

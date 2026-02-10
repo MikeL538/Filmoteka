@@ -74,15 +74,7 @@ export function movieListService(currentLanguage: 'en-US' | 'pl-PL') {
       const id = button.dataset.id!;
       toggleWatched(id);
       console.log('watch');
-      //   if (!getWatchedList().includes(id)) {
-      //     button.classList.add('onList');
-      //     button.textContent =
-      //       currentLanguage === 'en-US' ? 'Remove from watched' : 'Usuń z oglądanych';
-      //   } else {
-      //     button.classList.remove('onList');
-      //     button.textContent = currentLanguage === 'en-US' ? 'Add to watched' : 'Dodaj do oglądanych';
-      //   }
-      // });
+
       updateWatchedButtonsState(button, id);
     });
 
@@ -91,13 +83,7 @@ export function movieListService(currentLanguage: 'en-US' | 'pl-PL') {
         const id = button.dataset.id!;
         toggleQueue(id);
         console.log('queue');
-        // if (!getQueueList().includes(id)) {
-        //   button.classList.add('onList');
-        //   button.textContent = currentLanguage === 'en-US' ? 'Remove from queue' : 'Usuń z kolejki';
-        // } else {
-        //   button.classList.remove('onList');
-        //   button.textContent = currentLanguage === 'en-US' ? 'Add to queue' : 'Dodaj do kolejki';
-        // }
+
         updateQueueButtonsState(button, id);
       });
     });

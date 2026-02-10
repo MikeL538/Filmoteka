@@ -2,7 +2,6 @@
 .films {
   @include vars.flex-center;
   margin-top: 120px;
-  // height: 200vh;
 
   &__list {
     margin: 30px;

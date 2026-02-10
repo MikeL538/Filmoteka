@@ -59,9 +59,7 @@ button {
   transform: translate(-50%, -50%) scale(0.2);
   transition:
     opacity vars.$transition-scroll,
-    transform vars.$transition-scroll,
-    z-index vars.$transition-scroll;
-
+    transform vars.$transition-scroll;
   width: 100%;
   z-index: 99;
 
@@ -82,9 +80,7 @@ button {
   transform: translate(-50%, -50%), scale(0.2);
   transition:
     opacity vars.$transition-scroll,
-    transform vars.$transition-scroll,
-    z-index vars.$transition-scroll;
-
+    transform vars.$transition-scroll;
   z-index: -100;
 }
 

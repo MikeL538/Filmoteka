@@ -40,19 +40,3 @@ $transform-button: scale(1.1);
   align-items: center;
   justify-content: space-between;
 }
-
-// @mixin interactive {
-//   transition: $transition-base;
-
-//   &:hover,
-//   &:focus {
-//     color: getcolor('orange');
-//     stroke: getcolor('orange');
-//   }
-// }
-
-// @mixin hidden {
-//   opacity: 0;
-//   visibility: hidden;
-//   pointer-events: none;
-// }

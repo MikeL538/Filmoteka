@@ -18,33 +18,33 @@ export function modalClose() {
       if (e.target === backdrop) {
         modals.team?.classList.add('hidden');
         modals.details?.classList.add('hidden');
+        document.body.style.overflow = 'auto';
       }
-      document.body.style.overflow = 'scroll';
     });
   });
 
   // ======= ESCAPE KEY ========
   window.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
-      document.querySelector<HTMLElement>('.details')?.classList.add('hidden');
-      document.querySelector<HTMLElement>('.modal-team-box')?.classList.add('hidden');
-      document.body.style.overflow = 'scroll';
+      modals.details?.classList.add('hidden');
+      modals.team?.classList.add('hidden');
+      document.body.style.overflow = 'auto';
     }
   });
 
-  // ======= HIDE TEAM ==========
+  // ======= HIDE BY X BUTTON TEAM ==========
   const teamClose = document.querySelector<HTMLElement>('.team__modal--close');
 
   teamClose?.addEventListener('click', () => {
     modals.team?.classList.add('hidden');
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = 'auto';
   });
 
-  // ======= HIDE DETAILS ========
+  // ======= HIDE BY X BUTTON DETAILS ========
   const detailsClose = document.querySelector<HTMLElement>('.details__close-button');
 
   detailsClose?.addEventListener('click', () => {
     modals.details?.classList.add('hidden');
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = 'auto';
   });
 }

@@ -1,11 +1,3 @@
-interface InfiniteScrollOptions {
-  fetchCallback: (page: number, query?: string) => void;
-  currentPage: number;
-  searchQuery?: string;
-  isLoading?: boolean;
-  noMoreMovies?: boolean;
-}
-
 export function attachInfiniteScroll(fetchCallback: () => Promise<void>): void {
   let isLoading = false;
 

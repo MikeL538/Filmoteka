@@ -1,4 +1,5 @@
 import type { MovieDetails } from '../../types and data/types.js';
+import { currentLanguage } from '../language.js';
 import { updateQueueButtonsState, updateWatchedButtonsState } from './movieListService.js';
 
 /**
@@ -43,5 +44,5 @@ export function populateModal(movieDetails: MovieDetails) {
   popularity.textContent = `${Math.round(movieDetails.popularity)}`;
   orgTitle.textContent = movieDetails.original_title;
   genre.textContent = movieDetails.genres.map(g => g.name).join(', ');
-  modalAbout.textContent = movieDetails.overview ?? '';
+  modalAbout.innerHTML = movieDetails.overview ?? '';
 }

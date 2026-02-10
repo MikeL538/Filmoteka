@@ -19,8 +19,7 @@
     pointer-events: none;
     transition:
       opacity vars.$transition-scroll,
-      transform vars.$transition-scroll,
-      z-index vars.$transition-scroll;
+      transform vars.$transition-scroll;
 
     &:not(.hidden) {
       opacity: 1;
@@ -87,7 +86,6 @@
     @include vars.flex-center;
     flex-direction: column;
     width: 100%;
-    // border-left: 1px solid red;
 
     &-list {
       @include vars.flex-between;
@@ -99,15 +97,15 @@
       &--item {
         @include vars.flex-between;
         align-items: baseline;
-        margin: 0 12px 0 0px;
+        padding: 0 12px 0 12px;
         max-width: 280px;
-        overflow: scroll;
+        overflow: auto;
         text-align: justify;
         width: 100%;
 
         &:last-of-type {
-          max-width: 290px;
-          padding: 0 20px;
+          max-width: 600px;
+          padding: 0 12px;
         }
       }
 
