@@ -47,7 +47,10 @@ const translations = {
   },
 } as const;
 
-export let currentLanguage: Language = (localStorage.getItem('language') as Language) || 'en-US';
+const storedLanguage = localStorage.getItem('language');
+
+export let currentLanguage: Language =
+  storedLanguage === 'en-US' || storedLanguage === 'pl-PL' ? storedLanguage : 'en-US';
 
 export function language() {
   const enLangButton = document.querySelector<HTMLElement>('#enLang')!;
