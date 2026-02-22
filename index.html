@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang=en><script type=module src=/Filmoteka/Filmoteka.1a47b903.js></script><link rel=stylesheet href=/Filmoteka/Filmoteka.c7ef3d0f.css><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=color-scheme content="light dark"><title>Filmoteka</title><link rel=stylesheet href=/Filmoteka/Filmoteka.02e9542b.css><link rel=stylesheet href=/Filmoteka/Filmoteka.323bd073.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"><link rel=preload href=/Filmoteka/no-video.86d4593b.jpg as=image><link rel=icon type=image.jpg href=/Filmoteka/favicon.13c518a6.png><script src=/Filmoteka/Filmoteka.d361f3ee.js type=module defer></script><body>
+<!DOCTYPE html><html lang=en><script type=module src=/Filmoteka/Filmoteka.f55f642a.js></script><link rel=stylesheet href=/Filmoteka/Filmoteka.c7ef3d0f.css><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=color-scheme content="light dark"><title>Filmoteka</title><link rel=stylesheet href=/Filmoteka/Filmoteka.02e9542b.css><link rel=stylesheet href=/Filmoteka/Filmoteka.323bd073.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"><link rel=preload href=/Filmoteka/no-video.86d4593b.jpg as=image><link rel=icon type=image.jpg href=/Filmoteka/favicon.13c518a6.png><script src=/Filmoteka/Filmoteka.df2d867c.js type=module defer></script><body>
     <header class=header>
       <div class=header__container>
   <nav class=header__nav>
@@ -16,6 +16,9 @@
           </li>
           <li class=header__nav-list-item>
             <a href=/Filmoteka/library.html data-translate=library>My Library</a>
+          </li>
+          <li class=header__nav-list-item>
+            <button class=header__nav-login type=button data-translate=login>Login</button>
           </li>
           <li class=header__nav-list-item>
             <div class=header__nav-language>
@@ -175,6 +178,20 @@
     <button class=details__close-button type=button>
       <svg width=16 height=16><use href=/Filmoteka/icons.c5b0f01c.svg#close /></svg>
     </button>
+  </div>
+</div>
+
+    <div class="backdrop-modal hidden login">
+  <div class=login__container>
+    <form class=login__form>
+      <label class=login__label>
+        <input class=login__input name=text>
+      </label>
+      <label class=login__label>
+        <input class=login--Password__input name=text>
+      </label>
+      <button class=login__btn>Login</button>
+    </form>
   </div>
 </div>
 
