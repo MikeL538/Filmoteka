@@ -1,7 +1,9 @@
 import { loginUser, setServerToken } from '../api/filmotekaServerApi.js';
+import { load } from '../features/libraryMoviesController.js';
 
 export async function loginHandler() {
   const form = document.querySelector('.login__form') as HTMLFormElement | null;
+  const formError = document.querySelector('.login__error') as HTMLParagraphElement | null;
 
   form?.addEventListener('submit', async e => {
     setTimeout(() => {}, 1000);
@@ -24,7 +26,11 @@ export async function loginHandler() {
       setServerToken(data.token);
       localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
       localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
+      window.location.reload();
     } catch (error) {
+      if (formError) {
+        formError.style.display = 'block';
+      }
       console.error(error);
     }
   });

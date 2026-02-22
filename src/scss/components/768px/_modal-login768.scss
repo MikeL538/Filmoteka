@@ -1,0 +1,12 @@
+@media screen and (min-width: 768px) {
+  .login {
+    &__container {
+      width: 420px;
+      padding: 28px;
+    }
+
+    &__form {
+      gap: 14px;
+    }
+  }
+}

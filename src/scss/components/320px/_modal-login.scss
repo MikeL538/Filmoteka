@@ -1,0 +1,105 @@
+@use '../utils/vars' as vars;
+
+.login {
+  &__container {
+    @include vars.flex-center;
+    flex-direction: column;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(92vw, 360px);
+    min-height: 240px;
+
+    @media (prefers-color-scheme: light) {
+      background-color: vars.$color-details-bg-light;
+      color: vars.$color-default-light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: vars.$color-details-bg;
+      color: vars.$color-default;
+    }
+
+    border: 1px solid rgba(255, 107, 8, 0.25);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  &__label {
+    display: block;
+    width: 100%;
+  }
+
+  &__input,
+  &--Password__input {
+    border: 1px solid rgba(255, 107, 8, 0.35);
+    border-radius: 6px;
+    font-size: vars.$font-sm;
+    outline: none;
+    padding: 10px 12px;
+    transition:
+      border-color vars.$transition,
+      box-shadow vars.$transition;
+    width: 100%;
+
+    @media (prefers-color-scheme: light) {
+      background-color: #fff;
+      color: vars.$color-default-light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: vars.$color-default;
+    }
+
+    &::placeholder {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      border-color: vars.$color-goit;
+      box-shadow: 0 0 0 3px rgba(255, 107, 8, 0.15);
+    }
+  }
+
+  &__btn {
+    @include vars.flex-center;
+    background-color: vars.$color-goit;
+    border: 1px solid vars.$color-goit;
+    border-radius: 6px;
+    color: vars.$color-default;
+    font-size: vars.$font-sm;
+    font-weight: 700;
+    height: 42px;
+    margin-top: 4px;
+    text-transform: uppercase;
+    transition:
+      transform vars.$transition,
+      box-shadow vars.$transition,
+      opacity vars.$transition;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      opacity: 0.95;
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(255, 107, 8, 0.3);
+    }
+  }
+
+  &__error {
+    display: none;
+    color: vars.$color-error;
+    font-size: vars.$font-sm;
+    margin-top: 8px;
+  }
+}

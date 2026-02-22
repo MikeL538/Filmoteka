@@ -9,6 +9,7 @@ import { currentLanguage } from './ts/language.js';
 // import { ensureDevLoginAndSyncLists } from './ts/features/devAuthSync.js';
 // import { initDevAuthSync } from './ts/features/devAuthSync.js';
 import { loginHandler } from './ts/ui/modalLogin.js';
+
 scrollHeader();
 scrollFooter();
 modalShow();
