@@ -1,6 +1,6 @@
 import { populateModal } from './ui/populateDetailsModal.js';
 import { tmdbClient } from './api/tmdbApi.js';
-import type { Movie, MovieDetails } from '../types and data/types.js';
+import type { MovieDetails } from '../types and data/types.js';
 import { currentLanguage } from './language.js';
 import { notifications } from './ui/notifications.js';
 
@@ -13,11 +13,8 @@ export function modalShow() {
   });
 
   // ======= SHOW MOVIE DETAILS ==========
-
   const filmsList = document.querySelector<HTMLUListElement>('.films__list, .library-films__list');
-
   if (!filmsList) return;
-
   const modalDetails = document.querySelector<HTMLElement>('.details')!;
   async function fetchMovieDetails(movieId: string): Promise<MovieDetails> {
     const { data } = await tmdbClient.get<MovieDetails>(`movie/${movieId}`, {
@@ -56,5 +53,13 @@ export function modalShow() {
     } finally {
       notifications.hideLoader();
     }
+  });
+
+  // ======= SHOW LOGIN ==========
+  const modalLogin = document.querySelector<HTMLElement>('.header__nav-login');
+
+  modalLogin?.addEventListener('click', () => {
+    document.querySelector<HTMLElement>('.login')?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
   });
 }

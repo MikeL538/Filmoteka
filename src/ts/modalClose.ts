@@ -4,12 +4,14 @@ export function modalClose() {
     backdrops: NodeListOf<HTMLElement> | null;
     team: HTMLElement | null;
     details: HTMLElement | null;
+    login: HTMLElement | null;
   };
 
   const modals: Modals = {
     backdrops: document.querySelectorAll<HTMLElement>('.backdrop-modal'),
     team: document.querySelector<HTMLElement>('.modal-team-box'),
     details: document.querySelector<HTMLElement>('.details'),
+    login: document.querySelector<HTMLElement>('.login'),
   };
 
   // ======= GLOBAL BACKDROP-MODAL ========
@@ -18,6 +20,7 @@ export function modalClose() {
       if (e.target === backdrop) {
         modals.team?.classList.add('hidden');
         modals.details?.classList.add('hidden');
+        modals.login?.classList.add('hidden');
         document.body.style.overflow = 'auto';
       }
     });
@@ -28,6 +31,7 @@ export function modalClose() {
     if (e.key === 'Escape') {
       modals.details?.classList.add('hidden');
       modals.team?.classList.add('hidden');
+      modals.login?.classList.add('hidden');
       document.body.style.overflow = 'auto';
     }
   });

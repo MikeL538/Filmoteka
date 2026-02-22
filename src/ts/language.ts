@@ -23,6 +23,7 @@ const translations = {
     // Library
     btnDltWatched: 'delete from watched',
     btnDltQueued: 'delete from queue',
+    login: 'Login',
   },
   'pl-PL': {
     // Header
@@ -44,6 +45,7 @@ const translations = {
     // Library
     btnDltWatched: 'usuń z oglądanych',
     btnDltQueued: 'usuń z kolejki',
+    login: 'Zaloguj',
   },
 } as const;
 

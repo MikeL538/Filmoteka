@@ -1,5 +1,6 @@
 import { notifications } from './notifications.js';
 import { currentLanguage } from '../language.js';
+import { saveMyList } from '../api/filmotekaServerApi.js';
 
 // ===== WATCHED LIST =====
 export function getWatchedList(): string[] {
@@ -15,6 +16,10 @@ export function getWatchedList(): string[] {
 
 function saveWatchedList(list: string[]): void {
   localStorage.setItem('toWatchList', JSON.stringify(list));
+
+  void saveMyList('watched', list).catch(error => {
+    console.error('Failed to sync watched list to backend:', error);
+  });
 }
 
 function toggleWatched(movieId: string): boolean {
@@ -46,6 +51,10 @@ export function getQueueList(): string[] {
 
 function saveQueueList(list: string[]): void {
   localStorage.setItem('queueList', JSON.stringify(list));
+
+  void saveMyList('queued', list).catch(error => {
+    console.error('Failed to sync queue list to backend:', error);
+  });
 }
 
 function toggleQueue(movieId: string): boolean {
@@ -70,10 +79,8 @@ export function movieListService(currentLanguage: 'en-US' | 'pl-PL') {
 
   watchedButtons.forEach(button => {
     button.addEventListener('click', () => {
-      console.log('wrks');
       const id = button.dataset.id!;
       toggleWatched(id);
-      console.log('watch');
 
       updateWatchedButtonsState(button, id);
     });
@@ -82,7 +89,6 @@ export function movieListService(currentLanguage: 'en-US' | 'pl-PL') {
       button.addEventListener('click', () => {
         const id = button.dataset.id!;
         toggleQueue(id);
-        console.log('queue');
 
         updateQueueButtonsState(button, id);
       });

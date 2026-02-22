@@ -6,10 +6,15 @@ import { modalClose } from './ts/modalClose.js';
 import { language } from './ts/language.js';
 import { movieListService } from './ts/ui/movieListService.js';
 import { currentLanguage } from './ts/language.js';
-
+// import { ensureDevLoginAndSyncLists } from './ts/features/devAuthSync.js';
+// import { initDevAuthSync } from './ts/features/devAuthSync.js';
+import { loginHandler } from './ts/ui/modalLogin.js';
 scrollHeader();
 scrollFooter();
 modalShow();
 modalClose();
 language();
 movieListService(currentLanguage);
+loginHandler();
+// initDevAuthSync();
+// void ensureDevLoginAndSyncLists();
