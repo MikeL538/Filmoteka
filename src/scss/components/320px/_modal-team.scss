@@ -73,13 +73,22 @@
 
   &__title {
     line-height: 35px;
-    margin-bottom: 20px;
+    margin: 20px auto 0 auto;
     text-align: center;
     transition: vars.$transition;
+    font-size: vars.$font-lg;
 
     &:hover,
     &:focus {
       color: vars.$color-goit;
+    }
+
+    &--note {
+      font-size: vars.$font-xs;
+      margin-bottom: 20px;
+      margin: 0 auto 20px auto;
+      max-width: 280px;
+      text-align: center;
     }
   }
 
@@ -88,7 +97,7 @@
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
-    width: 278px;
+    // width: 278px;
   }
 
   &__member {
@@ -99,6 +108,7 @@
     text-align: center;
     transition: vars.$transition;
     width: 230px;
+    margin: 0 auto;
   }
 
   &__link {
@@ -122,19 +132,32 @@
     border-radius: 50%;
     box-shadow: 0px 0px 3px 5px #ccc;
     transition: vars.$transition;
-    width: 100px;
+    width: 75px;
+
+    &--leader {
+      width: 120px;
+    }
   }
 
   &__name {
-    font-size: vars.$font-lg;
+    font-size: vars.$font-md;
     font-weight: 600;
     transition-duration: vars.$transition;
+    &--leader {
+      font-size: vars.$font-lg;
+      font-weight: 700;
+    }
   }
 
   &__role {
     color: gray;
-    font-size: vars.$font-md;
+    font-size: vars.$font-xs;
     font-weight: 500;
+
+    &--leader {
+      font-size: vars.$font-sm;
+      font-weight: 600;
+    }
   }
 
   // ================= CARD =================

@@ -1,11 +1,6 @@
 import type { MovieDetails } from '../../types and data/types.js';
-import { currentLanguage } from '../language.js';
 import { updateQueueButtonsState, updateWatchedButtonsState } from './movieListService.js';
 
-/**
- * Populate the modal with the movie details
- * @param {MovieDetails} movieDetails - The movie details to populate the modal with
- */
 export function populateModal(movieDetails: MovieDetails) {
   const details = document.querySelector<HTMLElement>('.details')!;
   const modalTitle = document.querySelector<HTMLElement>('.details__title')!;

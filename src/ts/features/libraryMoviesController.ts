@@ -6,6 +6,7 @@ import { notifications } from '../ui/notifications.js';
 const buttonWatched = document.querySelector<HTMLButtonElement>('.btn-watched');
 const buttonQueued = document.querySelector<HTMLButtonElement>('.btn-queued');
 const filmsList = document.querySelector<HTMLUListElement>('.library-films__list')!;
+let isInitialized = false;
 
 async function handleWatchedClick() {
   buttonWatched?.classList.add('button-library--active');
@@ -38,18 +39,31 @@ async function handleQueuedClick() {
   }
 }
 
-export function load() {
-  if (
-    !buttonWatched?.classList.contains('button-library--active') ||
-    !buttonQueued?.classList.contains('button-library--active')
-  ) {
-    handleWatchedClick();
+async function renderActiveTab() {
+  if (buttonQueued?.classList.contains('button-library--active')) {
+    await handleQueuedClick();
+    return;
   }
-  buttonWatched?.addEventListener('click', handleWatchedClick);
-  buttonQueued?.addEventListener('click', handleQueuedClick);
 
-  document.addEventListener('languageChanged', () => {
-    filmsList.innerHTML = '';
-    load();
-  });
+  await handleWatchedClick();
+}
+
+export function load() {
+  if (!isInitialized) {
+    buttonWatched?.addEventListener('click', () => {
+      void handleWatchedClick();
+    });
+
+    buttonQueued?.addEventListener('click', () => {
+      void handleQueuedClick();
+    });
+
+    document.addEventListener('languageChanged', () => {
+      void renderActiveTab();
+    });
+
+    isInitialized = true;
+  }
+
+  void renderActiveTab();
 }

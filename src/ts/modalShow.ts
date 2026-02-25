@@ -33,15 +33,14 @@ export function modalShow() {
   }
 
   filmsList.addEventListener('click', async e => {
-    notifications.showModalLoader();
-    document.body.style.overflow = 'hidden';
     const target = e.target as HTMLElement;
     const listItem = target.closest<HTMLLIElement>('.films__list-item');
+    const movieId = listItem?.dataset.id;
 
-    if (!listItem) return;
+    if (!listItem || !movieId) return;
 
-    const movieId = listItem.dataset.id;
-    if (!movieId) return;
+    notifications.showModalLoader();
+    document.body.style.overflow = 'hidden';
 
     try {
       const movie = await fetchMovieDetails(movieId);
@@ -49,6 +48,7 @@ export function modalShow() {
 
       modalDetails.classList.remove('hidden');
     } catch (error) {
+      document.body.style.overflow = 'auto';
       console.error('Failed to fetch movie details:', error);
     } finally {
       notifications.hideLoader();

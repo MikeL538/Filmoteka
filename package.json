@@ -1,16 +1,16 @@
 {
-  "name": "filmoteka",
+  "name": "Filmovie",
   "version": "1.1.0",
   "type": "module",
   "description": "",
-  "homepage": "https://mikel538.github.io/Filmoteka/",
+  "homepage": "https://mikel538.github.io/Filmovie/",
   "scripts": {
-    "dev": "parcel src/*.html --public-url /Filmoteka/",
-    "build": "parcel build src/*.html --public-url /Filmoteka/"
+    "dev": "parcel src/*.html --public-url /Filmovie/",
+    "build": "parcel build src/*.html --public-url /Filmovie/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MikeL538/Filmoteka.git"
+    "url": "git+https://github.com/MikeL538/Filmovie.git"
   },
   "keywords": [],
   "author": "Michał Lipiak <m.lipiak97@gmail.com>",

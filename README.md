@@ -1,6 +1,6 @@
-# Filmoteka
+# Filmovie
 
-https://mikel538.github.io/Filmoteka/
+https://mikel538.github.io/Filmovie/
 
 ## Opis
 

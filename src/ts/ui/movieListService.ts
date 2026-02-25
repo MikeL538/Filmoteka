@@ -84,14 +84,13 @@ export function movieListService(currentLanguage: 'en-US' | 'pl-PL') {
 
       updateWatchedButtonsState(button, id);
     });
+  });
+  queueButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.id!;
+      toggleQueue(id);
 
-    queueButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const id = button.dataset.id!;
-        toggleQueue(id);
-
-        updateQueueButtonsState(button, id);
-      });
+      updateQueueButtonsState(button, id);
     });
   });
 }
