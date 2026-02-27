@@ -1,10 +1,3 @@
-declare const process: {
-  env: {
-    PARCEL_API_BASE_URL?: string;
-    NODE_ENV?: string;
-  };
-};
-
 type ListName = 'watched' | 'queued';
 
 export type UserLists = {
@@ -17,7 +10,10 @@ type LoginResponse = {
   user: { login: string };
   lists: UserLists;
 };
-const API_BASE_URL = process.env.PARCEL_API_BASE_URL || 'http://localhost:3000';
+const API_BASE_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:3000'
+    : 'mikel538.github.io/Filmoteka-Server/';
 
 const TOKEN_KEY = 'filmoteka_server_token';
 
