@@ -1,6 +1,6 @@
 declare const process: {
   env: {
-    API_BASE_URL?: string;
+    PARCEL_API_BASE_URL?: string;
     NODE_ENV?: string;
   };
 };
@@ -17,8 +17,8 @@ type LoginResponse = {
   user: { login: string };
   lists: UserLists;
 };
+const API_BASE_URL = process.env.PARCEL_API_BASE_URL || 'http://localhost:3000';
 
-const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000';
 const TOKEN_KEY = 'filmoteka_server_token';
 
 export function getServerToken(): string | null {
