@@ -36,6 +36,14 @@ export async function loginUser(login: string, password: string): Promise<LoginR
   return (await response.json()) as LoginResponse;
 }
 
+export async function logoutUser(): Promise<void> {
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem('toWatchList');
+  localStorage.removeItem('queueList');
+
+  window.location.reload();
+}
+
 export async function getMyLists(): Promise<UserLists> {
   const token = getServerToken();
   if (!token) throw new Error('No token');

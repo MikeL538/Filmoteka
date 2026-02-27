@@ -6,9 +6,9 @@ import { modalClose } from './ts/modalClose.js';
 import { language } from './ts/language.js';
 import { movieListService } from './ts/ui/movieListService.js';
 import { currentLanguage } from './ts/language.js';
-// import { ensureDevLoginAndSyncLists } from './ts/features/devAuthSync.js';
-// import { initDevAuthSync } from './ts/features/devAuthSync.js';
+
 import { loginHandler } from './ts/ui/modalLogin.js';
+import { syncListsIfLoggedIn } from './ts/features/devAuthSync.js';
 
 scrollHeader();
 scrollFooter();
@@ -16,6 +16,5 @@ modalShow();
 modalClose();
 language();
 movieListService(currentLanguage);
+syncListsIfLoggedIn();
 loginHandler();
-// initDevAuthSync();
-// void ensureDevLoginAndSyncLists();

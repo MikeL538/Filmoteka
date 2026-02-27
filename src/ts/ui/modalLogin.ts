@@ -1,5 +1,4 @@
 import { loginUser, setServerToken } from '../api/filmotekaServerApi.js';
-import { load } from '../features/libraryMoviesController.js';
 
 export async function loginHandler() {
   const form = document.querySelector('.login__form') as HTMLFormElement | null;
@@ -7,9 +6,8 @@ export async function loginHandler() {
 
   form?.addEventListener('submit', async e => {
     setTimeout(() => {}, 1000);
-    console.log('test');
+
     e.preventDefault();
-    console.log('test2');
 
     const loginInput = document.querySelector('.login__input') as HTMLInputElement | null;
     const passwordInput = document.querySelector(
@@ -30,8 +28,11 @@ export async function loginHandler() {
     } catch (error) {
       if (formError) {
         formError.style.display = 'block';
+        console.error(error);
+        if (error instanceof Error && (error as Error).message !== 'Login failed: 401') {
+          formError.textContent = (error as Error).message;
+        }
       }
-      console.error(error);
     }
   });
 }

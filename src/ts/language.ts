@@ -2,6 +2,7 @@
 type Language = keyof typeof translations;
 type TranslationKey = keyof (typeof translations)['en-US'];
 // TRANSLATION OBJECTS
+// *Translations for notifications are in ui/notifications.ts*
 const translations = {
   'en-US': {
     // Header
@@ -23,7 +24,10 @@ const translations = {
     // Library
     btnDltWatched: 'delete from watched',
     btnDltQueued: 'delete from queue',
+    // Login
     login: 'Login',
+    logout: 'Logout',
+    wrongLoginOrPassword: 'Wrong login or password',
   },
   'pl-PL': {
     // Header
@@ -45,7 +49,10 @@ const translations = {
     // Library
     btnDltWatched: 'usuń z oglądanych',
     btnDltQueued: 'usuń z kolejki',
+    // Login
     login: 'Zaloguj',
+    logout: 'Wyloguj',
+    wrongLoginOrPassword: 'Nieprawidłowy login lub hasło',
   },
 } as const;
 
@@ -54,33 +61,49 @@ const storedLanguage = localStorage.getItem('language');
 export let currentLanguage: Language =
   storedLanguage === 'en-US' || storedLanguage === 'pl-PL' ? storedLanguage : 'en-US';
 
+export function applyTranslations(): void {
+  const elementsToTranslate = document.querySelectorAll<HTMLElement>('[data-translate]');
+  const translationsForCurrentLanguage = translations[currentLanguage];
+
+  elementsToTranslate.forEach(element => {
+    const translationKey = element.dataset.translate as TranslationKey | undefined;
+    if (!translationKey) return;
+
+    if (element instanceof HTMLInputElement && translationKey === 'placeholder') {
+      element.placeholder = translationsForCurrentLanguage[translationKey];
+    } else {
+      element.textContent = translationsForCurrentLanguage[translationKey];
+    }
+  });
+}
+
 export function language() {
   const enLangButton = document.querySelector<HTMLElement>('#enLang')!;
   const plLangButton = document.querySelector<HTMLElement>('#plLang')!;
 
   // GET LOCAL STORED LANGUAGE
 
-  function translateElements(): void {
-    let elementsToTranslate = document.querySelectorAll<HTMLElement>('[data-translate]');
-    const translationsForCurrentLanguage = translations[currentLanguage];
+  // function translateElements(): void {
+  //   let elementsToTranslate = document.querySelectorAll<HTMLElement>('[data-translate]');
+  //   const translationsForCurrentLanguage = translations[currentLanguage];
 
-    elementsToTranslate.forEach(element => {
-      const translationKey = element.dataset.translate as TranslationKey | undefined;
+  //   elementsToTranslate.forEach(element => {
+  //     const translationKey = element.dataset.translate as TranslationKey | undefined;
 
-      if (!translationKey) return;
+  //     if (!translationKey) return;
 
-      if (element instanceof HTMLInputElement && translationKey === 'placeholder') {
-        element.placeholder = translationsForCurrentLanguage[translationKey];
-      } else {
-        element.textContent = translationsForCurrentLanguage[translationKey];
-      }
-    });
-  }
+  //     if (element instanceof HTMLInputElement && translationKey === 'placeholder') {
+  //       element.placeholder = translationsForCurrentLanguage[translationKey];
+  //     } else {
+  //       element.textContent = translationsForCurrentLanguage[translationKey];
+  //     }
+  //   });
+  // }
 
   const switchLanguage = (language: Language): void => {
     currentLanguage = language;
     localStorage.setItem('language', language);
-    translateElements();
+    applyTranslations();
     // location.reload();
 
     document.dispatchEvent(new Event('languageChanged'));
@@ -107,6 +130,6 @@ export function language() {
     }
   });
 
-  translateElements();
+  applyTranslations();
   langCheck();
 }
