@@ -10,10 +10,12 @@ type LoginResponse = {
   user: { login: string };
   lists: UserLists;
 };
-const API_BASE_URL =
-  window.location.hostname === 'localhost'
-    ? 'http://localhost:3000'
-    : 'mikel538.github.io/Filmoteka-Server/';
+
+// LOCAL HOST
+// const API_BASE_URL ='http://localhost:3000'
+
+// PRODUCTION HOST
+const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
 
 const TOKEN_KEY = 'filmoteka_server_token';
 
