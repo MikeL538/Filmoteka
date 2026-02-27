@@ -4,7 +4,6 @@ import { attachInfiniteScroll } from '../ui/scrollHandler.js';
 import { attachSearch } from '../ui/searchHandler.js';
 import { currentLanguage } from '../language.js';
 import { notifications } from '../ui/notifications.js';
-// import type { MovieResponse } from '../../types and data/types.js';
 
 export function initMoviesPage() {
   const filmsList = document.querySelector<HTMLUListElement>('.films__list')!;
@@ -42,12 +41,6 @@ export function initMoviesPage() {
     noMoreVideos = false;
     load();
   });
-
-  // attachInfiniteScroll(async () => {
-  //   currentPage++;
-
-  //   await load();
-  // });
 
   attachInfiniteScroll(async () => {
     if (noMoreVideos) return;

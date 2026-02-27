@@ -5,6 +5,7 @@ export function modalClose() {
     team: HTMLElement | null;
     details: HTMLElement | null;
     login: HTMLElement | null;
+    register: HTMLElement | null;
   };
 
   const modals: Modals = {
@@ -12,6 +13,7 @@ export function modalClose() {
     team: document.querySelector<HTMLElement>('.modal-team-box'),
     details: document.querySelector<HTMLElement>('.details'),
     login: document.querySelector<HTMLElement>('.login'),
+    register: document.querySelector<HTMLElement>('.register'),
   };
 
   // ======= GLOBAL BACKDROP-MODAL ========
@@ -21,6 +23,7 @@ export function modalClose() {
         modals.team?.classList.add('hidden');
         modals.details?.classList.add('hidden');
         modals.login?.classList.add('hidden');
+        modals.register?.classList.add('hidden');
         document.body.style.overflow = 'auto';
       }
     });
@@ -32,6 +35,7 @@ export function modalClose() {
       modals.details?.classList.add('hidden');
       modals.team?.classList.add('hidden');
       modals.login?.classList.add('hidden');
+      modals.register?.classList.add('hidden');
       document.body.style.overflow = 'auto';
     }
   });

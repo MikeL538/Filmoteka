@@ -29,9 +29,11 @@ export function populateModal(movieDetails: MovieDetails) {
   // ===== MODAL CONTENT =====
   modalTitle.textContent = movieDetails.title;
 
+  const fallbackImage = new URL('../../images/no-video.jpg', import.meta.url).toString();
+
   const modalImgFound = movieDetails.backdrop_path
     ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(movieDetails.backdrop_path)}`
-    : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png';
+    : fallbackImage;
   modalImg.src = modalImgFound;
   modalImg.alt = movieDetails.title;
 

@@ -1,24 +1,17 @@
-import { loginUser, setServerToken } from '../api/filmotekaServerApi.js';
-import { openRegisterModal } from '../modalShow.js';
-export async function loginHandler() {
-  const form = document.querySelector('.login__form') as HTMLFormElement | null;
-  const formError = document.querySelector('.login__error') as HTMLParagraphElement | null;
+import { registerUser, setServerToken } from '../api/filmotekaServerApi.js';
 
-  document.addEventListener('click', e => {
-    const target = e.target as HTMLElement;
-    if (target.classList.contains('login__btn--register')) {
-      openRegisterModal();
-    }
-  });
+export async function registerHandler() {
+  const form = document.querySelector('.register__form') as HTMLFormElement | null;
+  const formError = document.querySelector('.register__error') as HTMLParagraphElement | null;
 
   form?.addEventListener('submit', async e => {
     setTimeout(() => {}, 1000);
 
     e.preventDefault();
 
-    const loginInput = document.querySelector('.login__input') as HTMLInputElement | null;
+    const loginInput = document.querySelector('.register__input') as HTMLInputElement | null;
     const passwordInput = document.querySelector(
-      '.login--Password__input',
+      '.register--Password__input',
     ) as HTMLInputElement | null;
 
     if (!loginInput || !passwordInput) {
@@ -27,7 +20,7 @@ export async function loginHandler() {
     }
 
     try {
-      const data = await loginUser(loginInput.value, passwordInput.value);
+      const data = await registerUser(loginInput.value, passwordInput.value);
       setServerToken(data.token);
       localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
       localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));

@@ -1,5 +1,6 @@
 import { getMyLists, getServerToken, logoutUser } from '../api/filmotekaServerApi.js';
 import { applyTranslations } from '../language.js';
+import { openLoginModal, openRegisterModal } from '../modalShow.js';
 const navLoginLi = document.querySelector('.header__nav-login') as HTMLElement | null;
 
 function writeListsToLocalStorage(lists: { watched: number[]; queued: number[] }) {
@@ -12,6 +13,9 @@ function logoutController() {
     const target = e.target as HTMLElement;
     if (target.id === 'logout') {
       logoutUser();
+    }
+    if (target.id === 'login') {
+      openLoginModal();
     }
   });
 }

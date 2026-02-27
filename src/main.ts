@@ -6,8 +6,8 @@ import { modalClose } from './ts/modalClose.js';
 import { language } from './ts/language.js';
 import { movieListService } from './ts/ui/movieListService.js';
 import { currentLanguage } from './ts/language.js';
-
 import { loginHandler } from './ts/ui/modalLogin.js';
+import { registerHandler } from './ts/ui/modalRegister.js';
 import { syncListsIfLoggedIn } from './ts/features/devAuthSync.js';
 
 scrollHeader();
@@ -18,3 +18,4 @@ language();
 movieListService(currentLanguage);
 syncListsIfLoggedIn();
 loginHandler();
+registerHandler();

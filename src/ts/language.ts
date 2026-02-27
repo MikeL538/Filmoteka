@@ -27,6 +27,7 @@ const translations = {
     // Login
     login: 'Login',
     logout: 'Logout',
+    register: 'Register',
     wrongLoginOrPassword: 'Wrong login or password',
   },
   'pl-PL': {
@@ -52,6 +53,7 @@ const translations = {
     // Login
     login: 'Zaloguj',
     logout: 'Wyloguj',
+    register: 'Zarejestruj',
     wrongLoginOrPassword: 'Nieprawidłowy login lub hasło',
   },
 } as const;

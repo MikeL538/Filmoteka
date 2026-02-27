@@ -15,6 +15,7 @@
 
   &__container {
     @include vars.flex-between;
+    max-width: 1280px;
     transition: vars.$transition-scroll;
     white-space: nowrap;
     width: 100%;
@@ -57,7 +58,8 @@
 
       > ul {
         @include vars.flex-center;
-        gap: 20px;
+        gap: 12px;
+        margin-left: 12px;
       }
     }
 

@@ -3,19 +3,34 @@ import { tmdbClient } from './api/tmdbApi.js';
 import type { MovieDetails } from '../types and data/types.js';
 import { currentLanguage } from './language.js';
 import { notifications } from './ui/notifications.js';
+type Modals = {
+  team: HTMLElement | null;
+  filmsList: HTMLElement | null;
+  modalDetails: HTMLElement | null;
+  // modalLogin: HTMLElement | null;
+  // modalRegister: HTMLElement | null;
+};
+
+const modals: Modals = {
+  team: document.querySelector<HTMLElement>('.modal-team'),
+  filmsList: document.querySelector<HTMLUListElement>('.films__list, .library-films__list'),
+  modalDetails: document.querySelector<HTMLElement>('.details'),
+  // modalLogin: document.querySelector<HTMLElement>('#login'),
+  // modalRegister: document.querySelector<HTMLElement>('#register'),
+};
 
 export function modalShow() {
+  // ======= MODALS ========
+
   // ======= SHOW TEAM ==========
-  const modalTeam = document.querySelector<HTMLElement>('.modal-team');
-  modalTeam?.addEventListener('click', () => {
+  modals.team?.addEventListener('click', () => {
     document.querySelector<HTMLElement>('.modal-team-box')?.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   });
 
   // ======= SHOW MOVIE DETAILS ==========
-  const filmsList = document.querySelector<HTMLUListElement>('.films__list, .library-films__list');
-  if (!filmsList) return;
-  const modalDetails = document.querySelector<HTMLElement>('.details')!;
+  if (!modals.filmsList) return;
+
   async function fetchMovieDetails(movieId: string): Promise<MovieDetails> {
     const { data } = await tmdbClient.get<MovieDetails>(`movie/${movieId}`, {
       params: { language: currentLanguage },
@@ -32,7 +47,7 @@ export function modalShow() {
     return data;
   }
 
-  filmsList.addEventListener('click', async e => {
+  modals.filmsList.addEventListener('click', async e => {
     const target = e.target as HTMLElement;
     const listItem = target.closest<HTMLLIElement>('.films__list-item');
     const movieId = listItem?.dataset.id;
@@ -46,7 +61,7 @@ export function modalShow() {
       const movie = await fetchMovieDetails(movieId);
       populateModal(movie);
 
-      modalDetails.classList.remove('hidden');
+      modals.modalDetails?.classList.remove('hidden');
     } catch (error) {
       document.body.style.overflow = 'auto';
       console.error('Failed to fetch movie details:', error);
@@ -54,12 +69,16 @@ export function modalShow() {
       notifications.hideLoader();
     }
   });
+}
 
-  // ======= SHOW LOGIN ==========
-  const modalLogin = document.querySelector<HTMLElement>('.header__nav-login');
+// ======= SHOW LOGIN ==========
+export function openLoginModal(): void {
+  document.querySelector<HTMLElement>('.login')?.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
 
-  modalLogin?.addEventListener('click', () => {
-    document.querySelector<HTMLElement>('.login')?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  });
+// ======= SHOW REGISTER MODAL (INSIDE LOGIN) ==========
+export function openRegisterModal(): void {
+  document.querySelector<HTMLElement>('.register')?.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
 }

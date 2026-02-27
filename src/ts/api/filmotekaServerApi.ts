@@ -83,3 +83,17 @@ export async function saveMyList(listName: ListName, movieIds: string[]): Promis
 
   return (await response.json()) as UserLists;
 }
+
+export async function registerUser(login: string, password: string) {
+  const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ login, password }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Register failed: ${response.status}`);
+  }
+
+  return (await response.json()) as LoginResponse;
+}
