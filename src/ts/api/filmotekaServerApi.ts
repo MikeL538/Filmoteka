@@ -1,3 +1,10 @@
+declare const process: {
+  env: {
+    API_BASE_URL?: string;
+    NODE_ENV?: string;
+  };
+};
+
 type ListName = 'watched' | 'queued';
 
 export type UserLists = {
@@ -11,7 +18,7 @@ type LoginResponse = {
   lists: UserLists;
 };
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000';
 const TOKEN_KEY = 'filmoteka_server_token';
 
 export function getServerToken(): string | null {
