@@ -39,7 +39,16 @@ export async function syncListsIfLoggedIn(): Promise<boolean> {
     applyTranslations();
     return true;
   } catch (error) {
-    console.error('Backend sync failed, fallback to localStorage only:', error);
+    localStorage.removeItem('filmoteka_server_token');
+    localStorage.removeItem('toWatchList');
+    localStorage.removeItem('queueList');
+
+    if (navLoginLi) {
+      navLoginLi.innerHTML = `<button id="login" type="button" data-translate="login"></button>`;
+    }
+    applyTranslations();
+
+    console.error('Backend sync failed, switched to logged-out state:', error);
     return false;
   }
 }

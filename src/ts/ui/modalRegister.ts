@@ -1,13 +1,21 @@
 import { registerUser, setServerToken } from '../api/filmotekaServerApi.js';
-
+import { applyTranslations } from '../language.js';
 export async function registerHandler() {
   const form = document.querySelector('.register__form') as HTMLFormElement | null;
   const formError = document.querySelector('.register__error') as HTMLParagraphElement | null;
+  const registerErrorMap: Record<string, string> = {
+    REGISTER_400: 'loginAndPasswordRequired',
+    REGISTER_409: 'loginAlreadyExists',
+    REGISTER_500: 'serverError',
+  };
 
   form?.addEventListener('submit', async e => {
-    setTimeout(() => {}, 1000);
-
     e.preventDefault();
+    if (formError) {
+      formError.style.display = 'none';
+      formError.dataset.translate = '';
+      formError.textContent = '';
+    }
 
     const loginInput = document.querySelector('.register__input') as HTMLInputElement | null;
     const passwordInput = document.querySelector(
@@ -26,13 +34,45 @@ export async function registerHandler() {
       localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
       window.location.reload();
     } catch (error) {
-      if (formError) {
-        formError.style.display = 'block';
-        console.error(error);
-        if (error instanceof Error && (error as Error).message !== 'Login failed: 401') {
-          formError.textContent = (error as Error).message;
+      if (error instanceof Error) {
+        if (formError) {
+          const key = registerErrorMap[error.message] ?? 'Server ERROR';
+          formError.dataset.translate = key;
+          formError.style.display = 'block';
+          applyTranslations();
+          console.error(error);
+
+          const isNetworkError =
+            error instanceof TypeError &&
+            /NetworkError|Failed to fetch|Load failed/i.test(error.message);
+
+          if (isNetworkError) {
+            formError.textContent = 'Network Error';
+          }
+        } else {
+          formError!.textContent = error instanceof Error ? error.message : String(error);
         }
       }
     }
   });
 }
+
+// Login or Password is required 400
+// if (error instanceof Error && (error as Error).message === 'REGISTER_400') {
+//   formError.dataset.translate = 'loginAndPasswordRequired';
+
+//   applyTranslations();
+//   return;
+// }
+// // Login already exists 409
+// if (error instanceof Error && (error as Error).message === 'REGISTER_409') {
+//   formError.dataset.translate = 'loginAlreadyExists';
+//   applyTranslations();
+//   return;
+// }
+// // Server error 500
+// if (error instanceof Error && (error as Error).message === 'REGISTER_500') {
+//   formError.textContent = 'SERVER_ERROR';
+//   applyTranslations();
+//   return;
+// }

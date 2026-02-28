@@ -12,10 +12,10 @@ type LoginResponse = {
 };
 
 // LOCAL HOST
-// const API_BASE_URL ='http://localhost:3000'
+const API_BASE_URL = 'http://localhost:3001';
 
 // PRODUCTION HOST
-const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
+// const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
 
 const TOKEN_KEY = 'filmoteka_server_token';
 
@@ -35,7 +35,7 @@ export async function loginUser(login: string, password: string): Promise<LoginR
   });
 
   if (!response.ok) {
-    throw new Error(`Login failed: ${response.status}`);
+    throw new Error(`LOGIN_${response.status}`);
   }
 
   return (await response.json()) as LoginResponse;
@@ -97,7 +97,7 @@ export async function registerUser(login: string, password: string) {
   });
 
   if (!response.ok) {
-    throw new Error(`Register failed: ${response.status}`);
+    throw new Error(`REGISTER_${response.status}`);
   }
 
   return (await response.json()) as LoginResponse;

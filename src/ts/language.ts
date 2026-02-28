@@ -29,6 +29,10 @@ const translations = {
     logout: 'Logout',
     register: 'Register',
     wrongLoginOrPassword: 'Wrong login or password',
+    // Register
+    loginAlreadyExists: 'Login already exists',
+    loginAndPasswordRequired: 'Login and password are required',
+    tooManyRequests: 'Too many requests. Please try again later.',
   },
   'pl-PL': {
     // Header
@@ -55,6 +59,10 @@ const translations = {
     logout: 'Wyloguj',
     register: 'Zarejestruj',
     wrongLoginOrPassword: 'Nieprawidłowy login lub hasło',
+    tooManyRequests: 'Zbyt wiele prób. Sprobuj ponownie później.',
+    // Register
+    loginAlreadyExists: 'Login jest juz zajęty',
+    loginAndPasswordRequired: 'Login i hasło są wymagane',
   },
 } as const;
 
