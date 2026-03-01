@@ -26,7 +26,7 @@ export async function syncListsIfLoggedIn(): Promise<boolean> {
 
   if (!token) {
     if (navLoginLi)
-      navLoginLi.innerHTML = `<button id="login" type="button" data-translate="login"></button>`;
+      navLoginLi.innerHTML = `<button id="login" class="header__nav-list-item header__nav-login" type="button" data-translate="login"></button>`;
     applyTranslations();
     return false;
   }
@@ -35,7 +35,7 @@ export async function syncListsIfLoggedIn(): Promise<boolean> {
     const lists = await getMyLists();
     writeListsToLocalStorage(lists);
     if (navLoginLi)
-      navLoginLi.innerHTML = `<button id="logout" type="button"  data-translate="logout"></button>`;
+      navLoginLi.innerHTML = `<button id="logout" class="header__nav-list-item header__nav-login" type="button"  data-translate="logout"></button>`;
     applyTranslations();
     return true;
   } catch (error) {
@@ -44,7 +44,7 @@ export async function syncListsIfLoggedIn(): Promise<boolean> {
     localStorage.removeItem('queueList');
 
     if (navLoginLi) {
-      navLoginLi.innerHTML = `<button id="login" type="button" data-translate="login"></button>`;
+      navLoginLi.innerHTML = `<button id="login" class="header__nav-list-item header__nav-login" type="button" data-translate="login"></button>`;
     }
     applyTranslations();
 

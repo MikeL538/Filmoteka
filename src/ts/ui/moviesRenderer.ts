@@ -15,10 +15,12 @@ export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): stri
         : fallbackImage;
 
       return `<li class="films__list-item" data-id="${movie.id}">
-       <img src="${imagePath}" alt="${movie.title}" />
-        <h2>${movie.title}</h2>
-        <p>${genreNames.slice(0, 2).join(', ')} | <span>${movie.release_date.substring(0, 4)}</span>
-        <span class="films__list-item--rating">${roundedVoteAverage}</span></p>
+        <button type="button" class="films__list-item--button">
+          <img src="${imagePath}" alt="${movie.title}" />
+          <h2>${movie.title}</h2>
+          <p>${genreNames.slice(0, 2).join(', ')} | <span>${movie.release_date.substring(0, 4)}</span>
+          <span class="films__list-item--rating">${roundedVoteAverage}</span></p>
+        </button>
       </li>`;
     })
     .join('');

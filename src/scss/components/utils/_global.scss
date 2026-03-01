@@ -34,7 +34,8 @@ a {
   color: vars.$color-default;
   transition: vars.$transition;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: vars.$color-hover;
   }
 }

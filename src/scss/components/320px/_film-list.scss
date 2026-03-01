@@ -9,7 +9,7 @@
     &-item {
       border-radius: 5px;
       margin-bottom: 20px;
-      width: 100%;
+
       transition: vars.$transition;
       cursor: pointer;
 
@@ -18,31 +18,33 @@
         z-index: 10;
       }
 
-      > img {
-        border-radius: 5px;
-        display: flex;
-        max-width: 320px;
-        width: 100%;
-      }
+      &--button {
+        > img {
+          border-radius: 5px;
+          display: flex;
+          max-width: 320px;
+          width: 100%;
+        }
 
-      > h2 {
-        text-transform: uppercase;
-        font-size: vars.$font-xs;
-        line-height: 1.33;
-        margin-top: 5px;
-      }
+        > h2 {
+          text-transform: uppercase;
+          font-size: vars.$font-xs;
+          line-height: 1.33;
+          margin-top: 5px;
+        }
 
-      > p {
-        color: vars.$color-goit;
-        font-size: vars.$font-xs;
-        line-height: 1.17;
-      }
+        > p {
+          color: vars.$color-goit;
+          font-size: vars.$font-xs;
+          line-height: 1.17;
+        }
 
-      &--rating {
-        background-color: vars.$color-goit;
-        border-radius: 5px;
-        color: vars.$color-default;
-        padding: 0px 2px;
+        &--rating {
+          background-color: vars.$color-goit;
+          border-radius: 5px;
+          color: vars.$color-default;
+          padding: 0px 2px;
+        }
       }
     }
   }

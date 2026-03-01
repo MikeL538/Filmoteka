@@ -56,23 +56,3 @@ export async function registerHandler() {
     }
   });
 }
-
-// Login or Password is required 400
-// if (error instanceof Error && (error as Error).message === 'REGISTER_400') {
-//   formError.dataset.translate = 'loginAndPasswordRequired';
-
-//   applyTranslations();
-//   return;
-// }
-// // Login already exists 409
-// if (error instanceof Error && (error as Error).message === 'REGISTER_409') {
-//   formError.dataset.translate = 'loginAlreadyExists';
-//   applyTranslations();
-//   return;
-// }
-// // Server error 500
-// if (error instanceof Error && (error as Error).message === 'REGISTER_500') {
-//   formError.textContent = 'SERVER_ERROR';
-//   applyTranslations();
-//   return;
-// }

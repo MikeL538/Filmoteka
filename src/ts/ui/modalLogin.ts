@@ -64,28 +64,3 @@ export async function loginHandler() {
     }
   });
 }
-
-// Bad request 400
-// if (error instanceof Error && (error as Error).message === 'LOGIN_400') {
-//   formError.dataset.translate = 'loginAndPasswordRequired';
-//   applyTranslations();
-//   return;
-// }
-// // Login or Password is required 401
-// if (error instanceof Error && (error as Error).message === 'LOGIN_401') {
-//   formError.dataset.translate = 'wrongLoginOrPassword';
-//   applyTranslations();
-//   return;
-// }
-// // Too many requests 429
-// if (error instanceof Error && (error as Error).message === 'LOGIN_429') {
-//   formError.dataset.translate = 'tooManyRequests';
-//   applyTranslations();
-//   return;
-// }
-// // Server error 500
-// if (error instanceof Error && (error as Error).message === 'LOGIN_500') {
-//   formError.textContent = 'SERVER_ERROR';
-//   applyTranslations();
-//   return;
-// }

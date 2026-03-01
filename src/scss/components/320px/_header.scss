@@ -63,6 +63,16 @@
       }
     }
 
+    &-link:focus svg {
+      color: vars.$color-goit;
+      stroke: vars.$color-goit;
+    }
+
+    &-login:hover,
+    &-login:focus {
+      color: vars.$color-goit;
+    }
+
     &-language-btn {
       @include vars.flex-center;
       border-radius: 5px;
@@ -72,7 +82,8 @@
       text-transform: uppercase;
       transition: vars.$transition;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background: vars.$color-goit;
         filter: drop-shadow(0 8 43 rgba(255, 107, 1, 0.6));
       }
@@ -99,8 +110,8 @@
         color: vars.$color-default;
       }
 
-      &:focus + &-submit svg,
-      &:hover + &-submit svg {
+      &-submit:hover svg,
+      &-submit:focus svg {
         color: vars.$color-default;
         stroke: vars.$color-goit;
       }
@@ -153,7 +164,8 @@
         transition: vars.$transition;
         width: 130px;
 
-        &:hover {
+        &:hover,
+        &:focus {
           transform: vars.$transform-button;
         }
 
