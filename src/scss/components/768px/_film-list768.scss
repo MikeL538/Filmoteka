@@ -8,12 +8,8 @@
       margin-top: 70px;
       width: 704px;
 
-      &-item {
+      &-item--button img {
         max-width: 336px;
-
-        > img {
-          max-width: 336px;
-        }
       }
     }
   }

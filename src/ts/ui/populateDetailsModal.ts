@@ -29,7 +29,7 @@ export function populateModal(movieDetails: MovieDetails) {
   // ===== MODAL CONTENT =====
   modalTitle.textContent = movieDetails.title;
 
-  const fallbackImage = new URL('../../images/no-video.jpg', import.meta.url).toString();
+  const fallbackImage = new URL('../../images/no-video.webp', import.meta.url).toString();
 
   const modalImgFound = movieDetails.backdrop_path
     ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(movieDetails.backdrop_path)}`

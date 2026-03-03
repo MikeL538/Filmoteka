@@ -8,7 +8,7 @@ export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): stri
     .map(movie => {
       const roundedVoteAverage = Math.round(movie.vote_average * 10) / 10;
       const genreNames = movie.genre_ids.map(genreId => getGenreName(genreId, language));
-      const fallbackImage = new URL('../../images/no-video.jpg', import.meta.url).toString();
+      const fallbackImage = new URL('../../images/no-video.webp', import.meta.url).toString();
 
       const imagePath = movie.backdrop_path
         ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
