@@ -1,5 +1,7 @@
 import { registerUser, setServerToken } from '../api/filmotekaServerApi.js';
 import { applyTranslations } from '../language.js';
+import { notifications } from './notifications.js';
+import { Notify } from 'notiflix';
 export async function registerHandler() {
   const form = document.querySelector('.register__form') as HTMLFormElement | null;
   const formError = document.querySelector('.register__error') as HTMLParagraphElement | null;
@@ -27,8 +29,32 @@ export async function registerHandler() {
       return;
     }
 
+    let longLoadTimer: number | undefined;
+    let veryLongLoadTimer: number | undefined;
+    let serverAsleep: number | undefined;
+    let serverAsleepLong: number | undefined;
+
     try {
+      notifications.showLoader();
+      //  tutaj jeśli czas > 3 sekundy wyslij notification.longLoad()
+      longLoadTimer = window.setTimeout(() => {
+        Notify.warning('Server loading...');
+      }, 3000);
+
+      veryLongLoadTimer = window.setTimeout(() => {
+        Notify.warning('Still loading...');
+      }, 6000);
+
+      serverAsleep = window.setTimeout(() => {
+        Notify.warning('Server waking up...');
+      }, 9000);
+
+      serverAsleepLong = window.setTimeout(() => {
+        Notify.warning('Server still waking up...');
+      }, 12000);
+
       const data = await registerUser(loginInput.value, passwordInput.value);
+      window.clearTimeout(longLoadTimer);
       setServerToken(data.token);
       localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
       localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
@@ -53,6 +79,12 @@ export async function registerHandler() {
           formError!.textContent = error instanceof Error ? error.message : String(error);
         }
       }
+    } finally {
+      if (longLoadTimer !== undefined) window.clearTimeout(longLoadTimer);
+      if (veryLongLoadTimer !== undefined) window.clearTimeout(veryLongLoadTimer);
+      if (serverAsleep !== undefined) window.clearTimeout(serverAsleep);
+      if (serverAsleepLong !== undefined) window.clearTimeout(serverAsleepLong);
+      notifications.hideLoader();
     }
   });
 }

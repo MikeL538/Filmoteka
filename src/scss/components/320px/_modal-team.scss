@@ -97,7 +97,6 @@
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
-    // width: 278px;
   }
 
   &__member {
@@ -132,16 +131,12 @@
     border-radius: 50%;
     box-shadow: 0px 0px 3px 5px #ccc;
     transition: vars.$transition;
-    width: 75px;
-
-    &--leader {
-      width: 120px;
-    }
+    width: 120px;
   }
 
   &__name {
     font-size: vars.$font-md;
-    font-weight: 600;
+    font-weight: 500;
     transition-duration: vars.$transition;
     &--leader {
       font-size: vars.$font-lg;

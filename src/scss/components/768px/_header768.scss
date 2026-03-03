@@ -2,7 +2,6 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    background-image: url('../images/header-background-tablet.jpg');
     height: 108px;
 
     &__nav {
@@ -49,10 +48,6 @@
 
     &-form {
       margin: 0;
-    }
-
-    &--library {
-      background-image: url('../images/my-library-tablet.jpg');
     }
   }
 
