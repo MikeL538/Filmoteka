@@ -47,7 +47,7 @@
 
       &:hover,
       &:focus {
-        fill: vars.$color-goit;
+        fill: vars.$color-filmovie;
         transform: rotate(360deg);
       }
 
@@ -64,7 +64,7 @@
 
         &:hover,
         &:focus {
-          fill: vars.$color-goit;
+          fill: vars.$color-filmovie;
           transform: rotate(360deg);
         }
       }
@@ -80,7 +80,7 @@
 
     &:hover,
     &:focus {
-      color: vars.$color-goit;
+      color: vars.$color-filmovie;
     }
 
     &--note {
@@ -118,11 +118,11 @@
     &:focus {
       transform: vars.$transform-button;
       .team__photo {
-        box-shadow: 0px 0px 3px 5px vars.$color-goit;
+        box-shadow: 0px 0px 3px 5px vars.$color-filmovie;
       }
 
       .team__github {
-        fill: vars.$color-goit;
+        fill: vars.$color-filmovie;
       }
     }
   }

@@ -13,11 +13,15 @@ export function initMoviesPage() {
   let totalPages: number = 1;
   let query: string = '';
   let noMoreVideos: boolean = false;
+  const noMore: HTMLParagraphElement = document.createElement('p');
+  noMore.classList.add('no-more-videos');
 
   async function load() {
     if (!filmsList.children.length) {
       notifications.showLoader();
     }
+
+    noMore.innerHTML = '';
 
     try {
       const response = query
@@ -29,6 +33,7 @@ export function initMoviesPage() {
       filmsList.innerHTML += renderMovies(response.results, currentLanguage);
     } catch (error) {
       notifications.error();
+      filmsList.innerHTML += `<li><button><p>${error}</p></button></li>`;
     } finally {
       notifications.hideLoader();
     }
@@ -48,6 +53,9 @@ export function initMoviesPage() {
     if (currentPage >= totalPages) {
       noMoreVideos = true;
       notifications.noMoreMovies();
+
+      noMore.innerHTML = `No more videos to load`;
+      filmsList.after(noMore);
       return;
     }
 
@@ -57,6 +65,7 @@ export function initMoviesPage() {
 
   load();
 
+  // Listen to language change
   document.addEventListener('languageChanged', () => {
     currentPage = 1;
     filmsList.innerHTML = '';

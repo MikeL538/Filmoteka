@@ -76,8 +76,8 @@
     }
 
     &-link:focus svg {
-      color: vars.$color-goit;
-      stroke: vars.$color-goit;
+      color: vars.$color-filmovie;
+      stroke: vars.$color-filmovie;
     }
 
     &-login {
@@ -88,7 +88,7 @@
 
       &:hover,
       &:focus {
-        color: vars.$color-goit;
+        color: vars.$color-filmovie;
       }
     }
 
@@ -106,14 +106,14 @@
 
       &:hover,
       &:focus {
-        background: vars.$color-goit;
+        background: vars.$color-filmovie;
         filter: drop-shadow(0 8 43 rgba(255, 107, 1, 0.6));
       }
     }
 
     &-form {
       @include vars.flex-center;
-      border-bottom: 1px solid vars.$color-goit;
+      border-bottom: 1px solid vars.$color-filmovie;
       gap: 3px;
       margin-top: 25px;
       transition: vars.$transition-scroll-form;
@@ -142,14 +142,14 @@
 
       &-submit:hover svg,
       &-submit:focus svg {
-        stroke: vars.$color-goit;
+        stroke: vars.$color-filmovie;
         @media (prefers-color-scheme: dark) {
           stroke: vars.$color-default;
         }
       }
 
       &:focus::placeholder {
-        color: vars.$color-goit;
+        color: vars.$color-filmovie;
       }
 
       &--loupe {
@@ -190,7 +190,7 @@
       > button {
         background: transparent;
         border-radius: 5px;
-        border: 3px solid vars.$color-goit;
+        border: 3px solid vars.$color-filmovie;
         color: vars.$color-default-light;
         font-weight: 700;
         height: 44px;
@@ -217,7 +217,7 @@
 
 // ======= OTHER ========
 .underline {
-  border-bottom: 2px solid vars.$color-goit;
+  border-bottom: 2px solid vars.$color-filmovie;
 }
 
 // ----------------scrolled-----------------
@@ -261,5 +261,5 @@
 }
 
 .button-library--active {
-  background: vars.$color-goit !important;
+  background: vars.$color-filmovie !important;
 }

@@ -1,6 +1,6 @@
 // Colors
 $color-hover: #ff6b08;
-$color-goit: #ff6b08;
+$color-filmovie: #ff6b08;
 $color-error: #ff001b;
 $color-footer: #1a181f;
 $color-modal-opacity: #00000079;
@@ -27,6 +27,7 @@ $transition-scroll-form: 0.9s ease-in-out;
 
 // TRANSFORM
 $transform-button: scale(1.1);
+$transform-filmCard: scale(1.1) translateY(-8px);
 
 // MIXINS
 @mixin flex-center {

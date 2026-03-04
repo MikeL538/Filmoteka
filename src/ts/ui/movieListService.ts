@@ -6,6 +6,7 @@ import { saveMyList } from '../api/filmotekaServerApi.js';
 export function getWatchedList(): string[] {
   const stored = localStorage.getItem('toWatchList');
   if (!stored) return [];
+
   try {
     return JSON.parse(stored) as string[];
   } catch (error) {

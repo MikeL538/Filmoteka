@@ -1,7 +1,7 @@
 # Filmovie
 
 Filmovie is a movie discovery web application built as an independent continuation and refactor of a
-course group project ("Filmoteka").
+course group project ("Filmovie").
 
 It allows users to browse trending movies, search by title, open a movie details modal, and manage
 personal movie lists (`Watched` / `Queue`) in the Library view.
@@ -34,7 +34,14 @@ https://mikel538.github.io/Filmovie/
 - Local storage persistence for movie lists
 - Responsive layout (mobile / tablet / desktop)
 - Notifications and loading indicators
-- Login modal UI prepared (backend integration in progress)\*
+- Login modal UI prepared
+
+## Server Side (backend integration in progress)\*
+
+- Server set up on Render
+- Registration available (hashing & similar systems in progress),
+- Login
+- Token currently stored in local storage (HTTP storage in progress),
 
 ## Tech Stack
 
@@ -53,7 +60,6 @@ https://mikel538.github.io/Filmovie/
 - **TMDB API** - movie data source
 - `axios` - HTTP client
 - `notiflix` - notifications and loading indicators
-- `basiclightbox` - lightbox support
 - `modern-normalize` - CSS normalization
 
 ## Project Structure (High Level)

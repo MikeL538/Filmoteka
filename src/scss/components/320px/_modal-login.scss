@@ -66,15 +66,15 @@
     }
 
     &:focus {
-      border-color: vars.$color-goit;
+      border-color: vars.$color-filmovie;
       box-shadow: 0 0 0 3px rgba(255, 107, 8, 0.15);
     }
   }
 
   &__btn {
     @include vars.flex-center;
-    background-color: vars.$color-goit;
-    border: 1px solid vars.$color-goit;
+    background-color: vars.$color-filmovie;
+    border: 1px solid vars.$color-filmovie;
     border-radius: 6px;
     color: vars.$color-default;
     font-size: vars.$font-sm;

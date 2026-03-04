@@ -4,6 +4,12 @@ import { fetchMovieById } from '../api/moviesService.js';
 import { getQueueList, getWatchedList } from './movieListService.js';
 
 export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): string {
+  const moviesAmount = movies.length;
+
+  if (moviesAmount === 0) {
+    return `<li><p>Nothing to see here :(</p></li>`;
+  }
+
   return movies
     .map(movie => {
       const roundedVoteAverage = Math.round(movie.vote_average * 10) / 10;
@@ -29,7 +35,9 @@ export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): stri
 export async function fetchQueuedMovies(language: string): Promise<Movie[]> {
   const ids = getQueueList();
 
-  if (ids.length === 0) return [];
+  if (ids.length === 0) {
+    return [];
+  }
 
   const movies = await Promise.all(ids.map(id => fetchMovieById(id, language)));
 

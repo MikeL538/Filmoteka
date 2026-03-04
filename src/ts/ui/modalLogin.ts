@@ -45,28 +45,29 @@ export async function loginHandler() {
 
     try {
       notifications.showLoader();
-
+      // NOTIFY ABOUT LOADING
       longLoadTimer = window.setTimeout(() => {
         Notify.warning('Server loading...');
-      }, 3000);
-
+      }, 4000);
       veryLongLoadTimer = window.setTimeout(() => {
         Notify.warning('Still loading...');
-      }, 6000);
-
+      }, 8000);
       serverAsleep = window.setTimeout(() => {
         Notify.warning('Server waking up...');
-      }, 9000);
-
+      }, 12000);
       serverAsleepLong = window.setTimeout(() => {
         Notify.warning('Server still waking up...');
-      }, 12000);
+      }, 15000);
+      serverAsleepLong = window.setTimeout(() => {
+        Notify.warning('Waking up might take even minutes...');
+      }, 18000);
 
       const data = await loginUser(loginInput.value, passwordInput.value);
       window.clearTimeout(longLoadTimer);
       setServerToken(data.token);
       localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
       localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
+      // RELOAD ON PURPOSE
       window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
@@ -76,10 +77,11 @@ export async function loginHandler() {
           formError.style.display = 'block';
           applyTranslations();
           console.error(error);
+
+          // SHOW ERROR IF NETWORKERROR
           const isNetworkError =
             error instanceof TypeError &&
             /NetworkError|Failed to fetch|Load failed/i.test(error.message);
-
           if (isNetworkError) {
             if (longLoadTimer !== undefined) window.clearTimeout(longLoadTimer);
             formError.textContent = 'Network Error';
@@ -89,6 +91,7 @@ export async function loginHandler() {
         formError!.textContent = error instanceof Error ? error.message : String(error);
       }
     } finally {
+      // IF LOADED CLEAR TIMERS FOR NOTIFICTIONS
       if (longLoadTimer !== undefined) window.clearTimeout(longLoadTimer);
       if (veryLongLoadTimer !== undefined) window.clearTimeout(veryLongLoadTimer);
       if (serverAsleep !== undefined) window.clearTimeout(serverAsleep);

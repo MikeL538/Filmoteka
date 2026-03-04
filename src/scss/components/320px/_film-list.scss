@@ -1,6 +1,7 @@
 @use '../utils/vars' as vars;
 .films {
   @include vars.flex-center;
+  flex-direction: column;
   margin-top: 120px;
 
   &__list {
@@ -19,14 +20,14 @@
 
         &:hover,
         &:focus {
-          transform: vars.$transform-button;
+          transform: vars.$transform-filmCard;
           box-shadow: 0 8px 50px rgba(59, 130, 246, 0.5);
-          z-index: 10;
         }
 
         > img {
           border-radius: 5px;
           display: block;
+          min-width: 270px;
           max-width: 320px;
           width: 100%;
           border: 1px solid rgba(255, 255, 255, 0.06);
@@ -43,13 +44,13 @@
         }
 
         > p {
-          color: vars.$color-goit;
+          color: vars.$color-filmovie;
           font-size: vars.$font-xs;
           line-height: 1.17;
         }
 
         &--rating {
-          background-color: vars.$color-goit;
+          background-color: vars.$color-filmovie;
           border-radius: 5px;
           color: vars.$color-default;
           padding: 0px 2px;
@@ -57,4 +58,9 @@
       }
     }
   }
+}
+
+.no-more-videos {
+  margin: 10px auto 25px auto;
+  font-size: vars.$font-xl;
 }
