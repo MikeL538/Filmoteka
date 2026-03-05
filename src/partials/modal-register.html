@@ -1,14 +1,48 @@
-<div class="register backdrop-modal hidden">
+<div class="register hidden">
   <div class="register__container">
+    <button id="registerCloseButton" class="register__close-button" type="button">
+      <svg width="16" height="16">
+        <use href="#close"></use>
+      </svg>
+    </button>
     <form class="register__form">
-      <label class="register__label">
-        <input class="register__input" type="text" name="text" placeholder="login" />
-      </label>
-      <label class="register__label">
-        <input class="register--Password__input" type="text" name="text" placeholder="password" />
-      </label>
+      <label for="registerLogin"> <span>Login</span></label>
+      <input
+        id="registerLogin"
+        class="register__input"
+        type="login"
+        name="text"
+        placeholder="login"
+      />
+
+      <label for="registerPassword"><span>Password</span></label>
+      <input
+        id="registerPassword"
+        class="register__input"
+        type="password"
+        name="password"
+        placeholder="password"
+      />
+      <label for="registerRepeatPassword"><span>Repeat Password</span></label>
+      <input
+        id="registerRepeatPassword"
+        class="register__input"
+        type="password"
+        name="password"
+        placeholder="repeat password"
+      />
+
+      <label for="registerEmail"><span>E-mail</span></label>
+      <input
+        id="registerEmail"
+        class="register__input"
+        type="email"
+        name="email"
+        placeholder="E-mail"
+      />
 
       <button class="register__btn" type="submit" data-translate="register">Register</button>
+      <button id="registerCancel" class="register__btn" type="button">Cancel</button>
     </form>
     <p class="register__error" data-translate=""></p>
   </div>

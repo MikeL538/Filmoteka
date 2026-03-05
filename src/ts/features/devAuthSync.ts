@@ -1,6 +1,7 @@
 import { getMyLists, getServerToken, logoutUser } from '../api/filmotekaServerApi.js';
 import { applyTranslations } from '../language.js';
-import { openLoginModal, openRegisterModal } from '../modalShow.js';
+import { rememberFocus, lockBackground, getFocusable } from '../a11yFocus.js';
+
 const navLoginLi = document.querySelector('.header__nav-login') as HTMLElement | null;
 
 function writeListsToLocalStorage(lists: { watched: number[]; queued: number[] }) {
@@ -15,7 +16,14 @@ function logoutController() {
       logoutUser();
     }
     if (target.id === 'login') {
-      openLoginModal();
+      const loginBox = document.querySelector<HTMLElement>('.login');
+      if (loginBox) {
+        loginBox.classList.remove('hidden');
+        rememberFocus();
+        lockBackground();
+        const focusables = getFocusable(loginBox);
+        (focusables[0] ?? loginBox).focus();
+      }
     }
   });
 }

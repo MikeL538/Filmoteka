@@ -1,6 +1,36 @@
 @use '../utils/vars' as vars;
 
 .register {
+  transition:
+    opacity vars.$transition-scroll,
+    transform vars.$transition-scroll;
+  transform: translate(0, 0), scale(1);
+
+  &__close-button {
+    @include vars.flex-center;
+    border-radius: 50%;
+    border: 1px solid;
+    height: 26px;
+    position: absolute;
+    right: 10px;
+    transition: vars.$transition;
+    width: 26px;
+    top: 7px;
+
+    @media (prefers-color-scheme: dark) {
+      fill: #fff;
+      stroke: #fff;
+    }
+
+    &:hover {
+      border-color: vars.$color-filmovie;
+
+      > svg {
+        fill: vars.$color-filmovie;
+      }
+    }
+  }
+
   &__container {
     @include vars.flex-center;
     flex-direction: column;
@@ -30,20 +60,21 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+
     width: 100%;
   }
 
   &__label {
-    display: block;
+    // display: block;
     width: 100%;
   }
 
-  &__input,
-  &--Password__input {
+  &__input {
     border: 1px solid rgba(255, 107, 8, 0.35);
     border-radius: 6px;
     font-size: vars.$font-sm;
+    margin: 4px 0 12px 0;
     outline: none;
     padding: 10px 12px;
     transition:
@@ -80,7 +111,7 @@
     font-size: vars.$font-sm;
     font-weight: 700;
     height: 42px;
-    margin-top: 4px;
+    margin-top: 6px;
     text-transform: uppercase;
     transition:
       transform vars.$transition,

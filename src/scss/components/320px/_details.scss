@@ -69,8 +69,8 @@
   }
 
   &__img {
-    border-radius: 12%;
-    border: 0.3rem solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 2px solid vars.$color-hover;
     height: auto;
     margin: 40px auto 0 auto;
     max-height: 357px;
@@ -97,9 +97,9 @@
       &--item {
         @include vars.flex-between;
         align-items: baseline;
-        padding: 0 12px 0 12px;
         max-width: 280px;
         overflow: auto;
+        padding: 0 12px 0 12px;
         text-align: justify;
         width: 100%;
 

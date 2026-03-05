@@ -1,12 +1,24 @@
 <div class="login backdrop-modal hidden">
   <div class="login__container">
+    <button id="loginCloseButton" class="login__close-button" type="button">
+      <svg width="16" height="16">
+        <use href="#close"></use>
+      </svg>
+    </button>
+
     <form class="login__form">
-      <label class="login__label">
-        <input class="login__input" type="text" name="text" placeholder="login" />
-      </label>
-      <label class="login__label">
-        <input class="login--Password__input" type="text" name="text" placeholder="password" />
-      </label>
+      <label for="loginLogin"><span>Login</span></label>
+      <input id="loginLogin" class="login__input" type="text" name="text" placeholder="login" />
+
+      <label for="loginPassword"><span>Password</span></label>
+      <input
+        id="loginPassword"
+        class="login--Password__input"
+        type="password"
+        name="text"
+        placeholder="password"
+      />
+
       <button class="login__btn" type="submit" data-translate="login">Login</button>
       <button class="login__btn login__btn--register" type="button" data-translate="register">
         Register

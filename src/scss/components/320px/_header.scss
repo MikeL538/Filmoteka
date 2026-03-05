@@ -42,10 +42,11 @@
     }
 
     &-icon {
-      height: 20px;
-      stroke: vars.$color-default-light;
+      height: 24px;
+      width: 24px;
+
       fill: transparent;
-      width: 20px;
+      stroke: vars.$color-default-light;
 
       @media (prefers-color-scheme: dark) {
         stroke: vars.$color-default;

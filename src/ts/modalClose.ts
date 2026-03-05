@@ -1,95 +1,4 @@
-let lastFocusedEl: HTMLElement | null = null;
-
-const BACKGROUND_ROOT_SELECTOR = '.films__list, .library-films__list';
-
-export function rememberFocus() {
-  if (document.activeElement instanceof HTMLElement) {
-    lastFocusedEl = document.activeElement;
-  }
-}
-
-export function restoreFocus() {
-  lastFocusedEl?.focus();
-  lastFocusedEl = null;
-}
-
-export function lockBackground() {
-  const root = document.querySelector<HTMLElement>(BACKGROUND_ROOT_SELECTOR);
-  if (!root) return;
-
-  const inertRoot = root as unknown as { inert?: boolean };
-  if (typeof inertRoot.inert === 'boolean') {
-    inertRoot.inert = true;
-  } else {
-    root.setAttribute('aria-hidden', 'true');
-  }
-}
-
-export function unlockBackground() {
-  const root = document.querySelector<HTMLElement>(BACKGROUND_ROOT_SELECTOR);
-  if (!root) return;
-
-  const inertRoot = root as unknown as { inert?: boolean };
-  if (typeof inertRoot.inert === 'boolean') {
-    inertRoot.inert = false;
-  } else {
-    root.removeAttribute('aria-hidden');
-  }
-}
-
-const FOCUSABLE_SELECTOR = [
-  'a[href]',
-  'button:not([disabled])',
-  'input:not([disabled])',
-  'select:not([disabled])',
-  'textarea:not([disabled])',
-  "[tabindex]:not([tabindex='-1'])",
-].join(',');
-
-function isHTMLElement(el: Element): el is HTMLElement {
-  return el instanceof HTMLElement;
-}
-
-function isVisible(el: HTMLElement) {
-  // offsetParent = null for fixed, add fixed
-  return el.offsetParent !== null || getComputedStyle(el).position === 'fixed';
-}
-
-function getFocusable(container: HTMLElement): HTMLElement[] {
-  return Array.from(container.querySelectorAll(FOCUSABLE_SELECTOR))
-    .filter(isHTMLElement)
-    .filter(el => !el.hasAttribute('disabled'))
-    .filter(isVisible);
-}
-
-function trapFocus(modalEl: HTMLElement, e: KeyboardEvent) {
-  if (e.key !== 'Tab') return;
-
-  const focusables = getFocusable(modalEl);
-
-  // If nothing is focusable, focus on modal
-  if (focusables.length === 0) {
-    e.preventDefault();
-    modalEl.focus();
-    return;
-  }
-
-  const first = focusables[0]!;
-  const last = focusables[focusables.length - 1]!;
-  const active = document.activeElement;
-
-  if (e.shiftKey) {
-    if (active === first || active === modalEl) {
-      e.preventDefault();
-      last.focus();
-    }
-  } else {
-    if (active === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  }
-}
+import { unlockBackground, restoreFocus, trapFocus } from './a11yFocus.js';
 
 export function modalClose() {
   type Modals = {
@@ -131,6 +40,21 @@ export function modalClose() {
       if (e.target === backdrop) closeAll();
     });
   });
+
+  // Close with button
+  function hideOnlyThisModal(closeButton: HTMLElement | null, displayedModal: HTMLElement | null) {
+    closeButton?.addEventListener('click', () => {
+      displayedModal?.classList.add('hidden');
+    });
+  }
+
+  const loginCloseButton = document.querySelector<HTMLElement>('#loginCloseButton');
+  const registerCloseButton = document.querySelector<HTMLElement>('#registerCancel');
+  const registerCloseButtonX = document.querySelector<HTMLElement>('#registerCloseButton');
+
+  hideOnlyThisModal(registerCloseButton, modals.register);
+  hideOnlyThisModal(registerCloseButtonX, modals.register);
+  hideOnlyThisModal(loginCloseButton, modals.login);
 
   // Escape + focus trap
   window.addEventListener('keydown', e => {

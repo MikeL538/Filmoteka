@@ -19,13 +19,16 @@ export async function registerHandler() {
       formError.textContent = '';
     }
 
-    const loginInput = document.querySelector('.register__input') as HTMLInputElement | null;
-    const passwordInput = document.querySelector(
-      '.register--Password__input',
+    const loginInput = document.querySelector('#registerLogin') as HTMLInputElement | null;
+    const passwordInput = document.querySelector('#registerPassword') as HTMLInputElement | null;
+    const repeatPasswordInput = document.querySelector(
+      '#registerRepeatPassword',
     ) as HTMLInputElement | null;
 
-    if (!loginInput || !passwordInput) {
-      console.error('Login inputs not found');
+    if (passwordInput?.value !== repeatPasswordInput?.value && formError) {
+      formError.style.display = 'block';
+      formError.textContent = 'Passwords are different.';
+      applyTranslations();
       return;
     }
 
@@ -36,24 +39,24 @@ export async function registerHandler() {
 
     try {
       notifications.showLoader();
-      //  tutaj jeśli czas > 3 sekundy wyslij notification.longLoad()
+
       longLoadTimer = window.setTimeout(() => {
         Notify.warning('Server loading...');
-      }, 3000);
+      }, 4000);
 
       veryLongLoadTimer = window.setTimeout(() => {
         Notify.warning('Still loading...');
-      }, 6000);
+      }, 8000);
 
       serverAsleep = window.setTimeout(() => {
         Notify.warning('Server waking up...');
-      }, 9000);
+      }, 12000);
 
       serverAsleepLong = window.setTimeout(() => {
         Notify.warning('Server still waking up...');
-      }, 12000);
+      }, 16000);
 
-      const data = await registerUser(loginInput.value, passwordInput.value);
+      const data = await registerUser(loginInput!.value, passwordInput!.value);
       window.clearTimeout(longLoadTimer);
       setServerToken(data.token);
       localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
