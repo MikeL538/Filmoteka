@@ -3,20 +3,23 @@
 .details {
   &__container {
     border-radius: 10px;
+    border: 3px solid vars.$color-filmovie;
     display: flex;
     flex-wrap: wrap;
-    height: 85vh;
     left: 50%;
+    margin: 10px 0;
+    max-height: 95vh;
     min-width: 300px;
+
+    opacity: 0;
     overflow: auto;
-    padding: 7px;
+
+    pointer-events: none;
     position: absolute;
     top: 10%;
     transform: translateX(-50%) scale(0.8);
-    width: 90vw;
+
     z-index: 100;
-    opacity: 0;
-    pointer-events: none;
     transition:
       opacity vars.$transition-scroll,
       transform vars.$transition-scroll;
@@ -44,9 +47,10 @@
     border: 1px solid;
     height: 30px;
     position: absolute;
-    right: 15px;
+    right: 8px;
     transition: vars.$transition;
     width: 32px;
+    top: 6px;
 
     &:hover {
       border-color: vars.$color-filmovie;
@@ -69,16 +73,15 @@
   }
 
   &__img {
-    border-radius: 12px;
-    border: 2px solid vars.$color-hover;
-    height: auto;
-    margin: 40px auto 0 auto;
-    max-height: 357px;
-    max-width: 95%;
-    width: 100%;
+    margin: 30px auto 10px auto;
+    max-height: 340px;
   }
 
   &__title {
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    border-top: 3px solid vars.$color-filmovie;
     font-size: vars.$font-lg;
   }
 
@@ -104,7 +107,7 @@
         width: 100%;
 
         &:last-of-type {
-          max-width: 600px;
+          max-width: 360px;
           padding: 0 12px;
         }
       }

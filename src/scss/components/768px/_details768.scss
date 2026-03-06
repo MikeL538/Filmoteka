@@ -3,8 +3,8 @@
 @media screen and (min-width: 768px) {
   .details {
     &__container {
+      align-items: center;
       flex-wrap: nowrap;
-      height: auto;
       justify-content: center;
       max-width: 900px;
       min-width: 704px;
@@ -13,27 +13,30 @@
 
     &__img {
       height: auto;
-      margin: 40px 0px auto 0;
+      margin: 0;
       max-height: 90vh;
-      max-width: 45vw;
+
       object-fit: contain;
       width: auto;
+      border-radius: 0px;
+      border: none;
+      overflow: hidden;
     }
 
     &__title {
       margin-bottom: 20px;
+      border: none;
     }
 
     &__information {
       flex-wrap: wrap;
       margin-top: 5px;
-      padding: 25px;
     }
 
     &__about {
       &--p {
-        max-height: 150px;
         margin-right: 8px;
+        max-height: 150px;
       }
     }
 

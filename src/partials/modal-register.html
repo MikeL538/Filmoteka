@@ -13,23 +13,28 @@
         type="login"
         name="text"
         placeholder="login"
+        required
       />
 
-      <label for="registerPassword"><span>Password</span></label>
+      <label for="registerPassword"><span data-translate="password">Password</span></label>
       <input
         id="registerPassword"
         class="register__input"
         type="password"
         name="password"
         placeholder="password"
+        required
       />
-      <label for="registerRepeatPassword"><span>Repeat Password</span></label>
+      <label for="registerRepeatPassword"
+        ><span data-translate="repeatPassword">Repeat Password</span></label
+      >
       <input
         id="registerRepeatPassword"
         class="register__input"
         type="password"
         name="password"
         placeholder="repeat password"
+        required
       />
 
       <label for="registerEmail"><span>E-mail</span></label>
@@ -39,10 +44,13 @@
         type="email"
         name="email"
         placeholder="E-mail"
+        required
       />
 
       <button class="register__btn" type="submit" data-translate="register">Register</button>
-      <button id="registerCancel" class="register__btn" type="button">Cancel</button>
+      <button id="registerCancel" class="register__btn" type="button" data-translate="cancel">
+        Cancel
+      </button>
     </form>
     <p class="register__error" data-translate=""></p>
   </div>

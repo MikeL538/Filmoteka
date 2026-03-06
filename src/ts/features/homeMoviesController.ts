@@ -2,7 +2,7 @@ import { fetchTrending, searchMovies } from '../api/moviesService.js';
 import { renderMovies } from '../ui/moviesRenderer.js';
 import { attachInfiniteScroll } from '../ui/scrollHandler.js';
 import { attachSearch } from '../ui/searchHandler.js';
-import { currentLanguage } from '../language.js';
+import { applyTranslations, currentLanguage } from '../language.js';
 import { notifications } from '../ui/notifications.js';
 
 export function initMoviesPage() {
@@ -15,6 +15,7 @@ export function initMoviesPage() {
   let noMoreVideos: boolean = false;
   const noMore: HTMLParagraphElement = document.createElement('p');
   noMore.classList.add('no-more-videos');
+  noMore.setAttribute('data-translate', 'noMoreVidoes');
 
   async function load() {
     if (!filmsList.children.length) {
@@ -54,8 +55,9 @@ export function initMoviesPage() {
       noMoreVideos = true;
       notifications.noMoreMovies();
 
-      noMore.innerHTML = `No more videos to load`;
+      // noMore.innerHTML = `No more videos to load`;
       filmsList.after(noMore);
+      applyTranslations();
       return;
     }
 

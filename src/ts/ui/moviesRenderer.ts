@@ -2,12 +2,17 @@ import type { Movie } from '../../types and data/types.js';
 import { getGenreName } from '../../types and data/genres.js';
 import { fetchMovieById } from '../api/moviesService.js';
 import { getQueueList, getWatchedList } from './movieListService.js';
+import { applyTranslations } from '../language.js';
 
 export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): string {
   // If no movies found / library empty
   const moviesAmount = movies.length;
   if (moviesAmount === 0) {
-    return `<li><p>Nothing to see here :(</p></li>`;
+    setTimeout(() => {
+      applyTranslations();
+    }, 0);
+
+    return `<li><p data-translate="emptyLibrary"></p></li>`;
   }
 
   return movies
@@ -17,7 +22,8 @@ export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): stri
       const fallbackImage = new URL('../../images/no-video.webp', import.meta.url).toString();
 
       const imagePath = movie.backdrop_path
-        ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+        ? // const imagePath = movie.poster_path
+          `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
         : fallbackImage;
 
       return `<li class="films__list-item" data-id="${movie.id}">
@@ -43,10 +49,10 @@ export async function fetchQueuedMovies(language: string): Promise<Movie[]> {
     id: movie.id,
     title: movie.title,
     backdrop_path: movie.backdrop_path,
+    poster_path: movie.poster_path,
     release_date: movie.release_date,
     vote_average: movie.vote_average,
     genre_ids: movie.genres.map(g => g.id),
-    imagePath: '',
   }));
 }
 
@@ -61,9 +67,9 @@ export async function fetchWatchedMovies(language: string): Promise<Movie[]> {
     id: movie.id,
     title: movie.title,
     backdrop_path: movie.backdrop_path,
+    poster_path: movie.poster_path,
     release_date: movie.release_date,
     vote_average: movie.vote_average,
     genre_ids: movie.genres.map(g => g.id),
-    imagePath: '',
   }));
 }

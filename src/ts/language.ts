@@ -21,18 +21,24 @@ const translations = {
     about: 'About',
     btnWatched: 'add to watched',
     btnQueue: 'add to queue',
+    // Home
+    noMoreVidoes: 'No more videos to load',
     // Library
     btnDltWatched: 'delete from watched',
     btnDltQueued: 'delete from queue',
+    emptyLibrary: 'Nothing to see here :(',
     // Login
     login: 'Login',
     logout: 'Logout',
     register: 'Register',
+    password: 'Password',
+    repeatPassword: 'Repeat password',
     wrongLoginOrPassword: 'Wrong login or password',
     // Register
     loginAlreadyExists: 'Login already exists',
     loginAndPasswordRequired: 'Login and password are required',
     tooManyRequests: 'Too many requests. Please try again later.',
+    cancel: 'Cancel',
   },
   'pl-PL': {
     // Header
@@ -51,18 +57,24 @@ const translations = {
     about: 'Opis',
     btnWatched: 'dodaj do obejrzanych',
     btnQueue: 'dodaj do kolejki',
+    // Home
+    noMoreVidoes: 'Brak kolejnych filmów do wyświetlenia',
     // Library
     btnDltWatched: 'usuń z oglądanych',
     btnDltQueued: 'usuń z kolejki',
+    emptyLibrary: 'Nic tu nie ma :(',
     // Login
     login: 'Zaloguj',
     logout: 'Wyloguj',
     register: 'Zarejestruj',
+    password: 'Hasło',
+    repeatPassword: 'Powtórz hasło',
     wrongLoginOrPassword: 'Nieprawidłowy login lub hasło',
-    tooManyRequests: 'Zbyt wiele prób. Sprobuj ponownie później.',
     // Register
     loginAlreadyExists: 'Login jest juz zajęty',
     loginAndPasswordRequired: 'Login i hasło są wymagane',
+    tooManyRequests: 'Zbyt wiele prób. Sprobuj ponownie później.',
+    cancel: 'Anuluj',
   },
 } as const;
 
@@ -90,25 +102,6 @@ export function applyTranslations(): void {
 export function language() {
   const enLangButton = document.querySelector<HTMLElement>('#enLang')!;
   const plLangButton = document.querySelector<HTMLElement>('#plLang')!;
-
-  // GET LOCAL STORED LANGUAGE
-
-  // function translateElements(): void {
-  //   let elementsToTranslate = document.querySelectorAll<HTMLElement>('[data-translate]');
-  //   const translationsForCurrentLanguage = translations[currentLanguage];
-
-  //   elementsToTranslate.forEach(element => {
-  //     const translationKey = element.dataset.translate as TranslationKey | undefined;
-
-  //     if (!translationKey) return;
-
-  //     if (element instanceof HTMLInputElement && translationKey === 'placeholder') {
-  //       element.placeholder = translationsForCurrentLanguage[translationKey];
-  //     } else {
-  //       element.textContent = translationsForCurrentLanguage[translationKey];
-  //     }
-  //   });
-  // }
 
   const switchLanguage = (language: Language): void => {
     currentLanguage = language;

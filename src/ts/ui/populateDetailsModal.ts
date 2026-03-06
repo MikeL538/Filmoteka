@@ -31,8 +31,9 @@ export function populateModal(movieDetails: MovieDetails) {
 
   const fallbackImage = new URL('../../images/no-video.webp', import.meta.url).toString();
 
-  const modalImgFound = movieDetails.backdrop_path
-    ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(movieDetails.backdrop_path)}`
+  // const modalImgFound = movieDetails.backdrop_path
+  const modalImgFound = movieDetails.poster_path
+    ? `https://image.tmdb.org/t/p/w500${encodeURIComponent(movieDetails.poster_path)}`
     : fallbackImage;
   modalImg.src = modalImgFound;
   modalImg.alt = movieDetails.title;

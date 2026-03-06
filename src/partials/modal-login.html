@@ -8,15 +8,23 @@
 
     <form class="login__form">
       <label for="loginLogin"><span>Login</span></label>
-      <input id="loginLogin" class="login__input" type="text" name="text" placeholder="login" />
+      <input
+        id="loginLogin"
+        class="login__input"
+        type="text"
+        name="text"
+        placeholder="login"
+        required
+      />
 
-      <label for="loginPassword"><span>Password</span></label>
+      <label for="loginPassword"><span data-translate="password">Password</span></label>
       <input
         id="loginPassword"
         class="login--Password__input"
         type="password"
         name="text"
         placeholder="password"
+        required
       />
 
       <button class="login__btn" type="submit" data-translate="login">Login</button>
