@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang=en><script type=importmap>{"imports":{"jNuOj":"/Filmovie/no-video.83d7eca0.webp"}}</script><script type=module src=/Filmovie/Filmovie.0efb5eb4.js></script><link rel=stylesheet href=/Filmovie/Filmovie.70106654.css><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=color-scheme content="light dark"><title>Filmovie</title><link rel=stylesheet href=/Filmovie/Filmovie.5b0d512b.css><link rel=stylesheet href=/Filmovie/Filmovie.02c08be5.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"><link rel=preload href=/Filmovie/no-video.83d7eca0.webp as=image><link rel=icon type=image.jpg href=/Filmovie/favicon.473ac67c.png><script src=/Filmovie/Filmovie.f41c76c3.js type=module defer></script><body>
+<!DOCTYPE html><html lang=en><script type=importmap>{"imports":{"jNuOj":"/Filmovie/no-video.83d7eca0.webp"}}</script><script type=module src=/Filmovie/Filmovie.650a5f9a.js></script><link rel=stylesheet href=/Filmovie/Filmovie.50300f4e.css><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=color-scheme content="light dark"><title>Filmovie</title><link rel=stylesheet href=/Filmovie/Filmovie.5b0d512b.css><link rel=stylesheet href=/Filmovie/Filmovie.02c08be5.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"><link rel=preload href=/Filmovie/no-video.83d7eca0.webp as=image><link rel=icon type=image.jpg href=/Filmovie/favicon.473ac67c.png><script src=/Filmovie/Filmovie.2cf377bd.js type=module defer></script><body>
     <svg aria-hidden=true style=width:0;height:0;position:absolute;overflow:hidden version=1.1 xmlns:xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink><defs><symbol id=logo viewBox="0 0 24 24"><path stroke-linecap=round stroke-linejoin=round stroke-width=2 d="
       M6 3h12l2 2v14l-2 2H6l-2-2V5l2-2
       M4 8h2
@@ -195,10 +195,10 @@
 
     <form class=login__form>
       <label for=loginLogin><span>Login</span></label>
-      <input id=loginLogin class=login__input name=text placeholder=login>
+      <input id=loginLogin class=login__input name=text placeholder=login required>
 
-      <label for=loginPassword><span>Password</span></label>
-      <input id=loginPassword class=login--Password__input type=password name=text placeholder=password>
+      <label for=loginPassword><span data-translate=password>Password</span></label>
+      <input id=loginPassword class=login--Password__input type=password name=text placeholder=password required>
 
       <button class=login__btn data-translate=login>Login</button>
       <button class="login__btn login__btn--register" type=button data-translate=register>
@@ -214,18 +214,20 @@
     </button>
     <form class=register__form>
       <label for=registerLogin> <span>Login</span></label>
-      <input id=registerLogin class=register__input type=login name=text placeholder=login>
+      <input id=registerLogin class=register__input type=login name=text placeholder=login required>
 
-      <label for=registerPassword><span>Password</span></label>
-      <input id=registerPassword class=register__input type=password name=password placeholder=password>
-      <label for=registerRepeatPassword><span>Repeat Password</span></label>
-      <input id=registerRepeatPassword class=register__input type=password name=password placeholder="repeat password">
+      <label for=registerPassword><span data-translate=password>Password</span></label>
+      <input id=registerPassword class=register__input type=password name=password placeholder=password required>
+      <label for=registerRepeatPassword><span data-translate=repeatPassword>Repeat Password</span></label>
+      <input id=registerRepeatPassword class=register__input type=password name=password placeholder="repeat password" required>
 
       <label for=registerEmail><span>E-mail</span></label>
-      <input id=registerEmail class=register__input type=email name=email placeholder=E-mail>
+      <input id=registerEmail class=register__input type=email name=email placeholder=E-mail required>
 
       <button class=register__btn data-translate=register>Register</button>
-      <button id=registerCancel class=register__btn type=button>Cancel</button>
+      <button id=registerCancel class=register__btn type=button data-translate=cancel>
+        Cancel
+      </button>
     </form>
     <p class=register__error data-translate></p>
   </div>
