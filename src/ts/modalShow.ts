@@ -56,6 +56,7 @@ export function openRegisterModal(): void {
   document.body.style.overflow = 'hidden';
 }
 
+// DETAILS
 function modalShow() {
   // Details modal open (list click)
   if (!modals.filmsList) return;
@@ -69,10 +70,12 @@ function modalShow() {
     // Get item id for future fetch
     const target = e.target as HTMLElement;
     const listItem = target.closest<HTMLLIElement>('.films__list-item');
+    const trailerButton = document.querySelector<HTMLButtonElement>('#detailsTrailerButton');
     const movieId = listItem?.dataset.id;
 
     if (!listItem || !movieId) return;
 
+    trailerButton?.setAttribute('data-id', movieId);
     // Save focus outside modal if error && show loader
     rememberFocus();
     lockBackground();

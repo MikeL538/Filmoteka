@@ -8,6 +8,7 @@ import { currentLanguage } from './ts/language.js';
 import { loginHandler } from './ts/ui/modalLogin.js';
 import { registerHandler } from './ts/ui/modalRegister.js';
 import { syncListsIfLoggedIn } from './ts/features/devAuthSync.js';
+import { handleTrailer } from './ts/playTrailer.js';
 
 scrollHeader();
 scrollFooter();
@@ -17,3 +18,4 @@ movieListService(currentLanguage);
 syncListsIfLoggedIn();
 loginHandler();
 registerHandler();
+handleTrailer();

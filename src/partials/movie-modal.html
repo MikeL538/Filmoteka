@@ -1,4 +1,5 @@
 <div class="details backdrop-modal hidden">
+  <!-- <div class="details backdrop-modal"> -->
   <div
     class="details__container"
     role="dialog"
@@ -9,7 +10,14 @@
     <img class="details__img" src="./images/no-video.webp" alt="" />
 
     <div class="details__information">
-      <h2 class="details__title"></h2>
+      <div class="details__title--wrapper">
+        <h2 class="details__title">Title</h2>
+        <button id="detailsTrailerButton" class="details__trailer" type="button">
+          <svg>
+            <use href="#play"></use>
+          </svg>
+        </button>
+      </div>
       <ul class="details__information-list">
         <li class="details__information-list--item">
           <span data-translate="vote"> Vote / Votes </span
@@ -47,5 +55,18 @@
         <use href="#close"></use>
       </svg>
     </button>
+    <!--  -->
+    <div id="trailer" class="trailer hidden">
+      <iframe
+        id="trailerPlayer"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!--  -->
   </div>
 </div>

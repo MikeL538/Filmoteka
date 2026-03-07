@@ -9,12 +9,13 @@
       max-width: 900px;
       min-width: 704px;
       top: 15%;
+      max-height: 100%;
     }
 
     &__img {
       height: auto;
       margin: 0;
-      max-height: 90vh;
+      max-height: 100%;
 
       object-fit: contain;
       width: auto;
@@ -25,7 +26,15 @@
 
     &__title {
       margin-bottom: 20px;
-      border: none;
+
+      &--wrapper {
+        border: none;
+      }
+    }
+
+    &__trailer {
+      padding: 0;
+      padding-bottom: 8px;
     }
 
     &__information {

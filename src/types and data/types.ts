@@ -28,3 +28,15 @@ export interface MovieResponse {
   results: Movie[];
   total_pages: number;
 }
+
+export interface MovieTrailer {
+  id: string;
+  key: string;
+  site: string;
+  type: string;
+}
+
+export interface MovieTrailerResponse {
+  id: number;
+  results: MovieTrailer[];
+}

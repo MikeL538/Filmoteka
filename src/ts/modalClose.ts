@@ -7,6 +7,8 @@ export function modalClose() {
     details: HTMLElement | null;
     login: HTMLElement | null;
     register: HTMLElement | null;
+    trailer: HTMLElement | null;
+    player: HTMLIFrameElement | null;
   };
 
   const modals: Modals = {
@@ -15,6 +17,8 @@ export function modalClose() {
     details: document.querySelector<HTMLElement>('.details'),
     login: document.querySelector<HTMLElement>('.login'),
     register: document.querySelector<HTMLElement>('.register'),
+    trailer: document.querySelector<HTMLElement>('#trailer'),
+    player: document.querySelector<HTMLIFrameElement>('#trailerPlayer'),
   };
 
   // Is modal focusable?
@@ -27,6 +31,8 @@ export function modalClose() {
     modals.details?.classList.add('hidden');
     modals.login?.classList.add('hidden');
     modals.register?.classList.add('hidden');
+    modals.trailer?.classList.add('hidden');
+    modals.player!.src = '';
 
     document.body.style.overflow = 'auto';
 
