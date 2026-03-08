@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang=en><script type=importmap>{"imports":{"jNuOj":"/Filmovie/no-video.83d7eca0.webp"}}</script><script type=module src=/Filmovie/Filmovie.06182caa.js></script><link rel=stylesheet href=/Filmovie/Filmovie.9b277b6d.css><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=color-scheme content="light dark"><title>Filmovie</title><link rel=stylesheet href=/Filmovie/Filmovie.5b0d512b.css><link rel=stylesheet href=/Filmovie/Filmovie.02c08be5.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"><link rel=preload href=/Filmovie/no-video.83d7eca0.webp as=image><link rel=icon type=image.jpg href=/Filmovie/favicon.473ac67c.png><script src=/Filmovie/Filmovie.c530c2b6.js type=module defer></script><body>
+<!DOCTYPE html><html lang=en><script type=importmap>{"imports":{"jNuOj":"/Filmovie/no-video.83d7eca0.webp"}}</script><script type=module src=/Filmovie/Filmovie.47397960.js></script><link rel=stylesheet href=/Filmovie/Filmovie.9b277b6d.css><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=color-scheme content="light dark"><title>Filmovie</title><link rel=stylesheet href=/Filmovie/Filmovie.5b0d512b.css><link rel=stylesheet href=/Filmovie/Filmovie.02c08be5.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"><link rel=preload href=/Filmovie/no-video.83d7eca0.webp as=image><link rel=icon type=image.jpg href=/Filmovie/favicon.473ac67c.png><script src=/Filmovie/Filmovie.fef6b7d7.js type=module defer></script><body>
     <svg aria-hidden=true style=width:0;height:0;position:absolute;overflow:hidden version=1.1 xmlns:xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink><defs><symbol id=logo viewBox="0 0 24 24"><path stroke-linecap=round stroke-linejoin=round stroke-width=2 d="
       M6 3h12l2 2v14l-2 2H6l-2-2V5l2-2
       M4 8h2
@@ -187,11 +187,14 @@
       </div>
     </div>
 
-    <button class=details__close-button type=button>
+    <button id=detailsModalClose class=details__close-button type=button>
       <svg width=16 height=16><use href=#close /></svg>
     </button>
     
     <div id=trailer class="hidden trailer">
+      <button id=trailerModalClose class=details__close-button type=button>
+        <svg width=16 height=16><use href=#close /></svg>
+      </button>
       <iframe id=trailerPlayer width=100% height=100% frameborder=0 allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
@@ -213,7 +216,7 @@
       <input id=loginPassword class=login--Password__input type=password name=text placeholder=password required>
 
       <button class=login__btn data-translate=login>Login</button>
-      <button class="login__btn login__btn--register" type=button data-translate=register>
+      <button id=loginButtonRegister class="login__btn login__btn--register" type=button data-translate=register>
         Register
       </button>
     </form>
