@@ -15,7 +15,7 @@ function logoutController() {
     if (target.id === 'logout') {
       logoutUser();
     }
-    if (target.id === 'login') {
+    if (target.id === 'headerLoginButton') {
       const loginBox = document.querySelector<HTMLElement>('.login');
       if (loginBox) {
         loginBox.classList.remove('hidden');
@@ -34,7 +34,7 @@ export async function syncListsIfLoggedIn(): Promise<boolean> {
 
   if (!token) {
     if (navLoginLi)
-      navLoginLi.innerHTML = `<button id="login" class="header__nav-list-item header__nav-login" type="button" data-translate="login"></button>`;
+      navLoginLi.innerHTML = `<button id="headerLoginButton" class="header__nav-list-item header__nav-login" type="button" data-translate="login"></button>`;
     applyTranslations();
     return false;
   }
@@ -52,7 +52,7 @@ export async function syncListsIfLoggedIn(): Promise<boolean> {
     localStorage.removeItem('queueList');
 
     if (navLoginLi) {
-      navLoginLi.innerHTML = `<button id="login" class="header__nav-list-item header__nav-login" type="button" data-translate="login"></button>`;
+      navLoginLi.innerHTML = `<button id="headerLoginButton" class="header__nav-list-item header__nav-login" type="button" data-translate="login"></button>`;
     }
     applyTranslations();
 

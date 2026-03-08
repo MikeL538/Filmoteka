@@ -5,22 +5,34 @@ import { currentLanguage } from './language.js';
 import { notifications } from './ui/notifications.js';
 import { rememberFocus, restoreFocus, lockBackground, getFocusable } from './a11yFocus.js';
 type Modals = {
-  teamButton: HTMLElement | null;
-  teamBox: HTMLElement | null;
+  team: HTMLElement | null;
   filmsList: HTMLUListElement | null;
   modalDetails: HTMLElement | null;
   login: HTMLElement | null;
   register: HTMLElement | null;
 };
 
+type Buttons = {
+  team: HTMLButtonElement | null;
+  // login: HTMLButtonElement | null;
+  register: HTMLButtonElement | null;
+};
+
 const modals: Modals = {
-  teamButton: document.querySelector<HTMLElement>('.modal-team'),
-  teamBox: document.querySelector<HTMLElement>('.modal-team-box'),
+  team: document.querySelector<HTMLElement>('.modal-team-box'),
   filmsList: document.querySelector<HTMLUListElement>('.films__list, .library-films__list'),
   modalDetails: document.querySelector<HTMLElement>('.details'),
   login: document.querySelector<HTMLElement>('.login'),
   register: document.querySelector<HTMLElement>('.register'),
 };
+
+const buttons: Buttons = {
+  team: document.querySelector<HTMLButtonElement>('.modal-team'),
+  // login: document.querySelector<HTMLButtonElement>('#headerLoginButton'),
+  register: document.querySelector<HTMLButtonElement>('#loginButtonRegister'),
+};
+
+const navLoginLi = document.querySelector('.header__nav-login') as HTMLElement | null;
 
 // Fetch data for chosen film
 async function fetchMovieDetails(movieId: string): Promise<MovieDetails> {
@@ -39,25 +51,35 @@ async function fetchMovieDetails(movieId: string): Promise<MovieDetails> {
   return data;
 }
 
-export function openModal(openEl: HTMLElement, modal: HTMLElement) {
-  if (openEl)
-    openEl.addEventListener('click', () => {
-      rememberFocus();
-      modal.classList.remove('hidden');
-    });
+export function openModal(modal: HTMLElement | null) {
+  if (!modal) return;
+
+  rememberFocus();
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+
+  const focusables = getFocusable(modal);
+  (focusables[0] ?? modal).focus();
 }
-// TEAM MODAL
-if (modals.teamButton && modals.teamBox) openModal(modals.teamButton, modals.teamBox);
+
+if (buttons.team) buttons.team.addEventListener('click', () => openModal(modals.team));
+if (buttons.register) buttons.register.addEventListener('click', () => openModal(modals.register));
+
+// Login modal opener (dynamic render)
+navLoginLi?.addEventListener('click', e => {
+  const target = e.target as HTMLElement;
+
+  if (target.id === 'headerLoginButton') {
+    openModal(modals.login);
+  }
+});
 
 export function openRegisterModal(): void {
-  rememberFocus();
-
-  modals.register?.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
+  openModal(modals.register);
 }
 
 // DETAILS
-function modalShow() {
+function setupDetailsModal() {
   // Details modal open (list click)
   if (!modals.filmsList) return;
 
@@ -102,4 +124,4 @@ function modalShow() {
   });
 }
 
-modalShow();
+setupDetailsModal();
