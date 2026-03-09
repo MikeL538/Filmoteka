@@ -17,10 +17,10 @@ type ApiErrorResponse = {
 };
 
 // LOCAL HOST
-const API_BASE_URL = 'http://localhost:3000';
+// const API_BASE_URL = 'http://localhost:3000';
 
 // PRODUCTION HOST
-// const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
+const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
 const TOKEN_KEY = 'filmoteka_server_token';
 
 export function getServerToken(): string | null {
