@@ -1,15 +1,54 @@
-import { registerUser, setServerToken } from '../api/filmotekaServerApi.js';
+import { registerUser } from '../api/filmotekaServerApi.js';
 import { applyTranslations } from '../language.js';
+import { closeModal } from '../modalClose.js';
 import { notifications } from './notifications.js';
 import { Notify } from 'notiflix';
+
+let serverLoadWarning1: number | undefined;
+let serverLoadWarning2: number | undefined;
+let serverLoadWarning3: number | undefined;
+let serverLoadWarning4: number | undefined;
+let serverLoadWarning5: number | undefined;
+
+const registerErrorMap: Record<string, string> = {
+  REGISTER_400: 'loginAndPasswordRequired',
+  LOGIN_ALREADY_EXISTS: 'loginAlreadyExists',
+  EMAIL_ALREADY_EXISTS: 'emailAlreadyExists',
+  REGISTER_500: 'serverError',
+};
+
+function serverWakingUpInfo() {
+  notifications.showLoader();
+  // NOTIFY ABOUT LOADING
+  serverLoadWarning1 = window.setTimeout(() => {
+    Notify.warning('Server loading...');
+  }, 5000);
+  serverLoadWarning2 = window.setTimeout(() => {
+    Notify.warning('Still loading...');
+  }, 10000);
+  serverLoadWarning3 = window.setTimeout(() => {
+    Notify.warning('Server waking up...');
+  }, 15000);
+  serverLoadWarning4 = window.setTimeout(() => {
+    Notify.warning('Server still waking up...');
+  }, 20000);
+  serverLoadWarning5 = window.setTimeout(() => {
+    Notify.warning('Waking up might take even minutes...');
+  }, 24000);
+}
+
+function clearServerWakingUpInfo() {
+  if (serverLoadWarning1 !== undefined) window.clearTimeout(serverLoadWarning1);
+  if (serverLoadWarning2 !== undefined) window.clearTimeout(serverLoadWarning2);
+  if (serverLoadWarning3 !== undefined) window.clearTimeout(serverLoadWarning3);
+  if (serverLoadWarning4 !== undefined) window.clearTimeout(serverLoadWarning4);
+  if (serverLoadWarning5 !== undefined) window.clearTimeout(serverLoadWarning5);
+  notifications.hideLoader();
+}
+
 export async function registerHandler() {
   const form = document.querySelector('.register__form') as HTMLFormElement | null;
   const formError = document.querySelector('.register__error') as HTMLParagraphElement | null;
-  const registerErrorMap: Record<string, string> = {
-    REGISTER_400: 'loginAndPasswordRequired',
-    REGISTER_409: 'loginAlreadyExists',
-    REGISTER_500: 'serverError',
-  };
 
   form?.addEventListener('submit', async e => {
     e.preventDefault();
@@ -24,6 +63,7 @@ export async function registerHandler() {
     const repeatPasswordInput = document.querySelector(
       '#registerRepeatPassword',
     ) as HTMLInputElement | null;
+    const email = document.querySelector('#registerEmail') as HTMLInputElement | null;
 
     if (passwordInput?.value !== repeatPasswordInput?.value && formError) {
       formError.style.display = 'block';
@@ -32,36 +72,17 @@ export async function registerHandler() {
       return;
     }
 
-    let longLoadTimer: number | undefined;
-    let veryLongLoadTimer: number | undefined;
-    let serverAsleep: number | undefined;
-    let serverAsleepLong: number | undefined;
-
     try {
-      notifications.showLoader();
+      serverWakingUpInfo();
 
-      longLoadTimer = window.setTimeout(() => {
-        Notify.warning('Server loading...');
-      }, 4000);
+      const data = await registerUser(loginInput!.value, passwordInput!.value, email!.value);
 
-      veryLongLoadTimer = window.setTimeout(() => {
-        Notify.warning('Still loading...');
-      }, 8000);
-
-      serverAsleep = window.setTimeout(() => {
-        Notify.warning('Server waking up...');
-      }, 12000);
-
-      serverAsleepLong = window.setTimeout(() => {
-        Notify.warning('Server still waking up...');
-      }, 16000);
-
-      const data = await registerUser(loginInput!.value, passwordInput!.value);
-      window.clearTimeout(longLoadTimer);
-      setServerToken(data.token);
-      localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
-      localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
-      window.location.reload();
+      clearServerWakingUpInfo();
+      // setServerToken(data.token);
+      closeModal();
+      // localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
+      // localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
+      // window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
         if (formError) {
@@ -83,11 +104,7 @@ export async function registerHandler() {
         }
       }
     } finally {
-      if (longLoadTimer !== undefined) window.clearTimeout(longLoadTimer);
-      if (veryLongLoadTimer !== undefined) window.clearTimeout(veryLongLoadTimer);
-      if (serverAsleep !== undefined) window.clearTimeout(serverAsleep);
-      if (serverAsleepLong !== undefined) window.clearTimeout(serverAsleepLong);
-      notifications.hideLoader();
+      clearServerWakingUpInfo();
     }
   });
 }

@@ -34,8 +34,10 @@ const translations = {
     password: 'Password',
     repeatPassword: 'Repeat password',
     wrongLoginOrPassword: 'Wrong login or password',
+    notVerified: 'E-mail not verified',
     // Register
     loginAlreadyExists: 'Login already exists',
+    emailAlreadyExists: 'Email already exists',
     loginAndPasswordRequired: 'Login and password are required',
     tooManyRequests: 'Too many requests. Please try again later.',
     cancel: 'Cancel',
@@ -70,8 +72,11 @@ const translations = {
     password: 'Hasło',
     repeatPassword: 'Powtórz hasło',
     wrongLoginOrPassword: 'Nieprawidłowy login lub hasło',
+    notVerified: 'E-mail nie został aktywowany',
     // Register
-    loginAlreadyExists: 'Login jest juz zajęty',
+    loginAlreadyExists: 'Login jest juz zajety',
+    emailAlreadyExists: 'Email jest juz zajety',
+
     loginAndPasswordRequired: 'Login i hasło są wymagane',
     tooManyRequests: 'Zbyt wiele prób. Sprobuj ponownie później.',
     cancel: 'Anuluj',

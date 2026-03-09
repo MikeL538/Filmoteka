@@ -9,9 +9,45 @@ export async function loginHandler() {
   const loginErrorMap: Record<string, string> = {
     LOGIN_400: 'loginAndPasswordRequired',
     LOGIN_401: 'wrongLoginOrPassword',
+    LOGIN_403: 'notVerified',
     LOGIN_429: 'tooManyRequests',
     LOGIN_500: 'serverError',
   };
+
+  let serverLoadWarning1: number | undefined;
+  let serverLoadWarning2: number | undefined;
+  let serverLoadWarning3: number | undefined;
+  let serverLoadWarning4: number | undefined;
+  let serverLoadWarning5: number | undefined;
+
+  function serverWakingUpInfo() {
+    notifications.showLoader();
+    // NOTIFY ABOUT LOADING
+    serverLoadWarning1 = window.setTimeout(() => {
+      Notify.warning('Server loading...');
+    }, 5000);
+    serverLoadWarning2 = window.setTimeout(() => {
+      Notify.warning('Still loading...');
+    }, 10000);
+    serverLoadWarning3 = window.setTimeout(() => {
+      Notify.warning('Server waking up...');
+    }, 15000);
+    serverLoadWarning4 = window.setTimeout(() => {
+      Notify.warning('Server still waking up...');
+    }, 20000);
+    serverLoadWarning5 = window.setTimeout(() => {
+      Notify.warning('Waking up might take even minutes...');
+    }, 24000);
+  }
+
+  function clearServerWakingUpInfo() {
+    if (serverLoadWarning1 !== undefined) window.clearTimeout(serverLoadWarning1);
+    if (serverLoadWarning2 !== undefined) window.clearTimeout(serverLoadWarning2);
+    if (serverLoadWarning3 !== undefined) window.clearTimeout(serverLoadWarning3);
+    if (serverLoadWarning4 !== undefined) window.clearTimeout(serverLoadWarning4);
+    if (serverLoadWarning5 !== undefined) window.clearTimeout(serverLoadWarning5);
+    notifications.hideLoader();
+  }
 
   document.addEventListener('click', e => {
     const target = e.target as HTMLElement;
@@ -37,34 +73,15 @@ export async function loginHandler() {
       console.error('Login inputs not found');
       return;
     }
-    //        Notify.warning('Server is waking up... Please wait');
-    let longLoadTimer: number | undefined;
-    let veryLongLoadTimer: number | undefined;
-    let serverAsleep: number | undefined;
-    let serverAsleepLong: number | undefined;
 
     try {
-      notifications.showLoader();
-      // NOTIFY ABOUT LOADING
-      longLoadTimer = window.setTimeout(() => {
-        Notify.warning('Server loading...');
-      }, 4000);
-      veryLongLoadTimer = window.setTimeout(() => {
-        Notify.warning('Still loading...');
-      }, 8000);
-      serverAsleep = window.setTimeout(() => {
-        Notify.warning('Server waking up...');
-      }, 12000);
-      serverAsleepLong = window.setTimeout(() => {
-        Notify.warning('Server still waking up...');
-      }, 15000);
-      serverAsleepLong = window.setTimeout(() => {
-        Notify.warning('Waking up might take even minutes...');
-      }, 18000);
+      serverWakingUpInfo();
 
       const data = await loginUser(loginInput.value, passwordInput.value);
-      window.clearTimeout(longLoadTimer);
+
+      clearServerWakingUpInfo();
       setServerToken(data.token);
+
       localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
       localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
       // RELOAD ON PURPOSE
@@ -75,6 +92,7 @@ export async function loginHandler() {
           const key = loginErrorMap[error.message] ?? 'Server ERROR';
           formError.dataset.translate = key;
           formError.style.display = 'block';
+
           applyTranslations();
           console.error(error);
 
@@ -83,7 +101,7 @@ export async function loginHandler() {
             error instanceof TypeError &&
             /NetworkError|Failed to fetch|Load failed/i.test(error.message);
           if (isNetworkError) {
-            if (longLoadTimer !== undefined) window.clearTimeout(longLoadTimer);
+            clearServerWakingUpInfo();
             formError.textContent = 'Network Error';
           }
         }
@@ -92,11 +110,7 @@ export async function loginHandler() {
       }
     } finally {
       // IF LOADED CLEAR TIMERS FOR NOTIFICTIONS
-      if (longLoadTimer !== undefined) window.clearTimeout(longLoadTimer);
-      if (veryLongLoadTimer !== undefined) window.clearTimeout(veryLongLoadTimer);
-      if (serverAsleep !== undefined) window.clearTimeout(serverAsleep);
-      if (serverAsleepLong !== undefined) window.clearTimeout(serverAsleepLong);
-      notifications.hideLoader();
+      clearServerWakingUpInfo();
     }
   });
 }

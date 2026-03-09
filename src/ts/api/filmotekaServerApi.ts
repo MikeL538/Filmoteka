@@ -11,11 +11,16 @@ type LoginResponse = {
   lists: UserLists;
 };
 
+type ApiErrorResponse = {
+  code?: string;
+  message?: string;
+};
+
 // LOCAL HOST
-// const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'http://localhost:3000';
 
 // PRODUCTION HOST
-const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
+// const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
 const TOKEN_KEY = 'filmoteka_server_token';
 
 export function getServerToken(): string | null {
@@ -88,15 +93,23 @@ export async function saveMyList(listName: ListName, movieIds: string[]): Promis
   return (await response.json()) as UserLists;
 }
 
-export async function registerUser(login: string, password: string) {
+export async function registerUser(login: string, password: string, email: string) {
   const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ login, password }),
+    body: JSON.stringify({ login, password, email }),
   });
 
   if (!response.ok) {
-    throw new Error(`REGISTER_${response.status}`);
+    let errorPayload: ApiErrorResponse | null = null;
+
+    try {
+      errorPayload = (await response.json()) as ApiErrorResponse;
+    } catch {
+      errorPayload = null;
+    }
+
+    throw new Error(errorPayload?.code ?? `REGISTER_${response.status}`);
   }
 
   return (await response.json()) as LoginResponse;

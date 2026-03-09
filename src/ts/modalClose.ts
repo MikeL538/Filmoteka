@@ -11,12 +11,12 @@ type Modals = {
 };
 
 type Buttons = {
-  loginCloseButton: HTMLButtonElement | null;
-  registerCloseButton: HTMLButtonElement | null;
-  registerCloseButtonX: HTMLButtonElement | null;
-  teamCloseButton: HTMLButtonElement | null;
-  detailsCloseButton: HTMLButtonElement | null;
-  trailerModalClose: HTMLButtonElement | null;
+  login: HTMLButtonElement | null;
+  register: HTMLButtonElement | null;
+  registerX: HTMLButtonElement | null;
+  team: HTMLButtonElement | null;
+  details: HTMLButtonElement | null;
+  trailer: HTMLButtonElement | null;
 };
 
 const modals: Modals = {
@@ -30,25 +30,25 @@ const modals: Modals = {
 };
 
 const buttons: Buttons = {
-  loginCloseButton: document.querySelector<HTMLButtonElement>('#loginCloseButton'),
-  registerCloseButton: document.querySelector<HTMLButtonElement>('#registerCancel'),
-  registerCloseButtonX: document.querySelector<HTMLButtonElement>('#registerCloseButton'),
-  teamCloseButton: document.querySelector<HTMLButtonElement>('.team__modal--close'),
-  detailsCloseButton: document.querySelector<HTMLButtonElement>('#detailsModalClose'),
-  trailerModalClose: document.querySelector<HTMLButtonElement>('#trailerModalClose'),
+  login: document.querySelector<HTMLButtonElement>('#loginCloseButton'),
+  register: document.querySelector<HTMLButtonElement>('#registerCancel'),
+  registerX: document.querySelector<HTMLButtonElement>('#registerCloseButton'),
+  team: document.querySelector<HTMLButtonElement>('.team__modal--close'),
+  details: document.querySelector<HTMLButtonElement>('#detailsModalClose'),
+  trailer: document.querySelector<HTMLButtonElement>('#trailerModalClose'),
 };
 
 // Close with button
-buttons.loginCloseButton?.addEventListener('click', closeModal);
-buttons.registerCloseButton?.addEventListener('click', closeModal);
-buttons.registerCloseButtonX?.addEventListener('click', closeModal);
-buttons.teamCloseButton?.addEventListener('click', closeModal);
-buttons.detailsCloseButton?.addEventListener('click', closeModal);
-buttons.trailerModalClose?.addEventListener('click', closeModal);
+buttons.login?.addEventListener('click', closeModal);
+buttons.register?.addEventListener('click', closeModal);
+buttons.registerX?.addEventListener('click', closeModal);
+buttons.team?.addEventListener('click', closeModal);
+buttons.details?.addEventListener('click', closeModal);
+buttons.trailer?.addEventListener('click', closeModal);
 
-function closeModal() {
+export function closeModal() {
   // Close only trailer modal if opened
-  if (modals.trailer && !modals.trailer?.classList.contains('hidden')) {
+  if (!modals.trailer?.classList.contains('hidden')) {
     modals.trailer?.classList.add('hidden');
     if (modals.player) modals.player.src = '';
 
@@ -57,7 +57,7 @@ function closeModal() {
   }
 
   // Close only register modal
-  if (modals.register && !modals.register?.classList.contains('hidden')) {
+  if (!modals.register?.classList.contains('hidden')) {
     modals.register?.classList.add('hidden');
 
     restoreFocus();
