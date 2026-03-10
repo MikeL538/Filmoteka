@@ -14,6 +14,12 @@ type LoginResponse = {
 type ApiErrorResponse = {
   code?: string;
   message?: string;
+  activationLink?: string;
+};
+
+type ApiError = Error & {
+  code?: string;
+  activationLink?: string | undefined;
 };
 
 // LOCAL HOST
@@ -39,7 +45,22 @@ export async function loginUser(login: string, password: string): Promise<LoginR
   });
 
   if (!response.ok) {
-    throw new Error(`LOGIN_${response.status}`);
+    let errorPayload: ApiErrorResponse | null = null;
+
+    try {
+      errorPayload = (await response.json()) as ApiErrorResponse;
+    } catch {
+      errorPayload = null;
+    }
+
+    const error = new Error(errorPayload?.code ?? `LOGIN_${response.status}`) as ApiError;
+    error.code = errorPayload?.code ?? `LOGIN_${response.status}`;
+
+    if (errorPayload?.activationLink) {
+      error.activationLink = errorPayload.activationLink;
+    }
+
+    throw error;
   }
 
   return (await response.json()) as LoginResponse;

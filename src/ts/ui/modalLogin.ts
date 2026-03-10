@@ -88,8 +88,19 @@ export async function loginHandler() {
       window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
+        const authError = error as Error & { code?: string; activationLink?: string };
+
+        if (authError.code === 'NOT_VERIFIED' && authError.activationLink) {
+          console.log('Activation link:', authError.activationLink);
+          alert(`Link atywacyjny w konsoli dla testow lub tutaj: ${authError.activationLink}`);
+        }
+
         if (formError) {
-          const key = loginErrorMap[error.message] ?? 'Server ERROR';
+          const key =
+            authError.code === 'NOT_VERIFIED'
+              ? 'notVerified'
+              : (loginErrorMap[error.message] ?? 'Server ERROR');
+
           formError.dataset.translate = key;
           formError.style.display = 'block';
 
