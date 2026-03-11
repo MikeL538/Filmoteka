@@ -7,7 +7,7 @@
     </button>
 
     <form class="login__form">
-      <label for="loginLogin"><span>Login</span></label>
+      <label class="login__label" for="loginLogin"><span>Login</span></label>
       <input
         id="loginLogin"
         class="login__input"
@@ -17,7 +17,9 @@
         required
       />
 
-      <label for="loginPassword"><span data-translate="password">Password</span></label>
+      <label class="login__label" for="loginPassword"
+        ><span data-translate="password">Password</span></label
+      >
       <input
         id="loginPassword"
         class="login--Password__input"
@@ -26,6 +28,14 @@
         placeholder="password"
         required
       />
+      <button
+        id="loginForgotPasswordButton"
+        type="button"
+        class="login__forgot-password"
+        data-translate="forgotPassword"
+      >
+        Forgot password
+      </button>
 
       <button class="login__btn" type="submit" data-translate="login">Login</button>
       <button
@@ -37,7 +47,9 @@
         Register
       </button>
     </form>
+
     <p class="login__error" data-translate=""></p>
   </div>
   <include src="./partials/modal-register.html"></include>
+  <include src="./partials/modal-forgot-password.html"></include>
 </div>

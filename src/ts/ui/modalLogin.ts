@@ -92,7 +92,7 @@ export async function loginHandler() {
 
         if (authError.code === 'NOT_VERIFIED' && authError.activationLink) {
           console.log('Activation link:', authError.activationLink);
-          alert(`Link atywacyjny w konsoli dla testow lub tutaj: ${authError.activationLink}`);
+          alert(`ACTIVATION LINK in console or here: \n\n${authError.activationLink}`);
         }
 
         if (formError) {

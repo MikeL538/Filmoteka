@@ -63,7 +63,7 @@ export function initMoviesPage() {
 
     currentPage++;
     await load();
-  });
+  }, filmsList);
 
   load();
 

@@ -10,12 +10,14 @@ type Modals = {
   modalDetails: HTMLElement | null;
   login: HTMLElement | null;
   register: HTMLElement | null;
+  forgotPassword: HTMLElement | null;
 };
 
 type Buttons = {
   team: HTMLButtonElement | null;
   // login: HTMLButtonElement | null;
   register: HTMLButtonElement | null;
+  forgotPassword: HTMLButtonElement | null;
 };
 
 const modals: Modals = {
@@ -24,12 +26,14 @@ const modals: Modals = {
   modalDetails: document.querySelector<HTMLElement>('.details'),
   login: document.querySelector<HTMLElement>('.login'),
   register: document.querySelector<HTMLElement>('.register'),
+  forgotPassword: document.querySelector<HTMLElement>('#forgotPasswordModal'),
 };
 
 const buttons: Buttons = {
   team: document.querySelector<HTMLButtonElement>('.modal-team'),
   // login: document.querySelector<HTMLButtonElement>('#headerLoginButton'),
   register: document.querySelector<HTMLButtonElement>('#loginButtonRegister'),
+  forgotPassword: document.querySelector<HTMLButtonElement>('#loginForgotPasswordButton'),
 };
 
 const navLoginLi = document.querySelector('.header__nav-login') as HTMLElement | null;
@@ -64,7 +68,8 @@ export function openModal(modal: HTMLElement | null) {
 
 if (buttons.team) buttons.team.addEventListener('click', () => openModal(modals.team));
 if (buttons.register) buttons.register.addEventListener('click', () => openModal(modals.register));
-
+if (buttons.forgotPassword)
+  buttons.forgotPassword.addEventListener('click', () => openModal(modals.forgotPassword));
 // Login modal opener (dynamic render)
 navLoginLi?.addEventListener('click', e => {
   const target = e.target as HTMLElement;

@@ -1,7 +1,7 @@
 import './scss/main.scss';
 import { scrollHeader } from './ts/scrollHeader.js';
 import { scrollFooter } from './ts/scrollFooter.js';
-import { modalClose } from './ts/modalClose.js';
+import { setupModalClose } from './ts/modalClose.js';
 import { language } from './ts/language.js';
 import { movieListService } from './ts/ui/movieListService.js';
 import { currentLanguage } from './ts/language.js';
@@ -12,7 +12,7 @@ import { handleTrailer } from './ts/playTrailer.js';
 
 scrollHeader();
 scrollFooter();
-modalClose();
+setupModalClose();
 language();
 movieListService(currentLanguage);
 syncListsIfLoggedIn();
