@@ -1,3 +1,5 @@
+const yearElement = document.querySelector('#year');
+
 export function scrollFooter() {
   const footer = document.querySelector<HTMLElement>('.footer')!;
   const isScrolling = (): boolean => window.scrollY > 70;
@@ -5,6 +7,10 @@ export function scrollFooter() {
   function setScrollState() {
     if (isScrolling()) footer.classList.remove('hidden');
     else footer.classList.add('hidden');
+  }
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear().toString();
   }
 
   window.addEventListener('scroll', () => {
