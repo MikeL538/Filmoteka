@@ -15,6 +15,7 @@ const registerErrorMap: Record<string, string> = {
   LOGIN_ALREADY_EXISTS: 'loginAlreadyExists',
   EMAIL_ALREADY_EXISTS: 'emailAlreadyExists',
   REGISTER_500: 'serverError',
+  VERIFICATION_EMAIL_FAILED: 'verEmailFailed',
 };
 
 function serverWakingUpInfo() {
@@ -75,7 +76,7 @@ export async function registerHandler() {
     try {
       serverWakingUpInfo();
 
-      const data = await registerUser(loginInput!.value, passwordInput!.value, email!.value);
+      await registerUser(loginInput!.value, passwordInput!.value, email!.value);
 
       clearServerWakingUpInfo();
       // setServerToken(data.token);

@@ -46,6 +46,7 @@ const translations = {
     loginAndPasswordRequired: 'Login and password are required',
     tooManyRequests: 'Too many requests. Please try again later.',
     cancel: 'Cancel',
+    verEmailFailed: 'Failed to send e-mail verification, [lack of service, log in to receive link]',
   },
   'pl-PL': {
     // Header
@@ -89,6 +90,8 @@ const translations = {
     loginAndPasswordRequired: 'Login i hasło są wymagane',
     tooManyRequests: 'Zbyt wiele prób. Sprobuj ponownie później.',
     cancel: 'Anuluj',
+    verEmailFailed:
+      'Błąd podczas wysyłania e-maila weryfikującego [brak usługi - zaloguj się aby otrzymać link]',
   },
 } as const;
 

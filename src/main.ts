@@ -9,6 +9,7 @@ import { loginHandler } from './ts/ui/modalLogin.js';
 import { registerHandler } from './ts/ui/modalRegister.js';
 import { syncListsIfLoggedIn } from './ts/features/devAuthSync.js';
 import { handleTrailer } from './ts/playTrailer.js';
+import { forgotPasswordHandler } from './ts/ui/modalForgotPassword.js';
 
 scrollHeader();
 scrollFooter();
@@ -19,3 +20,4 @@ syncListsIfLoggedIn();
 loginHandler();
 registerHandler();
 handleTrailer();
+forgotPasswordHandler();

@@ -23,10 +23,10 @@ type ApiError = Error & {
 };
 
 // LOCAL HOST
-const API_BASE_URL = 'http://localhost:3000';
+// const API_BASE_URL = 'http://localhost:3000';
 
 // PRODUCTION HOST
-// const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
+const API_BASE_URL = 'https://filmoteka-server-oso6.onrender.com';
 const TOKEN_KEY = 'filmoteka_server_token';
 
 export function getServerToken(): string | null {
@@ -119,6 +119,28 @@ export async function registerUser(login: string, password: string, email: strin
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ login, password, email }),
+  });
+
+  if (!response.ok) {
+    let errorPayload: ApiErrorResponse | null = null;
+
+    try {
+      errorPayload = (await response.json()) as ApiErrorResponse;
+    } catch {
+      errorPayload = null;
+    }
+
+    throw new Error(errorPayload?.code ?? `REGISTER_${response.status}`);
+  }
+
+  return (await response.json()) as LoginResponse;
+}
+
+export async function forgotPassword(login: string, email: string, password: string) {
+  const response = await fetch(`${API_BASE_URL}/api/auth/forgot-password`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ login, email, password }),
   });
 
   if (!response.ok) {
