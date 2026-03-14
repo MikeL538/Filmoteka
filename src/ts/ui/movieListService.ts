@@ -1,6 +1,6 @@
 import { notifications } from './notifications.js';
 import { currentLanguage } from '../language.js';
-import { saveMyList } from '../api/filmotekaServerApi.js';
+import { saveMyList } from '../api/filmovieServerApi.js';
 
 // ===== WATCHED LIST =====
 export function getWatchedList(): string[] {

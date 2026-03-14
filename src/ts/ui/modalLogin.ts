@@ -1,4 +1,4 @@
-import { loginUser, setServerToken } from '../api/filmotekaServerApi.js';
+import { loginUser, setServerToken } from '../api/filmovieServerApi.js';
 import { openRegisterModal } from '../modalShow.js';
 import { applyTranslations } from '../language.js';
 import { notifications } from './notifications.js';

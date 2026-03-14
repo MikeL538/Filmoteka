@@ -1,4 +1,4 @@
-import { getMyLists, getServerToken, logoutUser } from '../api/filmotekaServerApi.js';
+import { getMyLists, getServerToken, logoutUser } from '../api/filmovieServerApi.js';
 import { applyTranslations } from '../language.js';
 import { rememberFocus, lockBackground, getFocusable } from '../a11yFocus.js';
 
@@ -47,7 +47,7 @@ export async function syncListsIfLoggedIn(): Promise<boolean> {
     applyTranslations();
     return true;
   } catch (error) {
-    localStorage.removeItem('filmoteka_server_token');
+    localStorage.removeItem('filmovie_server_token');
     localStorage.removeItem('toWatchList');
     localStorage.removeItem('queueList');
 

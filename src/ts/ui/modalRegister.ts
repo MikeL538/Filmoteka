@@ -1,4 +1,4 @@
-import { registerUser } from '../api/filmotekaServerApi.js';
+import { registerUser } from '../api/filmovieServerApi.js';
 import { applyTranslations } from '../language.js';
 import { closeModal } from '../modalClose.js';
 import { notifications } from './notifications.js';

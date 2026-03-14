@@ -9,9 +9,9 @@ backend integration for authentication and list synchronization.
 
 Frontend: https://mikel538.github.io/Filmovie/
 
-Backend API Repo: https://github.com/MikeL538/Filmoteka-Server
+Backend API Repo: https://github.com/MikeL538/Filmovie-Server
 
-Backend API: https://filmoteka-server-oso6.onrender.com
+Backend API: https://filmovie-server.onrender.com
 
 ## Features
 
@@ -65,7 +65,7 @@ Filmovie is integrated with a separate backend project that currently provides:
 - deployed API on Render
 
 Backend repository used for integration: `Filmovie-Server` —
-https://github.com/MikeL538/Filmoteka-Server
+https://github.com/MikeL538/Filmovie-Server
 
 ## How It Works
 
@@ -138,13 +138,13 @@ To use registration, login, verification, and list sync locally:
 
 1. Run the Filmovie frontend.
 2. Run the `Filmovie-Server` backend.
-3. Make sure the API base URL in `src/ts/api/filmotekaServerApi.ts` matches the environment you want
+3. Make sure the API base URL in `src/ts/api/filmovieServerApi.ts` matches the environment you want
    to use.
 
 The frontend currently switches backend target through a hardcoded constant in code:
 
 - local development: `http://localhost:3000`
-- deployed backend: `https://filmoteka-server-oso6.onrender.com`
+- deployed backend: `https://filmovie-server.onrender.com`
 
 ## Available Scripts
 
@@ -174,7 +174,7 @@ npm run build
 - `src/ts/features/libraryMoviesController.ts` renders the Library page and tab switching
 - `src/ts/ui/movieListService.ts` manages watched/queue state and backend sync calls
 - `src/ts/api/tmdbApi.ts` configures the TMDB client
-- `src/ts/api/filmotekaServerApi.ts` contains login, register, logout, and list API calls
+- `src/ts/api/filmovieServerApi.ts` contains login, register, logout, and list API calls
 
 ## Deployment
 
