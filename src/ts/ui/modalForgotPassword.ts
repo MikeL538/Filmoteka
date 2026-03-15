@@ -16,24 +16,10 @@ export async function forgotPasswordHandler() {
       formError.textContent = '';
     }
 
-    const loginInput = document.querySelector('#forgot-passwordLogin') as HTMLInputElement | null;
     const emailInput = document.querySelector('#forgot-passwordEmail') as HTMLInputElement | null;
-    const passwordInput = document.querySelector(
-      '#forgot-passwordPassword',
-    ) as HTMLInputElement | null;
-    const repeatPasswordInput = document.querySelector(
-      '#forgot-passwordRepeatPassword',
-    ) as HTMLInputElement | null;
-
-    if (passwordInput?.value !== repeatPasswordInput?.value && formError) {
-      formError.style.display = 'block';
-      formError.textContent = 'Passwords are different.';
-      applyTranslations();
-      return;
-    }
 
     try {
-      await forgotPassword(loginInput!.value, emailInput!.value, passwordInput!.value);
+      await forgotPassword(emailInput!.value);
 
       closeModal();
     } catch (error) {

@@ -17,6 +17,11 @@ type ApiErrorResponse = {
   activationLink?: string;
 };
 
+type ApiMessageResponse = {
+  code?: string;
+  message?: string;
+};
+
 type ApiError = Error & {
   code?: string;
   activationLink?: string | undefined;
@@ -136,11 +141,11 @@ export async function registerUser(login: string, password: string, email: strin
   return (await response.json()) as LoginResponse;
 }
 
-export async function forgotPassword(login: string, email: string, password: string) {
+export async function forgotPassword(email: string) {
   const response = await fetch(`${API_BASE_URL}/api/auth/forgot-password`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ login, email, password }),
+    body: JSON.stringify({ email }),
   });
 
   if (!response.ok) {
@@ -155,5 +160,27 @@ export async function forgotPassword(login: string, email: string, password: str
     throw new Error(errorPayload?.code ?? `REGISTER_${response.status}`);
   }
 
-  return (await response.json()) as LoginResponse;
+  return (await response.json()) as ApiMessageResponse;
+}
+
+export async function resetPassword(token: string, password: string) {
+  const response = await fetch(`${API_BASE_URL}/api/auth/reset-password`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token, password }),
+  });
+
+  if (!response.ok) {
+    let errorPayload: ApiErrorResponse | null = null;
+
+    try {
+      errorPayload = (await response.json()) as ApiErrorResponse;
+    } catch {
+      errorPayload = null;
+    }
+
+    throw new Error(errorPayload?.code ?? `RESET_PASSWORD_${response.status}`);
+  }
+
+  return (await response.json()) as ApiMessageResponse;
 }
