@@ -27,11 +27,10 @@ type ApiError = Error & {
   activationLink?: string | undefined;
 };
 
-// LOCAL HOST
-// const API_BASE_URL = 'http://localhost:3000';
+const isLocalhost =
+  window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-// PRODUCTION HOST
-const API_BASE_URL = 'https://filmovie-server.onrender.com';
+const API_BASE_URL = isLocalhost ? 'http://localhost:3000' : 'https://filmovie-server.onrender.com';
 const TOKEN_KEY = 'filmovie_server_token';
 
 export function getServerToken(): string | null {
