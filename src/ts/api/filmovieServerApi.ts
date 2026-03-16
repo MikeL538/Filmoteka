@@ -14,7 +14,6 @@ type LoginResponse = {
 type ApiErrorResponse = {
   code?: string;
   message?: string;
-  activationLink?: string;
 };
 
 type ApiMessageResponse = {
@@ -24,7 +23,6 @@ type ApiMessageResponse = {
 
 type ApiError = Error & {
   code?: string;
-  activationLink?: string | undefined;
 };
 
 const isLocalhost =
@@ -59,10 +57,6 @@ export async function loginUser(login: string, password: string): Promise<LoginR
 
     const error = new Error(errorPayload?.code ?? `LOGIN_${response.status}`) as ApiError;
     error.code = errorPayload?.code ?? `LOGIN_${response.status}`;
-
-    if (errorPayload?.activationLink) {
-      error.activationLink = errorPayload.activationLink;
-    }
 
     throw error;
   }
