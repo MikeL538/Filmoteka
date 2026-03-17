@@ -81,6 +81,16 @@ export async function registerHandler() {
       clearServerWakingUpInfo();
       // setServerToken(data.token);
       closeModal();
+
+      const formError = document.querySelector('.login__error') as HTMLParagraphElement | null;
+
+      if (formError) {
+        formError.innerHTML = '';
+
+        formError.innerHTML += `<p data-translate='verifyEmail'></p>`;
+        formError.style.color = 'green';
+        applyTranslations();
+      }
       // localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
       // localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
       // window.location.reload();

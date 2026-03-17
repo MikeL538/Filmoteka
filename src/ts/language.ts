@@ -35,6 +35,7 @@ const translations = {
     repeatPassword: 'Repeat password',
     wrongLoginOrPassword: 'Wrong login or password',
     notVerified: 'E-mail not verified',
+    loginSendVerAgain: 'Send activation link again.',
     forgotPassword: 'Forgot password',
     // Forgot password
     newPassword: 'New password',
@@ -45,6 +46,7 @@ const translations = {
     emailAlreadyExists: 'Email already exists',
     loginAndPasswordRequired: 'Login and password are required',
     tooManyRequests: 'Too many requests. Please try again later.',
+    verifyEmail: 'Verification link sent to e-mail.',
     cancel: 'Cancel',
     verEmailFailed: 'Failed to send e-mail verification, [lack of service, log in to receive link]',
   },
@@ -79,6 +81,7 @@ const translations = {
     repeatPassword: 'Powtórz hasło',
     wrongLoginOrPassword: 'Nieprawidłowy login lub hasło',
     notVerified: 'E-mail nie został aktywowany',
+    loginSendVerAgain: 'Wyślij link aktywacyjny ponownie.',
     forgotPassword: 'Zapomniałem hasła',
     // Forgot password
     newPassword: 'Nowe hasło',
@@ -89,6 +92,7 @@ const translations = {
     emailAlreadyExists: 'Email jest juz zajety',
     loginAndPasswordRequired: 'Login i hasło są wymagane',
     tooManyRequests: 'Zbyt wiele prób. Sprobuj ponownie później.',
+    verifyEmail: 'E-mail weryfikacyjny został wysłany na e-mail.',
     cancel: 'Anuluj',
     verEmailFailed:
       'Błąd podczas wysyłania e-maila weryfikującego [brak usługi - zaloguj się aby otrzymać link]',

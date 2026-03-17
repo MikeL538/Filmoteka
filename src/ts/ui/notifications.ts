@@ -15,6 +15,7 @@ Notify.init({
 
 const languageStrings = {
   'en-US': {
+    success: 'Success',
     addedToWatched: 'Added to watched',
     addedToQueue: 'Added to queue',
     alreadyInWatched: 'Movie is already in watched list',
@@ -27,6 +28,7 @@ const languageStrings = {
     loading: 'Loading',
   },
   'pl-PL': {
+    success: 'Sukces',
     addedToWatched: 'Dodano do obejrzanych',
     addedToQueue: 'Dodano do kolejki',
     alreadyInWatched: 'Film znajduje się już na liście obejrzanych',
@@ -41,6 +43,7 @@ const languageStrings = {
 };
 
 export const notifications = {
+  success: () => Notify.success(languageStrings[currentLanguage].success),
   addedToWatched: () => Notify.success(languageStrings[currentLanguage].addedToWatched),
   addedToQueue: () => Notify.success(languageStrings[currentLanguage].addedToQueue),
   alreadyInWatched: () => Notify.warning(languageStrings[currentLanguage].alreadyInWatched),

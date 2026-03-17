@@ -1,3 +1,5 @@
+import { notifications } from '../ui/notifications.js';
+
 type ListName = 'watched' | 'queued';
 
 export type UserLists = {
@@ -60,7 +62,7 @@ export async function loginUser(login: string, password: string): Promise<LoginR
 
     throw error;
   }
-
+  notifications.success();
   return (await response.json()) as LoginResponse;
 }
 
@@ -131,6 +133,7 @@ export async function registerUser(login: string, password: string, email: strin
     throw new Error(errorPayload?.code ?? `REGISTER_${response.status}`);
   }
 
+  notifications.success();
   return (await response.json()) as LoginResponse;
 }
 
@@ -153,6 +156,7 @@ export async function forgotPassword(email: string) {
     throw new Error(errorPayload?.code ?? `REGISTER_${response.status}`);
   }
 
+  notifications.success();
   return (await response.json()) as ApiMessageResponse;
 }
 
@@ -175,5 +179,29 @@ export async function resetPassword(token: string, password: string) {
     throw new Error(errorPayload?.code ?? `RESET_PASSWORD_${response.status}`);
   }
 
+  return (await response.json()) as ApiMessageResponse;
+}
+
+export async function resendVerificationEmail(login: string) {
+  const response = await fetch(
+    `${API_BASE_URL}/api/auth/resend-verify-email?login=${encodeURIComponent(login)}`,
+    {
+      method: 'GET',
+    },
+  );
+
+  if (!response.ok) {
+    let errorPayload: ApiErrorResponse | null = null;
+
+    try {
+      errorPayload = (await response.json()) as ApiErrorResponse;
+    } catch {
+      errorPayload = null;
+    }
+
+    throw new Error(errorPayload?.code ?? `Something went wrong`);
+  }
+
+  notifications.success();
   return (await response.json()) as ApiMessageResponse;
 }

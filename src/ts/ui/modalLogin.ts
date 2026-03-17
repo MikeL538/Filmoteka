@@ -1,11 +1,13 @@
-import { loginUser, setServerToken } from '../api/filmovieServerApi.js';
+import { loginUser, setServerToken, resendVerificationEmail } from '../api/filmovieServerApi.js';
 import { openRegisterModal } from '../modalShow.js';
 import { applyTranslations } from '../language.js';
 import { notifications } from './notifications.js';
 import { Notify } from 'notiflix';
+
 export async function loginHandler() {
   const form = document.querySelector('.login__form') as HTMLFormElement | null;
   const formError = document.querySelector('.login__error') as HTMLParagraphElement | null;
+
   const loginErrorMap: Record<string, string> = {
     LOGIN_400: 'loginAndPasswordRequired',
     LOGIN_401: 'wrongLoginOrPassword',
@@ -59,9 +61,8 @@ export async function loginHandler() {
   form?.addEventListener('submit', async e => {
     e.preventDefault();
     if (formError) {
-      formError.style.display = 'none';
-      formError.dataset.translate = '';
       formError.textContent = '';
+      formError.style.color = 'red';
     }
 
     const loginInput = document.querySelector('.login__input') as HTMLInputElement | null;
@@ -101,10 +102,25 @@ export async function loginHandler() {
               ? 'notVerified'
               : (loginErrorMap[error.message] ?? 'Server ERROR');
 
-          formError.dataset.translate = key;
-          formError.style.display = 'block';
+          formError.innerHTML += `<p data-translate='${key}'></p>`;
 
+          if (key === 'notVerified') {
+            formError.innerHTML += `<p><button id="loginSendVerAgain" type="button" data-translate="loginSendVerAgain">Send activation link again.</button></p>`;
+
+            const verifySendAgainButton = document.querySelector('#loginSendVerAgain');
+
+            verifySendAgainButton?.addEventListener('click', async () => {
+              try {
+                await resendVerificationEmail(loginInput.value);
+              } catch (error) {
+                console.log(error);
+              } finally {
+                formError.innerHTML = '';
+              }
+            });
+          }
           applyTranslations();
+
           console.error(error);
 
           // SHOW ERROR IF NETWORKERROR
@@ -120,7 +136,7 @@ export async function loginHandler() {
         formError!.textContent = error instanceof Error ? error.message : String(error);
       }
     } finally {
-      // IF LOADED CLEAR TIMERS FOR NOTIFICTIONS
+      // IF LOADED => CLEAR TIMERS FOR NOTIFICTIONS
       clearServerWakingUpInfo();
     }
   });

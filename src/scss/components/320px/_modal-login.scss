@@ -132,9 +132,9 @@
   }
 
   &__error {
-    display: none;
     color: vars.$color-error;
     font-size: vars.$font-sm;
     margin-top: 8px;
+    text-align: center;
   }
 }
