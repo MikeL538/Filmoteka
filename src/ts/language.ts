@@ -13,6 +13,7 @@ const translations = {
     error: 'Search result not successful. Enter the correct movie name.',
     libraryBtnWatched: 'watched',
     libraryBtnQueue: 'queue',
+
     // Modal Details
     vote: 'Rating / Votes',
     popularity: 'Popularity',
@@ -21,12 +22,15 @@ const translations = {
     about: 'About',
     btnWatched: 'add to watched',
     btnQueue: 'add to queue',
+
     // Home
     noMoreVidoes: 'No more videos to load',
+
     // Library
     btnDltWatched: 'delete from watched',
     btnDltQueued: 'delete from queue',
     emptyLibrary: 'Nothing to see here :(',
+
     // Login
     login: 'Login',
     logout: 'Logout',
@@ -36,11 +40,14 @@ const translations = {
     wrongLoginOrPassword: 'Wrong login or password',
     notVerified: 'E-mail not verified',
     loginSendVerAgain: 'Send activation link again.',
+    resendTooEarly: 'Too early request. You can resend verification link every 2 minutes.',
     forgotPassword: 'Forgot password',
+
     // Forgot password
     newPassword: 'New password',
     repeatNewPassword: 'Repeat new password',
     resetPassword: 'Reset password',
+
     // Register
     loginAlreadyExists: 'Login already exists',
     emailAlreadyExists: 'Email already exists',
@@ -59,6 +66,7 @@ const translations = {
     error: 'Wyszukiwanie nie powiodło się. Wprowadź prawidłową nazwę filmu.',
     libraryBtnWatched: 'obejrzane',
     libraryBtnQueue: 'kolejka',
+
     // Modal Details
     vote: 'Ocena / Głosów',
     popularity: 'Popularność',
@@ -67,12 +75,15 @@ const translations = {
     about: 'Opis',
     btnWatched: 'dodaj do obejrzanych',
     btnQueue: 'dodaj do kolejki',
+
     // Home
     noMoreVidoes: 'Brak kolejnych filmów do wyświetlenia',
+
     // Library
     btnDltWatched: 'usuń z oglądanych',
     btnDltQueued: 'usuń z kolejki',
     emptyLibrary: 'Nic tu nie ma :(',
+
     // Login
     login: 'Zaloguj',
     logout: 'Wyloguj',
@@ -82,16 +93,20 @@ const translations = {
     wrongLoginOrPassword: 'Nieprawidłowy login lub hasło',
     notVerified: 'E-mail nie został aktywowany',
     loginSendVerAgain: 'Wyślij link aktywacyjny ponownie.',
+    resendTooEarly:
+      'Zbyt wczesna prośba. Ponowne wysłanie linku aktywującego jest możliwe co 2 minuty.',
     forgotPassword: 'Zapomniałem hasła',
+
     // Forgot password
     newPassword: 'Nowe hasło',
     repeatNewPassword: 'Powtórz nowe hasło',
     resetPassword: 'Resetuj hasło',
+
     // Register
-    loginAlreadyExists: 'Login jest juz zajety',
-    emailAlreadyExists: 'Email jest juz zajety',
+    loginAlreadyExists: 'Login jest już zajęty',
+    emailAlreadyExists: 'Email jest już zajęty',
     loginAndPasswordRequired: 'Login i hasło są wymagane',
-    tooManyRequests: 'Zbyt wiele prób. Sprobuj ponownie później.',
+    tooManyRequests: 'Zbyt wiele prób. Spróbuj ponownie później.',
     verifyEmail: 'E-mail weryfikacyjny został wysłany na e-mail.',
     cancel: 'Anuluj',
     verEmailFailed:

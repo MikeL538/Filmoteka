@@ -13,6 +13,7 @@ export async function loginHandler() {
     LOGIN_401: 'wrongLoginOrPassword',
     LOGIN_403: 'notVerified',
     LOGIN_429: 'tooManyRequests',
+    RESEND_TOO_EARLY: 'resendTooEarly',
     LOGIN_500: 'serverError',
   };
 
@@ -89,33 +90,22 @@ export async function loginHandler() {
       window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
-        const authError = error as Error & { code?: string; activationLink?: string };
-
-        if (authError.code === 'NOT_VERIFIED' && authError.activationLink) {
-          console.log('Activation link:', authError.activationLink);
-          alert(`ACTIVATION LINK in console or here: \n\n${authError.activationLink}`);
-        }
-
         if (formError) {
-          const key =
-            authError.code === 'NOT_VERIFIED'
-              ? 'notVerified'
-              : (loginErrorMap[error.message] ?? 'Server ERROR');
-
-          formError.innerHTML += `<p data-translate='${key}'></p>`;
+          const key = loginErrorMap[error.message] ?? 'Server ERROR';
+          formError.innerHTML += `<p data-translate='${key}'></p>\n`;
 
           if (key === 'notVerified') {
-            formError.innerHTML += `<p><button id="loginSendVerAgain" type="button" data-translate="loginSendVerAgain">Send activation link again.</button></p>`;
-
+            formError.innerHTML += `<button id="loginSendVerAgain" type="button" data-translate="loginSendVerAgain">Send activation link again.</button>`;
             const verifySendAgainButton = document.querySelector('#loginSendVerAgain');
 
             verifySendAgainButton?.addEventListener('click', async () => {
               try {
+                formError.innerHTML = '';
                 await resendVerificationEmail(loginInput.value);
               } catch (error) {
+                formError.innerHTML += `<p data-translate='${loginErrorMap['RESEND_TOO_EARLY']}'></p>\n`;
+                applyTranslations();
                 console.log(error);
-              } finally {
-                formError.innerHTML = '';
               }
             });
           }

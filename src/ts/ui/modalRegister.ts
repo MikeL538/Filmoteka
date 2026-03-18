@@ -91,9 +91,6 @@ export async function registerHandler() {
         formError.style.color = 'green';
         applyTranslations();
       }
-      // localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
-      // localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
-      // window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
         if (formError) {
