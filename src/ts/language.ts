@@ -56,10 +56,14 @@ const translations = {
     verifyEmail: 'Verification link sent to e-mail.',
     cancel: 'Cancel',
     verEmailFailed: 'Failed to send e-mail verification, [lack of service, log in to receive link]',
+    loginTooShort: 'Login is too short',
+    loginTooLong: 'Login is too long',
+    passwordTooShort: 'Password is too short',
+    passwordTooLong: 'Password is too long',
   },
   'pl-PL': {
     // Header
-    home: 'Strona główna',
+    home: 'Start',
     library: 'Biblioteka',
     language: 'Język',
     placeholder: 'Wyszukaj film',
@@ -111,6 +115,10 @@ const translations = {
     cancel: 'Anuluj',
     verEmailFailed:
       'Błąd podczas wysyłania e-maila weryfikującego [brak usługi - zaloguj się aby otrzymać link]',
+    loginTooShort: 'Login jest za krótki',
+    loginTooLong: 'Login jest za długi',
+    passwordTooShort: 'Hasło jest za krótkie',
+    passwordTooLong: 'Hasło jest za długie',
   },
 } as const;
 
@@ -143,7 +151,6 @@ export function language() {
     currentLanguage = language;
     localStorage.setItem('language', language);
     applyTranslations();
-    // location.reload();
 
     document.dispatchEvent(new Event('languageChanged'));
   };

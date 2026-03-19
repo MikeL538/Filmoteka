@@ -31,7 +31,7 @@
   &__nav {
     @include vars.flex-between;
     flex-direction: column;
-    padding: 0 15px;
+    padding: 0 10px;
     transition: vars.$transition-scroll;
     width: 100%;
 
@@ -71,8 +71,7 @@
 
       > ul {
         @include vars.flex-center;
-        gap: 12px;
-        margin-left: 12px;
+        gap: 8px;
       }
     }
 
@@ -101,7 +100,7 @@
       @media (prefers-color-scheme: dark) {
         color: vars.$color-default;
       }
-      padding: 2px;
+      padding: 1px;
       text-transform: uppercase;
       transition: vars.$transition;
 
@@ -241,7 +240,7 @@
   opacity: 0;
   pointer-events: none;
   transform: translateY(-300%);
-  transition: 0.01s ease-in-out;
+  transition: vars.$transition-scroll;
   z-index: -10;
 }
 
@@ -257,7 +256,7 @@
   opacity: 0;
   pointer-events: none;
   transform: translateY(-300%);
-  transition: 0.01s ease-in-out;
+  transition: vars.$transition-scroll;
   z-index: -10;
 }
 

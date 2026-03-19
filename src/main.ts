@@ -10,6 +10,7 @@ import { registerHandler } from './ts/ui/modalRegister.js';
 import { syncListsIfLoggedIn } from './ts/features/devAuthSync.js';
 import { handleTrailer } from './ts/playTrailer.js';
 import { forgotPasswordHandler } from './ts/ui/modalForgotPassword.js';
+import { themeHandler } from './ts/ui/themeHandler.js';
 
 scrollHeader();
 scrollFooter();
@@ -21,3 +22,4 @@ loginHandler();
 registerHandler();
 handleTrailer();
 forgotPasswordHandler();
+themeHandler();

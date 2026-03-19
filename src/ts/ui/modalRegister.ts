@@ -16,6 +16,10 @@ const registerErrorMap: Record<string, string> = {
   EMAIL_ALREADY_EXISTS: 'emailAlreadyExists',
   REGISTER_500: 'serverError',
   VERIFICATION_EMAIL_FAILED: 'verEmailFailed',
+  LOGIN_TOO_SHORT: 'loginTooShort',
+  LOGIN_TOO_LONG: 'loginTooLong',
+  PASSWORD_TOO_SHORT: 'passwordTooShort',
+  PASSWORD_TOO_LONG: 'passwordTooLong',
 };
 
 function serverWakingUpInfo() {
