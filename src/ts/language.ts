@@ -7,7 +7,7 @@ const translations = {
   'en-US': {
     // Header
     home: 'Home',
-    library: 'Library',
+    library: 'Saved',
     language: 'Language',
     placeholder: 'Movie search',
     error: 'Search result not successful. Enter the correct movie name.',
@@ -64,7 +64,7 @@ const translations = {
   'pl-PL': {
     // Header
     home: 'Start',
-    library: 'Biblioteka',
+    library: 'Zapisane',
     language: 'Język',
     placeholder: 'Wyszukaj film',
     error: 'Wyszukiwanie nie powiodło się. Wprowadź prawidłową nazwę filmu.',

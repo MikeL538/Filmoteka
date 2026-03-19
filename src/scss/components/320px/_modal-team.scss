@@ -16,16 +16,8 @@
     top: 10%;
     transform: translateX(-50%);
     z-index: 100;
-
-    @media (prefers-color-scheme: light) {
-      background-color: vars.$color-details-bg-light;
-      color: vars.$color-default-light;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: vars.$color-details-bg;
-      color: vars.$color-default;
-    }
+    background-color: vars.$color-details-bg-light;
+    color: vars.$color-default-light;
 
     &__container {
       margin-top: 40px;
@@ -52,15 +44,8 @@
       }
 
       > svg {
-        @media (prefers-color-scheme: light) {
-          fill: vars.$color-default-light;
-          stroke: vars.$color-details-bg-light;
-        }
-
-        @media (prefers-color-scheme: dark) {
-          fill: vars.$color-default;
-          stroke: vars.$color-details-bg;
-        }
+        fill: vars.$color-default-light;
+        stroke: vars.$color-details-bg-light;
 
         &:hover,
         &:focus {
@@ -158,14 +143,20 @@
   // ================= CARD =================
 
   &__github {
-    @media (prefers-color-scheme: light) {
-      fill: vars.$color-default-light;
-      stroke: vars.$color-details-bg-light;
-    }
+    fill: vars.$color-default-light;
+    stroke: vars.$color-details-bg-light;
+  }
+}
 
-    @media (prefers-color-scheme: dark) {
-      fill: vars.$color-default;
-      stroke: vars.$color-details-bg;
-    }
+html[data-theme='dark'] {
+  .team__modal {
+    background-color: vars.$color-details-bg;
+    color: vars.$color-default;
+  }
+
+  .team__modal--close > svg,
+  .team__github {
+    fill: vars.$color-default;
+    stroke: vars.$color-details-bg;
   }
 }

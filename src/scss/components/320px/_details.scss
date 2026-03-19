@@ -29,16 +29,8 @@
       pointer-events: auto;
       transform: translate(-50%, -10%) scale(1);
     }
-
-    @media (prefers-color-scheme: light) {
-      background-color: vars.$color-details-bg-light;
-      color: vars.$color-default-light;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: vars.$color-details-bg;
-      color: vars.$color-default;
-    }
+    background-color: vars.$color-details-bg-light;
+    color: vars.$color-default-light;
   }
 
   &__close-button {
@@ -61,14 +53,8 @@
     }
 
     > svg {
-      @media (prefers-color-scheme: light) {
-        fill: #000;
-        stroke: #000;
-      }
-      @media (prefers-color-scheme: dark) {
-        fill: #fff;
-        stroke: #fff;
-      }
+      fill: #000;
+      stroke: #000;
     }
   }
 
@@ -103,11 +89,6 @@
       height: 30px;
       fill: vars.$color-default-light;
       stroke: vars.$color-filmovie;
-
-      @media (prefers-color-scheme: dark) {
-        fill: vars.$color-default;
-        stroke: vars.$color-filmovie;
-      }
     }
 
     &:hover > svg,
@@ -117,10 +98,6 @@
 
       fill: vars.$color-default;
       stroke: vars.$color-filmovie;
-      @media (prefers-color-scheme: dark) {
-        fill: vars.$color-default-light;
-        stroke: vars.$color-filmovie;
-      }
     }
   }
 
@@ -228,4 +205,25 @@
   max-width: 900px;
   aspect-ratio: 16 / 9;
   border: none;
+}
+
+html[data-theme='dark'] {
+  .details__container {
+    background-color: vars.$color-details-bg;
+    color: vars.$color-default;
+  }
+
+  .details__close-button > svg {
+    fill: #fff;
+    stroke: #fff;
+  }
+
+  .details__trailer > svg {
+    fill: vars.$color-default;
+  }
+
+  .details__trailer:hover > svg,
+  .details__trailer:focus > svg {
+    fill: vars.$color-default-light;
+  }
 }

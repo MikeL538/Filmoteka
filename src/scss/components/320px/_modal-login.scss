@@ -12,11 +12,6 @@
     width: 26px;
     top: 7px;
 
-    @media (prefers-color-scheme: dark) {
-      fill: #fff;
-      stroke: #fff;
-    }
-
     &:hover {
       border-color: vars.$color-filmovie;
 
@@ -41,11 +36,6 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: min(92vw, 360px);
-
-    @media (prefers-color-scheme: dark) {
-      background-color: vars.$color-details-bg;
-      color: vars.$color-default;
-    }
   }
 
   &__form {
@@ -75,16 +65,8 @@
       box-shadow vars.$transition;
     width: 100%;
     margin: 0;
-
-    @media (prefers-color-scheme: light) {
-      background-color: #fff;
-      color: vars.$color-default-light;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: rgba(255, 255, 255, 0.05);
-      color: vars.$color-default;
-    }
+    background-color: #fff;
+    color: vars.$color-default-light;
 
     &::placeholder {
       opacity: 0.7;
@@ -136,5 +118,23 @@
     font-size: vars.$font-sm;
     margin-top: 8px;
     text-align: center;
+  }
+}
+
+html[data-theme='dark'] {
+  .login__close-button {
+    fill: #fff;
+    stroke: #fff;
+  }
+
+  .login__container {
+    background-color: vars.$color-details-bg;
+    color: vars.$color-default;
+  }
+
+  .login__input,
+  .login--Password__input {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: vars.$color-default;
   }
 }

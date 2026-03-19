@@ -14,11 +14,9 @@
   transition: vars.$transition;
   width: 100%;
   z-index: 99;
-  @media (prefers-color-scheme: light) {
-    background:
-      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15), transparent 40%),
-      linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #dbeafe 100%);
-  }
+  background:
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15), transparent 40%),
+    linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #dbeafe 100%);
 
   &__container {
     @include vars.flex-between;
@@ -47,10 +45,6 @@
 
       fill: transparent;
       stroke: vars.$color-default-light;
-
-      @media (prefers-color-scheme: dark) {
-        stroke: vars.$color-default;
-      }
 
       &:hover {
         stroke: vars.$color-hover;
@@ -82,9 +76,6 @@
 
     &-login {
       color: vars.$color-default-light;
-      @media (prefers-color-scheme: dark) {
-        color: vars.$color-default;
-      }
 
       &:hover,
       &:focus {
@@ -97,9 +88,6 @@
       border-radius: 5px;
       border: 1px solid;
       color: vars.$color-default-light;
-      @media (prefers-color-scheme: dark) {
-        color: vars.$color-default;
-      }
       padding: 1px;
       text-transform: uppercase;
       transition: vars.$transition;
@@ -128,24 +116,13 @@
       padding: 4px 4px;
       width: 100%;
 
-      @media (prefers-color-scheme: dark) {
-        color: vars.$color-default;
-      }
-
       &::placeholder {
         color: vars.$color-default-light;
-
-        @media (prefers-color-scheme: dark) {
-          color: vars.$color-default;
-        }
       }
 
       &-submit:hover svg,
       &-submit:focus svg {
         stroke: vars.$color-filmovie;
-        @media (prefers-color-scheme: dark) {
-          stroke: vars.$color-default;
-        }
       }
 
       &:focus::placeholder {
@@ -156,20 +133,29 @@
         cursor: pointer;
         stroke: vars.$color-default-light;
         transition: vars.$transition;
-
-        @media (prefers-color-scheme: dark) {
-          stroke: vars.$color-default;
-        }
       }
     }
   }
 
-  &__error {
-    color: vars.$color-error;
-    display: none;
-    font-size: vars.$font-xs;
-    text-align: center;
-    white-space: nowrap;
+  &__theme {
+    &-button {
+      @include vars.flex-center;
+      border: 1px solid;
+      border-radius: 5px;
+      transition: vars.$transition;
+
+      &:hover,
+      &:focus {
+        background-color: vars.$color-filmovie;
+        border-color: vars.$color-filmovie;
+        color: vars.$color-default;
+        transform: vars.$transform-button;
+      }
+    }
+    &-icon {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   // ========== LIBRARY =========
@@ -197,10 +183,6 @@
         text-transform: uppercase;
         transition: vars.$transition;
         width: 130px;
-
-        @media (prefers-color-scheme: dark) {
-          color: vars.$color-default;
-        }
 
         &:hover,
         &:focus {
@@ -262,4 +244,37 @@
 
 .button-library--active {
   background: vars.$color-filmovie !important;
+}
+
+html[data-theme='dark'] {
+  .header {
+    background:
+      radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.15), transparent 40%),
+      linear-gradient(135deg, #0b1120 0%, #111827 50%, #0f172a 100%);
+
+    &__nav-icon {
+      stroke: vars.$color-default;
+    }
+
+    &__nav-login,
+    &__nav-language-btn,
+    &__nav-input,
+    &__theme-button {
+      color: vars.$color-default;
+    }
+
+    &__nav-input::placeholder {
+      color: vars.$color-default;
+    }
+
+    &__nav-input-submit:hover svg,
+    &__nav-input-submit:focus svg,
+    &__nav-input--loupe {
+      stroke: vars.$color-default;
+    }
+
+    &--library__btn--container > button {
+      color: vars.$color-default;
+    }
+  }
 }

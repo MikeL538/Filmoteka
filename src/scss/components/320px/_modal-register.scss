@@ -17,11 +17,6 @@
     width: 26px;
     top: 7px;
 
-    @media (prefers-color-scheme: dark) {
-      fill: #fff;
-      stroke: #fff;
-    }
-
     &:hover {
       border-color: vars.$color-filmovie;
 
@@ -40,16 +35,8 @@
     transform: translate(-50%, -50%);
     width: min(92vw, 360px);
     min-height: 240px;
-
-    @media (prefers-color-scheme: light) {
-      background-color: vars.$color-details-bg-light;
-      color: vars.$color-default-light;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: vars.$color-details-bg;
-      color: vars.$color-default;
-    }
+    background-color: vars.$color-details-bg-light;
+    color: vars.$color-default-light;
 
     border: 1px solid rgba(255, 107, 8, 0.25);
     border-radius: 12px;
@@ -81,16 +68,8 @@
       border-color vars.$transition,
       box-shadow vars.$transition;
     width: 100%;
-
-    @media (prefers-color-scheme: light) {
-      background-color: #fff;
-      color: vars.$color-default-light;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: rgba(255, 255, 255, 0.05);
-      color: vars.$color-default;
-    }
+    background-color: #fff;
+    color: vars.$color-default-light;
 
     &::placeholder {
       opacity: 0.7;
@@ -132,5 +111,22 @@
     color: vars.$color-error;
     font-size: vars.$font-sm;
     margin-top: 8px;
+  }
+}
+
+html[data-theme='dark'] {
+  .register__close-button {
+    fill: #fff;
+    stroke: #fff;
+  }
+
+  .register__container {
+    background-color: vars.$color-details-bg;
+    color: vars.$color-default;
+  }
+
+  .register__input {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: vars.$color-default;
   }
 }
