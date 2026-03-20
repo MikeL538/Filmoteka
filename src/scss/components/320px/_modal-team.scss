@@ -46,12 +46,13 @@
       > svg {
         fill: vars.$color-default-light;
         stroke: vars.$color-details-bg-light;
+      }
 
-        &:hover,
-        &:focus {
-          fill: vars.$color-filmovie;
-          transform: rotate(360deg);
-        }
+      &:hover > svg,
+      &:focus > svg {
+        fill: vars.$color-filmovie;
+        stroke: vars.$color-filmovie;
+        transform: rotate(360deg);
       }
     }
   }
@@ -158,5 +159,11 @@ html[data-theme='dark'] {
   .team__github {
     fill: vars.$color-default;
     stroke: vars.$color-details-bg;
+  }
+
+  .team__modal--close:hover > svg,
+  .team__modal--close:focus > svg {
+    fill: vars.$color-hover;
+    stroke: vars.$color-hover;
   }
 }

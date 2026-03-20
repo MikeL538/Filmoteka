@@ -67,6 +67,38 @@ export async function loginUser(login: string, password: string): Promise<LoginR
 }
 
 export async function logoutUser(): Promise<void> {
+  const token = getServerToken();
+
+  if (!token) {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem('toWatchList');
+    localStorage.removeItem('queueList');
+    window.location.reload();
+    return;
+  }
+
+  const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    let errorPayload: ApiErrorResponse | null = null;
+
+    try {
+      errorPayload = (await response.json()) as ApiErrorResponse;
+    } catch {
+      errorPayload = null;
+    }
+
+    const error = new Error(errorPayload?.code ?? `LOGOUT_${response.status}`) as ApiError;
+    error.code = errorPayload?.code ?? `LOGOUT_${response.status}`;
+
+    throw error;
+  }
+
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem('toWatchList');
   localStorage.removeItem('queueList');

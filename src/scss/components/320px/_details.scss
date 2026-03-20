@@ -44,11 +44,13 @@
     width: 32px;
     top: 6px;
 
-    &:hover {
+    &:hover,
+    &:focus {
       border-color: vars.$color-filmovie;
 
       > svg {
         fill: vars.$color-filmovie;
+        stroke: vars.$color-filmovie;
       }
     }
 
@@ -216,6 +218,12 @@ html[data-theme='dark'] {
   .details__close-button > svg {
     fill: #fff;
     stroke: #fff;
+  }
+
+  .details__close-button:hover > svg,
+  .details__close-button:focus > svg {
+    fill: vars.$color-hover;
+    stroke: vars.$color-hover;
   }
 
   .details__trailer > svg {

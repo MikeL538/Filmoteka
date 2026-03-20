@@ -46,13 +46,15 @@
       fill: transparent;
       stroke: vars.$color-default-light;
 
-      &:hover {
+      &:hover,
+      &:focus {
         stroke: vars.$color-hover;
       }
     }
 
     &-title {
       display: none;
+      transition: vars.$transition;
     }
 
     &-list {
@@ -61,6 +63,11 @@
 
       &-item {
         height: 21px;
+
+        > a:hover,
+        a:focus {
+          color: vars.$color-filmovie;
+        }
       }
 
       > ul {
@@ -69,9 +76,21 @@
       }
     }
 
-    &-link:focus svg {
-      color: vars.$color-filmovie;
-      stroke: vars.$color-filmovie;
+    &-link {
+      &:hover,
+      &:focus {
+        color: vars.$color-hover;
+      }
+
+      &:hover .header__nav-icon,
+      &:focus .header__nav-icon {
+        stroke: vars.$color-hover;
+      }
+
+      &:hover .header__nav-title,
+      &:focus .header__nav-title {
+        color: vars.$color-hover;
+      }
     }
 
     &-login {
@@ -140,15 +159,11 @@
   &__theme {
     &-button {
       @include vars.flex-center;
-      border: 1px solid;
-      border-radius: 5px;
+
       transition: vars.$transition;
 
       &:hover,
       &:focus {
-        background-color: vars.$color-filmovie;
-        border-color: vars.$color-filmovie;
-        color: vars.$color-default;
         transform: vars.$transform-button;
       }
     }
@@ -263,14 +278,31 @@ html[data-theme='dark'] {
       color: vars.$color-default;
     }
 
+    &__nav-link:hover .header__nav-icon,
+    &__nav-link:focus .header__nav-icon,
+    &__nav-link:hover .header__nav-title,
+    &__nav-link:focus .header__nav-title,
+    &__nav-login:hover,
+    &__nav-login:focus {
+      color: vars.$color-hover;
+      stroke: vars.$color-hover;
+    }
+
     &__nav-input::placeholder {
       color: vars.$color-default;
     }
 
-    &__nav-input-submit:hover svg,
-    &__nav-input-submit:focus svg,
     &__nav-input--loupe {
       stroke: vars.$color-default;
+    }
+
+    &__nav-input:focus::placeholder {
+      color: vars.$color-hover;
+    }
+
+    &__nav-input-submit:hover svg,
+    &__nav-input-submit:focus svg {
+      stroke: vars.$color-hover;
     }
 
     &--library__btn--container > button {
