@@ -11,6 +11,7 @@ import { syncListsIfLoggedIn } from './ts/features/devAuthSync.js';
 import { handleTrailer } from './ts/playTrailer.js';
 import { forgotPasswordHandler } from './ts/ui/modalForgotPassword.js';
 import { themeHandler } from './ts/ui/themeHandler.js';
+import { showWelcomeAfterLogin } from './ts/ui/welcomeAfterLogin.js';
 
 scrollHeader();
 scrollFooter();
@@ -23,3 +24,4 @@ registerHandler();
 handleTrailer();
 forgotPasswordHandler();
 themeHandler();
+showWelcomeAfterLogin();

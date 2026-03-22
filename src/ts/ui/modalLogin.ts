@@ -84,9 +84,13 @@ export async function loginHandler() {
       clearServerWakingUpInfo();
       setServerToken(data.token);
 
+      const loginFormat =
+        loginInput.value.charAt(0).toUpperCase() + loginInput.value.slice(1).toLowerCase();
+
       localStorage.setItem('toWatchList', JSON.stringify(data.lists.watched.map(String)));
       localStorage.setItem('queueList', JSON.stringify(data.lists.queued.map(String)));
       // RELOAD ON PURPOSE
+      sessionStorage.setItem('welcomeUserLogin', loginFormat);
       window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
