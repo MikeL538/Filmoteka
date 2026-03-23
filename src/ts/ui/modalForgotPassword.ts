@@ -1,6 +1,5 @@
 import { forgotPassword } from '../api/filmovieServerApi.js';
 import { closeModal } from '../modalClose.js';
-import { applyTranslations } from '../language.js';
 
 export async function forgotPasswordHandler() {
   const form = document.querySelector('.forgot-password__form') as HTMLFormElement | null;

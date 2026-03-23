@@ -22,7 +22,7 @@ const registerErrorMap: Record<string, string> = {
   PASSWORD_TOO_LONG: 'passwordTooLong',
 };
 
-function serverWakingUpInfo() {
+export function serverWakingUpInfo() {
   notifications.showLoader();
   // NOTIFY ABOUT LOADING
   serverLoadWarning1 = window.setTimeout(() => {
@@ -42,7 +42,7 @@ function serverWakingUpInfo() {
   }, 24000);
 }
 
-function clearServerWakingUpInfo() {
+export function clearServerWakingUpInfo() {
   if (serverLoadWarning1 !== undefined) window.clearTimeout(serverLoadWarning1);
   if (serverLoadWarning2 !== undefined) window.clearTimeout(serverLoadWarning2);
   if (serverLoadWarning3 !== undefined) window.clearTimeout(serverLoadWarning3);

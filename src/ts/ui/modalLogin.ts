@@ -1,8 +1,7 @@
 import { loginUser, setServerToken, resendVerificationEmail } from '../api/filmovieServerApi.js';
 import { openRegisterModal } from '../modalShow.js';
 import { applyTranslations } from '../language.js';
-import { notifications } from './notifications.js';
-import { Notify } from 'notiflix';
+import { serverWakingUpInfo, clearServerWakingUpInfo } from './modalRegister.js';
 
 export async function loginHandler() {
   const form = document.querySelector('.login__form') as HTMLFormElement | null;
@@ -16,41 +15,6 @@ export async function loginHandler() {
     RESEND_TOO_EARLY: 'resendTooEarly',
     LOGIN_500: 'serverError',
   };
-
-  let serverLoadWarning1: number | undefined;
-  let serverLoadWarning2: number | undefined;
-  let serverLoadWarning3: number | undefined;
-  let serverLoadWarning4: number | undefined;
-  let serverLoadWarning5: number | undefined;
-
-  function serverWakingUpInfo() {
-    notifications.showLoader();
-    // NOTIFY ABOUT LOADING
-    serverLoadWarning1 = window.setTimeout(() => {
-      Notify.warning('Server loading...');
-    }, 5000);
-    serverLoadWarning2 = window.setTimeout(() => {
-      Notify.warning('Still loading...');
-    }, 10000);
-    serverLoadWarning3 = window.setTimeout(() => {
-      Notify.warning('Server waking up...');
-    }, 15000);
-    serverLoadWarning4 = window.setTimeout(() => {
-      Notify.warning('Server still waking up...');
-    }, 20000);
-    serverLoadWarning5 = window.setTimeout(() => {
-      Notify.warning('Waking up might take even minutes...');
-    }, 24000);
-  }
-
-  function clearServerWakingUpInfo() {
-    if (serverLoadWarning1 !== undefined) window.clearTimeout(serverLoadWarning1);
-    if (serverLoadWarning2 !== undefined) window.clearTimeout(serverLoadWarning2);
-    if (serverLoadWarning3 !== undefined) window.clearTimeout(serverLoadWarning3);
-    if (serverLoadWarning4 !== undefined) window.clearTimeout(serverLoadWarning4);
-    if (serverLoadWarning5 !== undefined) window.clearTimeout(serverLoadWarning5);
-    notifications.hideLoader();
-  }
 
   document.addEventListener('click', e => {
     const target = e.target as HTMLElement;

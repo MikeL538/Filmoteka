@@ -124,7 +124,8 @@
       gap: 3px;
       margin-top: 25px;
       transition: vars.$transition-scroll-form;
-      width: 280px;
+      width: 100%;
+      max-width: 280px;
     }
 
     &-input {
