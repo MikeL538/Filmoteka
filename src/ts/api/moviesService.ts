@@ -14,6 +14,25 @@ export async function fetchTrending(page: number, language: string): Promise<Mov
   return data;
 }
 
+export async function fetchMoviesByGenre(
+  genreId: number,
+  page: number,
+  language: string,
+): Promise<MovieResponse> {
+  const { data } = await tmdbClient.get<MovieResponse>('discover/movie', {
+    params: {
+      with_genres: genreId,
+      sort_by: 'popularity.desc',
+      include_adult: false,
+      include_video: false,
+      page,
+      language,
+    },
+  });
+
+  return data;
+}
+
 // SEARCH
 export async function searchMovies(
   query: string,

@@ -26,7 +26,7 @@ export function renderMovies(movies: Movie[], language: 'en-US' | 'pl-PL'): stri
           `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
         : fallbackImage;
 
-      return `<li class="films__list-item" data-id="${movie.id}">
+      return `<li class="films__list-item ${genreNames.slice(0, 2).join(' ')}" data-id="${movie.id}">
         <button type="button" class="films__list-item--button">
           <img src="${imagePath}" alt="${movie.title}" />
           <h2>${movie.title}</h2>

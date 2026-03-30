@@ -1,23 +1,48 @@
-import { fetchTrending, searchMovies } from '../api/moviesService.js';
+import { fetchMoviesByGenre, fetchTrending, searchMovies } from '../api/moviesService.js';
 import { renderMovies } from '../ui/moviesRenderer.js';
 import { attachInfiniteScroll } from '../ui/scrollHandler.js';
 import { attachSearch } from '../ui/searchHandler.js';
 import { applyTranslations, currentLanguage } from '../language.js';
 import { notifications } from '../ui/notifications.js';
+import {
+  categoryHandler,
+  filterMoviesByCategory,
+  getSelectedCategory,
+  populateCategorySelect,
+} from '../ui/categoryHandler.js';
+import type { Movie } from '../../types and data/types.js';
 
 export function initMoviesPage() {
   const filmsList = document.querySelector<HTMLUListElement>('.films__list')!;
   const form = document.querySelector<HTMLFormElement>('.header__nav-form')!;
+  const categorySelect = document.querySelector<HTMLSelectElement>('#categorySelect');
 
   let currentPage: number = 1;
   let totalPages: number = 1;
   let query: string = '';
   let noMoreVideos: boolean = false;
+  let requestVersion: number = 0;
+  let loadedMovies: Movie[] = [];
   const noMore: HTMLParagraphElement = document.createElement('p');
   noMore.classList.add('no-more-videos');
   noMore.setAttribute('data-translate', 'noMoreVidoes');
 
-  async function load() {
+  function renderCurrentMovies() {
+    filmsList.innerHTML = renderMovies(filterMoviesByCategory(loadedMovies), currentLanguage);
+  }
+
+  function resetAndLoad() {
+    requestVersion++;
+    currentPage = 1;
+    loadedMovies = [];
+    filmsList.innerHTML = '';
+    noMoreVideos = false;
+    void load(requestVersion);
+  }
+
+  populateCategorySelect(currentLanguage);
+
+  async function load(version = requestVersion) {
     if (!filmsList.children.length) {
       notifications.showLoader();
     }
@@ -25,27 +50,42 @@ export function initMoviesPage() {
     noMore.innerHTML = '';
 
     try {
+      const selectedCategory = getSelectedCategory();
       const response = query
         ? await searchMovies(query, currentPage, currentLanguage)
-        : await fetchTrending(currentPage, currentLanguage);
+        : selectedCategory === 'all'
+          ? await fetchTrending(currentPage, currentLanguage)
+          : await fetchMoviesByGenre(selectedCategory, currentPage, currentLanguage);
+
+      if (version !== requestVersion) {
+        return;
+      }
 
       totalPages = response.total_pages ?? 1;
-
-      filmsList.innerHTML += renderMovies(response.results, currentLanguage);
+      loadedMovies =
+        currentPage === 1 ? response.results : [...loadedMovies, ...response.results];
+      renderCurrentMovies();
     } catch (error) {
+      if (version !== requestVersion) {
+        return;
+      }
+
       notifications.error();
       filmsList.innerHTML += `<li><button><p>${error}</p></button></li>`;
     } finally {
-      notifications.hideLoader();
+      if (version === requestVersion) {
+        notifications.hideLoader();
+      }
     }
   }
 
   attachSearch(form, newQuery => {
     query = newQuery;
-    currentPage = 1;
-    filmsList.innerHTML = '';
-    noMoreVideos = false;
-    load();
+    resetAndLoad();
+  });
+
+  categoryHandler(() => {
+    resetAndLoad();
   });
 
   attachInfiniteScroll(async () => {
@@ -65,13 +105,11 @@ export function initMoviesPage() {
     await load();
   }, filmsList);
 
-  load();
+  resetAndLoad();
 
   // Listen to language change
   document.addEventListener('languageChanged', () => {
-    currentPage = 1;
-    filmsList.innerHTML = '';
-    noMoreVideos = false;
-    load();
+    populateCategorySelect(currentLanguage, categorySelect?.value);
+    resetAndLoad();
   });
 }
