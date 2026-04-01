@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "type": "module",
   "description": "",
-  "homepage": "https://mikel538.github.io/Filmovie/",
+  "homepage": "https://filmovie.mikeldev.online/",
   "scripts": {
-    "dev": "parcel src/*.html --public-url /Filmovie/",
-    "build": "parcel build src/*.html --public-url /Filmovie/"
+    "dev": "parcel src/*.html --public-url /",
+    "build": "parcel build src/*.html --public-url /"
   },
   "repository": {
     "type": "git",
