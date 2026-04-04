@@ -8,7 +8,7 @@ synchronization.
 
 ## Live Demo
 
-Frontend: https://mikel538.github.io/Filmovie/
+Frontend: filmovie.mikeldev.online
 
 Backend API Repo: https://github.com/MikeL538/Filmovie-Server
 
